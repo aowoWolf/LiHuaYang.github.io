@@ -65,9 +65,9 @@
     <div class="outer">
       <section id="main">
   
-    <article id="post-常见的面试题" class="article article-type-post" itemscope itemprop="blogPost">
+    <article id="post-常见的面试题 (1)" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
-    <a href="/2017/01/01/常见的面试题/" class="article-date">
+    <a href="/2017/01/01/常见的面试题 (1)/" class="article-date">
   <time datetime="2017-01-01T08:22:07.374Z" itemprop="datePublished">2017-01-01</time>
 </a>
     
@@ -83,7 +83,7 @@
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2017/01/01/常见的面试题/">常见的面试题</a>
+      <a class="article-title" href="/2017/01/01/常见的面试题 (1)/">常见的面试题</a>
     </h1>
   
 
@@ -91,23 +91,24 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h1 id="1-obj-hashcode-有什么用，与-obj-equals-b-有什么关系"><a href="#1-obj-hashcode-有什么用，与-obj-equals-b-有什么关系" class="headerlink" title="1. obj.hashcode() 有什么用，与 obj.equals(b) 有什么关系"></a>1. obj.hashcode() 有什么用，与 obj.equals(b) 有什么关系</h1><h3 id="作用"><a href="#作用" class="headerlink" title="作用"></a>作用</h3><p>hashcode() 方法用来获取对象的哈希值，提高哈希表的性能（如 HashMap、HashTable）</p>
+        <p>#1. obj.hashcode() 有什么用，与 obj.equals(b) 有什么关系</p>
+<h3 id="作用"><a href="#作用" class="headerlink" title="作用"></a>作用</h3><p>hashcode() 方法用来获取对象的哈希值，提高哈希表的性能（如 HashMap、HashTable）</p>
 <h3 id="hashcode-工作原理"><a href="#hashcode-工作原理" class="headerlink" title="hashcode 工作原理"></a>hashcode 工作原理</h3><p>hashcode 是用来查找的，假如内存中有依次八个位置<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">0  1  2  3  4  5  6  7  8</div></pre></td></tr></table></figure></p>
 <p>现有个类，类中有个字段为 id，需要把这个类放在8个位置之一。如果不用 hashcode 而任意存放，当查找时候，则需要对这8各个位置进行遍历，或者使用二分法之类的算法。<br>如果使用 hashcode 效率将会大大的提高。<br>定义 hashcode 的值为 id%8，取得余数则为存放的位置。如：假设 id=9，9%8余数为1，于是存放的位置为1。假设 id=13，13%8余数为5，于是存放的位置为5。于是，每次需要查找的时候只需要通过 id%8 这个算法求余数，直接找到存放的位置了。</p>
         
           <p class="article-more-link">
-            <a href="/2017/01/01/常见的面试题/#more">Read More</a>
+            <a href="/2017/01/01/常见的面试题 (1)/#more">Read More</a>
           </p>
         
       
     </div>
     <footer class="article-footer">
       
-        <a data-url="http://yoursite.com/2017/01/01/常见的面试题/" data-id="cixek0g9p0005f4qr3pqoq8t1" class="article-share-link" data-share="baidu" data-title="常见的面试题">分享到</a>
+        <a data-url="http://yoursite.com/2017/01/01/常见的面试题 (1)/" data-id="cixen0r4v0004o8qrxiyabge4" class="article-share-link" data-share="baidu" data-title="常见的面试题">分享到</a>
       
 
       
-        <a href="http://yoursite.com/2017/01/01/常见的面试题/#ds-thread" class="article-comment-link">评论</a>
+        <a href="http://yoursite.com/2017/01/01/常见的面试题 (1)/#ds-thread" class="article-comment-link">评论</a>
       
 
       
@@ -161,7 +162,7 @@
     </div>
     <footer class="article-footer">
       
-        <a data-url="http://yoursite.com/2016/12/08/mysql免安装版/" data-id="cixek0g930001f4qrar5gzj2d" class="article-share-link" data-share="baidu" data-title="mysql 免安装版配置">分享到</a>
+        <a data-url="http://yoursite.com/2016/12/08/mysql免安装版/" data-id="cixen0r4l0001o8qruwwfpf4q" class="article-share-link" data-share="baidu" data-title="mysql 免安装版配置">分享到</a>
       
 
       
@@ -216,7 +217,7 @@
     </div>
     <footer class="article-footer">
       
-        <a data-url="http://yoursite.com/2016/12/08/eclipse-key-map/" data-id="cixek0g8i0000f4qrjeqx5g6s" class="article-share-link" data-share="baidu" data-title="eclipse-key-map">分享到</a>
+        <a data-url="http://yoursite.com/2016/12/08/eclipse-key-map/" data-id="cixen0r4d0000o8qrzwrx0mx0" class="article-share-link" data-share="baidu" data-title="eclipse-key-map">分享到</a>
       
 
       
