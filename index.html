@@ -42,6 +42,8 @@
         
           <a class="main-nav-link" href="/archives">Archives</a>
         
+          <a class="main-nav-link" href="/about">About</a>
+        
       </nav>
       <nav id="sub-nav">
         
@@ -89,9 +91,11 @@
 
       </header>
     
+
     <div class="article-entry" itemprop="articleBody">
+
       
-        <h1 id="1-obj-hashcode-有什么用，与-obj-equals-b-有什么关系"><a href="#1-obj-hashcode-有什么用，与-obj-equals-b-有什么关系" class="headerlink" title="1. obj.hashcode() 有什么用，与 obj.equals(b) 有什么关系"></a>1. obj.hashcode() 有什么用，与 obj.equals(b) 有什么关系</h1><h3 id="作用"><a href="#作用" class="headerlink" title="作用"></a>作用</h3><p>hashcode() 方法用来获取对象的哈希值，提高哈希表的性能（如 HashMap、HashTable）</p>
+        <h1 id="1-obj-hashcode-、obj-equals-b"><a href="#1-obj-hashcode-、obj-equals-b" class="headerlink" title="1. obj.hashcode()、obj.equals(b)"></a>1. obj.hashcode()、obj.equals(b)</h1><h3 id="作用"><a href="#作用" class="headerlink" title="作用"></a>作用</h3><p>hashcode() 方法用来获取对象的哈希值，提高哈希表的性能（如 HashMap、HashTable）</p>
 <h3 id="hashcode-工作原理"><a href="#hashcode-工作原理" class="headerlink" title="hashcode 工作原理"></a>hashcode 工作原理</h3><p>hashcode 是用来查找的，假如内存中有依次八个位置<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">0  1  2  3  4  5  6  7  8</div></pre></td></tr></table></figure></p>
 <p>现有个类，类中有个字段为 id，需要把这个类放在8个位置之一。如果不用 hashcode 而任意存放，当查找时候，则需要对这8各个位置进行遍历，或者使用二分法之类的算法。<br>如果使用 hashcode 效率将会大大的提高。<br>定义 hashcode 的值为 id%8，取得余数则为存放的位置。如：假设 id=9，9%8余数为1，于是存放的位置为1。假设 id=13，13%8余数为5，于是存放的位置为5。于是，每次需要查找的时候只需要通过 id%8 这个算法求余数，直接找到存放的位置了。</p>
         
@@ -101,9 +105,11 @@
         
       
     </div>
+
+
     <footer class="article-footer">
       
-        <a data-url="http://yoursite.com/2017/01/01/常见的面试题 (1)/" data-id="cixen5uhn00041cqrlgtomo3j" class="article-share-link" data-share="baidu" data-title="常见的面试题">分享到</a>
+        <a data-url="http://yoursite.com/2017/01/01/常见的面试题 (1)/" data-id="cixenrgpc0004cwqr30h04pft" class="article-share-link" data-share="baidu" data-title="常见的面试题">分享到</a>
       
 
       
@@ -144,14 +150,16 @@
 
       </header>
     
+
     <div class="article-entry" itemprop="articleBody">
+
       
         <h5 id="0-下载mysql"><a href="#0-下载mysql" class="headerlink" title="0. 下载mysql"></a>0. 下载mysql</h5><p><a href="http://dev.mysql.com/downloads/mysql/">下载</a></p>
 <h5 id="1-安装前的准备动作"><a href="#1-安装前的准备动作" class="headerlink" title="1. 安装前的准备动作"></a>1. 安装前的准备动作</h5><ul>
 <li>解压</li>
 <li>将my.default.ini改名为my.ini放到bin目录</li>
 </ul>
-<h5 id="2-安装mysql服务"><a href="#2-安装mysql服务" class="headerlink" title="2. 安装mysql服务"></a>2. 安装mysql服务</h5><p>进入bin目录，执行<br><figure class="highlight cmd"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">mysqld --install</div></pre></td></tr></table></figure></p>
+<h5 id="2-安装mysql服务"><a href="#2-安装mysql服务" class="headerlink" title="2. 安装mysql服务"></a>2. 安装mysql服务</h5><p>进入bin目录，执行<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">mysqld --install</div></pre></td></tr></table></figure></p>
         
           <p class="article-more-link">
             <a href="/2016/12/08/mysql免安装版/#more">Read More</a>
@@ -159,9 +167,11 @@
         
       
     </div>
+
+
     <footer class="article-footer">
       
-        <a data-url="http://yoursite.com/2016/12/08/mysql免安装版/" data-id="cixen5uhc00011cqra60bzo3x" class="article-share-link" data-share="baidu" data-title="mysql 免安装版配置">分享到</a>
+        <a data-url="http://yoursite.com/2016/12/08/mysql免安装版/" data-id="cixenrgp30001cwqrsoaa8506" class="article-share-link" data-share="baidu" data-title="mysql 免安装版配置">分享到</a>
       
 
       
@@ -202,7 +212,9 @@
 
       </header>
     
+
     <div class="article-entry" itemprop="articleBody">
+
       
         <h1 id="常用的Eclipse快捷键"><a href="#常用的Eclipse快捷键" class="headerlink" title="常用的Eclipse快捷键"></a>常用的Eclipse快捷键</h1><h3 id="1-打开文件列表"><a href="#1-打开文件列表" class="headerlink" title="1. 打开文件列表"></a>1. 打开文件列表</h3><p>Ctrl + E</p>
 <h3 id="2-关闭当前文件"><a href="#2-关闭当前文件" class="headerlink" title="2. 关闭当前文件"></a>2. 关闭当前文件</h3><p>Ctrl + W</p>
@@ -214,9 +226,11 @@
         
       
     </div>
+
+
     <footer class="article-footer">
       
-        <a data-url="http://yoursite.com/2016/12/08/eclipse-key-map/" data-id="cixen5uh300001cqrvhfriwpv" class="article-share-link" data-share="baidu" data-title="eclipse-key-map">分享到</a>
+        <a data-url="http://yoursite.com/2016/12/08/eclipse-key-map/" data-id="cixenrgov0000cwqr3nqqml5x" class="article-share-link" data-share="baidu" data-title="eclipse-key-map">分享到</a>
       
 
       
@@ -225,6 +239,67 @@
 
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/eclipse/">eclipse</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-Session机制详解" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2016/11/12/Session机制详解/" class="article-date">
+  <time datetime="2016-11-11T22:30:00.000Z" itemprop="datePublished">2016-11-12</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/javee/">javee</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2016/11/12/Session机制详解/">Session机制详解</a>
+    </h1>
+  
+
+      </header>
+    
+
+    <div class="article-entry" itemprop="articleBody">
+
+      
+        <h1 id="Session机制详解"><a href="#Session机制详解" class="headerlink" title="Session机制详解"></a>Session机制详解</h1><p>摘要：虽然session机制在web应用程序中被采用已经很长时间了，但是仍然有很多人不清楚session机制的本质，以至不能正确的应用这一技术。本文将详细讨论session的工作机制并且对在Java web application中应用session机制时常见的问题作出解答。</p>
+<h1 id="一、术语session"><a href="#一、术语session" class="headerlink" title="一、术语session"></a>一、术语session</h1><p>在我的经验里，session 这个词被滥用的程度大概仅次于 transaction，更加有趣的是 transaction 与 session 在某些语境下的含义是相同的。</p>
+<p>session，中文经常翻译为<strong>会话</strong>，其本来的含义是指有始有终的一系列动作/消息，比如打电话时从拿起电话拨号到挂断电话这中间的一系列<strong>过程</strong>可以称之为一个 session。有时候我们可以看到这样的话“在一个浏览器会话期间，…”，这里的会话一词用的就是其本义，是指从一个浏览器窗口打开到关闭这个期间 。最混乱的是“用户（客户端）在一次会话期间”这样一句话，它可能指用户的一系列动作（一般情况下是同某个具体目的相关的一系列动作，比如从登录到选购商品到结账登出这样一个网上购物的过程，有时候也被称为一个transaction），然而有时候也可能仅仅是指一次连接，也有可能是指含义，其中的差别只能靠上下文来推断。</p>
+<p>然而当 session 一词与网络协议相关联时，它又往往隐含了<strong>“面向连接”和/或“保持状态”</strong>这样两个含义，<br><strong>“面向连接”</strong> 指的是在通信双方在通信之前要先建立一个通信的渠道，比如打电话，直到对方接了电话通信才能开始，与此相对的是写信，在你把信发出去的时候你并不能确认对方的地址是否正确，通信渠道不一定能建立，但对发信人来说，通信已经开始了。<br><strong>“保持状态”</strong> 则是指通信的一方能够把一系列的消息关联起来，使得消息之间可以互相依赖，比如一个服务员能够认出再次光临的老顾客并且记得上次这个顾客还欠店里一块钱。这一类的例子有“一个TCP session”或者 “一个POP3 session”。</p>
+<p>而到了web服务器蓬勃发展的时代，session在web开发语境下的语义又有了新的扩展，它的含义是<strong>指一类用来在客户端与服务器之间保持状态的解决方案</strong>。<strong>有时候session也用来指这种解决方案的存储结构</strong>，如“把xxx保存在session 里”。由于各种用于web开发的语言在一定程度上都提供了对这种解决方案的支持，所以在某种特定语言的语境下，session也被用来指代该语言的解决方案，比如经常把Java里提供的javax.servlet.http.HttpSession简称为session。</p>
+        
+          <p class="article-more-link">
+            <a href="/2016/11/12/Session机制详解/#more">Read More</a>
+          </p>
+        
+      
+    </div>
+
+
+    <footer class="article-footer">
+      
+        <a data-url="http://yoursite.com/2016/11/12/Session机制详解/" data-id="cixfqqy8q0000nkqrhiegcask" class="article-share-link" data-share="baidu" data-title="Session机制详解">分享到</a>
+      
+
+      
+        <a href="http://yoursite.com/2016/11/12/Session机制详解/#ds-thread" class="article-comment-link">评论</a>
+      
+
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/javaee/">javaee</a></li></ul>
 
     </footer>
   </div>
@@ -242,7 +317,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">分类</h3>
     <div class="widget">
-      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/eclipse/">eclipse</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/mysql/">mysql</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/面试题/">面试题</a><span class="category-list-count">1</span></li></ul>
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/eclipse/">eclipse</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/javee/">javee</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/mysql/">mysql</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/面试题/">面试题</a><span class="category-list-count">1</span></li></ul>
     </div>
   </div>
 
@@ -251,7 +326,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">标签云</h3>
     <div class="widget tagcloud">
-      <a href="/tags/eclipse/" style="font-size: 10px;">eclipse</a> <a href="/tags/mysql/" style="font-size: 10px;">mysql</a> <a href="/tags/面试题/" style="font-size: 10px;">面试题</a>
+      <a href="/tags/eclipse/" style="font-size: 10px;">eclipse</a> <a href="/tags/javaee/" style="font-size: 10px;">javaee</a> <a href="/tags/mysql/" style="font-size: 10px;">mysql</a> <a href="/tags/面试题/" style="font-size: 10px;">面试题</a>
     </div>
   </div>
 
@@ -260,7 +335,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">归档</h3>
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/01/">2017年 01月</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/12/">2016年 12月</a><span class="archive-list-count">2</span></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/01/">2017年 01月</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/12/">2016年 12月</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/11/">2016年 11月</a><span class="archive-list-count">1</span></li></ul>
     </div>
   </div>
 
@@ -285,6 +360,8 @@
     <a href="/" class="mobile-nav-link">Home</a>
   
     <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+    <a href="/about" class="mobile-nav-link">About</a>
   
 </nav>
   <!-- totop start -->

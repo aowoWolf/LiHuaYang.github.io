@@ -1531,3 +1531,24 @@ pre .javascript .function {
 .tagcloud a {
   margin-right: 5px;
 }
+.article-entry ol {
+  margin: 0px;
+}
+.article-entry {
+  margin-top: 1.7em;
+}
+.article-entry a {
+  color: #00f;
+}
+.mytoc {
+  list-style: none;
+}
+.mytoc-item {
+  list-style: none;
+  color: #000;
+  margin-top: 5px;
+}
+.mytoc-level-3 {
+  margin-left: 3em;
+  list-style: circle;
+}
