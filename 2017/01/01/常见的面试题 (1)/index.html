@@ -104,8 +104,15 @@
       
 
 
-        <ol class="mytoc"><li class="mytoc-item mytoc-level-1"><a class="mytoc-link" href="#1-obj-hashcode-、obj-equals-b"><span class="mytoc-text">1. obj.hashcode()、obj.equals(b)</span></a><ol class="mytoc-child"><li class="mytoc-item mytoc-level-3"><a class="mytoc-link" href="#作用"><span class="mytoc-text">作用</span></a></li><li class="mytoc-item mytoc-level-3"><a class="mytoc-link" href="#hashcode-工作原理"><span class="mytoc-text">hashcode 工作原理</span></a></li><li class="mytoc-item mytoc-level-3"><a class="mytoc-link" href="#与-equals-之间的联系"><span class="mytoc-text">与 equals() 之间的联系</span></a></li></ol></li></ol></li><li class="mytoc-item mytoc-level-1"><a class="mytoc-link" href="#2-final、finalize、finally"><span class="mytoc-text">2. final、finalize、finally</span></a></li><li class="mytoc-item mytoc-level-1"><a class="mytoc-link" href="#3-String、StringBuffer-、StringBuilder"><span class="mytoc-text">3. String、StringBuffer 、StringBuilder</span></a></li><li class="mytoc-item mytoc-level-1"><a class="mytoc-link" href="#3-equals-与"><span class="mytoc-text">3. equals 与 ==</span></a></li><li class="mytoc-item mytoc-level-1"><a class="mytoc-link" href="#4-HashMap、HashTable、TreeMap、ConcurrentHashMap"><span class="mytoc-text">4. HashMap、HashTable、TreeMap、ConcurrentHashMap</span></a></li><li class="mytoc-item mytoc-level-1"><a class="mytoc-link" href="#5-在线程安全的前提下实现一个单例模式"><span class="mytoc-text">5. 在线程安全的前提下实现一个单例模式</span></a></li></ol>
+        <p style="width: 100%; background-color: #EEE; height: 3px"></p>
 
+        <!-- 显示目录 -->
+        <ol class="mytoc"><li class="mytoc-item mytoc-level-1"><a class="mytoc-link" href="#1-obj-hashcode-、obj-equals-b"><span class="mytoc-text">1. obj.hashcode()、obj.equals(b)</span></a><ol class="mytoc-child"><li class="mytoc-item mytoc-level-3"><a class="mytoc-link" href="#作用"><span class="mytoc-text">作用</span></a></li><li class="mytoc-item mytoc-level-3"><a class="mytoc-link" href="#hashcode-工作原理"><span class="mytoc-text">hashcode 工作原理</span></a></li><li class="mytoc-item mytoc-level-3"><a class="mytoc-link" href="#与-equals-之间的联系"><span class="mytoc-text">与 equals() 之间的联系</span></a></li></ol></li></ol></li><li class="mytoc-item mytoc-level-1"><a class="mytoc-link" href="#2-final、finalize、finally"><span class="mytoc-text">2. final、finalize、finally</span></a></li><li class="mytoc-item mytoc-level-1"><a class="mytoc-link" href="#3-String、StringBuffer-、StringBuilder"><span class="mytoc-text">3. String、StringBuffer 、StringBuilder</span></a></li><li class="mytoc-item mytoc-level-1"><a class="mytoc-link" href="#3-equals-与"><span class="mytoc-text">3. equals 与 ==</span></a></li><li class="mytoc-item mytoc-level-1"><a class="mytoc-link" href="#4-HashMap、HashTable、TreeMap、ConcurrentHashMap"><span class="mytoc-text">4. HashMap、HashTable、TreeMap、ConcurrentHashMap</span></a></li><li class="mytoc-item mytoc-level-1"><a class="mytoc-link" href="#5-在线程安全的前提下实现一个单例模式"><span class="mytoc-text">5. 在线程安全的前提下实现一个单例模式</span></a></li></ol>
+        <!-- 显示目录 -->
+        
+        <p style="width: 100%; background-color: #EEE; height: 3px"></p>
+
+        <!-- 显示正文 -->
         <h1 id="1-obj-hashcode-、obj-equals-b"><a href="#1-obj-hashcode-、obj-equals-b" class="headerlink" title="1. obj.hashcode()、obj.equals(b)"></a>1. obj.hashcode()、obj.equals(b)</h1><h3 id="作用"><a href="#作用" class="headerlink" title="作用"></a>作用</h3><p>hashcode() 方法用来获取对象的哈希值，提高哈希表的性能（如 HashMap、HashTable）</p>
 <h3 id="hashcode-工作原理"><a href="#hashcode-工作原理" class="headerlink" title="hashcode 工作原理"></a>hashcode 工作原理</h3><p>hashcode 是用来查找的，假如内存中有依次八个位置<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">0  1  2  3  4  5  6  7  8</div></pre></td></tr></table></figure></p>
 <p>现有个类，类中有个字段为 id，需要把这个类放在8个位置之一。如果不用 hashcode 而任意存放，当查找时候，则需要对这8各个位置进行遍历，或者使用二分法之类的算法。<br>如果使用 hashcode 效率将会大大的提高。<br>定义 hashcode 的值为 id%8，取得余数则为存放的位置。如：假设 id=9，9%8余数为1，于是存放的位置为1。假设 id=13，13%8余数为5，于是存放的位置为5。于是，每次需要查找的时候只需要通过 id%8 这个算法求余数，直接找到存放的位置了。</p>
@@ -218,14 +225,14 @@
 <figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// 优雅版本</span></div><div class="line"><span class="keyword">public</span> <span class="keyword">enum</span> Singleton&#123;</div><div class="line">   INSTANCE;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
 <p>参考文章：<br><a href="http://coolshell.cn/articles/265.html" target="_blank" rel="external">深入浅出单实例SINGLETON设计模式</a></p>
 
-
+        <!-- 显示正文 -->
       
     </div>
 
 
     <footer class="article-footer">
       
-        <a data-url="http://yoursite.com/2017/01/01/常见的面试题 (1)/" data-id="cixenrgpc0004cwqr30h04pft" class="article-share-link" data-share="baidu" data-title="常见的面试题">分享到</a>
+        <a data-url="http://yoursite.com/2017/01/01/常见的面试题 (1)/" data-id="cixfzr4z30006ngqrjcf7o6u6" class="article-share-link" data-share="baidu" data-title="常见的面试题">分享到</a>
       
 
       
