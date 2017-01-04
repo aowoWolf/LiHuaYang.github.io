@@ -96,7 +96,7 @@
 
       
         <h1 id="1-obj-hashcode-、obj-equals-b"><a href="#1-obj-hashcode-、obj-equals-b" class="headerlink" title="1. obj.hashcode()、obj.equals(b)"></a>1. obj.hashcode()、obj.equals(b)</h1><h3 id="作用"><a href="#作用" class="headerlink" title="作用"></a>作用</h3><p>hashcode() 方法用来获取对象的哈希值，提高哈希表的性能（如 HashMap、HashTable）</p>
-<h3 id="hashcode-工作原理"><a href="#hashcode-工作原理" class="headerlink" title="hashcode 工作原理"></a>hashcode 工作原理</h3><p>hashcode 是用来查找的，假如内存中有依次八个位置<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">0  1  2  3  4  5  6  7  8</div></pre></td></tr></table></figure></p>
+<h3 id="hashcode-工作原理"><a href="#hashcode-工作原理" class="headerlink" title="hashcode 工作原理"></a>hashcode 工作原理</h3><p>hashcode 是用来查找的，假如内存中有依次八个位置<br><figure class="highlight basic"><table><tr><td class="code"><pre><div class="line"><span class="symbol">0 </span> <span class="number">1</span>  <span class="number">2</span>  <span class="number">3</span>  <span class="number">4</span>  <span class="number">5</span>  <span class="number">6</span>  <span class="number">7</span>  <span class="number">8</span></div></pre></td></tr></table></figure></p>
 <p>现有个类，类中有个字段为 id，需要把这个类放在8个位置之一。如果不用 hashcode 而任意存放，当查找时候，则需要对这8各个位置进行遍历，或者使用二分法之类的算法。<br>如果使用 hashcode 效率将会大大的提高。<br>定义 hashcode 的值为 id%8，取得余数则为存放的位置。如：假设 id=9，9%8余数为1，于是存放的位置为1。假设 id=13，13%8余数为5，于是存放的位置为5。于是，每次需要查找的时候只需要通过 id%8 这个算法求余数，直接找到存放的位置了。</p>
         
           <p class="article-more-link">
@@ -109,7 +109,7 @@
 
     <footer class="article-footer">
       
-        <a data-url="http://yoursite.com/2017/01/01/常见的面试题一/" data-id="ciximmq5500078oqr71snnkms" class="article-share-link" data-share="baidu" data-title="常见的面试题一">分享到</a>
+        <a data-url="http://yoursite.com/2017/01/01/常见的面试题一/" data-id="cixiq69in00077sqryj4lgtb0" class="article-share-link" data-share="baidu" data-title="常见的面试题一">分享到</a>
       
 
       
@@ -164,8 +164,8 @@
         
 
         <!-- 显示正文 -->
-        <h1 id="1-用-java-写出获取当前时间毫秒值。明天12点的毫秒值怎么获取？"><a href="#1-用-java-写出获取当前时间毫秒值。明天12点的毫秒值怎么获取？" class="headerlink" title="1. 用 java 写出获取当前时间毫秒值。明天12点的毫秒值怎么获取？"></a>1. 用 java 写出获取当前时间毫秒值。明天12点的毫秒值怎么获取？</h1><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// 方法一</span></div><div class="line">System.currentTimeMillis();</div><div class="line"><span class="comment">// 方法二</span></div><div class="line">Calendar.getInstance().getTimeInMillis();</div><div class="line"><span class="comment">// 方法三</span></div><div class="line"><span class="keyword">new</span> Date().getTime();</div></pre></td></tr></table></figure>
-<h1 id="2-用-SQL-语句写出创建-t-user-学号，姓名，年龄，性别，身份证号码-其中学号为自增类型主键，身份证号码唯一"><a href="#2-用-SQL-语句写出创建-t-user-学号，姓名，年龄，性别，身份证号码-其中学号为自增类型主键，身份证号码唯一" class="headerlink" title="2. 用 SQL 语句写出创建 t_user(学号，姓名，年龄，性别，身份证号码) 其中学号为自增类型主键，身份证号码唯一"></a>2. 用 SQL 语句写出创建 t_user(学号，姓名，年龄，性别，身份证号码) 其中学号为自增类型主键，身份证号码唯一</h1><figure class="highlight sql"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">CREATE</span> <span class="keyword">TABLE</span> t_user</div><div class="line">(</div><div class="line">xuehao <span class="built_in">int</span> <span class="keyword">NOT</span> <span class="literal">NULL</span> AUTO_INCREMENT, </div><div class="line"><span class="keyword">name</span> <span class="built_in">VARCHAR</span>(<span class="number">10</span>) <span class="keyword">NOT</span> <span class="literal">NULL</span>,</div><div class="line">age <span class="built_in">int</span> <span class="keyword">NOT</span> <span class="literal">NULL</span>,</div><div class="line">sex <span class="built_in">VARCHAR</span>(<span class="number">4</span>) <span class="keyword">NOT</span> <span class="literal">NULL</span>,</div><div class="line">idnumber <span class="built_in">VARCHAR</span>(<span class="number">18</span>) <span class="keyword">NOT</span> <span class="literal">NULL</span>,</div><div class="line">PRIMARY <span class="keyword">KEY</span>(xuehao),</div><div class="line"><span class="keyword">UNIQUE</span>(idnumber)</div><div class="line">)</div></pre></td></tr></table></figure>
+        <h1 id="1-用-java-写出获取当前时间毫秒值。明天12点的毫秒值怎么获取？"><a href="#1-用-java-写出获取当前时间毫秒值。明天12点的毫秒值怎么获取？" class="headerlink" title="1. 用 java 写出获取当前时间毫秒值。明天12点的毫秒值怎么获取？"></a>1. 用 java 写出获取当前时间毫秒值。明天12点的毫秒值怎么获取？</h1><figure class="highlight java"><table><tr><td class="code"><pre><div class="line"><span class="comment">// 方法一</span></div><div class="line">System.currentTimeMillis();</div><div class="line"><span class="comment">// 方法二</span></div><div class="line">Calendar.getInstance().getTimeInMillis();</div><div class="line"><span class="comment">// 方法三</span></div><div class="line"><span class="keyword">new</span> Date().getTime();</div></pre></td></tr></table></figure>
+<h1 id="2-用-SQL-语句写出创建-t-user-学号，姓名，年龄，性别，身份证号码-其中学号为自增类型主键，身份证号码唯一"><a href="#2-用-SQL-语句写出创建-t-user-学号，姓名，年龄，性别，身份证号码-其中学号为自增类型主键，身份证号码唯一" class="headerlink" title="2. 用 SQL 语句写出创建 t_user(学号，姓名，年龄，性别，身份证号码) 其中学号为自增类型主键，身份证号码唯一"></a>2. 用 SQL 语句写出创建 t_user(学号，姓名，年龄，性别，身份证号码) 其中学号为自增类型主键，身份证号码唯一</h1><figure class="highlight sql"><table><tr><td class="code"><pre><div class="line"><span class="keyword">CREATE</span> <span class="keyword">TABLE</span> t_user</div><div class="line">(</div><div class="line">xuehao <span class="built_in">int</span> <span class="keyword">NOT</span> <span class="literal">NULL</span> AUTO_INCREMENT, </div><div class="line"><span class="keyword">name</span> <span class="built_in">VARCHAR</span>(<span class="number">10</span>) <span class="keyword">NOT</span> <span class="literal">NULL</span>,</div><div class="line">age <span class="built_in">int</span> <span class="keyword">NOT</span> <span class="literal">NULL</span>,</div><div class="line">sex <span class="built_in">VARCHAR</span>(<span class="number">4</span>) <span class="keyword">NOT</span> <span class="literal">NULL</span>,</div><div class="line">idnumber <span class="built_in">VARCHAR</span>(<span class="number">18</span>) <span class="keyword">NOT</span> <span class="literal">NULL</span>,</div><div class="line">PRIMARY <span class="keyword">KEY</span>(xuehao),</div><div class="line"><span class="keyword">UNIQUE</span>(idnumber)</div><div class="line">)</div></pre></td></tr></table></figure>
 
         <!-- 显示正文 -->
       
@@ -174,7 +174,7 @@
 
     <footer class="article-footer">
       
-        <a data-url="http://yoursite.com/2017/01/01/常见的面试题二/" data-id="ciximmq5e000b8oqrpw9ckpuq" class="article-share-link" data-share="baidu" data-title="常见的面试题二">分享到</a>
+        <a data-url="http://yoursite.com/2017/01/01/常见的面试题二/" data-id="cixiq69iv000b7sqrjl9jmk6t" class="article-share-link" data-share="baidu" data-title="常见的面试题二">分享到</a>
       
 
       
@@ -233,7 +233,7 @@
 
     <footer class="article-footer">
       
-        <a data-url="http://yoursite.com/2016/12/08/eclipse-key-map/" data-id="ciximmq4t00058oqr3a1get4g" class="article-share-link" data-share="baidu" data-title="Eclipse 常用快捷键">分享到</a>
+        <a data-url="http://yoursite.com/2016/12/08/eclipse-key-map/" data-id="cixiq69i300027sqr7bbq7ylq" class="article-share-link" data-share="baidu" data-title="Eclipse 常用快捷键">分享到</a>
       
 
       
@@ -292,7 +292,7 @@
 
     <footer class="article-footer">
       
-        <a data-url="http://yoursite.com/2016/11/14/分页/" data-id="ciximmq5200068oqrln9sbzi9" class="article-share-link" data-share="baidu" data-title="分页小结">分享到</a>
+        <a data-url="http://yoursite.com/2016/11/14/分页/" data-id="cixiq69ik00067sqrj5cmgn1o" class="article-share-link" data-share="baidu" data-title="分页小结">分享到</a>
       
 
       
@@ -353,7 +353,7 @@
 
     <footer class="article-footer">
       
-        <a data-url="http://yoursite.com/2016/11/12/Session机制详解/" data-id="ciximmq4i00028oqrtpxj466p" class="article-share-link" data-share="baidu" data-title="Session机制详解">分享到</a>
+        <a data-url="http://yoursite.com/2016/11/12/Session机制详解/" data-id="cixiq69id00057sqrn7d1phd9" class="article-share-link" data-share="baidu" data-title="Session机制详解">分享到</a>
       
 
       
@@ -403,7 +403,7 @@
 <li>解压</li>
 <li>将my.default.ini改名为my.ini放到bin目录</li>
 </ul>
-<h5 id="2-安装-MySQL-服务"><a href="#2-安装-MySQL-服务" class="headerlink" title="2. 安装 MySQL 服务"></a>2. 安装 MySQL 服务</h5><p>进入bin目录，执行<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">mysqld --install</div></pre></td></tr></table></figure></p>
+<h5 id="2-安装-MySQL-服务"><a href="#2-安装-MySQL-服务" class="headerlink" title="2. 安装 MySQL 服务"></a>2. 安装 MySQL 服务</h5><p>进入bin目录，执行<br><figure class="highlight bash"><table><tr><td class="code"><pre><div class="line">mysqld --install</div></pre></td></tr></table></figure></p>
         
           <p class="article-more-link">
             <a href="/2016/11/10/MySQL免安装版/#more">Read More</a>
@@ -415,7 +415,7 @@
 
     <footer class="article-footer">
       
-        <a data-url="http://yoursite.com/2016/11/10/MySQL免安装版/" data-id="ciximmq4700008oqrjigvw1bd" class="article-share-link" data-share="baidu" data-title="MySQL 免安装版配置">分享到</a>
+        <a data-url="http://yoursite.com/2016/11/10/MySQL免安装版/" data-id="cixiq69ht00007sqr2u7e02jy" class="article-share-link" data-share="baidu" data-title="MySQL 免安装版配置">分享到</a>
       
 
       
