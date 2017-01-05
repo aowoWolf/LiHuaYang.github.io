@@ -4,18 +4,18 @@
 <head>
   <meta charset="utf-8">
   
-  <title>常见的面试题二 | blog</title>
+  <title>JavaIO 小结 | blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="面试题解析">
+  <meta name="description" content="JavaIO 小结">
 <meta property="og:type" content="article">
-<meta property="og:title" content="常见的面试题二">
-<meta property="og:url" content="http://yoursite.com/2017/01/01/常见的面试题二/index.html">
+<meta property="og:title" content="JavaIO 小结">
+<meta property="og:url" content="http://yoursite.com/2016/11/16/JavaIO流小结/index.html">
 <meta property="og:site_name" content="blog">
-<meta property="og:description" content="面试题解析">
-<meta property="og:updated_time" content="2017-01-03T03:05:57.760Z">
+<meta property="og:description" content="JavaIO 小结">
+<meta property="og:updated_time" content="2017-01-04T14:09:51.557Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="常见的面试题二">
-<meta name="twitter:description" content="面试题解析">
+<meta name="twitter:title" content="JavaIO 小结">
+<meta name="twitter:description" content="JavaIO 小结">
   
     <link rel="alternative" href="/atom.xml" title="blog" type="application/atom+xml">
   
@@ -69,14 +69,14 @@
   </div>
 </header>
     <div class="outer">
-      <section id="main"><article id="post-常见的面试题二" class="article article-type-post" itemscope itemprop="blogPost">
+      <section id="main"><article id="post-JavaIO流小结" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
-    <a href="/2017/01/01/常见的面试题二/" class="article-date">
-  <time datetime="2016-12-31T16:00:00.000Z" itemprop="datePublished">2017-01-01</time>
+    <a href="/2016/11/16/JavaIO流小结/" class="article-date">
+  <time datetime="2016-11-15T16:00:00.000Z" itemprop="datePublished">2016-11-16</time>
 </a>
     
   <div class="article-category">
-    <a class="article-category-link" href="/categories/面试题/">面试题</a>
+    <a class="article-category-link" href="/categories/JavaSE-基础/">JavaSE 基础</a>
   </div>
 
   </div>
@@ -87,7 +87,7 @@
         
   
     <h1 class="article-title" itemprop="name">
-      常见的面试题二
+      JavaIO 小结
     </h1>
   
 
@@ -105,7 +105,7 @@
         
         <p style="width: 100%; background-color: #EEE; height: 3px"></p>
           <!-- 显示目录 -->
-          <ol class="mytoc"><li class="mytoc-item mytoc-level-1"><a class="mytoc-link" href="#1-用-java-写出获取当前时间毫秒值。明天12点的毫秒值怎么获取？"><span class="mytoc-text">1. 用 java 写出获取当前时间毫秒值。明天12点的毫秒值怎么获取？</span></a></li><li class="mytoc-item mytoc-level-1"><a class="mytoc-link" href="#2-用-SQL-语句写出创建-t-user-学号，姓名，年龄，性别，身份证号码-其中学号为自增类型主键，身份证号码唯一"><span class="mytoc-text">2. 用 SQL 语句写出创建 t_user(学号，姓名，年龄，性别，身份证号码) 其中学号为自增类型主键，身份证号码唯一</span></a></li></ol>
+          <ol class="mytoc"><li class="mytoc-item mytoc-level-1"><a class="mytoc-link" href="#JavaIO-小结"><span class="mytoc-text">JavaIO 小结</span></a><ol class="mytoc-child"><li class="mytoc-item mytoc-level-2"><a class="mytoc-link" href="#分类"><span class="mytoc-text">分类</span></a></li></ol></li></ol>
         <!-- 显示目录 -->
         <p style="width: 100%; background-color: #EEE; height: 3px"></p>
          
@@ -113,8 +113,16 @@
         
 
         <!-- 显示正文 -->
-        <h1 id="1-用-java-写出获取当前时间毫秒值。明天12点的毫秒值怎么获取？"><a href="#1-用-java-写出获取当前时间毫秒值。明天12点的毫秒值怎么获取？" class="headerlink" title="1. 用 java 写出获取当前时间毫秒值。明天12点的毫秒值怎么获取？"></a>1. 用 java 写出获取当前时间毫秒值。明天12点的毫秒值怎么获取？</h1><figure class="highlight java"><table><tr><td class="code"><pre><div class="line"><span class="comment">// 方法一</span></div><div class="line">System.currentTimeMillis();</div><div class="line"><span class="comment">// 方法二</span></div><div class="line">Calendar.getInstance().getTimeInMillis();</div><div class="line"><span class="comment">// 方法三</span></div><div class="line"><span class="keyword">new</span> Date().getTime();</div></pre></td></tr></table></figure>
-<h1 id="2-用-SQL-语句写出创建-t-user-学号，姓名，年龄，性别，身份证号码-其中学号为自增类型主键，身份证号码唯一"><a href="#2-用-SQL-语句写出创建-t-user-学号，姓名，年龄，性别，身份证号码-其中学号为自增类型主键，身份证号码唯一" class="headerlink" title="2. 用 SQL 语句写出创建 t_user(学号，姓名，年龄，性别，身份证号码) 其中学号为自增类型主键，身份证号码唯一"></a>2. 用 SQL 语句写出创建 t_user(学号，姓名，年龄，性别，身份证号码) 其中学号为自增类型主键，身份证号码唯一</h1><figure class="highlight sql"><table><tr><td class="code"><pre><div class="line"><span class="keyword">CREATE</span> <span class="keyword">TABLE</span> t_user</div><div class="line">(</div><div class="line">xuehao <span class="built_in">int</span> <span class="keyword">NOT</span> <span class="literal">NULL</span> AUTO_INCREMENT, </div><div class="line"><span class="keyword">name</span> <span class="built_in">VARCHAR</span>(<span class="number">10</span>) <span class="keyword">NOT</span> <span class="literal">NULL</span>,</div><div class="line">age <span class="built_in">int</span> <span class="keyword">NOT</span> <span class="literal">NULL</span>,</div><div class="line">sex <span class="built_in">VARCHAR</span>(<span class="number">4</span>) <span class="keyword">NOT</span> <span class="literal">NULL</span>,</div><div class="line">idnumber <span class="built_in">VARCHAR</span>(<span class="number">18</span>) <span class="keyword">NOT</span> <span class="literal">NULL</span>,</div><div class="line">PRIMARY <span class="keyword">KEY</span>(xuehao),</div><div class="line"><span class="keyword">UNIQUE</span>(idnumber)</div><div class="line">)</div></pre></td></tr></table></figure>
+        <h1 id="JavaIO-小结"><a href="#JavaIO-小结" class="headerlink" title="JavaIO 小结"></a>JavaIO 小结</h1><h2 id="分类"><a href="#分类" class="headerlink" title="分类"></a>分类</h2><p>根据数据<strong>传输格式</strong>：</p>
+<ul>
+<li>基于字节的操作： <code>InputStream</code>、<code>OutputStream</code>  </li>
+<li>基于字符的操作：<code>Write</code>、<code>Reader</code></li>
+</ul>
+<p>根据<strong>数据传输</strong>：</p>
+<ul>
+<li>基于磁盘操作的I/O操作：<code>File</code>  </li>
+<li>基于网络操作的I/O操作：<code>Socket</code></li>
+</ul>
 
         <!-- 显示正文 -->
       
@@ -123,15 +131,15 @@
 
     <footer class="article-footer">
       
-        <a data-url="http://yoursite.com/2017/01/01/常见的面试题二/" data-id="cixjooqym000b34qrsbho7pg5" class="article-share-link" data-share="baidu" data-title="常见的面试题二">分享到</a>
+        <a data-url="http://yoursite.com/2016/11/16/JavaIO流小结/" data-id="cixjzpa2g0000r8qrfti4xsed" class="article-share-link" data-share="baidu" data-title="JavaIO 小结">分享到</a>
       
 
       
-        <a href="http://yoursite.com/2017/01/01/常见的面试题二/#ds-thread" class="article-comment-link">评论</a>
+        <a href="http://yoursite.com/2016/11/16/JavaIO流小结/#ds-thread" class="article-comment-link">评论</a>
       
 
       
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/面试题/">面试题</a></li></ul>
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/IO/">IO</a></li></ul>
 
     </footer>
   </div>
@@ -139,19 +147,19 @@
     
 <nav id="article-nav">
   
-    <a href="/2017/01/01/常见的面试题一/" id="article-nav-newer" class="article-nav-link-wrap">
+    <a href="/2016/12/08/eclipse-key-map/" id="article-nav-newer" class="article-nav-link-wrap">
       <strong class="article-nav-caption">下一篇</strong>
       <div class="article-nav-title">
         
-          常见的面试题一
+          Eclipse 常用快捷键
         
       </div>
     </a>
   
   
-    <a href="/2016/12/08/eclipse-key-map/" id="article-nav-older" class="article-nav-link-wrap">
+    <a href="/2016/11/15/文件上传小结/" id="article-nav-older" class="article-nav-link-wrap">
       <strong class="article-nav-caption">上一篇</strong>
-      <div class="article-nav-title">Eclipse 常用快捷键</div>
+      <div class="article-nav-title">简单文件上传小结</div>
     </a>
   
 </nav>
@@ -161,7 +169,7 @@
 
 
   <section id="comments">
-    <div id="ds-thread" class="ds-thread" data-thread-key="2017/01/01/常见的面试题二/" data-title="常见的面试题二" data-url="http://yoursite.com/2017/01/01/常见的面试题二/"></div>
+    <div id="ds-thread" class="ds-thread" data-thread-key="2016/11/16/JavaIO流小结/" data-title="JavaIO 小结" data-url="http://yoursite.com/2016/11/16/JavaIO流小结/"></div>
   </section>
 </section>
       
