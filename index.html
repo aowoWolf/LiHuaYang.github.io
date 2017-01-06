@@ -109,7 +109,7 @@
 
     <footer class="article-footer">
       
-        <a data-url="http://yoursite.com/2017/01/01/常见的面试题一/" data-id="cixjzrgdx000bf8qrahvd6btt" class="article-share-link" data-share="baidu" data-title="常见的面试题一">分享到</a>
+        <a data-url="http://yoursite.com/2017/01/01/常见的面试题一/" data-id="cixkihfkx000dasqrlz7tem57" class="article-share-link" data-share="baidu" data-title="常见的面试题一">分享到</a>
       
 
       
@@ -166,6 +166,7 @@
         <!-- 显示正文 -->
         <h1 id="1-用-java-写出获取当前时间毫秒值。明天12点的毫秒值怎么获取？"><a href="#1-用-java-写出获取当前时间毫秒值。明天12点的毫秒值怎么获取？" class="headerlink" title="1. 用 java 写出获取当前时间毫秒值。明天12点的毫秒值怎么获取？"></a>1. 用 java 写出获取当前时间毫秒值。明天12点的毫秒值怎么获取？</h1><figure class="highlight java"><table><tr><td class="code"><pre><div class="line"><span class="comment">// 方法一</span></div><div class="line">System.currentTimeMillis();</div><div class="line"><span class="comment">// 方法二</span></div><div class="line">Calendar.getInstance().getTimeInMillis();</div><div class="line"><span class="comment">// 方法三</span></div><div class="line"><span class="keyword">new</span> Date().getTime();</div></pre></td></tr></table></figure>
 <h1 id="2-用-SQL-语句写出创建-t-user-学号，姓名，年龄，性别，身份证号码-其中学号为自增类型主键，身份证号码唯一"><a href="#2-用-SQL-语句写出创建-t-user-学号，姓名，年龄，性别，身份证号码-其中学号为自增类型主键，身份证号码唯一" class="headerlink" title="2. 用 SQL 语句写出创建 t_user(学号，姓名，年龄，性别，身份证号码) 其中学号为自增类型主键，身份证号码唯一"></a>2. 用 SQL 语句写出创建 t_user(学号，姓名，年龄，性别，身份证号码) 其中学号为自增类型主键，身份证号码唯一</h1><figure class="highlight sql"><table><tr><td class="code"><pre><div class="line"><span class="keyword">CREATE</span> <span class="keyword">TABLE</span> t_user</div><div class="line">(</div><div class="line">xuehao <span class="built_in">int</span> <span class="keyword">NOT</span> <span class="literal">NULL</span> AUTO_INCREMENT, </div><div class="line"><span class="keyword">name</span> <span class="built_in">VARCHAR</span>(<span class="number">10</span>) <span class="keyword">NOT</span> <span class="literal">NULL</span>,</div><div class="line">age <span class="built_in">int</span> <span class="keyword">NOT</span> <span class="literal">NULL</span>,</div><div class="line">sex <span class="built_in">VARCHAR</span>(<span class="number">4</span>) <span class="keyword">NOT</span> <span class="literal">NULL</span>,</div><div class="line">idnumber <span class="built_in">VARCHAR</span>(<span class="number">18</span>) <span class="keyword">NOT</span> <span class="literal">NULL</span>,</div><div class="line">PRIMARY <span class="keyword">KEY</span>(xuehao),</div><div class="line"><span class="keyword">UNIQUE</span>(idnumber)</div><div class="line">)</div></pre></td></tr></table></figure>
+<h1 id="3-什么叫线程安全？"><a href="#3-什么叫线程安全？" class="headerlink" title="3. 什么叫线程安全？"></a>3. 什么叫线程安全？</h1><p>指程序在运行过程中，能够正确的处理多线程之间的共享的变量</p>
 
         <!-- 显示正文 -->
       
@@ -174,7 +175,7 @@
 
     <footer class="article-footer">
       
-        <a data-url="http://yoursite.com/2017/01/01/常见的面试题二/" data-id="cixjzrge2000df8qrtaxh51ec" class="article-share-link" data-share="baidu" data-title="常见的面试题二">分享到</a>
+        <a data-url="http://yoursite.com/2017/01/01/常见的面试题二/" data-id="cixkihfke0007asqrzkmb6gsl" class="article-share-link" data-share="baidu" data-title="常见的面试题二">分享到</a>
       
 
       
@@ -233,7 +234,7 @@
 
     <footer class="article-footer">
       
-        <a data-url="http://yoursite.com/2016/12/08/eclipse-key-map/" data-id="cixjzrgdh0006f8qrvjd89qhb" class="article-share-link" data-share="baidu" data-title="Eclipse 常用快捷键">分享到</a>
+        <a data-url="http://yoursite.com/2016/12/08/eclipse-key-map/" data-id="cixkihfk80006asqrll2rsrnh" class="article-share-link" data-share="baidu" data-title="Eclipse 常用快捷键">分享到</a>
       
 
       
@@ -306,7 +307,7 @@
 
     <footer class="article-footer">
       
-        <a data-url="http://yoursite.com/2016/11/16/JavaIO流小结/" data-id="cixjzrgck0000f8qrd67g2axs" class="article-share-link" data-share="baidu" data-title="JavaIO 小结">分享到</a>
+        <a data-url="http://yoursite.com/2016/11/16/JavaIO流小结/" data-id="cixkihfj60000asqrr4x3t8c9" class="article-share-link" data-share="baidu" data-title="JavaIO 小结">分享到</a>
       
 
       
@@ -351,10 +352,10 @@
     <div class="article-entry" itemprop="articleBody">
 
       
-        <h1 id="文件上传小结"><a href="#文件上传小结" class="headerlink" title="文件上传小结"></a>文件上传小结</h1><p>使用 Apache 的 commons-fileupload  进行文件上传</p>
+        <h1 id="1-使用-commons-fileupload-上传文件"><a href="#1-使用-commons-fileupload-上传文件" class="headerlink" title="1. 使用 commons-fileupload 上传文件"></a>1. 使用 commons-fileupload 上传文件</h1><p>使用 Apache 的 commons-fileupload  组件进行文件上传</p>
 <h2 id="1-准备工作"><a href="#1-准备工作" class="headerlink" title="1. 准备工作"></a>1. 准备工作</h2><ul>
 <li>下载 <code>commons-fileupload</code>，运行时候依依赖 <code>commons-io.jar</code> </li>
-<li>上传的表单类型必须为 <code>post</code>，编码方式必须为 <code>multipart/form-data</code><figure class="highlight html"><table><tr><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">form</span> </div><div class="line"><span class="attr">action</span>=<span class="string">"$&#123;pageContext.request.contextPath &#125;/uploadHandler2?m=upload"</span> </div><div class="line"><span class="attr">enctype</span>=<span class="string">"multipart/form-data"</span> </div><div class="line"><span class="attr">method</span>=<span class="string">"post"</span>&gt;</span></div><div class="line">    上传用户：<span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"text"</span> <span class="attr">name</span>=<span class="string">"username"</span>&gt;</span><span class="tag">&lt;<span class="name">br</span>/&gt;</span></div><div class="line">    上传文件1：<span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"file"</span> <span class="attr">name</span>=<span class="string">"file1"</span>&gt;</span><span class="tag">&lt;<span class="name">br</span>/&gt;</span></div><div class="line">    上传文件2：<span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"file"</span> <span class="attr">name</span>=<span class="string">"file2"</span>&gt;</span><span class="tag">&lt;<span class="name">br</span>/&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"submit"</span> <span class="attr">value</span>=<span class="string">"提交"</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">form</span>&gt;</span></div></pre></td></tr></table></figure>
+<li>上传的表单类型必须为 <code>post</code>，编码方式必须为 <code>multipart/form-data</code><figure class="highlight html"><figcaption><span>upload.jsp</span></figcaption><table><tr><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">fieldset</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">legend</span>&gt;</span> 使用 commons-fileupload 组件上传文件 <span class="tag">&lt;/<span class="name">legend</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">form</span> <span class="attr">action</span>=<span class="string">"$&#123;pageContext.request.contextPath &#125;/uploadHandler2?m=upload"</span></div><div class="line">	<span class="attr">enctype</span>=<span class="string">"multipart/form-data"</span> </div><div class="line">	<span class="attr">method</span>=<span class="string">"post"</span>&gt;</span></div><div class="line">        上传用户：<span class="tag">&lt;<span class="name">input</span>  <span class="attr">type</span>=<span class="string">"text"</span> <span class="attr">name</span>=<span class="string">"username"</span>&gt;</span><span class="tag">&lt;<span class="name">br</span>/&gt;</span></div><div class="line">        使用 common-fileupload 组件上传文件1：<span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"file"</span> <span class="attr">name</span>=<span class="string">"file1"</span>&gt;</span><span class="tag">&lt;<span class="name">br</span>/&gt;</span></div><div class="line">        使用 common-fileupload 组件上传文件2：<span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"file"</span> <span class="attr">name</span>=<span class="string">"file2"</span>&gt;</span><span class="tag">&lt;<span class="name">br</span>/&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"submit"</span> <span class="attr">value</span>=<span class="string">"提交"</span>&gt;</span></div><div class="line">    <span class="tag">&lt;/<span class="name">form</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">fieldset</span>&gt;</span></div></pre></td></tr></table></figure>
 </li>
 </ul>
         
@@ -368,7 +369,7 @@
 
     <footer class="article-footer">
       
-        <a data-url="http://yoursite.com/2016/11/15/文件上传小结/" data-id="cixjzrge6000gf8qrfm0hlkuc" class="article-share-link" data-share="baidu" data-title="简单文件上传小结">分享到</a>
+        <a data-url="http://yoursite.com/2016/11/15/文件上传小结/" data-id="cixkihfl3000gasqr4tv5p2ts" class="article-share-link" data-share="baidu" data-title="简单文件上传小结">分享到</a>
       
 
       
@@ -427,7 +428,7 @@
 
     <footer class="article-footer">
       
-        <a data-url="http://yoursite.com/2016/11/14/分页/" data-id="cixjzrgdn0007f8qr4d7cyypm" class="article-share-link" data-share="baidu" data-title="JDBC+MySQL+JSP 分页小结">分享到</a>
+        <a data-url="http://yoursite.com/2016/11/14/分页/" data-id="cixkihfkq000basqr73f7ftq7" class="article-share-link" data-share="baidu" data-title="JDBC+MySQL+JSP 分页小结">分享到</a>
       
 
       
@@ -488,7 +489,7 @@
 
     <footer class="article-footer">
       
-        <a data-url="http://yoursite.com/2016/11/12/Session机制详解/" data-id="cixjzrgdb0005f8qrf9ym4we6" class="article-share-link" data-share="baidu" data-title="Session机制详解">分享到</a>
+        <a data-url="http://yoursite.com/2016/11/12/Session机制详解/" data-id="cixkihfk20005asqrohmofc30" class="article-share-link" data-share="baidu" data-title="Session机制详解">分享到</a>
       
 
       
@@ -550,7 +551,7 @@
 
     <footer class="article-footer">
       
-        <a data-url="http://yoursite.com/2016/11/10/MySQL免安装版/" data-id="cixjzrgcx0002f8qrndcapakx" class="article-share-link" data-share="baidu" data-title="MySQL 免安装版配置">分享到</a>
+        <a data-url="http://yoursite.com/2016/11/10/MySQL免安装版/" data-id="cixkihfjl0002asqrr5o8dmbe" class="article-share-link" data-share="baidu" data-title="MySQL 免安装版配置">分享到</a>
       
 
       
