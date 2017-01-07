@@ -16,7 +16,7 @@
 <meta property="og:image" content="http://yoursite.com/img/equals.png">
 <meta property="og:image" content="http://yoursite.com/img/hashMap-structs.png">
 <meta property="og:image" content="http://yoursite.com/img/concurrenthashmap3.jpg">
-<meta property="og:updated_time" content="2017-01-03T03:06:34.610Z">
+<meta property="og:updated_time" content="2017-01-07T06:46:34.760Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="常见的面试题一">
 <meta name="twitter:description" content="面试题解析">
@@ -81,7 +81,7 @@
 </a>
     
   <div class="article-category">
-    <a class="article-category-link" href="/categories/面试题/">面试题</a>
+    <a class="article-category-link" href="/categories/面试/">面试</a>
   </div>
 
   </div>
@@ -110,7 +110,7 @@
         
         <p style="width: 100%; background-color: #EEE; height: 3px"></p>
           <!-- 显示目录 -->
-          <ol class="mytoc"><li class="mytoc-item mytoc-level-1"><a class="mytoc-link" href="#1-obj-hashcode-、obj-equals-b"><span class="mytoc-text">1. obj.hashcode()、obj.equals(b)</span></a><ol class="mytoc-child"><li class="mytoc-item mytoc-level-3"><a class="mytoc-link" href="#作用"><span class="mytoc-text">作用</span></a></li><li class="mytoc-item mytoc-level-3"><a class="mytoc-link" href="#hashcode-工作原理"><span class="mytoc-text">hashcode 工作原理</span></a></li><li class="mytoc-item mytoc-level-3"><a class="mytoc-link" href="#与-equals-之间的联系"><span class="mytoc-text">与 equals() 之间的联系</span></a></li></ol></li></ol></li><li class="mytoc-item mytoc-level-1"><a class="mytoc-link" href="#2-final、finalize、finally"><span class="mytoc-text">2. final、finalize、finally</span></a></li><li class="mytoc-item mytoc-level-1"><a class="mytoc-link" href="#3-String、StringBuffer-、StringBuilder"><span class="mytoc-text">3. String、StringBuffer 、StringBuilder</span></a></li><li class="mytoc-item mytoc-level-1"><a class="mytoc-link" href="#3-equals-与"><span class="mytoc-text">3. equals 与 ==</span></a></li><li class="mytoc-item mytoc-level-1"><a class="mytoc-link" href="#4-HashMap、HashTable、TreeMap、ConcurrentHashMap"><span class="mytoc-text">4. HashMap、HashTable、TreeMap、ConcurrentHashMap</span></a></li><li class="mytoc-item mytoc-level-1"><a class="mytoc-link" href="#5-在线程安全的前提下实现一个单例模式"><span class="mytoc-text">5. 在线程安全的前提下实现一个单例模式</span></a></li></ol>
+          <ol class="mytoc"><li class="mytoc-item mytoc-level-1"><a class="mytoc-link" href="#1-obj-hashcode-、obj-equals-b"><span class="mytoc-text">1. obj.hashcode()、obj.equals(b)</span></a><ol class="mytoc-child"><li class="mytoc-item mytoc-level-2"><a class="mytoc-link" href="#作用"><span class="mytoc-text">作用</span></a></li><li class="mytoc-item mytoc-level-2"><a class="mytoc-link" href="#hashcode-工作原理"><span class="mytoc-text">hashcode 工作原理</span></a></li><li class="mytoc-item mytoc-level-2"><a class="mytoc-link" href="#与-equals-之间的联系"><span class="mytoc-text">与 equals() 之间的联系</span></a></li></ol></li><li class="mytoc-item mytoc-level-1"><a class="mytoc-link" href="#2-final、finalize、finally"><span class="mytoc-text">2. final、finalize、finally</span></a></li><li class="mytoc-item mytoc-level-1"><a class="mytoc-link" href="#3-String、StringBuffer-、StringBuilder"><span class="mytoc-text">3. String、StringBuffer 、StringBuilder</span></a></li><li class="mytoc-item mytoc-level-1"><a class="mytoc-link" href="#3-equals-与"><span class="mytoc-text">3. equals 与 ==</span></a></li><li class="mytoc-item mytoc-level-1"><a class="mytoc-link" href="#4-HashMap、HashTable、TreeMap、ConcurrentHashMap"><span class="mytoc-text">4. HashMap、HashTable、TreeMap、ConcurrentHashMap</span></a></li><li class="mytoc-item mytoc-level-1"><a class="mytoc-link" href="#5-在线程安全的前提下实现一个单例模式"><span class="mytoc-text">5. 在线程安全的前提下实现一个单例模式</span></a></li></ol>
         <!-- 显示目录 -->
         <p style="width: 100%; background-color: #EEE; height: 3px"></p>
          
@@ -118,11 +118,11 @@
         
 
         <!-- 显示正文 -->
-        <h1 id="1-obj-hashcode-、obj-equals-b"><a href="#1-obj-hashcode-、obj-equals-b" class="headerlink" title="1. obj.hashcode()、obj.equals(b)"></a>1. obj.hashcode()、obj.equals(b)</h1><h3 id="作用"><a href="#作用" class="headerlink" title="作用"></a>作用</h3><p>hashcode() 方法用来获取对象的哈希值，提高哈希表的性能（如 HashMap、HashTable）</p>
-<h3 id="hashcode-工作原理"><a href="#hashcode-工作原理" class="headerlink" title="hashcode 工作原理"></a>hashcode 工作原理</h3><p>hashcode 是用来查找的，假如内存中有依次八个位置<br><figure class="highlight basic"><table><tr><td class="code"><pre><div class="line"><span class="symbol">0 </span> <span class="number">1</span>  <span class="number">2</span>  <span class="number">3</span>  <span class="number">4</span>  <span class="number">5</span>  <span class="number">6</span>  <span class="number">7</span>  <span class="number">8</span></div></pre></td></tr></table></figure></p>
+        <h1 id="1-obj-hashcode-、obj-equals-b"><a href="#1-obj-hashcode-、obj-equals-b" class="headerlink" title="1. obj.hashcode()、obj.equals(b)"></a>1. obj.hashcode()、obj.equals(b)</h1><h2 id="作用"><a href="#作用" class="headerlink" title="作用"></a>作用</h2><p>hashcode() 方法用来获取对象的哈希值，提高哈希表的性能（如 HashMap、HashTable）</p>
+<h2 id="hashcode-工作原理"><a href="#hashcode-工作原理" class="headerlink" title="hashcode 工作原理"></a>hashcode 工作原理</h2><p>hashcode 是用来查找的，假如内存中有依次八个位置<br><figure class="highlight basic"><table><tr><td class="code"><pre><div class="line"><span class="symbol">0 </span> <span class="number">1</span>  <span class="number">2</span>  <span class="number">3</span>  <span class="number">4</span>  <span class="number">5</span>  <span class="number">6</span>  <span class="number">7</span>  <span class="number">8</span></div></pre></td></tr></table></figure></p>
 <p>现有个类，类中有个字段为 id，需要把这个类放在8个位置之一。如果不用 hashcode 而任意存放，当查找时候，则需要对这8各个位置进行遍历，或者使用二分法之类的算法。<br>如果使用 hashcode 效率将会大大的提高。<br>定义 hashcode 的值为 id%8，取得余数则为存放的位置。如：假设 id=9，9%8余数为1，于是存放的位置为1。假设 id=13，13%8余数为5，于是存放的位置为5。于是，每次需要查找的时候只需要通过 id%8 这个算法求余数，直接找到存放的位置了。</p>
 <a id="more"></a>
-<h3 id="与-equals-之间的联系"><a href="#与-equals-之间的联系" class="headerlink" title="与 equals() 之间的联系"></a>与 equals() 之间的联系</h3><p>当两个类的 hashcode 值一样时候（碰撞），则需要 equals() 来帮忙。如：9%8和17%8的余数都是1。这里可能可能会想到既然键的 hashcode 都一样了，为什么还能存入？答案是：能存入，只要满足重写 equals() 这个前提要求。也就是说，总得让虚拟机区分的出来，对象与对象之间的区别。即：当对象的 hashcode 值相等时，只要不满足 a.equals(b) 为 true 时，对象就能存入！同样的道理，当取出时，先比较对象的 hashcode 值，再去调用 equals()。</p>
+<h2 id="与-equals-之间的联系"><a href="#与-equals-之间的联系" class="headerlink" title="与 equals() 之间的联系"></a>与 equals() 之间的联系</h2><p>当两个类的 hashcode 值一样时候（碰撞），则需要 equals() 来帮忙。如：9%8和17%8的余数都是1。这里可能可能会想到既然键的 hashcode 都一样了，为什么还能存入？答案是：能存入，只要满足重写 equals() 这个前提要求。也就是说，总得让虚拟机区分的出来，对象与对象之间的区别。即：当对象的 hashcode 值相等时，只要不满足 a.equals(b) 为 true 时，对象就能存入！同样的道理，当取出时，先比较对象的 hashcode 值，再去调用 equals()。</p>
 <blockquote>
 <p>先通过 hashcode来判断两个类是否存放某个桶里，但这个桶里可能有很多类，那么就需要再通过 equals 来在这个桶里找到我们要的类。</p>
 </blockquote>
@@ -239,7 +239,7 @@
 
     <footer class="article-footer">
       
-        <a data-url="http://yoursite.com/2017/01/01/常见的面试题一/" data-id="cixlaosbx000dzsqrtqtji1aw" class="article-share-link" data-share="baidu" data-title="常见的面试题一">分享到</a>
+        <a data-url="http://yoursite.com/2017/01/01/常见的面试题一/" data-id="cixlasqcz000b2kqr93ttoj1v" class="article-share-link" data-share="baidu" data-title="常见的面试题一">分享到</a>
       
 
       
@@ -316,7 +316,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">分类</h3>
     <div class="widget">
-      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/JavaEE-开发/">JavaEE 开发</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/JavaSE-基础/">JavaSE 基础</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/工具使用/">工具使用</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/数据库/">数据库</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/面试题/">面试题</a><span class="category-list-count">2</span></li></ul>
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/JavaEE-开发/">JavaEE 开发</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/JavaSE-基础/">JavaSE 基础</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/工具使用/">工具使用</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/数据库/">数据库</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/面试/">面试</a><span class="category-list-count">3</span></li></ul>
     </div>
   </div>
 
@@ -325,7 +325,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">标签云</h3>
     <div class="widget tagcloud">
-      <a href="/tags/Eclipse/" style="font-size: 10px;">Eclipse</a> <a href="/tags/IO/" style="font-size: 10px;">IO</a> <a href="/tags/MySQL/" style="font-size: 10px;">MySQL</a> <a href="/tags/Session/" style="font-size: 10px;">Session</a> <a href="/tags/分页/" style="font-size: 10px;">分页</a> <a href="/tags/文件上传/" style="font-size: 10px;">文件上传</a> <a href="/tags/面试题/" style="font-size: 20px;">面试题</a>
+      <a href="/tags/Eclipse/" style="font-size: 10px;">Eclipse</a> <a href="/tags/IO/" style="font-size: 10px;">IO</a> <a href="/tags/MySQL/" style="font-size: 10px;">MySQL</a> <a href="/tags/Session/" style="font-size: 10px;">Session</a> <a href="/tags/分页/" style="font-size: 10px;">分页</a> <a href="/tags/文件上传/" style="font-size: 10px;">文件上传</a> <a href="/tags/求职/" style="font-size: 10px;">求职</a> <a href="/tags/面试题/" style="font-size: 20px;">面试题</a>
     </div>
   </div>
 
@@ -334,7 +334,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">归档</h3>
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/01/">2017年 01月</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/12/">2016年 12月</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/11/">2016年 11月</a><span class="archive-list-count">5</span></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/01/">2017年 01月</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/12/">2016年 12月</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/11/">2016年 11月</a><span class="archive-list-count">5</span></li></ul>
     </div>
   </div>
 

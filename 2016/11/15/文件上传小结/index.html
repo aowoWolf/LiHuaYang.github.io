@@ -12,7 +12,7 @@
 <meta property="og:url" content="http://yoursite.com/2016/11/15/文件上传小结/index.html">
 <meta property="og:site_name" content="blog">
 <meta property="og:description" content="使用 commons-fileupload 上传文件">
-<meta property="og:updated_time" content="2017-01-06T04:21:25.168Z">
+<meta property="og:updated_time" content="2017-01-07T04:26:01.864Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="简单文件上传小结">
 <meta name="twitter:description" content="使用 commons-fileupload 上传文件">
@@ -160,17 +160,14 @@
 <p><strong>8、监听器监听文件上传进度</strong><br>ajax 实现上传进度条的原理<br><figure class="highlight java"><table><tr><td class="code"><pre><div class="line">ServletFileUpload upload = <span class="keyword">new</span> ServletFileUpload(factory);</div><div class="line">upload.setProgressListener(<span class="keyword">new</span> ProgressListener() &#123;</div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">update</span><span class="params">(<span class="keyword">long</span> pBytesRead, <span class="keyword">long</span> pContentLength, <span class="keyword">int</span> arg2)</span> </span>&#123;</div><div class="line">        System.out.println(<span class="string">"文件大小为："</span> + pContentLength + <span class="string">",当前已处理："</span> + pBytesRead);</div><div class="line">    &#125;</div><div class="line">&#125;);</div></pre></td></tr></table></figure></p>
 <p>9、<strong>在web页面中动态添加文件上传输入项</strong><br>可能会有多个上传文件<br><figure class="highlight javascript"><table><tr><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">addinput</span>(<span class="params"></span>)</span>&#123;</div><div class="line">    <span class="keyword">var</span> div = <span class="built_in">document</span>.getElementById(<span class="string">"file"</span>);</div><div class="line"></div><div class="line">    <span class="keyword">var</span> input = <span class="built_in">document</span>.createElement(<span class="string">"input"</span>);</div><div class="line">    input.type=<span class="string">"file"</span>;</div><div class="line">    input.name=<span class="string">"filename"</span>;</div><div class="line"></div><div class="line">    <span class="keyword">var</span> del = <span class="built_in">document</span>.createElement(<span class="string">"input"</span>);</div><div class="line">    del.type=<span class="string">"button"</span>;</div><div class="line">    del.value=<span class="string">"删除"</span>;</div><div class="line">    del.onclick = <span class="function"><span class="keyword">function</span> <span class="title">d</span>(<span class="params"></span>) </span>&#123;</div><div class="line">        <span class="keyword">this</span>.parentNode.parentNode.removeChild(<span class="keyword">this</span>.parentNode);</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">var</span> innerdiv = <span class="built_in">document</span>.createElement(<span class="string">"div"</span>);</div><div class="line">    innerdiv.appendChild(input);</div><div class="line">    innerdiv.appendChild(del);</div><div class="line"></div><div class="line">    div.appendChild(innerdiv);</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
 <h1 id="2-使用-Servelet-3-0-特性上传文件"><a href="#2-使用-Servelet-3-0-特性上传文件" class="headerlink" title="2. 使用 Servelet 3.0 特性上传文件"></a>2. 使用 Servelet 3.0 特性上传文件</h1><h2 id="1-准备工作-1"><a href="#1-准备工作-1" class="headerlink" title="1. 准备工作"></a>1. 准备工作</h2><ul>
-<li>上传的表单类型必须为 <code>post</code>，编码方式必须为 <code>multipart/form-data</code><figure class="highlight html"><figcaption><span>upload.jsp</span></figcaption><table><tr><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">fieldset</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">legend</span>&gt;</span>    </div><div class="line">        使用 Servlwt 3.0 新特性上传文件</div><div class="line">    <span class="tag">&lt;/<span class="name">legend</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">form</span> <span class="attr">action</span>=<span class="string">"$&#123;pageContext.request.contextPath&#125;/uploadHandler3"</span></span></div><div class="line">	<span class="attr">enctype</span>=<span class="string">"multipart/form-data"</span></div><div class="line">	<span class="attr">method</span>=<span class="string">"post"</span>&gt;</div><div class="line">        使用 Servlet 3.0 上传文件1：<span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"file"</span> <span class="attr">name</span>=<span class="string">"file1"</span>&gt;</span><span class="tag">&lt;<span class="name">br</span>/&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"submit"</span> <span class="attr">value</span>=<span class="string">"提交"</span>&gt;</span></div><div class="line">    <span class="tag">&lt;/<span class="name">form</span>&gt;</span></div><div class="line"> <span class="tag">&lt;/<span class="name">fieldset</span>&gt;</span></div></pre></td></tr></table></figure>
+<li>上传的表单类型必须为 <code>post</code>，编码方式必须为 <code>multipart/form-data</code> <figure class="highlight html"><figcaption><span>upload.jsp</span></figcaption><table><tr><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">fieldset</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">legend</span>&gt;</span>    </div><div class="line">        使用 Servlwt 3.0 新特性上传文件</div><div class="line">    <span class="tag">&lt;/<span class="name">legend</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">form</span> <span class="attr">action</span>=<span class="string">"$&#123;pageContext.request.contextPath&#125;/uploadHandler3"</span></span></div><div class="line">	<span class="attr">enctype</span>=<span class="string">"multipart/form-data"</span></div><div class="line">	<span class="attr">method</span>=<span class="string">"post"</span>&gt;</div><div class="line">        使用 Servlet 3.0 上传文件1：<span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"file"</span> <span class="attr">name</span>=<span class="string">"file1"</span>&gt;</span><span class="tag">&lt;<span class="name">br</span>/&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"submit"</span> <span class="attr">value</span>=<span class="string">"提交"</span>&gt;</span></div><div class="line">    <span class="tag">&lt;/<span class="name">form</span>&gt;</span></div><div class="line"> <span class="tag">&lt;/<span class="name">fieldset</span>&gt;</span></div></pre></td></tr></table></figure>
 </li>
 </ul>
 <h2 id="2-基本流程-1"><a href="#2-基本流程-1" class="headerlink" title="2. 基本流程"></a>2. 基本流程</h2><ol>
-<li><p>使用注解@MultipartConfig将一个Servlet标识为支持文件上传</p>
+<li><p>使用注解 @MultipartConfig 将一个 Servlet 标识为支持文件上传</p>
 <figure class="highlight java"><table><tr><td class="code"><pre><div class="line"><span class="meta">@MultipartConfig</span></div><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">UploadServlet</span> <span class="keyword">extends</span> <span class="title">HttpServlet</span> </span>&#123;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
 </li>
 <li><p>获取</p>
-<ul>
-<li>-</li>
-</ul>
 </li>
 </ol>
 <p>参考：<br><a href="http://bbs.itheima.com/thread-60454-1-1.html" target="_blank" rel="external">方立勋老师的 JavaWeb 视频</a></p>
@@ -182,7 +179,7 @@
 
     <footer class="article-footer">
       
-        <a data-url="http://yoursite.com/2016/11/15/文件上传小结/" data-id="cixlaosc1000gzsqro1lv40xc" class="article-share-link" data-share="baidu" data-title="简单文件上传小结">分享到</a>
+        <a data-url="http://yoursite.com/2016/11/15/文件上传小结/" data-id="cixlasqd7000g2kqr9xx5cswx" class="article-share-link" data-share="baidu" data-title="简单文件上传小结">分享到</a>
       
 
       
@@ -268,7 +265,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">分类</h3>
     <div class="widget">
-      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/JavaEE-开发/">JavaEE 开发</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/JavaSE-基础/">JavaSE 基础</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/工具使用/">工具使用</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/数据库/">数据库</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/面试题/">面试题</a><span class="category-list-count">2</span></li></ul>
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/JavaEE-开发/">JavaEE 开发</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/JavaSE-基础/">JavaSE 基础</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/工具使用/">工具使用</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/数据库/">数据库</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/面试/">面试</a><span class="category-list-count">3</span></li></ul>
     </div>
   </div>
 
@@ -277,7 +274,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">标签云</h3>
     <div class="widget tagcloud">
-      <a href="/tags/Eclipse/" style="font-size: 10px;">Eclipse</a> <a href="/tags/IO/" style="font-size: 10px;">IO</a> <a href="/tags/MySQL/" style="font-size: 10px;">MySQL</a> <a href="/tags/Session/" style="font-size: 10px;">Session</a> <a href="/tags/分页/" style="font-size: 10px;">分页</a> <a href="/tags/文件上传/" style="font-size: 10px;">文件上传</a> <a href="/tags/面试题/" style="font-size: 20px;">面试题</a>
+      <a href="/tags/Eclipse/" style="font-size: 10px;">Eclipse</a> <a href="/tags/IO/" style="font-size: 10px;">IO</a> <a href="/tags/MySQL/" style="font-size: 10px;">MySQL</a> <a href="/tags/Session/" style="font-size: 10px;">Session</a> <a href="/tags/分页/" style="font-size: 10px;">分页</a> <a href="/tags/文件上传/" style="font-size: 10px;">文件上传</a> <a href="/tags/求职/" style="font-size: 10px;">求职</a> <a href="/tags/面试题/" style="font-size: 20px;">面试题</a>
     </div>
   </div>
 
@@ -286,7 +283,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">归档</h3>
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/01/">2017年 01月</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/12/">2016年 12月</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/11/">2016年 11月</a><span class="archive-list-count">5</span></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/01/">2017年 01月</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/12/">2016年 12月</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/11/">2016年 11月</a><span class="archive-list-count">5</span></li></ul>
     </div>
   </div>
 

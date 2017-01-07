@@ -14,7 +14,7 @@
 <meta property="og:description" content="Session机制详解">
 <meta property="og:image" content="http://i.imgur.com/cAiFQCd.jpg">
 <meta property="og:image" content="http://i.imgur.com/smcCBPp.jpg">
-<meta property="og:updated_time" content="2017-01-03T03:10:15.737Z">
+<meta property="og:updated_time" content="2017-01-07T04:31:50.530Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Session机制详解">
 <meta name="twitter:description" content="Session机制详解">
@@ -108,7 +108,7 @@
         
         <p style="width: 100%; background-color: #EEE; height: 3px"></p>
           <!-- 显示目录 -->
-          <ol class="mytoc"><li class="mytoc-item mytoc-level-1"><a class="mytoc-link" href="#Session机制详解"><span class="mytoc-text">Session机制详解</span></a></li><li class="mytoc-item mytoc-level-1"><a class="mytoc-link" href="#一、术语session"><span class="mytoc-text">一、术语session</span></a></li><li class="mytoc-item mytoc-level-1"><a class="mytoc-link" href="#二、HTTP-协议与状态保持"><span class="mytoc-text">二、HTTP 协议与状态保持</span></a></li><li class="mytoc-item mytoc-level-1"><a class="mytoc-link" href="#三、理解cookie机制"><span class="mytoc-text">三、理解cookie机制</span></a></li><li class="mytoc-item mytoc-level-1"><a class="mytoc-link" href="#四、理解session机制"><span class="mytoc-text">四、理解session机制</span></a></li><li class="mytoc-item mytoc-level-1"><a class="mytoc-link" href="#五、理解-javax-servlet-http-HttpSession"><span class="mytoc-text">五、理解 javax.servlet.http.HttpSession</span></a></li><li class="mytoc-item mytoc-level-1"><a class="mytoc-link" href="#六、HttpSession常见问题"><span class="mytoc-text">六、HttpSession常见问题</span></a><ol class="mytoc-child"><li class="mytoc-item mytoc-level-3"><a class="mytoc-link" href="#1、session在何时被创建"><span class="mytoc-text">1、session在何时被创建</span></a></li><li class="mytoc-item mytoc-level-3"><a class="mytoc-link" href="#2、session何时被删除"><span class="mytoc-text">2、session何时被删除</span></a></li><li class="mytoc-item mytoc-level-3"><a class="mytoc-link" href="#3、如何做到在浏览器关闭时删除session"><span class="mytoc-text">3、如何做到在浏览器关闭时删除session</span></a></li><li class="mytoc-item mytoc-level-3"><a class="mytoc-link" href="#4、有个-HttpSessionListener-是怎么回事"><span class="mytoc-text">4、有个 HttpSessionListener 是怎么回事</span></a></li><li class="mytoc-item mytoc-level-3"><a class="mytoc-link" href="#5、存放在session中的对象必须是可序列化的吗"><span class="mytoc-text">5、存放在session中的对象必须是可序列化的吗</span></a></li><li class="mytoc-item mytoc-level-3"><a class="mytoc-link" href="#6、如何才能正确的应付客户端禁止cookie的可能性"><span class="mytoc-text">6、如何才能正确的应付客户端禁止cookie的可能性</span></a></li><li class="mytoc-item mytoc-level-3"><a class="mytoc-link" href="#7、开两个浏览器窗口访问应用程序会使用同一个-session-还是不同的-session"><span class="mytoc-text">7、开两个浏览器窗口访问应用程序会使用同一个 session 还是不同的 session</span></a></li><li class="mytoc-item mytoc-level-3"><a class="mytoc-link" href="#8、如何防止用户打开两个浏览器窗口操作导致的session混乱"><span class="mytoc-text">8、如何防止用户打开两个浏览器窗口操作导致的session混乱</span></a></li><li class="mytoc-item mytoc-level-3"><a class="mytoc-link" href="#9、为什么在Weblogic-Server中改变session的值后要重新调用一次session-setValue"><span class="mytoc-text">9、为什么在Weblogic Server中改变session的值后要重新调用一次session.setValue</span></a></li><li class="mytoc-item mytoc-level-3"><a class="mytoc-link" href="#10、为什么session不见了"><span class="mytoc-text">10、为什么session不见了</span></a></li></ol></li></ol></li><li class="mytoc-item mytoc-level-1"><a class="mytoc-link" href="#七、跨应用程序的session共享"><span class="mytoc-text">七、跨应用程序的session共享</span></a></li><li class="mytoc-item mytoc-level-1"><a class="mytoc-link" href="#八、总结"><span class="mytoc-text">八、总结</span></a></li></ol>
+          <ol class="mytoc"><li class="mytoc-item mytoc-level-1"><a class="mytoc-link" href="#一、术语session"><span class="mytoc-text">一、术语session</span></a></li><li class="mytoc-item mytoc-level-1"><a class="mytoc-link" href="#二、HTTP-协议与状态保持"><span class="mytoc-text">二、HTTP 协议与状态保持</span></a></li><li class="mytoc-item mytoc-level-1"><a class="mytoc-link" href="#三、理解cookie机制"><span class="mytoc-text">三、理解cookie机制</span></a></li><li class="mytoc-item mytoc-level-1"><a class="mytoc-link" href="#四、理解session机制"><span class="mytoc-text">四、理解session机制</span></a></li><li class="mytoc-item mytoc-level-1"><a class="mytoc-link" href="#五、理解-javax-servlet-http-HttpSession"><span class="mytoc-text">五、理解 javax.servlet.http.HttpSession</span></a></li><li class="mytoc-item mytoc-level-1"><a class="mytoc-link" href="#六、HttpSession常见问题"><span class="mytoc-text">六、HttpSession常见问题</span></a><ol class="mytoc-child"><li class="mytoc-item mytoc-level-3"><a class="mytoc-link" href="#1、session在何时被创建"><span class="mytoc-text">1、session在何时被创建</span></a></li><li class="mytoc-item mytoc-level-3"><a class="mytoc-link" href="#2、session何时被删除"><span class="mytoc-text">2、session何时被删除</span></a></li><li class="mytoc-item mytoc-level-3"><a class="mytoc-link" href="#3、如何做到在浏览器关闭时删除session"><span class="mytoc-text">3、如何做到在浏览器关闭时删除session</span></a></li><li class="mytoc-item mytoc-level-3"><a class="mytoc-link" href="#4、有个-HttpSessionListener-是怎么回事"><span class="mytoc-text">4、有个 HttpSessionListener 是怎么回事</span></a></li><li class="mytoc-item mytoc-level-3"><a class="mytoc-link" href="#5、存放在session中的对象必须是可序列化的吗"><span class="mytoc-text">5、存放在session中的对象必须是可序列化的吗</span></a></li><li class="mytoc-item mytoc-level-3"><a class="mytoc-link" href="#6、如何才能正确的应付客户端禁止cookie的可能性"><span class="mytoc-text">6、如何才能正确的应付客户端禁止cookie的可能性</span></a></li><li class="mytoc-item mytoc-level-3"><a class="mytoc-link" href="#7、开两个浏览器窗口访问应用程序会使用同一个-session-还是不同的-session"><span class="mytoc-text">7、开两个浏览器窗口访问应用程序会使用同一个 session 还是不同的 session</span></a></li><li class="mytoc-item mytoc-level-3"><a class="mytoc-link" href="#8、如何防止用户打开两个浏览器窗口操作导致的session混乱"><span class="mytoc-text">8、如何防止用户打开两个浏览器窗口操作导致的session混乱</span></a></li><li class="mytoc-item mytoc-level-3"><a class="mytoc-link" href="#9、为什么在Weblogic-Server中改变session的值后要重新调用一次session-setValue"><span class="mytoc-text">9、为什么在Weblogic Server中改变session的值后要重新调用一次session.setValue</span></a></li><li class="mytoc-item mytoc-level-3"><a class="mytoc-link" href="#10、为什么session不见了"><span class="mytoc-text">10、为什么session不见了</span></a></li></ol></li></ol></li><li class="mytoc-item mytoc-level-1"><a class="mytoc-link" href="#七、跨应用程序的session共享"><span class="mytoc-text">七、跨应用程序的session共享</span></a></li><li class="mytoc-item mytoc-level-1"><a class="mytoc-link" href="#八、总结"><span class="mytoc-text">八、总结</span></a></li></ol>
         <!-- 显示目录 -->
         <p style="width: 100%; background-color: #EEE; height: 3px"></p>
          
@@ -116,7 +116,7 @@
         
 
         <!-- 显示正文 -->
-        <h1 id="Session机制详解"><a href="#Session机制详解" class="headerlink" title="Session机制详解"></a>Session机制详解</h1><p>摘要：虽然session机制在web应用程序中被采用已经很长时间了，但是仍然有很多人不清楚session机制的本质，以至不能正确的应用这一技术。本文将详细讨论session的工作机制并且对在Java web application中应用session机制时常见的问题作出解答。</p>
+        <p>虽然session机制在web应用程序中被采用已经很长时间了，但是仍然有很多人不清楚session机制的本质，以至不能正确的应用这一技术。本文将详细讨论session的工作机制并且对在Java web application中应用session机制时常见的问题作出解答。</p>
 <h1 id="一、术语session"><a href="#一、术语session" class="headerlink" title="一、术语session"></a>一、术语session</h1><p>在我的经验里，session 这个词被滥用的程度大概仅次于 transaction，更加有趣的是 transaction 与 session 在某些语境下的含义是相同的。</p>
 <p>session，中文经常翻译为<strong>会话</strong>，其本来的含义是指有始有终的一系列动作/消息，比如打电话时从拿起电话拨号到挂断电话这中间的一系列<strong>过程</strong>可以称之为一个 session。有时候我们可以看到这样的话“在一个浏览器会话期间，…”，这里的会话一词用的就是其本义，是指从一个浏览器窗口打开到关闭这个期间 。最混乱的是“用户（客户端）在一次会话期间”这样一句话，它可能指用户的一系列动作（一般情况下是同某个具体目的相关的一系列动作，比如从登录到选购商品到结账登出这样一个网上购物的过程，有时候也被称为一个transaction），然而有时候也可能仅仅是指一次连接，也有可能是指含义，其中的差别只能靠上下文来推断。</p>
 <p>然而当 session 一词与网络协议相关联时，它又往往隐含了<strong>“面向连接”和/或“保持状态”</strong>这样两个含义，<br><strong>“面向连接”</strong> 指的是在通信双方在通信之前要先建立一个通信的渠道，比如打电话，直到对方接了电话通信才能开始，与此相对的是写信，在你把信发出去的时候你并不能确认对方的地址是否正确，通信渠道不一定能建立，但对发信人来说，通信已经开始了。<br><strong>“保持状态”</strong> 则是指通信的一方能够把一系列的消息关联起来，使得消息之间可以互相依赖，比如一个服务员能够认出再次光临的老顾客并且记得上次这个顾客还欠店里一块钱。这一类的例子有“一个TCP session”或者 “一个POP3 session”。</p>
@@ -195,6 +195,7 @@
 <p>值得注意的是这种用法不可移植，因为根据ServletContext的JavaDoc，应用服务器可以处于安全的原因对于context.getContext(“/appA”);返回空值，以上做法在Weblogic Server 8.1中通过。</p>
 <p>那么Weblogic Server为什么要把所有的应用程序的cookie路径都设为/呢？原来是为了SSO，凡是共享这个session的应用程序都可以共享认证的信息。一个简单的实验就可以证明这一点，修改首先登录的那个应用程序的描述符weblogic.xml，把cookie路径修改为/appA 访问另外一个应用程序会重新要求登录，即使是反过来，先访问cookie路径为/的应用程序，再访问修改过路径的这个，虽然不再提示登录，但是登录的用户信息也会丢失。注意做这个实验时认证方式应该使用FORM，因为浏览器和web服务器对basic认证方式有其他的处理方式，第二次请求的认证不是通过 session来实现的。具体请参看[7] secion 14.8 Authorization，你可以修改所附的示例程序来做这些试验。</p>
 <h1 id="八、总结"><a href="#八、总结" class="headerlink" title="八、总结"></a>八、总结</h1><p>session机制本身并不复杂，然而其实现和配置上的灵活性却使得具体情况复杂多变。这也要求我们不能把仅仅某一次的经验或者某一个浏览器，服务器的经验当作普遍适用的经验，而是始终需要具体情况具体分析。<br>摘要：虽然session机制在web应用程序中被采用已经很长时间了，但是仍然有很多人不清楚session机制的本质，以至不能正确的应用这一技术。本文将详细讨论session的工作机制并且对在Java web application中应用session机制时常见的问题作出解答。</p>
+<p>参考：<br><a href="http://justsee.iteye.com/blog/1570652" target="_blank" rel="external">Session 机制详解</a></p>
 
         <!-- 显示正文 -->
       
@@ -203,7 +204,7 @@
 
     <footer class="article-footer">
       
-        <a data-url="http://yoursite.com/2016/11/12/Session机制详解/" data-id="cixlaosaz0002zsqr3vsxwgnb" class="article-share-link" data-share="baidu" data-title="Session机制详解">分享到</a>
+        <a data-url="http://yoursite.com/2016/11/12/Session机制详解/" data-id="cixlasqcf00052kqrqxorgpj6" class="article-share-link" data-share="baidu" data-title="Session机制详解">分享到</a>
       
 
       
@@ -289,7 +290,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">分类</h3>
     <div class="widget">
-      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/JavaEE-开发/">JavaEE 开发</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/JavaSE-基础/">JavaSE 基础</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/工具使用/">工具使用</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/数据库/">数据库</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/面试题/">面试题</a><span class="category-list-count">2</span></li></ul>
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/JavaEE-开发/">JavaEE 开发</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/JavaSE-基础/">JavaSE 基础</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/工具使用/">工具使用</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/数据库/">数据库</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/面试/">面试</a><span class="category-list-count">3</span></li></ul>
     </div>
   </div>
 
@@ -298,7 +299,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">标签云</h3>
     <div class="widget tagcloud">
-      <a href="/tags/Eclipse/" style="font-size: 10px;">Eclipse</a> <a href="/tags/IO/" style="font-size: 10px;">IO</a> <a href="/tags/MySQL/" style="font-size: 10px;">MySQL</a> <a href="/tags/Session/" style="font-size: 10px;">Session</a> <a href="/tags/分页/" style="font-size: 10px;">分页</a> <a href="/tags/文件上传/" style="font-size: 10px;">文件上传</a> <a href="/tags/面试题/" style="font-size: 20px;">面试题</a>
+      <a href="/tags/Eclipse/" style="font-size: 10px;">Eclipse</a> <a href="/tags/IO/" style="font-size: 10px;">IO</a> <a href="/tags/MySQL/" style="font-size: 10px;">MySQL</a> <a href="/tags/Session/" style="font-size: 10px;">Session</a> <a href="/tags/分页/" style="font-size: 10px;">分页</a> <a href="/tags/文件上传/" style="font-size: 10px;">文件上传</a> <a href="/tags/求职/" style="font-size: 10px;">求职</a> <a href="/tags/面试题/" style="font-size: 20px;">面试题</a>
     </div>
   </div>
 
@@ -307,7 +308,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">归档</h3>
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/01/">2017年 01月</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/12/">2016年 12月</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/11/">2016年 11月</a><span class="archive-list-count">5</span></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/01/">2017年 01月</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/12/">2016年 12月</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/11/">2016年 11月</a><span class="archive-list-count">5</span></li></ul>
     </div>
   </div>
 
