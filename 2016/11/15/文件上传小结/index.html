@@ -12,7 +12,7 @@
 <meta property="og:url" content="http://yoursite.com/2016/11/15/文件上传小结/index.html">
 <meta property="og:site_name" content="blog">
 <meta property="og:description" content="使用 commons-fileupload 上传文件">
-<meta property="og:updated_time" content="2017-01-07T04:26:01.864Z">
+<meta property="og:updated_time" content="2017-01-08T14:22:03.958Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="简单文件上传小结">
 <meta name="twitter:description" content="使用 commons-fileupload 上传文件">
@@ -164,13 +164,20 @@
 </li>
 </ul>
 <h2 id="2-基本流程-1"><a href="#2-基本流程-1" class="headerlink" title="2. 基本流程"></a>2. 基本流程</h2><ol>
-<li><p>使用注解 @MultipartConfig 将一个 Servlet 标识为支持文件上传</p>
-<figure class="highlight java"><table><tr><td class="code"><pre><div class="line"><span class="meta">@MultipartConfig</span></div><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">UploadServlet</span> <span class="keyword">extends</span> <span class="title">HttpServlet</span> </span>&#123;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<li><p>使用注解 <code>@MultipartConfig</code> 将一个 Servlet 标识为支持文件上传</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><div class="line"><span class="meta">@MultipartConfig</span></div><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">UploadServlet</span> <span class="keyword">extends</span> <span class="title">HttpServlet</span> </span>&#123; &#125;</div></pre></td></tr></table></figure>
 </li>
-<li><p>获取</p>
+<li><p>获取上传的表单中 <code>type=&quot;file&quot;</code> 的字段</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><div class="line"><span class="comment">// 获取所有上传的文件数据</span></div><div class="line">List&lt;Part&gt; parts = (List&lt;Part&gt;) request.getParts(); </div><div class="line"></div><div class="line"><span class="comment">// 通过表单file控件(&lt;input type="file" name="file"&gt;)的名字直接获取Part对象</span></div><div class="line">Part part = request.getPart(<span class="string">"file"</span>);</div></pre></td></tr></table></figure>
+</li>
+<li><p>获取上传文件的文件名</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><div class="line"><span class="comment">// 获取文件信息头</span></div><div class="line">String header = part.getHeader(<span class="string">"Content-Disposition"</span>);</div><div class="line"><span class="comment">// 获取文件名</span></div><div class="line">String fileName = getFileName(header);</div><div class="line"></div><div class="line"><span class="comment">/**</span></div><div class="line"> * 根据请求头解析出文件名 请求头的格式：</div><div class="line"> * 火狐和google浏览器下：form-data; name="file"; filename="snmp4j--api.zip" </div><div class="line"> * IE浏览器下：form-data; name="file"; filename="E:\snmp4j--api.zip"</div><div class="line"> * </div><div class="line"> * <span class="doctag">@param</span> header</div><div class="line"> *            请求头</div><div class="line"> * <span class="doctag">@return</span> 文件名</div><div class="line"> */</div><div class="line"><span class="function"><span class="keyword">private</span> String <span class="title">getFileName</span><span class="params">(String header)</span> </span>&#123;</div><div class="line">    String[] tempArr1 = header.split(<span class="string">";"</span>);</div><div class="line">    String[] tempArr2 = tempArr1[<span class="number">2</span>].split(<span class="string">"="</span>);</div><div class="line">    String fileName = tempArr2[<span class="number">1</span>].substring(tempArr2[<span class="number">1</span>].lastIndexOf(<span class="string">"\\"</span>) + <span class="number">1</span>).replaceAll(<span class="string">"\""</span>, <span class="string">""</span>);</div><div class="line">    <span class="keyword">return</span> fileName;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+</li>
+<li><p>将文件写入指定路径目录下</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><div class="line"><span class="comment">// 获取项目下的 /WEB-INF/upload 的绝对路径</span></div><div class="line">String savePath = request.getServletContext().getRealPath(<span class="string">"/WEB-INF/upload"</span>);</div><div class="line"><span class="comment">// 写入</span></div><div class="line">part.write(savePath + File.separator + fileName);</div></pre></td></tr></table></figure>
 </li>
 </ol>
-<p>参考：<br><a href="http://bbs.itheima.com/thread-60454-1-1.html" target="_blank" rel="external">方立勋老师的 JavaWeb 视频</a></p>
+<p>参考：<br><a href="http://bbs.itheima.com/thread-60454-1-1.html" target="_blank" rel="external">方立勋老师的 JavaWeb 视频</a><br><a href="http://www.cnblogs.com/xdp-gacl/p/4224960.html" target="_blank" rel="external">基于Servlet3.0的文件上传</a></p>
 
         <!-- 显示正文 -->
       
@@ -179,7 +186,7 @@
 
     <footer class="article-footer">
       
-        <a data-url="http://yoursite.com/2016/11/15/文件上传小结/" data-id="cixomd6lp000izcqrsr9mppt1" class="article-share-link" data-share="baidu" data-title="简单文件上传小结">分享到</a>
+        <a data-url="http://yoursite.com/2016/11/15/文件上传小结/" data-id="cixoql728000gqsqrcw0kc7lb" class="article-share-link" data-share="baidu" data-title="简单文件上传小结">分享到</a>
       
 
       
