@@ -15,7 +15,7 @@
 <meta property="og:image" content="http://yoursite.com/img/t1.png">
 <meta property="og:image" content="http://yoursite.com/img/t2.png">
 <meta property="og:image" content="http://yoursite.com/img/t3.png">
-<meta property="og:updated_time" content="2017-02-28T01:55:50.846Z">
+<meta property="og:updated_time" content="2017-02-28T10:08:32.667Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="多线程总结">
 <meta name="twitter:description" content="多线程编程 （multithreaded programming）">
@@ -125,33 +125,33 @@
 <p><strong>线程</strong> 是操作系统能够进行运算调度的最小单位。它被包含在进程之中，是进程中的实际运作单位。一条线程指的是进程中一个单一顺序的控制流，一个进程中可以并发多个线程，每条线程并行执行不同的任务</p>
 <a id="more"></a>
 <h2 id="2、线程的创建"><a href="#2、线程的创建" class="headerlink" title="2、线程的创建"></a>2、线程的创建</h2><ul>
-<li>将类声明为 Thread 的子类。该子类应重写 Thread 类的 run 方法</li>
-<li>声明实现 Runnable 接口的类。该类然后实现 run 方法</li>
+<li>作为 <code>Thread</code> 的子类，重写 Thread 类的 run 方法</li>
+<li>实现 <code>Runnable</code> 接口，并实现 run 方法</li>
 </ul>
 <p><strong>总结：</strong></p>
 <ol>
-<li>两种方式都需执行线程的 start 方法为线程分配必须的系统资源、调度线程运行并执行线程的 run 方法</li>
+<li>两种方式都需执行线程的 <code>start()</code> 为线程分配必须的系统资源、调度线程运行并执行线程的 <code>run()</code></li>
 <li>在具体应用中，采用哪种方法来构造线程体要视情况而定。通常，当一个线程已继承了另一个类时，就应该用第二种方法来构造</li>
-<li>线程的消亡不能调用 stop() 命令。而是让 run 方法自然结束</li>
+<li>线程的消亡不能调用 <strong><code>stop()</code></strong> 方法，而是让 <code>run()</code> 自然结束</li>
 </ol>
 <h2 id="3、线程的结束（停止，中断）"><a href="#3、线程的结束（停止，中断）" class="headerlink" title="3、线程的结束（停止，中断）"></a>3、线程的结束（停止，中断）</h2><p>推荐的方式：<br><figure class="highlight java"><table><tr><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">MyThread</span> <span class="keyword">implements</span> <span class="title">Runnable</span> </span>&#123;</div><div class="line">    <span class="keyword">private</span> <span class="keyword">boolean</span> flag = <span class="keyword">true</span>;</div><div class="line">    <span class="meta">@Override</span></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">run</span><span class="params">()</span> </span>&#123;</div><div class="line">        <span class="keyword">while</span> (flag) &#123;</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">stopRunning</span><span class="params">()</span> </span>&#123;</div><div class="line">        <span class="keyword">this</span>.flag = <span class="keyword">false</span>;</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">ControlThread</span> </span>&#123;</div><div class="line">    <span class="keyword">private</span> MyThread r = <span class="keyword">new</span> MyThread();</div><div class="line">    <span class="keyword">private</span> Thread t = <span class="keyword">new</span> Thread(r); </div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">startThread</span><span class="params">()</span> </span>&#123;</div><div class="line">        t.start();</div><div class="line">    &#125;</div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">stopThread</span><span class="params">()</span> </span>&#123;</div><div class="line">        r.stopRunning();</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
 <h2 id="4、线程的生命周期"><a href="#4、线程的生命周期" class="headerlink" title="4、线程的生命周期"></a>4、线程的生命周期</h2><p>一个线程从创建到消亡的过程，线程的生命周期分为四个状态：</p>
 <ul>
 <li><p><strong>创建状态</strong><br>当用 new 操作符创建一个新的线程对象时，该线程出于创建状态（只是一个空的线程对象，系统不为它分配资源）</p>
 </li>
-<li><p><strong>可运行状态</strong><br>执行线程的 start 方法将为线程分配必须的系统资源，安排其运行，并调用线程体的-run 方法，这样就使得该线程处于可运行状态（并不是运行状态，因为线程实际上并未运行，只是具备了运行的能力）</p>
+<li><p><strong>可运行状态</strong><br>执行线程的 <code>start()</code> 将为线程分配必须的系统资源，安排其运行，并调用线程体的<code>run()</code>，这样就使得该线程处于可运行状态（并不是运行状态，因为线程实际上并未运行，只是具备了运行的能力）</p>
 </li>
 <li><p><strong>不可运行状态</strong><br>当发生下列事件时，会进入不可运行状态</p>
 <ul>
-<li>调用 sleep 方法</li>
-<li>线程调用 wait 方法等待特定条件满足</li>
-<li>线程输入/输出阻塞  </li>
+<li>线程调用 <code>wait()</code> 等待特定条件满足（等待阻塞）</li>
+<li>在获取对象的同步锁时，该同步锁被别的线程占用（同步阻塞）</li>
+<li>调用 <code>sleep()</code>、线程 i/o 阻塞（其他阻塞）</li>
 </ul>
 <p>返回可运行状态：</p>
 <ul>
-<li>处于睡眠状态的线程在指定时间过去后</li>
-<li>如果线程在等待某一条件，另一个对象必须通过 notify() 或者 notifyAll() 方法通知等待线程条件的改变</li>
-<li>如果线程是因为输入输出阻塞，等待输入输出完成</li>
+<li>处于睡眠状态的线程在指定时间过去后、等待输入输出完成</li>
+<li>另一个对象通过 <code>notify()</code> 或者 <code>notifyAll()</code> 通知</li>
+<li>等待上一个线程放弃锁</li>
 </ul>
 </li>
 <li><p><strong>消亡状态</strong><br>run 方法结束，线程结束</p>
@@ -159,14 +159,14 @@
 <li><p>创建、可运行、运行、阻塞、结束</p>
 </li>
 </ul>
-<p><strong>线程状态转换图1：</strong><br><img src="/img/t1.png" alt="线程状态转换图1"></p>
-<p><strong>加入 <code>synchronized</code> 后的线程状态转换图2：（同步的线程状态转换图）</strong><br><img src="/img/t2.png" alt="线程状态转换图1"></p>
+<p><strong>线程状态转换图：</strong><br><img src="/img/t1.png" alt="线程状态转换图1"></p>
+<p><strong>加入 <code>synchronized</code> 后的线程状态转换图：（同步的线程状态转换图）</strong><br><img src="/img/t2.png" alt="线程状态转换图2"></p>
 <p><strong>具有 <code>wait()</code> 和 <code>notify()</code> 的线程状态图：</strong><br><img src="/img/t3.png" alt="线程状态转换图3"></p>
 <h2 id="5、线程的调度策略"><a href="#5、线程的调度策略" class="headerlink" title="5、线程的调度策略"></a>5、线程的调度策略</h2><p>线程调度器选择优先级最高的线程运行。但是，如果发生一下情况，就会终止线程的运行</p>
 <ul>
-<li>线程体中调用了 yield() 方法，让出了对 CPU 的占用权</li>
-<li>线程体中调用了 sleep() 方法，使线程进入睡眠状态</li>
-<li>线程由于 i/o 操作而收阻塞</li>
+<li>线程体中调用了 <code>yield()</code>，让出了对 CPU 的占用权</li>
+<li>线程体中调用了 <code>sleep()</code>，使线程进入睡眠状态</li>
+<li>线程由于 i/o 操作而阻塞</li>
 <li>另一个更高优先级的线程出现</li>
 </ul>
 <h2 id="6、线程锁"><a href="#6、线程锁" class="headerlink" title="6、线程锁"></a>6、线程锁</h2><p>Java 中每个对象都有一个锁（lock）或者叫监视器（monitor），当访问某个对象的 <code>synchronized</code> 方法时，表示将该对象上锁，此时其他任何线程都无法再去访问该 <code>synchronized</code> 方法，直到之前线程执行方法完毕后（或者是抛出异常）。那么将该对象的锁释放掉，其他线程才有可能再去访问该 <code>synchronized</code> 方法</p>
@@ -183,7 +183,7 @@
 </ul>
 <h2 id="多线程目的"><a href="#多线程目的" class="headerlink" title="多线程目的"></a>多线程目的</h2><p>多线程编程的目的，就是”最大限度地利用 CPU 资源”，当某一线程的处理不需要占用 CPU 而只和 I/O 等资源打交道时，让需要占用 CPU 资源的其它线程有机会获得 CPU 资源。从根本上说，这就是多线程编程的最终目的。</p>
 <h2 id="线程安全"><a href="#线程安全" class="headerlink" title="线程安全"></a>线程安全</h2><p>线程安全是编程中的术语，指某个函数、函数库在多线程环境中被调用时，能够正确地处理多个线程之间的共享变量，使程序功能正确完成。</p>
-<p>参考：<br><a href="http://www.ed2000.com/ShowFile/221694.html" target="_blank" rel="external">圣思园张龙老师的 Java 视频</a></p>
+<p>参考：<br><a href="http://www.ed2000.com/ShowFile/221694.html" target="_blank" rel="external">圣思园张龙老师的 Java 视频</a><br><a href="https://my.oschina.net/mingdongcheng/blog/139263" target="_blank" rel="external">开源中国某博客</a></p>
 
         <!-- 显示正文 -->
       
@@ -192,7 +192,7 @@
 
     <footer class="article-footer">
       
-        <a data-url="http://yoursite.com/2016/11/19/thread/" data-id="cizpayd0m000b1kqrsfh1ldmw" class="article-share-link" data-share="baidu" data-title="多线程总结">分享到</a>
+        <a data-url="http://yoursite.com/2016/11/19/thread/" data-id="cizpdfl09000t8sqr5loz2813" class="article-share-link" data-share="baidu" data-title="多线程总结">分享到</a>
       
 
       

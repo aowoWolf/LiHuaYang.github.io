@@ -12,7 +12,7 @@
 <meta property="og:url" content="http://yoursite.com/2016/10/01/部署网站应用/index.html">
 <meta property="og:site_name" content="blog">
 <meta property="og:description" content="tomcat">
-<meta property="og:updated_time" content="2017-02-28T08:51:54.198Z">
+<meta property="og:updated_time" content="2017-02-28T09:15:38.551Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Tomcat 部署 JavaWeb 应用的三种方式">
 <meta name="twitter:description" content="tomcat">
@@ -114,9 +114,10 @@
 
         <!-- 显示正文 -->
         <h1 id="方法一：在-server-xml-中指定"><a href="#方法一：在-server-xml-中指定" class="headerlink" title="方法一：在 server.xml 中指定"></a>方法一：在 server.xml 中指定</h1><p>在 tomcat 中的 <code>conf</code> 目录中，在 server.xml 中的，<code>&lt;host/&gt;</code>节点中添加：<br><figure class="highlight xml"><table><tr><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">Context</span> </span></div><div class="line"><span class="attr">path</span>=<span class="string">"/myapp"</span> </div><div class="line"><span class="attr">reloadable</span>=<span class="string">"true"</span> </div><div class="line"><span class="attr">docBase</span>=<span class="string">"D:\myapp"</span> </div><div class="line"><span class="attr">workDir</span>=<span class="string">"D:\myapp\work"</span>&gt;</div><div class="line"><span class="tag">&lt;/<span class="name">Context</span>&gt;</span></div></pre></td></tr></table></figure></p>
-<p>在 Tomcat 的配置文件中，一个 Web 应用就是一个特定的 Context，可以通过在 server.xml 中新建 Context 里部署一个 JavaWeb 应用程序<br>其中 path 是虚拟路径（外部访问路径），docBase 是 JavaWeb 的物理路径（项目放在硬盘哪个位置），workDir 是这个应用的工作目录（默认是 tomcat 目录中 work 目录），存放运行是生成的于这个应用相关的文件</p>
+<p>在 Tomcat 的配置文件中，一个 Web 应用就是一个特定的 Context，可以通过在 server.xml 中新建 Context 里部署一个 JavaWeb 应用程序。  </p>
+<p>其中 path 是虚拟路径（外部访问路径），docBase 是 JavaWeb 的物理路径（项目放在硬盘哪个位置），workDir 是这个应用的工作目录（默认是 tomcat 目录中 work 目录），存放运行是生成的于这个应用相关的文件</p>
 <h1 id="方法二：放置-webapps-目录下"><a href="#方法二：放置-webapps-目录下" class="headerlink" title="方法二：放置 webapps 目录下"></a>方法二：放置 webapps 目录下</h1><p>将 web 项目文件打包成 war 包或者直接将整个文件夹（包括该web的所有内容），拷贝到 tomcat 的 webapps 目录中。</p>
-<p> Tomcat 的 webapps 目录是 Tomcat 默认的应用目录，当服务器启动时，会加载所有这个目录下的应用。也可以将  JavaWeb 应用打成一个 war 包放在目录下，服务器会自动解开这个 war  包，并在这个目录下生成一个同名的文件夹。</p>
+<p>Tomcat 的 webapps 目录是 Tomcat 默认的应用目录，当服务器启动时，会加载所有这个目录下的应用。也可以将  JavaWeb 应用打成一个 war 包放在目录下，服务器会自动解开这个 war  包，并在这个目录下生成一个同名的文件夹。</p>
 <p>一个 war 包就是有特性格式的 jar 包，它是将一个 Web 应用程序的所有内容进行压缩得到。具体如何打包，可以使用许多开发工具的IDE 环境，如 Eclipse、NetBeans、ant、JBuilder等。也可以用 cmd 命令：<br><figure class="highlight cmd"><table><tr><td class="code"><pre><div class="line">jar -cvf applicationname.war package.*；</div></pre></td></tr></table></figure></p>
 <h1 id="方法三：创建一个-Context-文件（xml）"><a href="#方法三：创建一个-Context-文件（xml）" class="headerlink" title="方法三：创建一个 Context 文件（xml）"></a>方法三：创建一个 Context 文件（xml）</h1><p>在 tomcat 的 <code>conf\Catalina\localhost</code> 目录中，新建一个 xml 文件，名字任意，该 xml 文件的内容为：<br><figure class="highlight xml"><table><tr><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">Context</span> </span></div><div class="line"><span class="attr">path</span>=<span class="string">"/hello"</span> </div><div class="line"><span class="attr">docBase</span>=<span class="string">"D:\afload"</span> </div><div class="line"><span class="attr">debug</span>=<span class="string">"0"</span> </div><div class="line"><span class="attr">privileged</span>=<span class="string">"true"</span>&gt;</div><div class="line"><span class="tag">&lt;/<span class="name">Context</span>&gt;</span></div></pre></td></tr></table></figure></p>
 <p>可以看出，文件中描述一个应用程序的 Context 信息，其内容和 server.xml 中的 Context 信息格式是一致的，文件名便是虚拟目录名。可以直接建立这样的一个 xml 文件，放在Tomcat的 conf\catalina\localhost 目录下</p>
@@ -148,7 +149,7 @@
 
     <footer class="article-footer">
       
-        <a data-url="http://yoursite.com/2016/10/01/部署网站应用/" data-id="cizpayd1h000r1kqreonur1hk" class="article-share-link" data-share="baidu" data-title="Tomcat 部署 JavaWeb 应用的三种方式">分享到</a>
+        <a data-url="http://yoursite.com/2016/10/01/部署网站应用/" data-id="cizpdfkzy000n8sqrzs0w1lo2" class="article-share-link" data-share="baidu" data-title="Tomcat 部署 JavaWeb 应用的三种方式">分享到</a>
       
 
       
