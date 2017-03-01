@@ -15,7 +15,7 @@
 <meta property="og:image" content="http://yoursite.com/img/t1.png">
 <meta property="og:image" content="http://yoursite.com/img/t2.png">
 <meta property="og:image" content="http://yoursite.com/img/t3.png">
-<meta property="og:updated_time" content="2017-02-28T10:08:32.667Z">
+<meta property="og:updated_time" content="2017-03-01T05:01:49.642Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="多线程总结">
 <meta name="twitter:description" content="多线程编程 （multithreaded programming）">
@@ -109,7 +109,7 @@
         
         <p style="width: 100%; background-color: #EEE; height: 3px"></p>
           <!-- 显示目录 -->
-          <ol class="mytoc"><li class="mytoc-item mytoc-level-2"><a class="mytoc-link" href="#1、线程和进程"><span class="mytoc-text">1、线程和进程</span></a></li><li class="mytoc-item mytoc-level-2"><a class="mytoc-link" href="#2、线程的创建"><span class="mytoc-text">2、线程的创建</span></a></li><li class="mytoc-item mytoc-level-2"><a class="mytoc-link" href="#3、线程的结束（停止，中断）"><span class="mytoc-text">3、线程的结束（停止，中断）</span></a></li><li class="mytoc-item mytoc-level-2"><a class="mytoc-link" href="#4、线程的生命周期"><span class="mytoc-text">4、线程的生命周期</span></a></li><li class="mytoc-item mytoc-level-2"><a class="mytoc-link" href="#5、线程的调度策略"><span class="mytoc-text">5、线程的调度策略</span></a></li><li class="mytoc-item mytoc-level-2"><a class="mytoc-link" href="#6、线程锁"><span class="mytoc-text">6、线程锁</span></a></li><li class="mytoc-item mytoc-level-2"><a class="mytoc-link" href="#7、线程间的通信"><span class="mytoc-text">7、线程间的通信</span></a></li><li class="mytoc-item mytoc-level-2"><a class="mytoc-link" href="#8、线程死锁"><span class="mytoc-text">8、线程死锁</span></a></li><li class="mytoc-item mytoc-level-2"><a class="mytoc-link" href="#多任务处理"><span class="mytoc-text">多任务处理</span></a></li><li class="mytoc-item mytoc-level-2"><a class="mytoc-link" href="#多线程目的"><span class="mytoc-text">多线程目的</span></a></li><li class="mytoc-item mytoc-level-2"><a class="mytoc-link" href="#线程安全"><span class="mytoc-text">线程安全</span></a></li></ol>
+          <ol class="mytoc"><li class="mytoc-item mytoc-level-2"><a class="mytoc-link" href="#1、线程和进程"><span class="mytoc-text">1、线程和进程</span></a></li><li class="mytoc-item mytoc-level-2"><a class="mytoc-link" href="#2、线程的创建"><span class="mytoc-text">2、线程的创建</span></a></li><li class="mytoc-item mytoc-level-2"><a class="mytoc-link" href="#3、线程的结束（停止，中断）"><span class="mytoc-text">3、线程的结束（停止，中断）</span></a></li><li class="mytoc-item mytoc-level-2"><a class="mytoc-link" href="#4、线程的生命周期"><span class="mytoc-text">4、线程的生命周期</span></a></li><li class="mytoc-item mytoc-level-2"><a class="mytoc-link" href="#5、线程的调度策略"><span class="mytoc-text">5、线程的调度策略</span></a></li><li class="mytoc-item mytoc-level-2"><a class="mytoc-link" href="#6、线程锁"><span class="mytoc-text">6、线程锁</span></a></li><li class="mytoc-item mytoc-level-2"><a class="mytoc-link" href="#7、线程间的通信"><span class="mytoc-text">7、线程间的通信</span></a></li><li class="mytoc-item mytoc-level-2"><a class="mytoc-link" href="#8、线程死锁"><span class="mytoc-text">8、线程死锁</span></a></li><li class="mytoc-item mytoc-level-2"><a class="mytoc-link" href="#9、多任务处理"><span class="mytoc-text">9、多任务处理</span></a></li><li class="mytoc-item mytoc-level-2"><a class="mytoc-link" href="#10、多线程目的"><span class="mytoc-text">10、多线程目的</span></a></li><li class="mytoc-item mytoc-level-2"><a class="mytoc-link" href="#11、线程安全"><span class="mytoc-text">11、线程安全</span></a></li></ol>
         <!-- 显示目录 -->
         <p style="width: 100%; background-color: #EEE; height: 3px"></p>
          
@@ -177,12 +177,12 @@
 <h2 id="8、线程死锁"><a href="#8、线程死锁" class="headerlink" title="8、线程死锁"></a>8、线程死锁</h2><p>线程间相互等待资源，而又不释放自身的资源，导致无穷无尽的等待，其结果是系统任务永远无法执行完成。死锁问题是在多线程开发中应该坚决避免和杜绝的问题。</p>
 <p>示例：</p>
 <figure class="highlight java"><table><tr><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">DeadLockDemo</span> </span>&#123;</div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">method1</span><span class="params">()</span> </span>&#123;</div><div class="line">        <span class="keyword">synchronized</span> (Integer.class) &#123;</div><div class="line">            System.out.println(Thread.currentThread().getName() + <span class="string">" 获取到 Integer 锁"</span>);</div><div class="line">            Thread.sleep(<span class="number">1000</span>);</div><div class="line">            <span class="keyword">synchronized</span> (String.class) &#123;</div><div class="line">                System.out.println(Thread.currentThread().getName() + <span class="string">" 获取到 String 锁"</span>);</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">method2</span><span class="params">()</span> </span>&#123;</div><div class="line">        <span class="keyword">synchronized</span> (String.class) &#123;</div><div class="line">            System.out.println(Thread.currentThread().getName() + <span class="string">" 获取到 String 锁"</span>);</div><div class="line">            Thread.sleep(<span class="number">1000</span>);</div><div class="line">            <span class="keyword">synchronized</span> (Integer.class) &#123;</div><div class="line">                System.out.println(Thread.currentThread().getName() + <span class="string">" 获取到 Integer 锁"</span>);</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<h2 id="多任务处理"><a href="#多任务处理" class="headerlink" title="多任务处理"></a>多任务处理</h2><ul>
+<h2 id="9、多任务处理"><a href="#9、多任务处理" class="headerlink" title="9、多任务处理"></a>9、多任务处理</h2><ul>
 <li>基于进程的</li>
 <li>基于线程的</li>
 </ul>
-<h2 id="多线程目的"><a href="#多线程目的" class="headerlink" title="多线程目的"></a>多线程目的</h2><p>多线程编程的目的，就是”最大限度地利用 CPU 资源”，当某一线程的处理不需要占用 CPU 而只和 I/O 等资源打交道时，让需要占用 CPU 资源的其它线程有机会获得 CPU 资源。从根本上说，这就是多线程编程的最终目的。</p>
-<h2 id="线程安全"><a href="#线程安全" class="headerlink" title="线程安全"></a>线程安全</h2><p>线程安全是编程中的术语，指某个函数、函数库在多线程环境中被调用时，能够正确地处理多个线程之间的共享变量，使程序功能正确完成。</p>
+<h2 id="10、多线程目的"><a href="#10、多线程目的" class="headerlink" title="10、多线程目的"></a>10、多线程目的</h2><p>多线程编程的目的，就是”最大限度地利用 CPU 资源”，当某一线程的处理不需要占用 CPU 而只和 I/O 等资源打交道时，让需要占用 CPU 资源的其它线程有机会获得 CPU 资源。从根本上说，这就是多线程编程的最终目的。</p>
+<h2 id="11、线程安全"><a href="#11、线程安全" class="headerlink" title="11、线程安全"></a>11、线程安全</h2><p>线程安全是编程中的术语，指某个函数、函数库在多线程环境中被调用时，能够正确地处理多个线程之间的共享变量，使程序功能正确完成。</p>
 <p>参考：<br><a href="http://www.ed2000.com/ShowFile/221694.html" target="_blank" rel="external">圣思园张龙老师的 Java 视频</a><br><a href="https://my.oschina.net/mingdongcheng/blog/139263" target="_blank" rel="external">开源中国某博客</a></p>
 
         <!-- 显示正文 -->
@@ -192,7 +192,7 @@
 
     <footer class="article-footer">
       
-        <a data-url="http://yoursite.com/2016/11/19/thread/" data-id="cizq7ix74000a80qr766ry0qf" class="article-share-link" data-share="baidu" data-title="多线程总结">分享到</a>
+        <a data-url="http://yoursite.com/2016/11/19/thread/" data-id="cizqkhwax000bksqrht38vubd" class="article-share-link" data-share="baidu" data-title="多线程总结">分享到</a>
       
 
       
@@ -278,7 +278,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">分类</h3>
     <div class="widget">
-      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/JavaEE-开发/">JavaEE 开发</a><span class="category-list-count">5</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/JavaSE-基础/">JavaSE 基础</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/工具使用/">工具使用</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/数据库/">数据库</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/面试/">面试</a><span class="category-list-count">3</span></li></ul>
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/JavaEE-开发/">JavaEE 开发</a><span class="category-list-count">4</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/JavaSE-基础/">JavaSE 基础</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/工具使用/">工具使用</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/数据库/">数据库</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/面试/">面试</a><span class="category-list-count">3</span></li></ul>
     </div>
   </div>
 
@@ -287,7 +287,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">标签云</h3>
     <div class="widget tagcloud">
-      <a href="/tags/Eclipse/" style="font-size: 10px;">Eclipse</a> <a href="/tags/IO/" style="font-size: 10px;">IO</a> <a href="/tags/MySQL/" style="font-size: 10px;">MySQL</a> <a href="/tags/Session/" style="font-size: 10px;">Session</a> <a href="/tags/jsp/" style="font-size: 10px;">jsp</a> <a href="/tags/tomcat/" style="font-size: 10px;">tomcat</a> <a href="/tags/分页/" style="font-size: 10px;">分页</a> <a href="/tags/文件上传/" style="font-size: 10px;">文件上传</a> <a href="/tags/求职/" style="font-size: 10px;">求职</a> <a href="/tags/线程/" style="font-size: 10px;">线程</a> <a href="/tags/面试题/" style="font-size: 20px;">面试题</a>
+      <a href="/tags/Eclipse/" style="font-size: 10px;">Eclipse</a> <a href="/tags/IO/" style="font-size: 10px;">IO</a> <a href="/tags/MySQL/" style="font-size: 10px;">MySQL</a> <a href="/tags/Session/" style="font-size: 10px;">Session</a> <a href="/tags/tomcat/" style="font-size: 10px;">tomcat</a> <a href="/tags/分页/" style="font-size: 10px;">分页</a> <a href="/tags/文件上传/" style="font-size: 10px;">文件上传</a> <a href="/tags/求职/" style="font-size: 10px;">求职</a> <a href="/tags/线程/" style="font-size: 10px;">线程</a> <a href="/tags/面试题/" style="font-size: 20px;">面试题</a>
     </div>
   </div>
 
@@ -296,7 +296,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">归档</h3>
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/01/">2017年 01月</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/12/">2016年 12月</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/11/">2016年 11月</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/10/">2016年 10月</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/08/">2016年 08月</a><span class="archive-list-count">1</span></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/01/">2017年 01月</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/12/">2016年 12月</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/11/">2016年 11月</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/11/">2015年 11月</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/10/">2015年 10月</a><span class="archive-list-count">1</span></li></ul>
     </div>
   </div>
 
