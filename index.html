@@ -67,9 +67,9 @@
     <div class="outer">
       <section id="main">
   
-    <article id="post-常见的面试题一" class="article article-type-post" itemscope itemprop="blogPost">
+    <article id="post-常见的面试题" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
-    <a href="/2017/01/01/常见的面试题一/" class="article-date">
+    <a href="/2017/01/01/常见的面试题/" class="article-date">
   <time datetime="2017-01-01T08:22:07.374Z" itemprop="datePublished">2017-01-01</time>
 </a>
     
@@ -85,7 +85,7 @@
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2017/01/01/常见的面试题一/">常见的面试题一</a>
+      <a class="article-title" href="/2017/01/01/常见的面试题/">常见的面试题一</a>
     </h1>
   
 
@@ -95,12 +95,12 @@
     <div class="article-entry" itemprop="articleBody">
 
       
-        <h1 id="1-obj-hashcode-、obj-equals-b"><a href="#1-obj-hashcode-、obj-equals-b" class="headerlink" title="1. obj.hashcode()、obj.equals(b)"></a>1. obj.hashcode()、obj.equals(b)</h1><h2 id="作用"><a href="#作用" class="headerlink" title="作用"></a>作用</h2><p>hashcode() 方法用来获取对象的哈希值，提高哈希表的性能（如 HashMap、HashTable）</p>
+        <h1 id="一、obj-hashcode-、obj-equals-b"><a href="#一、obj-hashcode-、obj-equals-b" class="headerlink" title="一、obj.hashcode()、obj.equals(b)"></a>一、obj.hashcode()、obj.equals(b)</h1><h2 id="作用"><a href="#作用" class="headerlink" title="作用"></a>作用</h2><p>hashcode() 方法用来获取对象的哈希值，提高哈希表的性能（如 HashMap、HashTable）</p>
 <h2 id="hashcode-工作原理"><a href="#hashcode-工作原理" class="headerlink" title="hashcode 工作原理"></a>hashcode 工作原理</h2><p>hashcode 是用来查找的，假如内存中有依次八个位置<br><figure class="highlight basic"><table><tr><td class="code"><pre><div class="line"><span class="symbol">0 </span> <span class="number">1</span>  <span class="number">2</span>  <span class="number">3</span>  <span class="number">4</span>  <span class="number">5</span>  <span class="number">6</span>  <span class="number">7</span>  <span class="number">8</span></div></pre></td></tr></table></figure></p>
 <p>现有个类，类中有个字段为 id，需要把这个类放在8个位置之一。如果不用 hashcode 而任意存放，当查找时候，则需要对这8各个位置进行遍历，或者使用二分法之类的算法。<br>如果使用 hashcode 效率将会大大的提高。<br>定义 hashcode 的值为 id%8，取得余数则为存放的位置。如：假设 id=9，9%8余数为1，于是存放的位置为1。假设 id=13，13%8余数为5，于是存放的位置为5。于是，每次需要查找的时候只需要通过 id%8 这个算法求余数，直接找到存放的位置了。</p>
         
           <p class="article-more-link">
-            <a href="/2017/01/01/常见的面试题一/#more">Read More</a>
+            <a href="/2017/01/01/常见的面试题/#more">Read More</a>
           </p>
         
       
@@ -109,77 +109,11 @@
 
     <footer class="article-footer">
       
-        <a data-url="http://yoursite.com/2017/01/01/常见的面试题一/" data-id="cizqkhwb9000hksqryr4lqltn" class="article-share-link" data-share="baidu" data-title="常见的面试题一">分享到</a>
+        <a data-url="http://yoursite.com/2017/01/01/常见的面试题/" data-id="cizs163uh000gfgqrji9w5i97" class="article-share-link" data-share="baidu" data-title="常见的面试题一">分享到</a>
       
 
       
-        <a href="http://yoursite.com/2017/01/01/常见的面试题一/#ds-thread" class="article-comment-link">评论</a>
-      
-
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/面试题/">面试题</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-常见的面试题二" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2017/01/01/常见的面试题二/" class="article-date">
-  <time datetime="2016-12-31T16:00:00.000Z" itemprop="datePublished">2017-01-01</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/面试/">面试</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/01/01/常见的面试题二/">常见的面试题二</a>
-    </h1>
-  
-
-      </header>
-    
-
-    <div class="article-entry" itemprop="articleBody">
-
-      
-
-
-        
-
-
-        
-
-        
-
-        <!-- 显示正文 -->
-        <h1 id="1-用-java-写出获取当前时间毫秒值。明天12点的毫秒值怎么获取？"><a href="#1-用-java-写出获取当前时间毫秒值。明天12点的毫秒值怎么获取？" class="headerlink" title="1. 用 java 写出获取当前时间毫秒值。明天12点的毫秒值怎么获取？"></a>1. 用 java 写出获取当前时间毫秒值。明天12点的毫秒值怎么获取？</h1><figure class="highlight java"><table><tr><td class="code"><pre><div class="line"><span class="comment">// 方法一</span></div><div class="line">System.currentTimeMillis();</div><div class="line"><span class="comment">// 方法二</span></div><div class="line">Calendar.getInstance().getTimeInMillis();</div><div class="line"><span class="comment">// 方法三</span></div><div class="line"><span class="keyword">new</span> Date().getTime();</div></pre></td></tr></table></figure>
-<h1 id="2-用-SQL-语句写出创建-t-user-学号，姓名，年龄，性别，身份证号码-其中学号为自增类型主键，身份证号码唯一"><a href="#2-用-SQL-语句写出创建-t-user-学号，姓名，年龄，性别，身份证号码-其中学号为自增类型主键，身份证号码唯一" class="headerlink" title="2. 用 SQL 语句写出创建 t_user(学号，姓名，年龄，性别，身份证号码) 其中学号为自增类型主键，身份证号码唯一"></a>2. 用 SQL 语句写出创建 t_user(学号，姓名，年龄，性别，身份证号码) 其中学号为自增类型主键，身份证号码唯一</h1><figure class="highlight sql"><table><tr><td class="code"><pre><div class="line"><span class="keyword">CREATE</span> <span class="keyword">TABLE</span> t_user</div><div class="line">(</div><div class="line">xuehao <span class="built_in">int</span> <span class="keyword">NOT</span> <span class="literal">NULL</span> AUTO_INCREMENT, </div><div class="line"><span class="keyword">name</span> <span class="built_in">VARCHAR</span>(<span class="number">10</span>) <span class="keyword">NOT</span> <span class="literal">NULL</span>,</div><div class="line">age <span class="built_in">int</span> <span class="keyword">NOT</span> <span class="literal">NULL</span>,</div><div class="line">sex <span class="built_in">VARCHAR</span>(<span class="number">4</span>) <span class="keyword">NOT</span> <span class="literal">NULL</span>,</div><div class="line">idnumber <span class="built_in">VARCHAR</span>(<span class="number">18</span>) <span class="keyword">NOT</span> <span class="literal">NULL</span>,</div><div class="line">PRIMARY <span class="keyword">KEY</span>(xuehao),</div><div class="line"><span class="keyword">UNIQUE</span>(idnumber)</div><div class="line">)</div></pre></td></tr></table></figure>
-<h1 id="3-什么叫线程安全？"><a href="#3-什么叫线程安全？" class="headerlink" title="3. 什么叫线程安全？"></a>3. 什么叫线程安全？</h1><p>指程序在运行过程中，能够正确的处理多线程之间的共享的变量</p>
-
-        <!-- 显示正文 -->
-      
-    </div>
-
-
-    <footer class="article-footer">
-      
-        <a data-url="http://yoursite.com/2017/01/01/常见的面试题二/" data-id="cizqkhwbf000kksqrvicn2bwu" class="article-share-link" data-share="baidu" data-title="常见的面试题二">分享到</a>
-      
-
-      
-        <a href="http://yoursite.com/2017/01/01/常见的面试题二/#ds-thread" class="article-comment-link">评论</a>
+        <a href="http://yoursite.com/2017/01/01/常见的面试题/#ds-thread" class="article-comment-link">评论</a>
       
 
       
@@ -237,7 +171,7 @@
 
     <footer class="article-footer">
       
-        <a data-url="http://yoursite.com/2016/12/26/面试经历/" data-id="cizqkhwby000vksqrd8087495" class="article-share-link" data-share="baidu" data-title="面试经历">分享到</a>
+        <a data-url="http://yoursite.com/2016/12/26/面试经历/" data-id="cizs163uz000qfgqr9927kszs" class="article-share-link" data-share="baidu" data-title="面试经历">分享到</a>
       
 
       
@@ -296,7 +230,7 @@
 
     <footer class="article-footer">
       
-        <a data-url="http://yoursite.com/2016/12/08/eclipse-key-map/" data-id="cizqkhwan0007ksqrh7lyzp0l" class="article-share-link" data-share="baidu" data-title="Eclipse 常用快捷键">分享到</a>
+        <a data-url="http://yoursite.com/2016/12/08/eclipse-key-map/" data-id="cizs163tv0006fgqrfqp8qqm9" class="article-share-link" data-share="baidu" data-title="Eclipse 常用快捷键">分享到</a>
       
 
       
@@ -358,7 +292,7 @@
 
     <footer class="article-footer">
       
-        <a data-url="http://yoursite.com/2016/11/19/thread/" data-id="cizqkhwax000bksqrht38vubd" class="article-share-link" data-share="baidu" data-title="多线程总结">分享到</a>
+        <a data-url="http://yoursite.com/2016/11/19/thread/" data-id="cizs163u6000bfgqrd5bbszh0" class="article-share-link" data-share="baidu" data-title="多线程总结">分享到</a>
       
 
       
@@ -431,7 +365,7 @@
 
     <footer class="article-footer">
       
-        <a data-url="http://yoursite.com/2016/11/16/JavaIO流小结/" data-id="cizqkhw9y0002ksqr4owqw0wu" class="article-share-link" data-share="baidu" data-title="JavaIO 小结">分享到</a>
+        <a data-url="http://yoursite.com/2016/11/16/JavaIO流小结/" data-id="cizs163t80000fgqrt8j4zar8" class="article-share-link" data-share="baidu" data-title="JavaIO 小结">分享到</a>
       
 
       
@@ -493,7 +427,7 @@
 
     <footer class="article-footer">
       
-        <a data-url="http://yoursite.com/2016/11/15/文件上传小结/" data-id="cizqkhwbm000oksqr0r8mzcfi" class="article-share-link" data-share="baidu" data-title="简单文件上传小结">分享到</a>
+        <a data-url="http://yoursite.com/2016/11/15/文件上传小结/" data-id="cizs163ul000jfgqrmyftheym" class="article-share-link" data-share="baidu" data-title="简单文件上传小结">分享到</a>
       
 
       
@@ -554,7 +488,7 @@
 
     <footer class="article-footer">
       
-        <a data-url="http://yoursite.com/2016/11/12/Session机制详解/" data-id="cizqkhwaj0006ksqrmu127lh0" class="article-share-link" data-share="baidu" data-title="Session机制详解">分享到</a>
+        <a data-url="http://yoursite.com/2016/11/12/Session机制详解/" data-id="cizs163tg0002fgqr3zlsobde" class="article-share-link" data-share="baidu" data-title="Session机制详解">分享到</a>
       
 
       
@@ -617,7 +551,7 @@
 
     <footer class="article-footer">
       
-        <a data-url="http://yoursite.com/2016/11/10/MySQL免安装版/" data-id="cizqkhwaa0005ksqrj7o2oxeb" class="article-share-link" data-share="baidu" data-title="MySQL 免安装版配置">分享到</a>
+        <a data-url="http://yoursite.com/2016/11/10/MySQL免安装版/" data-id="cizs163ty0007fgqrxuin0w8a" class="article-share-link" data-share="baidu" data-title="MySQL 免安装版配置">分享到</a>
       
 
       
@@ -676,7 +610,7 @@
 
     <footer class="article-footer">
       
-        <a data-url="http://yoursite.com/2015/11/14/分页/" data-id="cizqkhwb4000dksqrt3khsdug" class="article-share-link" data-share="baidu" data-title="JDBC+MySQL+JSP 分页小结">分享到</a>
+        <a data-url="http://yoursite.com/2015/11/14/分页/" data-id="cizs163uc000dfgqryvmhcxcj" class="article-share-link" data-share="baidu" data-title="JDBC+MySQL+JSP 分页小结">分享到</a>
       
 
       
@@ -685,6 +619,68 @@
 
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/分页/">分页</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-Servelt 读取文件小结" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2015/10/11/Servelt 读取文件小结/" class="article-date">
+  <time datetime="2015-10-10T16:00:00.000Z" itemprop="datePublished">2015-10-11</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/JavaEE-开发/">JavaEE 开发</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2015/10/11/Servelt 读取文件小结/">Servlet 中读取文件的常见方式</a>
+    </h1>
+  
+
+      </header>
+    
+
+    <div class="article-entry" itemprop="articleBody">
+
+      
+        <h2 id="方式一：ClassLoader-读取类-包内资源文件"><a href="#方式一：ClassLoader-读取类-包内资源文件" class="headerlink" title="方式一：ClassLoader 读取类/包内资源文件"></a>方式一：ClassLoader 读取类/包内资源文件</h2><p>使用类装载器类读取类路径下面的资源文件(和包最外层的包是同一文件夹下)</p>
+<ol>
+<li>不能读取大文件，如需要使用方式五</li>
+<li>使用 ClassLoader 只会加载资源文件一次</li>
+</ol>
+<p>读取类路径下面的资源文件(和包最外层的包是同一文件夹下)<br><figure class="highlight java"><table><tr><td class="code"><pre><div class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">read1_1</span><span class="params">()</span> </span>&#123;</div><div class="line">    <span class="keyword">try</span> &#123;</div><div class="line">        ClassLoader loader = <span class="keyword">this</span>.getClass().getClassLoader();</div><div class="line">        InputStream in = loader.getResourceAsStream(<span class="string">"resource_File2.propties"</span>);</div><div class="line">        Properties pro = <span class="keyword">new</span> Properties();</div><div class="line">        pro.load(in);</div><div class="line">        System.out.println(pro.getProperty(<span class="string">"key"</span>));</div><div class="line">    &#125; <span class="keyword">catch</span> (IOException e) &#123;</div><div class="line">        e.printStackTrace();</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+        
+          <p class="article-more-link">
+            <a href="/2015/10/11/Servelt 读取文件小结/#more">Read More</a>
+          </p>
+        
+      
+    </div>
+
+
+    <footer class="article-footer">
+      
+        <a data-url="http://yoursite.com/2015/10/11/Servelt 读取文件小结/" data-id="cizs163tp0005fgqrchon2ke6" class="article-share-link" data-share="baidu" data-title="Servlet 中读取文件的常见方式">分享到</a>
+      
+
+      
+        <a href="http://yoursite.com/2015/10/11/Servelt 读取文件小结/#ds-thread" class="article-comment-link">评论</a>
+      
+
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Servlet/">Servlet</a></li></ul>
 
     </footer>
   </div>
@@ -723,19 +719,7 @@
       
         <h1 id="方法一：在-server-xml-中指定"><a href="#方法一：在-server-xml-中指定" class="headerlink" title="方法一：在 server.xml 中指定"></a>方法一：在 server.xml 中指定</h1><p>在 tomcat 中的 <code>conf</code> 目录中，在 server.xml 中的，<code>&lt;host/&gt;</code>节点中添加：<br><figure class="highlight xml"><table><tr><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">Context</span> </div><div class="line"><span class="attr">path</span>=<span class="string">"/myapp"</span> </div><div class="line"><span class="attr">reloadable</span>=<span class="string">"true"</span> </div><div class="line"><span class="attr">docBase</span>=<span class="string">"D:\myapp"</span> </div><div class="line"><span class="attr">workDir</span>=<span class="string">"D:\myapp\work"</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">Context</span>&gt;</span></div></pre></td></tr></table></figure></p>
 <p>在 Tomcat 的配置文件中，一个 Web 应用就是一个特定的 Context，可以通过在 server.xml 中新建 Context 里部署一个 JavaWeb 应用程序。  </p>
-<p>其中 path 是虚拟路径（外部访问路径），docBase 是 JavaWeb 的物理路径（项目放在硬盘哪个位置），workDir 是这个应用的工作目录（默认是 tomcat 目录中 work 目录），存放运行是生成的于这个应用相关的文件</p>
-<h1 id="方法二：放置-webapps-目录下"><a href="#方法二：放置-webapps-目录下" class="headerlink" title="方法二：放置 webapps 目录下"></a>方法二：放置 webapps 目录下</h1><p>将 web 项目文件打包成 war 包或者直接将整个文件夹（包括该web的所有内容），拷贝到 tomcat 的 webapps 目录中。</p>
-<p>Tomcat 的 webapps 目录是 Tomcat 默认的应用目录，当服务器启动时，会加载所有这个目录下的应用。也可以将  JavaWeb 应用打成一个 war 包放在目录下，服务器会自动解开这个 war  包，并在这个目录下生成一个同名的文件夹。</p>
-<p>一个 war 包就是有特性格式的 jar 包，它是将一个 Web 应用程序的所有内容进行压缩得到。具体如何打包，可以使用许多开发工具的IDE 环境，如 Eclipse、NetBeans、ant、JBuilder等。也可以用 cmd 命令：<br><figure class="highlight cmd"><table><tr><td class="code"><pre><div class="line">jar -cvf applicationname.war package.*；</div></pre></td></tr></table></figure></p>
-<h1 id="方法三：创建一个-Context-文件（xml）"><a href="#方法三：创建一个-Context-文件（xml）" class="headerlink" title="方法三：创建一个 Context 文件（xml）"></a>方法三：创建一个 Context 文件（xml）</h1><p>在 tomcat 的 <code>conf\Catalina\localhost</code> 目录中，新建一个 xml 文件，名字任意，该 xml 文件的内容为：<br><figure class="highlight xml"><table><tr><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">Context</span> </div><div class="line"><span class="attr">path</span>=<span class="string">"/hello"</span> </div><div class="line"><span class="attr">docBase</span>=<span class="string">"D:\afload"</span> </div><div class="line"><span class="attr">debug</span>=<span class="string">"0"</span> </div><div class="line"><span class="attr">privileged</span>=<span class="string">"true"</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">Context</span>&gt;</span></div></pre></td></tr></table></figure></p>
-<p>可以看出，文件中描述一个应用程序的 Context 信息，其内容和 server.xml 中的 Context 信息格式是一致的，文件名便是虚拟目录名。可以直接建立这样的一个 xml 文件，放在Tomcat的 conf\catalina\localhost 目录下</p>
-<p><strong>注意：</strong></p>
-<ol>
-<li><p>删除一个 Web 应用同时也要删除 webapps 下相应的文件夹和 server.xml 中相应的 Context，还要将 conf\catalina\localhost 目录下相应的 xml 文件删除。否则 Tomcat 仍会按配置去加载</p>
-</li>
-<li><p>方法三优点是可以定义别名。服务器端运行的项目名称为 path，外部访问的 URL 则使用 XML 的文件名。两种方式都可以访问到网站。</p>
-</li>
-</ol>
+<p>其中 path 是虚拟路径（外部访问路径），docBase 是 JavaWeb 的物理路径（项目放在硬盘哪个位置），workDir 是这个应用的工作目录（默认是 tomcat 目录中 work 目录），存放运行是生成的于这个应用相关的文件<br>
         
           <p class="article-more-link">
             <a href="/2015/10/01/部署网站应用/#more">Read More</a>
@@ -747,7 +731,7 @@
 
     <footer class="article-footer">
       
-        <a data-url="http://yoursite.com/2015/10/01/部署网站应用/" data-id="cizqkhwbt000rksqrr3m4sc18" class="article-share-link" data-share="baidu" data-title="Tomcat 部署 JavaWeb 应用的三种方式">分享到</a>
+        <a data-url="http://yoursite.com/2015/10/01/部署网站应用/" data-id="cizs163us000nfgqr8roarh1u" class="article-share-link" data-share="baidu" data-title="Tomcat 部署 JavaWeb 应用的三种方式">分享到</a>
       
 
       
@@ -811,7 +795,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">分类</h3>
     <div class="widget">
-      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/JavaEE-开发/">JavaEE 开发</a><span class="category-list-count">4</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/JavaSE-基础/">JavaSE 基础</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/工具使用/">工具使用</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/数据库/">数据库</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/面试/">面试</a><span class="category-list-count">3</span></li></ul>
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/JavaEE-开发/">JavaEE 开发</a><span class="category-list-count">5</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/JavaSE-基础/">JavaSE 基础</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/工具使用/">工具使用</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/数据库/">数据库</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/面试/">面试</a><span class="category-list-count">2</span></li></ul>
     </div>
   </div>
 
@@ -820,7 +804,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">标签云</h3>
     <div class="widget tagcloud">
-      <a href="/tags/Eclipse/" style="font-size: 10px;">Eclipse</a> <a href="/tags/IO/" style="font-size: 10px;">IO</a> <a href="/tags/MySQL/" style="font-size: 10px;">MySQL</a> <a href="/tags/Session/" style="font-size: 10px;">Session</a> <a href="/tags/tomcat/" style="font-size: 10px;">tomcat</a> <a href="/tags/分页/" style="font-size: 10px;">分页</a> <a href="/tags/文件上传/" style="font-size: 10px;">文件上传</a> <a href="/tags/求职/" style="font-size: 10px;">求职</a> <a href="/tags/线程/" style="font-size: 10px;">线程</a> <a href="/tags/面试题/" style="font-size: 20px;">面试题</a>
+      <a href="/tags/Eclipse/" style="font-size: 10px;">Eclipse</a> <a href="/tags/IO/" style="font-size: 10px;">IO</a> <a href="/tags/MySQL/" style="font-size: 10px;">MySQL</a> <a href="/tags/Servlet/" style="font-size: 10px;">Servlet</a> <a href="/tags/Session/" style="font-size: 10px;">Session</a> <a href="/tags/tomcat/" style="font-size: 10px;">tomcat</a> <a href="/tags/分页/" style="font-size: 10px;">分页</a> <a href="/tags/文件上传/" style="font-size: 10px;">文件上传</a> <a href="/tags/求职/" style="font-size: 10px;">求职</a> <a href="/tags/线程/" style="font-size: 10px;">线程</a> <a href="/tags/面试题/" style="font-size: 10px;">面试题</a>
     </div>
   </div>
 
@@ -829,7 +813,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">归档</h3>
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/01/">2017年 01月</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/12/">2016年 12月</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/11/">2016年 11月</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/11/">2015年 11月</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/10/">2015年 10月</a><span class="archive-list-count">1</span></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/01/">2017年 01月</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/12/">2016年 12月</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/11/">2016年 11月</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/11/">2015年 11月</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/10/">2015年 10月</a><span class="archive-list-count">2</span></li></ul>
     </div>
   </div>
 
