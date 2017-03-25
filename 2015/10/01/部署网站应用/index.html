@@ -6,16 +6,16 @@
   
   <title>Tomcat 部署 JavaWeb 应用 | website</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="tomcat">
+  <meta name="description" content="Tomcat">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Tomcat 部署 JavaWeb 应用">
 <meta property="og:url" content="http://yoursite.com/2015/10/01/部署网站应用/index.html">
 <meta property="og:site_name" content="website">
-<meta property="og:description" content="tomcat">
-<meta property="og:updated_time" content="2017-03-20T01:27:48.381Z">
+<meta property="og:description" content="Tomcat">
+<meta property="og:updated_time" content="2017-03-25T13:17:07.968Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Tomcat 部署 JavaWeb 应用">
-<meta name="twitter:description" content="tomcat">
+<meta name="twitter:description" content="Tomcat">
   
     <link rel="alternative" href="/atom.xml" title="website" type="application/atom+xml">
   
@@ -105,7 +105,7 @@
         
         <p style="width: 100%; background-color: #EEE; height: 3px"></p>
           <!-- 显示目录 -->
-          <ol class="mytoc"><li class="mytoc-item mytoc-level-1"><a class="mytoc-link" href="#方法一：在-server-xml-中指定"><span class="mytoc-text">方法一：在 server.xml 中指定</span></a></li><li class="mytoc-item mytoc-level-1"><a class="mytoc-link" href="#方法二：放置-webapps-目录下"><span class="mytoc-text">方法二：放置 webapps 目录下</span></a></li><li class="mytoc-item mytoc-level-1"><a class="mytoc-link" href="#方法三：创建一个-Context-文件（xml）"><span class="mytoc-text">方法三：创建一个 Context 文件（xml）</span></a></li><li class="mytoc-item mytoc-level-1"><a class="mytoc-link" href="#问题：如何配置有层级关系的两个网站？"><span class="mytoc-text">问题：如何配置有层级关系的两个网站？</span></a></li></ol>
+          <ol class="mytoc"><li class="mytoc-item mytoc-level-1"><a class="mytoc-link" href="#方法一：在-server-xml-中指定"><span class="mytoc-text">方法一：在 server.xml 中指定</span></a></li><li class="mytoc-item mytoc-level-1"><a class="mytoc-link" href="#方法二：放置-webapps-目录下"><span class="mytoc-text">方法二：放置 webapps 目录下</span></a></li><li class="mytoc-item mytoc-level-1"><a class="mytoc-link" href="#方法三：创建一个-Context-文件（xml）"><span class="mytoc-text">方法三：创建一个 Context 文件（xml）</span></a></li><li class="mytoc-item mytoc-level-1"><a class="mytoc-link" href="#问题1：如何配置有层级关系的两个网站？"><span class="mytoc-text">问题1：如何配置有层级关系的两个网站？</span></a></li><li class="mytoc-item mytoc-level-1"><a class="mytoc-link" href="#问题2：部署应用时，资源重复加载"><span class="mytoc-text">问题2：部署应用时，资源重复加载</span></a></li></ol>
         <!-- 显示目录 -->
         <p style="width: 100%; background-color: #EEE; height: 3px"></p>
          
@@ -113,14 +113,18 @@
         
 
         <!-- 显示正文 -->
-        <h1 id="方法一：在-server-xml-中指定"><a href="#方法一：在-server-xml-中指定" class="headerlink" title="方法一：在 server.xml 中指定"></a>方法一：在 server.xml 中指定</h1><p>在 tomcat 中的 <code>conf</code> 目录中，在 server.xml 中的，<code>&lt;host/&gt;</code>节点中添加：<br><figure class="highlight xml"><table><tr><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">Context</span> </span></div><div class="line"><span class="attr">path</span>=<span class="string">"/myapp"</span> </div><div class="line"><span class="attr">reloadable</span>=<span class="string">"true"</span> </div><div class="line"><span class="attr">docBase</span>=<span class="string">"D:\myapp"</span> </div><div class="line"><span class="attr">workDir</span>=<span class="string">"D:\myapp\work"</span>&gt;</div><div class="line"><span class="tag">&lt;/<span class="name">Context</span>&gt;</span></div></pre></td></tr></table></figure></p>
+        <h1 id="方法一：在-server-xml-中指定"><a href="#方法一：在-server-xml-中指定" class="headerlink" title="方法一：在 server.xml 中指定"></a>方法一：在 server.xml 中指定</h1><p>在 Tomcat 中的 <code>conf</code> 目录中，在 server.xml 中的，<code>&lt;host/&gt;</code>节点中添加：<br><figure class="highlight xml"><table><tr><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">Context</span> </span></div><div class="line"><span class="attr">path</span>=<span class="string">"/myapp"</span> </div><div class="line"><span class="attr">reloadable</span>=<span class="string">"true"</span> </div><div class="line"><span class="attr">docBase</span>=<span class="string">"D:\myapp"</span> </div><div class="line"><span class="attr">workDir</span>=<span class="string">"D:\myapp\work"</span>&gt;</div><div class="line"><span class="tag">&lt;/<span class="name">Context</span>&gt;</span></div></pre></td></tr></table></figure></p>
 <p>在 Tomcat 的配置文件中，一个 Web 应用就是一个特定的 Context，可以通过在 server.xml 中新建 Context 里部署一个 JavaWeb 应用程序。  </p>
-<p>其中 path 是虚拟路径（外部访问路径），docBase 是 JavaWeb 的物理路径（项目放在硬盘哪个位置），workDir 是这个应用的工作目录（默认是 tomcat 目录中 work 目录），存放运行是生成的于这个应用相关的文件<br><a id="more"></a></p>
-<h1 id="方法二：放置-webapps-目录下"><a href="#方法二：放置-webapps-目录下" class="headerlink" title="方法二：放置 webapps 目录下"></a>方法二：放置 webapps 目录下</h1><p>将 web 项目文件打包成 war 包或者直接将整个文件夹（包括该web的所有内容），拷贝到 tomcat 的 webapps 目录中。</p>
+<p>其中 <code>path</code> 是虚拟路径（外部访问路径），<code>docBase</code> 是应用的物理路径（项目放在硬盘哪个位置），<code>workDir</code> 是这个应用的工作目录（默认是 Tomcat 目录中 work 目录），存放运行是生成的于这个应用相关的文件<br><a id="more"></a><br><strong>注：</strong></p>
+<ol>
+<li>当 <code>path=&quot;&quot;</code> 和 <code>path=&quot;/&quot;</code> 应用不会被加载（原因不明）</li>
+<li>docBase 属性中路径的 “\” 和 “/“ 皆可（在 apache-tomcat-6.0.44 和 apache-tomcat-7.0.68 试验通过） </li>
+</ol>
+<h1 id="方法二：放置-webapps-目录下"><a href="#方法二：放置-webapps-目录下" class="headerlink" title="方法二：放置 webapps 目录下"></a>方法二：放置 webapps 目录下</h1><p>将 web 项目文件打包成 war 包或者直接将整个文件夹（包括该web的所有内容），拷贝到 Tomcat 的 webapps 目录中。</p>
 <p>Tomcat 的 webapps 目录是 Tomcat 默认的应用目录，当服务器启动时，会加载所有这个目录下的应用。也可以将  JavaWeb 应用打成一个 war 包放在目录下，服务器会自动解开这个 war  包，并在这个目录下生成一个同名的文件夹。</p>
-<p>一个 war 包就是有特性格式的 jar 包，它是将一个 Web 应用程序的所有内容进行压缩得到。具体如何打包，可以使用许多开发工具的IDE 环境，如 Eclipse、NetBeans、ant、JBuilder等。也可以用 cmd 命令：<br><figure class="highlight cmd"><table><tr><td class="code"><pre><div class="line">jar -cvf applicationname.war package.*；</div></pre></td></tr></table></figure></p>
-<h1 id="方法三：创建一个-Context-文件（xml）"><a href="#方法三：创建一个-Context-文件（xml）" class="headerlink" title="方法三：创建一个 Context 文件（xml）"></a>方法三：创建一个 Context 文件（xml）</h1><p>在 tomcat 的 <code>conf\Catalina\localhost</code> 目录中，新建一个 xml 文件，名字任意，该 xml 文件的内容为：<br><figure class="highlight xml"><table><tr><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">Context</span> </span></div><div class="line"><span class="attr">path</span>=<span class="string">"/hello"</span> </div><div class="line"><span class="attr">docBase</span>=<span class="string">"D:\afload"</span> </div><div class="line"><span class="attr">debug</span>=<span class="string">"0"</span> </div><div class="line"><span class="attr">privileged</span>=<span class="string">"true"</span>&gt;</div><div class="line"><span class="tag">&lt;/<span class="name">Context</span>&gt;</span></div></pre></td></tr></table></figure></p>
-<p>可以看出，文件中描述一个应用程序的 Context 信息，其内容和 server.xml 中的 Context 信息格式是一致的，文件名便是虚拟目录名。可以直接建立这样的一个 xml 文件，放在Tomcat的 conf\catalina\localhost 目录下</p>
+<p>一个 war 包就是有特性格式的 jar 包，它是将一个 Web 应用程序的所有内容进行压缩得到。具体如何打包，可以使用许多开发工具的IDE 环境，如 Eclipse、NetBeans、ant、JBuilder 等。也可以用 cmd 命令：<br><figure class="highlight cmd"><table><tr><td class="code"><pre><div class="line">jar -cvf applicationname.war package.*；</div></pre></td></tr></table></figure></p>
+<h1 id="方法三：创建一个-Context-文件（xml）"><a href="#方法三：创建一个-Context-文件（xml）" class="headerlink" title="方法三：创建一个 Context 文件（xml）"></a>方法三：创建一个 Context 文件（xml）</h1><p>在 Tomcat 的 <code>conf\Catalina\localhost</code> 目录中，新建一个 xml 文件，名字任意，该 xml 文件的内容为：<br><figure class="highlight xml"><table><tr><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">Context</span> </span></div><div class="line"><span class="attr">path</span>=<span class="string">"/myapp"</span> </div><div class="line"><span class="attr">docBase</span>=<span class="string">"D:\myapp"</span> </div><div class="line"><span class="attr">debug</span>=<span class="string">"0"</span> </div><div class="line"><span class="attr">privileged</span>=<span class="string">"true"</span>&gt;</div><div class="line"><span class="tag">&lt;/<span class="name">Context</span>&gt;</span></div></pre></td></tr></table></figure></p>
+<p>可以看出，文件中描述一个应用程序的 Context 信息，其内容和 server.xml 中的 Context 信息格式是一致的，文件名便是虚拟目录名。可以直接建立这样的一个 xml 文件，放在 Tomcat 的 conf\catalina\localhost 目录下</p>
 <p><strong>注意：</strong></p>
 <ol>
 <li><p>删除一个 Web 应用同时也要删除 webapps 下相应的文件夹和 server.xml 中相应的 Context，还要将 conf\catalina\localhost 目录下相应的 xml 文件删除。否则 Tomcat 仍会按配置去加载</p>
@@ -128,18 +132,16 @@
 <li><p>方法三优点是可以定义别名。服务器端运行的项目名称为 path，外部访问的 URL 则使用 XML 的文件名。两种方式都可以访问到网站。</p>
 </li>
 </ol>
-<h1 id="问题：如何配置有层级关系的两个网站？"><a href="#问题：如何配置有层级关系的两个网站？" class="headerlink" title="问题：如何配置有层级关系的两个网站？"></a>问题：如何配置有层级关系的两个网站？</h1><p>效果如下：<br><figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">// 访问主网站</div><div class="line">http://localhost:8080/</div><div class="line">// 访问二级网站（如：blog）</div><div class="line">http://localhost:8080/blog</div></pre></td></tr></table></figure></p>
-<p>在tomcat 的 conf\catalina\localhost 目录下新建 <code>ROOT.xml</code> 和 <code>blog.xml</code> 文件，内容如下：</p>
-<pre><code class="xml"><span class="comment">&lt;!-- ROOT.xml --&gt;</span>
-&lt;?xml version="1.0" encoding="UTF-8"?&gt;
-<span class="tag">&lt;<span class="name">Context</span> <span class="attr">path</span>=<span class="string">"/"</span> <span class="attr">reloadable</span>=<span class="string">"true"</span> <span class="attr">docBase</span>=<span class="string">"F:\deployDemo01"</span>&gt;</span><span class="tag">&lt;/<span class="name">Context</span>&gt;</span>
-
-<span class="comment">&lt;!-- blog.xml --&gt;</span>
-&lt;?xml version="1.0" encoding="UTF-8"?&gt;
-<span class="tag">&lt;<span class="name">Context</span> <span class="attr">path</span>=<span class="string">"/blog"</span> <span class="attr">reloadable</span>=<span class="string">"true"</span> <span class="attr">docBase</span>=<span class="string">"F:\deployDemo01-blog"</span>&gt;</span><span class="tag">&lt;/<span class="name">Context</span>&gt;</span>
-</code></pre>
+<h1 id="问题1：如何配置有层级关系的两个网站？"><a href="#问题1：如何配置有层级关系的两个网站？" class="headerlink" title="问题1：如何配置有层级关系的两个网站？"></a>问题1：如何配置有层级关系的两个网站？</h1><p>效果如下：<br><figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">// 访问主网站：默认应用</div><div class="line">http://localhost:8080/</div><div class="line">// 访问二级网站（如：blog）</div><div class="line">http://localhost:8080/blog</div></pre></td></tr></table></figure></p>
+<p>在 tomcat 的 conf\catalina\localhost 目录下新建 <code>ROOT.xml</code> 和 <code>blog.xml</code> 文件，内容如下：<br><figure class="highlight xml"><table><tr><td class="code"><pre><div class="line"><span class="comment">&lt;!-- ROOT.xml --&gt;</span></div><div class="line">&lt;?xml version="1.0" encoding="UTF-8"?&gt;</div><div class="line"><span class="tag">&lt;<span class="name">Context</span> <span class="attr">path</span>=<span class="string">"/"</span> <span class="attr">reloadable</span>=<span class="string">"true"</span> <span class="attr">docBase</span>=<span class="string">"F:\deployDemo01"</span>&gt;</span><span class="tag">&lt;/<span class="name">Context</span>&gt;</span></div><div class="line"></div><div class="line"><span class="comment">&lt;!-- blog.xml --&gt;</span></div><div class="line">&lt;?xml version="1.0" encoding="UTF-8"?&gt;</div><div class="line"><span class="tag">&lt;<span class="name">Context</span> <span class="attr">path</span>=<span class="string">"/blog"</span> <span class="attr">reloadable</span>=<span class="string">"true"</span> <span class="attr">docBase</span>=<span class="string">"F:\deployDemo01-blog"</span>&gt;</span><span class="tag">&lt;/<span class="name">Context</span>&gt;</span></div></pre></td></tr></table></figure></p>
 <p>注：docBase 根据实际情况指定</p>
-<p>参考：<br><a href="http://lvzhou-31.iteye.com/blog/1898261" target="_blank" rel="external">某博客</a></p>
+<h1 id="问题2：部署应用时，资源重复加载"><a href="#问题2：部署应用时，资源重复加载" class="headerlink" title="问题2：部署应用时，资源重复加载"></a>问题2：部署应用时，资源重复加载</h1><p>应用已打包成 .war 包，放置在 Tomcat\webapps 路径下：<br>并在 sever.xml 中配置，如下（错误示例）：<br><figure class="highlight xml"><table><tr><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">Context</span> </span></div><div class="line"><span class="attr">docBase</span>=<span class="string">"F:\DevelopmentKit\apache-tomcat-6.0.44\webapps\TestTomcatDoubleReload.war"</span> </div><div class="line"><span class="attr">path</span>=<span class="string">"/ttd"</span> </div><div class="line"><span class="attr">reloadable</span>=<span class="string">"true"</span>&gt;</div><div class="line"><span class="tag">&lt;/<span class="name">Context</span>&gt;</span></div></pre></td></tr></table></figure></p>
+<p><strong>解决：</strong></p>
+<ol>
+<li>删除该 Context 节点</li>
+<li>将该 .war 包放置于除 Tomcat\webapps 之外的路径下</li>
+</ol>
+<p>参考：<br><a href="http://lvzhou-31.iteye.com/blog/1898261" target="_blank" rel="external">某博客</a><br><a href="http://www.cnblogs.com/hwaggLee/p/5151827.html" target="_blank" rel="external">博客园某博客</a></p>
 
         <!-- 显示正文 -->
       
@@ -156,7 +158,7 @@
       
 
       
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/JavaEE-开发/">JavaEE 开发</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/tomcat/">tomcat</a></li></ul>
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/JavaEE-开发/">JavaEE 开发</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Tomcat/">Tomcat</a></li></ul>
 
     </footer>
   </div>
@@ -243,7 +245,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">标签云</h3>
     <div class="widget tagcloud">
-      <a href="/tags/Java-IO/" style="font-size: 16.67px;">Java IO</a> <a href="/tags/JavaEE-开发/" style="font-size: 20px;">JavaEE 开发</a> <a href="/tags/JavaSE-基础/" style="font-size: 13.33px;">JavaSE 基础</a> <a href="/tags/MySQL/" style="font-size: 13.33px;">MySQL</a> <a href="/tags/jsp/" style="font-size: 10px;">jsp</a> <a href="/tags/tomcat/" style="font-size: 10px;">tomcat</a> <a href="/tags/分页/" style="font-size: 10px;">分页</a> <a href="/tags/工具配置及使用/" style="font-size: 10px;">工具配置及使用</a> <a href="/tags/面试/" style="font-size: 10px;">面试</a> <a href="/tags/面试题/" style="font-size: 13.33px;">面试题</a>
+      <a href="/tags/Java-IO/" style="font-size: 16.67px;">Java IO</a> <a href="/tags/JavaEE-开发/" style="font-size: 20px;">JavaEE 开发</a> <a href="/tags/JavaSE-基础/" style="font-size: 13.33px;">JavaSE 基础</a> <a href="/tags/MySQL/" style="font-size: 13.33px;">MySQL</a> <a href="/tags/Tomcat/" style="font-size: 10px;">Tomcat</a> <a href="/tags/jsp/" style="font-size: 10px;">jsp</a> <a href="/tags/分页/" style="font-size: 10px;">分页</a> <a href="/tags/工具配置及使用/" style="font-size: 10px;">工具配置及使用</a> <a href="/tags/面试/" style="font-size: 10px;">面试</a> <a href="/tags/面试题/" style="font-size: 13.33px;">面试题</a>
     </div>
   </div>
 
