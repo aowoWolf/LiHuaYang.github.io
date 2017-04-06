@@ -13,7 +13,7 @@
 <meta property="og:site_name" content="website">
 <meta property="og:description" content="JSP 学习小结">
 <meta property="og:image" content="http://yoursite.com/img/lc.png">
-<meta property="og:updated_time" content="2017-03-10T02:03:32.803Z">
+<meta property="og:updated_time" content="2017-03-25T14:39:14.513Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="JSP 学习小结">
 <meta name="twitter:description" content="JSP 学习小结">
@@ -124,10 +124,10 @@
 <h2 id="表达式"><a href="#表达式" class="headerlink" title="表达式"></a>表达式</h2><p>表达式中所写的，最终会作为方法 <code>out.print()</code> 参数，故不能加分号。默认不换行</p>
 <h2 id="指令"><a href="#指令" class="headerlink" title="指令"></a>指令</h2><p>page指令、Include指令、taglib指令</p>
 <figure class="highlight jsp"><table><tr><td class="code"><pre><div class="line"><span class="comment">// 使用 page 指令导入类时，使用逗号进行分割</span></div><div class="line">&lt;%@ page <span class="keyword">import</span>=<span class="string">"java.util.*,demo.*"</span> language=<span class="string">"java"</span>  pageEncoding=<span class="string">"UTF-8"</span>%&gt;</div></pre></td></tr></table></figure>
-<h2 id="声明"><a href="#声明" class="headerlink" title="声明"></a>声明</h2><p>需要声明成员变量（非局部变量）时候，用</p>
-<p><strong>注：</strong><br>所有的 scriptlet 和表达式都放会 <code>service()</code> 方法中，所以 scriptlet 中声明的变量总是局部变量。具体可查看 <code>tomcat/work/../../jsp/</code> 文件夹下的 <code>.java</code> 文</p>
+<h2 id="声明"><a href="#声明" class="headerlink" title="声明"></a>声明</h2><p>需要声明成员变量（非局部变量）时候用</p>
+<p><strong>注：</strong><br>所有的 scriptlet 和表达式都放会 <code>service()</code> 方法中，所以 scriptlet 中声明的变量总是局部变量。具体可查看 <code>tomcat/work/../../jsp/</code> 文件夹下的 <code>.java</code> 文件</p>
 <h1 id="JSP-域和隐式对象"><a href="#JSP-域和隐式对象" class="headerlink" title="JSP 域和隐式对象"></a>JSP 域和隐式对象</h1><h2 id="四大作用域"><a href="#四大作用域" class="headerlink" title="四大作用域"></a>四大作用域</h2><figure class="highlight java"><table><tr><td class="code"><pre><div class="line">page 域指的是 pageContext.</div><div class="line">request 域指的是 request HttpServletRequest</div><div class="line">session 域指的是 session HTTPSession</div><div class="line">application 域指的是 application ServletContext</div></pre></td></tr></table></figure>
-<p><strong>1. 什么是域？</strong><br>均内置了 map 集合，都有 setAttribute getAttribute 方法，均有固定的生命周期和作用域</p>
+<p><strong>1. 什么是域？</strong><br>均内置了 map 集合，都有 <code>setAttribute()</code>、<code>getAttribute()</code> 方法，均有固定的生命周期和作用域</p>
 <p><strong>2. 生命周期？</strong></p>
 <ul>
 <li><strong>page</strong>：从 jsp 页面被执行开始，到 jsp 页面执行完毕结束</li>
@@ -185,7 +185,7 @@
 <p><strong>response：</strong> 作为JSP页面处理结果返回给用户的响应存储在该对象中。并提供了设置响应内容、响应头以及重定向的方法(如cookies,头信息等)</p>
 <p><strong>out：</strong> 用于将内容写入 JSP 页面实例的输出流中,提供了几个方法使你能用于向浏览器回送输出结果。</p>
 <p><strong>pageContext：</strong> 描述了当前JSP页面的运行环境。可以返回JSP页面的其他隐式对象及其属性的访问,另外,它还实现将控制权从当前页面传输至其他页面的方法。</p>
-<p>自动在四个域中搜索数据：pageContext.findAttribute(“name”);<br>顺序： page域 -&gt; request域 -&gt; session域 -&gt; context域（application域）</p>
+<p>自动在四个域中搜索数据：<code>pageContext.findAttribute(&quot;name&quot;)</code><br>顺序： page域 -&gt; request域 -&gt; session域 -&gt; context域（application域）</p>
 <p><strong>session：</strong> 会话对象存储有关此会话的信息,也可以将属性赋给一个会话,每个属性都有名称和值。会话对象主要用于存储和检索属性值。</p>
 <p><strong>application：</strong>  存储了运行 JSP 页面的 servlet 以及在同一应用程序中的任何 Web 组件的上下文信息。</p>
 <p><strong>page：</strong>  表示当前 JSP 页面的 servlet 实例</p>
@@ -203,7 +203,7 @@
 
     <footer class="article-footer">
       
-        <a data-url="http://yoursite.com/2015/08/09/jsp_learn/" data-id="cj0hgltgm000gfsqrklsfs6hl" class="article-share-link" data-share="baidu" data-title="JSP 学习小结">分享到</a>
+        <a data-url="http://yoursite.com/2015/08/09/jsp_learn/" data-id="cj163e0vc000gkgqrfedcl2xs" class="article-share-link" data-share="baidu" data-title="JSP 学习小结">分享到</a>
       
 
       
@@ -284,7 +284,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">分类</h3>
     <div class="widget">
-      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/JavaEE-开发/">JavaEE 开发</a><span class="category-list-count">8</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/JavaSE-基础/">JavaSE 基础</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/工具/">工具</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/数据库/">数据库</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/职业生涯/">职业生涯</a><span class="category-list-count">1</span></li></ul>
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/JavaEE-开发/">JavaEE 开发</a><span class="category-list-count">9</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/JavaSE-基础/">JavaSE 基础</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/工具/">工具</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/数据库/">数据库</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/职业生涯/">职业生涯</a><span class="category-list-count">1</span></li></ul>
     </div>
   </div>
 
@@ -293,7 +293,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">标签云</h3>
     <div class="widget tagcloud">
-      <a href="/tags/Java-IO/" style="font-size: 16.67px;">Java IO</a> <a href="/tags/JavaEE-开发/" style="font-size: 20px;">JavaEE 开发</a> <a href="/tags/JavaSE-基础/" style="font-size: 13.33px;">JavaSE 基础</a> <a href="/tags/MySQL/" style="font-size: 13.33px;">MySQL</a> <a href="/tags/Tomcat/" style="font-size: 10px;">Tomcat</a> <a href="/tags/jsp/" style="font-size: 10px;">jsp</a> <a href="/tags/分页/" style="font-size: 10px;">分页</a> <a href="/tags/工具配置及使用/" style="font-size: 10px;">工具配置及使用</a> <a href="/tags/面试/" style="font-size: 10px;">面试</a> <a href="/tags/面试题/" style="font-size: 13.33px;">面试题</a>
+      <a href="/tags/Java-IO/" style="font-size: 16.67px;">Java IO</a> <a href="/tags/JavaEE-开发/" style="font-size: 20px;">JavaEE 开发</a> <a href="/tags/JavaSE-基础/" style="font-size: 13.33px;">JavaSE 基础</a> <a href="/tags/MySQL/" style="font-size: 13.33px;">MySQL</a> <a href="/tags/Struts/" style="font-size: 10px;">Struts</a> <a href="/tags/Tomcat/" style="font-size: 10px;">Tomcat</a> <a href="/tags/jsp/" style="font-size: 10px;">jsp</a> <a href="/tags/分页/" style="font-size: 10px;">分页</a> <a href="/tags/工具配置及使用/" style="font-size: 10px;">工具配置及使用</a> <a href="/tags/面试/" style="font-size: 10px;">面试</a> <a href="/tags/面试题/" style="font-size: 13.33px;">面试题</a>
     </div>
   </div>
 
@@ -302,7 +302,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">归档</h3>
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/01/">2017年 01月</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/12/">2016年 12月</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/11/">2016年 11月</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/10/">2016年 10月</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/11/">2015年 11月</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/10/">2015年 10月</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/08/">2015年 08月</a><span class="archive-list-count">1</span></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/01/">2017年 01月</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/12/">2016年 12月</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/11/">2016年 11月</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/10/">2016年 10月</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/11/">2015年 11月</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/10/">2015年 10月</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/08/">2015年 08月</a><span class="archive-list-count">1</span></li></ul>
     </div>
   </div>
 

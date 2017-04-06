@@ -67,65 +67,6 @@
     <div class="outer">
       <section id="main">
   
-    <article id="post-JavaSE常见的面试题" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2017/01/07/JavaSE常见的面试题/" class="article-date">
-  <time datetime="2017-01-06T16:00:00.000Z" itemprop="datePublished">2017-01-07</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/JavaSE-基础/">JavaSE 基础</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/01/07/JavaSE常见的面试题/">JavaSE 常见面试题</a>
-    </h1>
-  
-
-      </header>
-    
-
-    <div class="article-entry" itemprop="articleBody">
-
-      
-        <h1 id="一、obj-hashcode-、obj-equals-b"><a href="#一、obj-hashcode-、obj-equals-b" class="headerlink" title="一、obj.hashcode()、obj.equals(b)"></a>一、obj.hashcode()、obj.equals(b)</h1><h2 id="作用"><a href="#作用" class="headerlink" title="作用"></a>作用</h2><p>hashcode() 方法用来获取对象的哈希值，提高哈希表的性能（如 HashMap、HashTable）</p>
-<h2 id="hashcode-工作原理"><a href="#hashcode-工作原理" class="headerlink" title="hashcode 工作原理"></a>hashcode 工作原理</h2><p>hashcode 是用来查找的，假如内存中有依次八个位置<br><figure class="highlight basic"><table><tr><td class="code"><pre><div class="line"><span class="symbol">0 </span> <span class="number">1</span>  <span class="number">2</span>  <span class="number">3</span>  <span class="number">4</span>  <span class="number">5</span>  <span class="number">6</span>  <span class="number">7</span>  <span class="number">8</span></div></pre></td></tr></table></figure></p>
-<p>现有个类，类中有个字段为 id，需要把这个类放在8个位置之一。如果不用 hashcode 而任意存放，当查找时候，则需要对这8各个位置进行遍历，或者使用二分法之类的算法。<br>如果使用 hashcode 效率将会大大的提高。<br>定义 hashcode 的值为 id%8，取得余数则为存放的位置。如：假设 id=9，9%8余数为1，于是存放的位置为1。假设 id=13，13%8余数为5，于是存放的位置为5。于是，每次需要查找的时候只需要通过 id%8 这个算法求余数，直接找到存放的位置了。</p>
-        
-          <p class="article-more-link">
-            <a href="/2017/01/07/JavaSE常见的面试题/#more">Read More</a>
-          </p>
-        
-      
-    </div>
-
-
-    <footer class="article-footer">
-      
-        <a data-url="http://yoursite.com/2017/01/07/JavaSE常见的面试题/" data-id="cj0hgltfw0005fsqrddlq3dfg" class="article-share-link" data-share="baidu" data-title="JavaSE 常见面试题">分享到</a>
-      
-
-      
-        <a href="http://yoursite.com/2017/01/07/JavaSE常见的面试题/#ds-thread" class="article-comment-link">评论</a>
-      
-
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/面试题/">面试题</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-  
     <article id="post-JavaEE 常见的面试题" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2017/01/07/JavaEE 常见的面试题/" class="article-date">
@@ -169,11 +110,70 @@
 
     <footer class="article-footer">
       
-        <a data-url="http://yoursite.com/2017/01/07/JavaEE 常见的面试题/" data-id="cj0hgltfl0002fsqriw2zb5aa" class="article-share-link" data-share="baidu" data-title="JavaEE 常见面试题">分享到</a>
+        <a data-url="http://yoursite.com/2017/01/07/JavaEE 常见的面试题/" data-id="cj163e0u50000kgqrexgjcgvg" class="article-share-link" data-share="baidu" data-title="JavaEE 常见面试题">分享到</a>
       
 
       
         <a href="http://yoursite.com/2017/01/07/JavaEE 常见的面试题/#ds-thread" class="article-comment-link">评论</a>
+      
+
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/面试题/">面试题</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-JavaSE常见的面试题" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2017/01/07/JavaSE常见的面试题/" class="article-date">
+  <time datetime="2017-01-06T16:00:00.000Z" itemprop="datePublished">2017-01-07</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/JavaSE-基础/">JavaSE 基础</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/01/07/JavaSE常见的面试题/">JavaSE 常见面试题</a>
+    </h1>
+  
+
+      </header>
+    
+
+    <div class="article-entry" itemprop="articleBody">
+
+      
+        <h1 id="一、obj-hashcode-、obj-equals-b"><a href="#一、obj-hashcode-、obj-equals-b" class="headerlink" title="一、obj.hashcode()、obj.equals(b)"></a>一、obj.hashcode()、obj.equals(b)</h1><h2 id="作用"><a href="#作用" class="headerlink" title="作用"></a>作用</h2><p>hashcode() 方法用来获取对象的哈希值，提高哈希表的性能（如 HashMap、HashTable）</p>
+<h2 id="hashcode-工作原理"><a href="#hashcode-工作原理" class="headerlink" title="hashcode 工作原理"></a>hashcode 工作原理</h2><p>hashcode 是用来查找的，假如内存中有依次八个位置<br><figure class="highlight basic"><table><tr><td class="code"><pre><div class="line"><span class="symbol">0 </span> <span class="number">1</span>  <span class="number">2</span>  <span class="number">3</span>  <span class="number">4</span>  <span class="number">5</span>  <span class="number">6</span>  <span class="number">7</span>  <span class="number">8</span></div></pre></td></tr></table></figure></p>
+<p>现有个类，类中有个字段为 id，需要把这个类放在8个位置之一。如果不用 hashcode 而任意存放，当查找时候，则需要对这8各个位置进行遍历，或者使用二分法之类的算法。<br>如果使用 hashcode 效率将会大大的提高。<br>定义 hashcode 的值为 id%8，取得余数则为存放的位置。如：假设 id=9，9%8余数为1，于是存放的位置为1。假设 id=13，13%8余数为5，于是存放的位置为5。于是，每次需要查找的时候只需要通过 id%8 这个算法求余数，直接找到存放的位置了。</p>
+        
+          <p class="article-more-link">
+            <a href="/2017/01/07/JavaSE常见的面试题/#more">Read More</a>
+          </p>
+        
+      
+    </div>
+
+
+    <footer class="article-footer">
+      
+        <a data-url="http://yoursite.com/2017/01/07/JavaSE常见的面试题/" data-id="cj163e0uk0004kgqrtbynfybs" class="article-share-link" data-share="baidu" data-title="JavaSE 常见面试题">分享到</a>
+      
+
+      
+        <a href="http://yoursite.com/2017/01/07/JavaSE常见的面试题/#ds-thread" class="article-comment-link">评论</a>
       
 
       
@@ -232,7 +232,7 @@
 
     <footer class="article-footer">
       
-        <a data-url="http://yoursite.com/2016/12/26/面试经历/" data-id="cj0hglthg0012fsqrmuyy0j1y" class="article-share-link" data-share="baidu" data-title="面试经历">分享到</a>
+        <a data-url="http://yoursite.com/2016/12/26/面试经历/" data-id="cj163e0zf001skgqr73i5rjjy" class="article-share-link" data-share="baidu" data-title="面试经历">分享到</a>
       
 
       
@@ -289,7 +289,7 @@
 
     <footer class="article-footer">
       
-        <a data-url="http://yoursite.com/2016/12/08/tool_use/" data-id="cj0hgltgu000nfsqrk8dk60uz" class="article-share-link" data-share="baidu" data-title="Eclipse、Sublime 常用操作">分享到</a>
+        <a data-url="http://yoursite.com/2016/12/08/tool_use/" data-id="cj163e0vs000qkgqrtqpeuyk0" class="article-share-link" data-share="baidu" data-title="Eclipse、Sublime 常用操作">分享到</a>
       
 
       
@@ -351,7 +351,7 @@
 
     <footer class="article-footer">
       
-        <a data-url="http://yoursite.com/2016/11/19/thread/" data-id="cj0hgltgq000jfsqr09xjdhow" class="article-share-link" data-share="baidu" data-title="多线程总结">分享到</a>
+        <a data-url="http://yoursite.com/2016/11/19/thread/" data-id="cj163e0vp000nkgqrehelwo39" class="article-share-link" data-share="baidu" data-title="多线程总结">分享到</a>
       
 
       
@@ -425,7 +425,7 @@
 
     <footer class="article-footer">
       
-        <a data-url="http://yoursite.com/2016/11/16/JavaIO流小结/" data-id="cj0hgltff0001fsqrzson9d0a" class="article-share-link" data-share="baidu" data-title="JavaIO 小结">分享到</a>
+        <a data-url="http://yoursite.com/2016/11/16/JavaIO流小结/" data-id="cj163e0uc0001kgqrp2fhgn09" class="article-share-link" data-share="baidu" data-title="JavaIO 小结">分享到</a>
       
 
       
@@ -434,6 +434,97 @@
 
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Java-IO/">Java IO</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-struts-form" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2016/11/16/struts-form/" class="article-date">
+  <time datetime="2016-11-15T16:00:00.000Z" itemprop="datePublished">2016-11-16</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/JavaEE-开发/">JavaEE 开发</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2016/11/16/struts-form/">Struts ActionForm 小结</a>
+    </h1>
+  
+
+      </header>
+    
+
+    <div class="article-entry" itemprop="articleBody">
+
+      
+
+
+        
+
+
+        
+
+        
+
+        <!-- 显示正文 -->
+        <p>Struts 框架中的视图组件主要包括：</p>
+<ul>
+<li>JSP 页面</li>
+<li>ActionForm 类</li>
+<li>Struts 自定义标记</li>
+<li>消息资源</li>
+</ul>
+<p>其中，ActionForm 类是 Struts 框架的核心组件之一，是 Struts 的关键视图组件</p>
+<h1 id="一、ActionForm-的作用机理"><a href="#一、ActionForm-的作用机理" class="headerlink" title="一、ActionForm 的作用机理"></a>一、ActionForm 的作用机理</h1><p>ActionForm 本质上是一种 JavaBean，是专门用来传递数据的 DTO(Data Transfer Object)，数据传递对象)。它包括用于表单数据验证的 <code>validate()</code> 和用于数据复位的<code>reset()</code></p>
+<p>Struts 框架利用 ActionForm 对象来临时存放视图页面中的表单数据。例如：<br>一个登录页面会有一个用户输入框和一个密码输入框，以及用来提交登录请求的按钮。当用户提交登录请求后，Struts 将用户名和密码两个输入域的数据自动填充到相应的 ActionForm 对象中，然后控制层可以从该 ActionForm 对象中读取用户输入的表单数据，也可以把来自模型层的数据存放到 ActionForm 中，然后返回给视图显示</p>
+<p>ActionForm 有请求(request)和会话(session)两种作用域(scope)。如果 ActionForm 的作用域设定为 request，仅在当前的请求/响应范围内有效。如果 ActionForm 的作用域设定为 session，同一个ActionForm 实例在整个 HTTP 会话中有效</p>
+<p><img src="/img/sf.jpg" alt="ActionForm 运行流程"></p>
+<p>当验证 ActionForm 时，如果检测到一个或多个验证错误，Struts 框架会把错误转发回配置文件 struts-config.xml 中 <code>&lt;action&gt;</code> 元素的 input 属性所指定的输入页面</p>
+<h1 id="二、ActionForm-的使用方法"><a href="#二、ActionForm-的使用方法" class="headerlink" title="二、ActionForm 的使用方法"></a>二、ActionForm 的使用方法</h1><h2 id="1-创建-ActionForm"><a href="#1-创建-ActionForm" class="headerlink" title="1. 创建 ActionForm"></a>1. 创建 ActionForm</h2><p>可以通过扩展 Struts 软件包的 ActionForm 类，来创建具体的 ActionForm。Struts 软件包中的 ActionForm 类本身是一个抽象类，在扩展该类时，为每一个要从 HTML 表单中捕获的输入域定义一个属性，使表单输入域与 ActionForm 的属性一一对应，以使ActionForm能够捕获需要的表单输入。定义了具体的属性，就可以覆写 <code>validate()</code> 和<code>reset()</code>，来实现具体的 ActionForm 验证规则和初始化方法。</p>
+<h2 id="2-配置-ActionForm"><a href="#2-配置-ActionForm" class="headerlink" title="2. 配置 ActionForm"></a>2. 配置 ActionForm</h2><p>每创建一个 ActionForm 类，就需要在 Struts 的配置文件 struts-config.xml 中配置这个类，例如：<br><figure class="highlight xml"><table><tr><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">form-beans</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">form-bean</span> <span class="attr">name</span>=<span class="string">"loginActionForm"</span> <span class="attr">type</span>=<span class="string">"login.loginActionForm"</span> /&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">form-beans</span>&gt;</span></div></pre></td></tr></table></figure></p>
+<p><code>&lt;form-beans&gt;</code> 元素用来指定全体 ActionForm 的配置，一个 Struts 应用所有的ActionForm 的配置都要位于该元素标记内。<code>&lt;form-beans&gt;</code> 元素的子元素 <code>&lt;form-bean&gt;</code> 用来配置一个具体的 ActionForm 类，每个 <code>&lt;form-bean&gt;</code>元素对应的内容为一个 form bean 实例。一旦定义了 <code>&lt;form-beans&gt;</code> 元素，就可以在Action中使用它。</p>
+<h2 id="3-访问-ActionForm"><a href="#3-访问-ActionForm" class="headerlink" title="3. 访问 ActionForm"></a>3. 访问 ActionForm</h2><p>ActionForm 可以被 JSP，Struts 自定义标记，Action 或其他 Web 组件访问。访问 ActionForm 的一般方法如下：</p>
+<h3 id="3-1-使用-Struts-HTML-标记库"><a href="#3-1-使用-Struts-HTML-标记库" class="headerlink" title="3.1  使用 Struts HTML 标记库"></a>3.1  使用 Struts HTML 标记库</h3><p>Struts HTML 标记库提供了一组和 ActionForm 密切关联的标记，这些标记对应到 HTML 表单域。如 <code>&lt;html:form&gt;</code> 标记对应 HTML 的 &lt; form &gt; 标记，<code>&lt;html:text&gt;</code> 标记对应 HTML 表单的 text 类型 &lt; input &gt; 输入域。这些标记和 ActionForm 交互，以把 ActionForm 中的属性值显示出来。</p>
+<h3 id="3-2-从-request-或-session-对象中取出-ActionForm-对象"><a href="#3-2-从-request-或-session-对象中取出-ActionForm-对象" class="headerlink" title="3.2 从 request 或 session 对象中取出 ActionForm 对象"></a>3.2 从 request 或 session 对象中取出 ActionForm 对象</h3><p>根据作用域的不同，Struts 框架把 ActionForm 实例保存在 request 或 session 对象中，保存时采用的 key 值为 <code>&lt;form-bean&gt;</code> 元素的名字，即 name 属性的值。因此，可以像取出任何存放在 request 或 session 对象中的属性一样取出 ActionForm 实例。例如：<br><figure class="highlight java"><table><tr><td class="code"><pre><div class="line">loginActionForm form=(loginActionForm)request.getAttribute(<span class="string">"loginActionForm"</span>);</div></pre></td></tr></table></figure></p>
+<h3 id="3-3-在-Action-类的-execute-方法中直接访问-ActionForm"><a href="#3-3-在-Action-类的-execute-方法中直接访问-ActionForm" class="headerlink" title="3.3 在 Action 类的 execute() 方法中直接访问 ActionForm"></a>3.3 在 Action 类的 execute() 方法中直接访问 ActionForm</h3><p>如果配置了 ActionForm 和 Action 映射，Struts 框架就会把 ActionForm 作为参数传递给 Action 类的 <code>execute()</code>，在 <code>execute()</code> 方法中，可以直接读取或设置 ActionForm 属性。</p>
+<h1 id="三、表单数据验证"><a href="#三、表单数据验证" class="headerlink" title="三、表单数据验证"></a>三、表单数据验证</h1><p>表单验证是 ActionForm 的主要功能之一，要实现这个功能，我们需要采取 4 个步骤：</p>
+<h2 id="1-重写-validate"><a href="#1-重写-validate" class="headerlink" title="1. 重写 validate()"></a>1. 重写 <code>validate()</code></h2><p>对该 form bean 的 <code>validatet()</code> 进行重写。ActionErrors 类封装了一组验证错误，它的用法类似 Map 类。而 ActionMessage 类封装了单个验证错误，它的构造函数内的参数就指向资源文件内的一个错误文本。例如语句 <code>ActionMessage(&quot;login.password.error&quot;);</code> 中的参数 “login.password.error” 其实就是资源文件 ApplicationResources.properties 中的一条错误文本的键 (key)。通过 ActionErrors 对象的 <code>add()</code>，可以把 ActionMessage 对象加入到 ActionErrors 对象中。</p>
+<h2 id="2-设置资源文件"><a href="#2-设置资源文件" class="headerlink" title="2. 设置资源文件"></a>2. 设置资源文件</h2><p>在资源文件 ApplicationResources.properties 中设置可能的验证错误的标识</p>
+<h2 id="3-修改配置文件-struts-config-xml"><a href="#3-修改配置文件-struts-config-xml" class="headerlink" title="3. 修改配置文件 struts-config.xml"></a>3. 修改配置文件 struts-config.xml</h2><p>要在配置文件 struts-config.xml 中，把 <code>&lt;action&gt;</code> 元素的 validate 属性设置为 true，并添加 <code>&lt; message-resources &gt;</code> 元素以指明资源文件的存放路径</p>
+<h2 id="4-在输入页面中加入错误标记"><a href="#4-在输入页面中加入错误标记" class="headerlink" title="4. 在输入页面中加入错误标记"></a>4. 在输入页面中加入错误标记</h2><p>在相应输入页面的相应位置加如错误标记 <code>&lt;html:errors&gt;</code>，以输出可能的验证错误</p>
+<p>表单数据验证的目的是，一旦用户在输入页面表单中输入的数据不符合要求或出现错误，Struts 验证机制将把验证错误在该输入页面相应的位置显示出来。<br><code>&lt;html:errors&gt;</code> 是 Struts 的一个自定义标记。它能根据它的 property 属性从资源文件 ApplicationResources.properties 中取出相应的验证错误，并在输入页面中指定的位置显示验证错误。</p>
+<p>参考：</p>
+<p><a href="http://zhaohe162.blog.163.com/blog/static/382167972010412105024604/" target="_blank" rel="external">http://zhaohe162.blog.163.com/blog/static/382167972010412105024604/</a></p>
+
+        <!-- 显示正文 -->
+      
+    </div>
+
+
+    <footer class="article-footer">
+      
+        <a data-url="http://yoursite.com/2016/11/16/struts-form/" data-id="cj163e0vk000jkgqr0zvs4yb5" class="article-share-link" data-share="baidu" data-title="Struts ActionForm 小结">分享到</a>
+      
+
+      
+        <a href="http://yoursite.com/2016/11/16/struts-form/#ds-thread" class="article-comment-link">评论</a>
+      
+
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Struts/">Struts</a></li></ul>
 
     </footer>
   </div>
@@ -487,7 +578,7 @@
 
     <footer class="article-footer">
       
-        <a data-url="http://yoursite.com/2016/11/15/文件上传小结/" data-id="cj0hglth4000ufsqr0urc2g1k" class="article-share-link" data-share="baidu" data-title="简单文件上传小结">分享到</a>
+        <a data-url="http://yoursite.com/2016/11/15/文件上传小结/" data-id="cj163e0w0000xkgqrktugxouk" class="article-share-link" data-share="baidu" data-title="简单文件上传小结">分享到</a>
       
 
       
@@ -548,7 +639,7 @@
 
     <footer class="article-footer">
       
-        <a data-url="http://yoursite.com/2016/11/12/Session机制详解/" data-id="cj0hgltga000bfsqrq8mrt5ai" class="article-share-link" data-share="baidu" data-title="Session机制详解">分享到</a>
+        <a data-url="http://yoursite.com/2016/11/12/Session机制详解/" data-id="cj163e0ux000akgqrnl5npzoh" class="article-share-link" data-share="baidu" data-title="Session机制详解">分享到</a>
       
 
       
@@ -611,7 +702,7 @@
 
     <footer class="article-footer">
       
-        <a data-url="http://yoursite.com/2016/11/10/MySQL免安装版/" data-id="cj0hgltg10006fsqrbbapbb8y" class="article-share-link" data-share="baidu" data-title="MySQL 免安装版配置">分享到</a>
+        <a data-url="http://yoursite.com/2016/11/10/MySQL免安装版/" data-id="cj163e0un0005kgqr543zg992" class="article-share-link" data-share="baidu" data-title="MySQL 免安装版配置">分享到</a>
       
 
       
@@ -683,7 +774,7 @@
 <figure class="highlight java"><table><tr><td class="code"><pre><div class="line">Class.forName(<span class="string">"com.mysql.jdbc.Driver"</span>).newInstance();</div></pre></td></tr></table></figure>
 </li>
 <li><p>连接到 MySQL，通过 <code>DriverManger</code> 来操作 <code>Driver</code>，获取数据库连接</p>
-<figure class="highlight java"><table><tr><td class="code"><pre><div class="line">Connection con = DriverManager.getConnection(<span class="string">"jdbc:mysql://127.0.0.1:3306/db_name"</span>, <span class="string">"root_zh"</span>, <span class="string">"root_mm"</span>);</div></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="code"><pre><div class="line"> Connection con = DriverManager.getConnection(<span class="string">"jdbc:mysql://127.0.0.1:3306/db_name"</span>, </div><div class="line"><span class="string">"root_zh"</span>, </div><div class="line"><span class="string">"root_mm"</span>);</div></pre></td></tr></table></figure>
 </li>
 <li><p>创建用以执行 SQL 语言的声明</p>
 <figure class="highlight java"><table><tr><td class="code"><pre><div class="line">Statement stmt = con.createStatement();</div></pre></td></tr></table></figure>
@@ -707,7 +798,7 @@
 
     <footer class="article-footer">
       
-        <a data-url="http://yoursite.com/2016/10/07/connector/" data-id="cj0hgltge000dfsqr2mtk3eot" class="article-share-link" data-share="baidu" data-title="Java 应用程序连接 MySQL">分享到</a>
+        <a data-url="http://yoursite.com/2016/10/07/connector/" data-id="cj163e0v6000ckgqrherls9r9" class="article-share-link" data-share="baidu" data-title="Java 应用程序连接 MySQL">分享到</a>
       
 
       
@@ -766,7 +857,7 @@
 
     <footer class="article-footer">
       
-        <a data-url="http://yoursite.com/2015/11/14/分页/" data-id="cj0hgltgz000qfsqrdffwmxqd" class="article-share-link" data-share="baidu" data-title="JDBC+MySQL+JSP 分页小结">分享到</a>
+        <a data-url="http://yoursite.com/2015/11/14/分页/" data-id="cj163e0vx000tkgqrgeoeiju2" class="article-share-link" data-share="baidu" data-title="JDBC+MySQL+JSP 分页小结">分享到</a>
       
 
       
@@ -828,7 +919,7 @@
 
     <footer class="article-footer">
       
-        <a data-url="http://yoursite.com/2015/10/11/Servelt 读取文件小结/" data-id="cj0hgltg30007fsqrjs8onvdu" class="article-share-link" data-share="baidu" data-title="Servlet 中读取文件的常见方式">分享到</a>
+        <a data-url="http://yoursite.com/2015/10/11/Servelt 读取文件小结/" data-id="cj163e0uu0006kgqrtk10qlil" class="article-share-link" data-share="baidu" data-title="Servlet 中读取文件的常见方式">分享到</a>
       
 
       
@@ -887,7 +978,7 @@
 
     <footer class="article-footer">
       
-        <a data-url="http://yoursite.com/2015/10/01/部署网站应用/" data-id="cj0hglthb000xfsqr7va868oz" class="article-share-link" data-share="baidu" data-title="Tomcat 部署 JavaWeb 应用">分享到</a>
+        <a data-url="http://yoursite.com/2015/10/01/部署网站应用/" data-id="cj163e0za001qkgqrizw129nv" class="article-share-link" data-share="baidu" data-title="Tomcat 部署 JavaWeb 应用">分享到</a>
       
 
       
@@ -946,7 +1037,7 @@
 
     <footer class="article-footer">
       
-        <a data-url="http://yoursite.com/2015/08/09/jsp_learn/" data-id="cj0hgltgm000gfsqrklsfs6hl" class="article-share-link" data-share="baidu" data-title="JSP 学习小结">分享到</a>
+        <a data-url="http://yoursite.com/2015/08/09/jsp_learn/" data-id="cj163e0vc000gkgqrfedcl2xs" class="article-share-link" data-share="baidu" data-title="JSP 学习小结">分享到</a>
       
 
       
@@ -1010,7 +1101,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">分类</h3>
     <div class="widget">
-      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/JavaEE-开发/">JavaEE 开发</a><span class="category-list-count">8</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/JavaSE-基础/">JavaSE 基础</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/工具/">工具</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/数据库/">数据库</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/职业生涯/">职业生涯</a><span class="category-list-count">1</span></li></ul>
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/JavaEE-开发/">JavaEE 开发</a><span class="category-list-count">9</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/JavaSE-基础/">JavaSE 基础</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/工具/">工具</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/数据库/">数据库</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/职业生涯/">职业生涯</a><span class="category-list-count">1</span></li></ul>
     </div>
   </div>
 
@@ -1019,7 +1110,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">标签云</h3>
     <div class="widget tagcloud">
-      <a href="/tags/Java-IO/" style="font-size: 16.67px;">Java IO</a> <a href="/tags/JavaEE-开发/" style="font-size: 20px;">JavaEE 开发</a> <a href="/tags/JavaSE-基础/" style="font-size: 13.33px;">JavaSE 基础</a> <a href="/tags/MySQL/" style="font-size: 13.33px;">MySQL</a> <a href="/tags/Tomcat/" style="font-size: 10px;">Tomcat</a> <a href="/tags/jsp/" style="font-size: 10px;">jsp</a> <a href="/tags/分页/" style="font-size: 10px;">分页</a> <a href="/tags/工具配置及使用/" style="font-size: 10px;">工具配置及使用</a> <a href="/tags/面试/" style="font-size: 10px;">面试</a> <a href="/tags/面试题/" style="font-size: 13.33px;">面试题</a>
+      <a href="/tags/Java-IO/" style="font-size: 16.67px;">Java IO</a> <a href="/tags/JavaEE-开发/" style="font-size: 20px;">JavaEE 开发</a> <a href="/tags/JavaSE-基础/" style="font-size: 13.33px;">JavaSE 基础</a> <a href="/tags/MySQL/" style="font-size: 13.33px;">MySQL</a> <a href="/tags/Struts/" style="font-size: 10px;">Struts</a> <a href="/tags/Tomcat/" style="font-size: 10px;">Tomcat</a> <a href="/tags/jsp/" style="font-size: 10px;">jsp</a> <a href="/tags/分页/" style="font-size: 10px;">分页</a> <a href="/tags/工具配置及使用/" style="font-size: 10px;">工具配置及使用</a> <a href="/tags/面试/" style="font-size: 10px;">面试</a> <a href="/tags/面试题/" style="font-size: 13.33px;">面试题</a>
     </div>
   </div>
 
@@ -1028,7 +1119,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">归档</h3>
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/01/">2017年 01月</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/12/">2016年 12月</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/11/">2016年 11月</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/10/">2016年 10月</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/11/">2015年 11月</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/10/">2015年 10月</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/08/">2015年 08月</a><span class="archive-list-count">1</span></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/01/">2017年 01月</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/12/">2016年 12月</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/11/">2016年 11月</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/10/">2016年 10月</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/11/">2015年 11月</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/10/">2015年 10月</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/08/">2015年 08月</a><span class="archive-list-count">1</span></li></ul>
     </div>
   </div>
 
