@@ -12,7 +12,7 @@
 <meta property="og:url" content="http://yoursite.com/2016/10/07/connector/index.html">
 <meta property="og:site_name" content="website">
 <meta property="og:description" content="Java 应用程序连接 MySQL">
-<meta property="og:updated_time" content="2017-03-25T14:29:32.691Z">
+<meta property="og:updated_time" content="2017-04-07T08:46:52.715Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Java 应用程序连接 MySQL">
 <meta name="twitter:description" content="Java 应用程序连接 MySQL">
@@ -116,14 +116,14 @@
         <p>等待更新…..</p>
 <h1 id="零、概念简介"><a href="#零、概念简介" class="headerlink" title="零、概念简介"></a>零、概念简介</h1><p><strong>JDBC（Java Data Base Connectivity）：Java 数据库连接</strong>。是标准的Java API，是一套客户端程序与数据库交互的规范。JDBC提供了一套通过Java操纵数据库的完整接口，如：</p>
 <ul>
-<li>制作到数据库的连接</li>
-<li>创建 SQL 或 MySQL 语句</li>
-<li>执行 SQL 或 MySQL 查询数据库</li>
-<li>查看和修改所产生的记录</li>
+<li>创建与数据库的连接</li>
+<li>创建 SQL 语句</li>
+<li>执行 SQL 语句</li>
+<li>处理所产生的记录</li>
 </ul>
-<p>JDBC API 的实现，是由JDBC驱动程序实现的，不同的数据库对应有不同的驱动程序。需要使用某个具体的JDBC驱动，我们需要将其对应的Jar包引入到项目中。</p>
-<p>当我们调用 JDBC API 时，JDBC 将我们的请求交给 JDBC 驱动，最终由驱动完成与数据库的交互。此外，而数据库驱动会帮助我们打开数据库连接，关闭数据库连接，以及控制事务。</p>
-<p>JDBC目标是做到“一次编写，到处运行”，当你使用 JDBC API 访问数据库后，无论是更换数据库还是更换操作系统，都不需要修改代码。所以使用 JDBC，我们可以使用相同的API访问不同的数据库服务（比如 MySQL、Oracle 等），这样就编写不依赖于具体数据库的Java 程序。更高层的数据访问框架也是以 JDBC 为基础构建的。</p>
+<p>JDBC API 的实现，是由JDBC驱动程序实现的，不同的数据库对应有不同的驱动程序。当使用某个具体的JDBC驱动，需要将其对应的Jar包引入项目中。</p>
+<p>调用 JDBC API 时，JDBC 将我们的请求交给 JDBC 驱动，最终由驱动完成与数据库的交互。此外，数据库驱动会帮助我们打开数据库连接、关闭数据库连接、控制事务。</p>
+<p>JDBC目标是做到“一次编写，到处运行”，当使用 JDBC API 访问数据库后，无论是更换数据库还是更换操作系统，都不需要修改代码。所以使用 JDBC，可以使用相同的API访问不同的数据库服务（比如 MySQL、Oracle 等），这样就编写不依赖于具体数据库的 Java 程序。更高层的数据访问框架（Hibernate、Mybatis）也是以 JDBC 为基础构建的。</p>
 <h1 id="一、常规连接"><a href="#一、常规连接" class="headerlink" title="一、常规连接"></a>一、常规连接</h1><p><a href="http://www.mysql.com/downloads/connector/j/" target="_blank" rel="external">下载</a> MySQL 的 JDBC 驱动，并添加项目中构建环境中，JDBC 常规编码步骤：</p>
 <ol>
 <li><p>加载 MySQL 驱动，这是<code>Driver</code>的实现，MySQL的JDBC驱动类是 <code>com.mysql.jdbc.Driver</code></p>
@@ -132,16 +132,16 @@
 <li><p>连接到 MySQL，通过 <code>DriverManger</code> 来操作 <code>Driver</code>，获取数据库连接</p>
 <figure class="highlight java"><table><tr><td class="code"><pre><div class="line"> Connection con = DriverManager.getConnection(<span class="string">"jdbc:mysql://127.0.0.1:3306/db_name"</span>, </div><div class="line"><span class="string">"root_zh"</span>, </div><div class="line"><span class="string">"root_mm"</span>);</div></pre></td></tr></table></figure>
 </li>
-<li><p>创建用以执行 SQL 语言的声明</p>
+<li><p>创建用以执行 SQL 语句的声明实例</p>
 <figure class="highlight java"><table><tr><td class="code"><pre><div class="line">Statement stmt = con.createStatement();</div></pre></td></tr></table></figure>
 </li>
-<li><p>执行 SQL，获取结果</p>
+<li><p>执行 SQL，获取结果集</p>
 <figure class="highlight java"><table><tr><td class="code"><pre><div class="line">ResultSet rs = stmt.executeQuery(<span class="string">"select * from a_table"</span>);</div></pre></td></tr></table></figure>
 </li>
-<li><p>遍历并解析结果</p>
+<li><p>遍历并解析结果集</p>
 <figure class="highlight java"><table><tr><td class="code"><pre><div class="line"><span class="keyword">while</span> (rs.next()) &#123;</div><div class="line">    <span class="keyword">int</span> id = rs.getInt(<span class="string">"id"</span>);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
 </li>
-<li><p>关闭连接与声明</p>
+<li><p>关闭连接与声明，释放资源</p>
 <figure class="highlight java"><table><tr><td class="code"><pre><div class="line">stmt.close();</div><div class="line">con.close();</div></pre></td></tr></table></figure>
 </li>
 </ol>
@@ -154,7 +154,7 @@
 
     <footer class="article-footer">
       
-        <a data-url="http://yoursite.com/2016/10/07/connector/" data-id="cj17krafg000bhgqrjwii715z" class="article-share-link" data-share="baidu" data-title="Java 应用程序连接 MySQL">分享到</a>
+        <a data-url="http://yoursite.com/2016/10/07/connector/" data-id="cj17lmouy000c64qrsv4aa5vd" class="article-share-link" data-share="baidu" data-title="Java 应用程序连接 MySQL">分享到</a>
       
 
       

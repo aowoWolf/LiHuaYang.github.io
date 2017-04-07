@@ -12,7 +12,7 @@
 <meta property="og:url" content="http://yoursite.com/2015/10/01/部署网站应用/index.html">
 <meta property="og:site_name" content="website">
 <meta property="og:description" content="Tomcat">
-<meta property="og:updated_time" content="2017-03-25T13:17:07.968Z">
+<meta property="og:updated_time" content="2017-04-07T08:48:15.479Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Tomcat 部署 JavaWeb 应用">
 <meta name="twitter:description" content="Tomcat">
@@ -115,7 +115,7 @@
         <!-- 显示正文 -->
         <h1 id="方法一：在-server-xml-中指定"><a href="#方法一：在-server-xml-中指定" class="headerlink" title="方法一：在 server.xml 中指定"></a>方法一：在 server.xml 中指定</h1><p>在 Tomcat 中的 <code>conf</code> 目录中，在 server.xml 中的，<code>&lt;host/&gt;</code>节点中添加：<br><figure class="highlight xml"><table><tr><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">Context</span> </span></div><div class="line"><span class="attr">path</span>=<span class="string">"/myapp"</span> </div><div class="line"><span class="attr">reloadable</span>=<span class="string">"true"</span> </div><div class="line"><span class="attr">docBase</span>=<span class="string">"D:\myapp"</span> </div><div class="line"><span class="attr">workDir</span>=<span class="string">"D:\myapp\work"</span>&gt;</div><div class="line"><span class="tag">&lt;/<span class="name">Context</span>&gt;</span></div></pre></td></tr></table></figure></p>
 <p>在 Tomcat 的配置文件中，一个 Web 应用就是一个特定的 Context，可以通过在 server.xml 中新建 Context 里部署一个 JavaWeb 应用程序。  </p>
-<p>其中 <code>path</code> 是虚拟路径（外部访问路径），<code>docBase</code> 是应用的物理路径（项目放在硬盘哪个位置），<code>workDir</code> 是这个应用的工作目录（默认是 Tomcat 目录中 work 目录），存放运行是生成的于这个应用相关的文件<br><a id="more"></a><br><strong>注：</strong></p>
+<p>其中 <code>path</code> 是虚拟路径（外部访问路径），<code>docBase</code> 是应用的物理路径（项目放在硬盘哪个位置），<code>workDir</code> 是这个应用的工作目录（默认是 Tomcat 目录中 work 目录），存放运行时生成的这个应用相关文件<br><a id="more"></a><br><strong>注：</strong></p>
 <ol>
 <li>当 <code>path=&quot;&quot;</code> 和 <code>path=&quot;/&quot;</code> 应用不会被加载（原因不明）</li>
 <li>docBase 属性中路径的 “\” 和 “/“ 皆可（在 apache-tomcat-6.0.44 和 apache-tomcat-7.0.68 试验通过） </li>
@@ -150,7 +150,7 @@
 
     <footer class="article-footer">
       
-        <a data-url="http://yoursite.com/2015/10/01/部署网站应用/" data-id="cj17krage000xhgqrl63tke6m" class="article-share-link" data-share="baidu" data-title="Tomcat 部署 JavaWeb 应用">分享到</a>
+        <a data-url="http://yoursite.com/2015/10/01/部署网站应用/" data-id="cj17lmoz8001r64qrnm3sp5jj" class="article-share-link" data-share="baidu" data-title="Tomcat 部署 JavaWeb 应用">分享到</a>
       
 
       
