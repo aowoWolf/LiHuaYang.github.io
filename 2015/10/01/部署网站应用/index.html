@@ -12,7 +12,7 @@
 <meta property="og:url" content="http://yoursite.com/2015/10/01/部署网站应用/index.html">
 <meta property="og:site_name" content="website">
 <meta property="og:description" content="Tomcat">
-<meta property="og:updated_time" content="2017-04-07T08:48:15.479Z">
+<meta property="og:updated_time" content="2017-04-17T06:47:26.281Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Tomcat 部署 JavaWeb 应用">
 <meta name="twitter:description" content="Tomcat">
@@ -105,7 +105,7 @@
         
         <p style="width: 100%; background-color: #EEE; height: 3px"></p>
           <!-- 显示目录 -->
-          <ol class="mytoc"><li class="mytoc-item mytoc-level-1"><a class="mytoc-link" href="#方法一：在-server-xml-中指定"><span class="mytoc-text">方法一：在 server.xml 中指定</span></a></li><li class="mytoc-item mytoc-level-1"><a class="mytoc-link" href="#方法二：放置-webapps-目录下"><span class="mytoc-text">方法二：放置 webapps 目录下</span></a></li><li class="mytoc-item mytoc-level-1"><a class="mytoc-link" href="#方法三：创建一个-Context-文件（xml）"><span class="mytoc-text">方法三：创建一个 Context 文件（xml）</span></a></li><li class="mytoc-item mytoc-level-1"><a class="mytoc-link" href="#问题1：如何配置有层级关系的两个网站？"><span class="mytoc-text">问题1：如何配置有层级关系的两个网站？</span></a></li><li class="mytoc-item mytoc-level-1"><a class="mytoc-link" href="#问题2：部署应用时，资源重复加载"><span class="mytoc-text">问题2：部署应用时，资源重复加载</span></a></li></ol>
+          <ol class="mytoc"><li class="mytoc-item mytoc-level-1"><a class="mytoc-link" href="#方法一：在-server-xml-中指定"><span class="mytoc-text">方法一：在 server.xml 中指定</span></a></li><li class="mytoc-item mytoc-level-1"><a class="mytoc-link" href="#方法二：放置-webapps-目录下"><span class="mytoc-text">方法二：放置 webapps 目录下</span></a></li><li class="mytoc-item mytoc-level-1"><a class="mytoc-link" href="#方法三：创建一个-Context-文件（xml）"><span class="mytoc-text">方法三：创建一个 Context 文件（xml）</span></a></li><li class="mytoc-item mytoc-level-1"><a class="mytoc-link" href="#问题"><span class="mytoc-text">问题</span></a><ol class="mytoc-child"><li class="mytoc-item mytoc-level-2"><a class="mytoc-link" href="#如何配置有层级关系的两个网站？"><span class="mytoc-text">如何配置有层级关系的两个网站？</span></a></li><li class="mytoc-item mytoc-level-2"><a class="mytoc-link" href="#部署应用时，资源重复加载问题"><span class="mytoc-text">部署应用时，资源重复加载问题</span></a></li></ol></li></ol>
         <!-- 显示目录 -->
         <p style="width: 100%; background-color: #EEE; height: 3px"></p>
          
@@ -132,10 +132,10 @@
 <li><p>方法三优点是可以定义别名。服务器端运行的项目名称为 path，外部访问的 URL 则使用 XML 的文件名。两种方式都可以访问到网站。</p>
 </li>
 </ol>
-<h1 id="问题1：如何配置有层级关系的两个网站？"><a href="#问题1：如何配置有层级关系的两个网站？" class="headerlink" title="问题1：如何配置有层级关系的两个网站？"></a>问题1：如何配置有层级关系的两个网站？</h1><p>效果如下：<br><figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">// 访问主网站：默认应用</div><div class="line">http://localhost:8080/</div><div class="line">// 访问二级网站（如：blog）</div><div class="line">http://localhost:8080/blog</div></pre></td></tr></table></figure></p>
+<h1 id="问题"><a href="#问题" class="headerlink" title="问题"></a>问题</h1><h2 id="如何配置有层级关系的两个网站？"><a href="#如何配置有层级关系的两个网站？" class="headerlink" title="如何配置有层级关系的两个网站？"></a>如何配置有层级关系的两个网站？</h2><p>效果如下：<br><figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">// 访问主网站：默认应用</div><div class="line">http://localhost:8080/</div><div class="line">// 访问二级网站（如：blog）</div><div class="line">http://localhost:8080/blog</div></pre></td></tr></table></figure></p>
 <p>在 tomcat 的 conf\catalina\localhost 目录下新建 <code>ROOT.xml</code> 和 <code>blog.xml</code> 文件，内容如下：<br><figure class="highlight xml"><table><tr><td class="code"><pre><div class="line"><span class="comment">&lt;!-- ROOT.xml --&gt;</span></div><div class="line"><span class="php"><span class="meta">&lt;?</span>xml version=<span class="string">"1.0"</span> encoding=<span class="string">"UTF-8"</span><span class="meta">?&gt;</span></span></div><div class="line"><span class="tag">&lt;<span class="name">Context</span> <span class="attr">path</span>=<span class="string">"/"</span> <span class="attr">reloadable</span>=<span class="string">"true"</span> <span class="attr">docBase</span>=<span class="string">"F:\deployDemo01"</span>&gt;</span><span class="tag">&lt;/<span class="name">Context</span>&gt;</span></div><div class="line"></div><div class="line"><span class="comment">&lt;!-- blog.xml --&gt;</span></div><div class="line"><span class="php"><span class="meta">&lt;?</span>xml version=<span class="string">"1.0"</span> encoding=<span class="string">"UTF-8"</span><span class="meta">?&gt;</span></span></div><div class="line"><span class="tag">&lt;<span class="name">Context</span> <span class="attr">path</span>=<span class="string">"/blog"</span> <span class="attr">reloadable</span>=<span class="string">"true"</span> <span class="attr">docBase</span>=<span class="string">"F:\deployDemo01-blog"</span>&gt;</span><span class="tag">&lt;/<span class="name">Context</span>&gt;</span></div></pre></td></tr></table></figure></p>
 <p>注：docBase 根据实际情况指定</p>
-<h1 id="问题2：部署应用时，资源重复加载"><a href="#问题2：部署应用时，资源重复加载" class="headerlink" title="问题2：部署应用时，资源重复加载"></a>问题2：部署应用时，资源重复加载</h1><p>应用已打包成 .war 包，放置在 Tomcat\webapps 路径下：<br>并在 sever.xml 中配置，如下（错误示例）：<br><figure class="highlight xml"><table><tr><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">Context</span> </span></div><div class="line"><span class="attr">docBase</span>=<span class="string">"F:\DevelopmentKit\apache-tomcat-6.0.44\webapps\TestTomcatDoubleReload.war"</span> </div><div class="line"><span class="attr">path</span>=<span class="string">"/ttd"</span> </div><div class="line"><span class="attr">reloadable</span>=<span class="string">"true"</span>&gt;</div><div class="line"><span class="tag">&lt;/<span class="name">Context</span>&gt;</span></div></pre></td></tr></table></figure></p>
+<h2 id="部署应用时，资源重复加载问题"><a href="#部署应用时，资源重复加载问题" class="headerlink" title="部署应用时，资源重复加载问题"></a>部署应用时，资源重复加载问题</h2><p>应用已打包成 .war 包，放置在 Tomcat\webapps 路径下：<br>并在 sever.xml 中配置，如下（错误示例）：<br><figure class="highlight xml"><table><tr><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">Context</span> </span></div><div class="line"><span class="attr">docBase</span>=<span class="string">"F:\DevelopmentKit\apache-tomcat-6.0.44\webapps\TestTomcatDoubleReload.war"</span> </div><div class="line"><span class="attr">path</span>=<span class="string">"/ttd"</span> </div><div class="line"><span class="attr">reloadable</span>=<span class="string">"true"</span>&gt;</div><div class="line"><span class="tag">&lt;/<span class="name">Context</span>&gt;</span></div></pre></td></tr></table></figure></p>
 <p><strong>解决：</strong></p>
 <ol>
 <li>删除该 Context 节点</li>
@@ -150,7 +150,7 @@
 
     <footer class="article-footer">
       
-        <a data-url="http://yoursite.com/2015/10/01/部署网站应用/" data-id="cj1lqy3t80014wkqrt3su5vg9" class="article-share-link" data-share="baidu" data-title="Tomcat 部署 JavaWeb 应用">分享到</a>
+        <a data-url="http://yoursite.com/2015/10/01/部署网站应用/" data-id="cj1tedhhk000wwwqrzu4ubd4r" class="article-share-link" data-share="baidu" data-title="Tomcat 部署 JavaWeb 应用">分享到</a>
       
 
       

@@ -12,7 +12,7 @@
 <meta property="og:url" content="http://yoursite.com/2016/10/07/connector/index.html">
 <meta property="og:site_name" content="website">
 <meta property="og:description" content="Java 应用程序连接 MySQL">
-<meta property="og:updated_time" content="2017-04-17T06:38:30.224Z">
+<meta property="og:updated_time" content="2017-04-17T06:42:54.332Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Java 应用程序连接 MySQL">
 <meta name="twitter:description" content="Java 应用程序连接 MySQL">
@@ -113,8 +113,7 @@
         
 
         <!-- 显示正文 -->
-        <p>等待更新…..</p>
-<h1 id="零、概念简介"><a href="#零、概念简介" class="headerlink" title="零、概念简介"></a>零、概念简介</h1><p><strong>JDBC（Java Data Base Connectivity）：Java 数据库连接</strong>。是标准的Java API是一套客户端程序与数据库交互的规范，提供了一套通过Java操纵数据库的完整接口，如：</p>
+        <h1 id="零、概念简介"><a href="#零、概念简介" class="headerlink" title="零、概念简介"></a>零、概念简介</h1><p><strong>JDBC（Java Data Base Connectivity）：Java 数据库连接</strong>。是标准的Java API是一套客户端程序与数据库交互的规范，提供了一套通过Java操纵数据库的完整接口，如：</p>
 <ul>
 <li>创建与数据库的连接</li>
 <li>创建 SQL 语句</li>
@@ -167,7 +166,7 @@
 </li>
 </ol>
 <h3 id="4-3-局部配置数据源方法二"><a href="#4-3-局部配置数据源方法二" class="headerlink" title="4.3 局部配置数据源方法二"></a>4.3 局部配置数据源方法二</h3><ol>
-<li>在项目的 META-INFO 下面新建 context.xml，加入：<figure class="highlight xml"><table><tr><td class="code"><pre><div class="line">&lt;?xml version="1.0" encoding="UTF-8"?&gt;  </div><div class="line"><span class="tag">&lt;<span class="name">Context</span>&gt;</span>  </div><div class="line">    <span class="tag">&lt;<span class="name">Resource</span> <span class="attr">name</span>=<span class="string">"jdbc/dbname"</span>   </span></div><div class="line">                <span class="attr">auth</span>=<span class="string">"Container"</span>   </div><div class="line">                <span class="attr">type</span>=<span class="string">"javax.sql.DataSource"</span>   </div><div class="line">                <span class="attr">driverClassName</span>=<span class="string">"com.mysql.jdbc.Driver"</span>   </div><div class="line">                <span class="attr">url</span>=<span class="string">"jdbc:mysql://localhost:3306/dbname"</span>   </div><div class="line">                <span class="attr">username</span>=<span class="string">"root"</span>   </div><div class="line">                <span class="attr">password</span>=<span class="string">"123456"</span>   </div><div class="line">                <span class="attr">maxActive</span>=<span class="string">"20"</span>   </div><div class="line">                <span class="attr">maxIdle</span>=<span class="string">"10"</span>   </div><div class="line">                <span class="attr">maxWait</span>=<span class="string">"10000"</span>/&gt;      </div><div class="line"><span class="tag">&lt;/<span class="name">Context</span>&gt;</span></div></pre></td></tr></table></figure>
+<li>在项目的 META-INFO 下面新建 context.xml，加入：<figure class="highlight xml"><table><tr><td class="code"><pre><div class="line"><span class="php"><span class="meta">&lt;?</span>xml version=<span class="string">"1.0"</span> encoding=<span class="string">"UTF-8"</span><span class="meta">?&gt;</span></span>  </div><div class="line"><span class="tag">&lt;<span class="name">Context</span>&gt;</span>  </div><div class="line">    <span class="tag">&lt;<span class="name">Resource</span> <span class="attr">name</span>=<span class="string">"jdbc/dbname"</span>   </span></div><div class="line">                <span class="attr">auth</span>=<span class="string">"Container"</span>   </div><div class="line">                <span class="attr">type</span>=<span class="string">"javax.sql.DataSource"</span>   </div><div class="line">                <span class="attr">driverClassName</span>=<span class="string">"com.mysql.jdbc.Driver"</span>   </div><div class="line">                <span class="attr">url</span>=<span class="string">"jdbc:mysql://localhost:3306/dbname"</span>   </div><div class="line">                <span class="attr">username</span>=<span class="string">"root"</span>   </div><div class="line">                <span class="attr">password</span>=<span class="string">"123456"</span>   </div><div class="line">                <span class="attr">maxActive</span>=<span class="string">"20"</span>   </div><div class="line">                <span class="attr">maxIdle</span>=<span class="string">"10"</span>   </div><div class="line">                <span class="attr">maxWait</span>=<span class="string">"10000"</span>/&gt;      </div><div class="line"><span class="tag">&lt;/<span class="name">Context</span>&gt;</span></div></pre></td></tr></table></figure>
 </li>
 </ol>
 <h2 id="5-使用-Druid-连接池"><a href="#5-使用-Druid-连接池" class="headerlink" title="5. 使用 Druid 连接池"></a>5. 使用 Druid 连接池</h2><h1 id="三、集成框架使用"><a href="#三、集成框架使用" class="headerlink" title="三、集成框架使用"></a>三、集成框架使用</h1><h2 id="1-使用-Spring-自带连接池连接"><a href="#1-使用-Spring-自带连接池连接" class="headerlink" title="1. 使用 Spring 自带连接池连接"></a>1. 使用 Spring 自带连接池连接</h2><h2 id="2-使用-Hibernate-连接"><a href="#2-使用-Hibernate-连接" class="headerlink" title="2. 使用 Hibernate 连接"></a>2. 使用 Hibernate 连接</h2><h2 id="3-使用-Mybatis-连接"><a href="#3-使用-Mybatis-连接" class="headerlink" title="3. 使用 Mybatis 连接"></a>3. 使用 Mybatis 连接</h2><p>参考<br><a href="http://wiki.jikexueyuan.com/project/jdbc/introduction.html" target="_blank" rel="external">极客学院 wiki</a><br><a href="https://www.tianmaying.com/tutorial/jdbc-introduction" target="_blank" rel="external">某网站博客</a></p>
@@ -179,7 +178,7 @@
 
     <footer class="article-footer">
       
-        <a data-url="http://yoursite.com/2016/10/07/connector/" data-id="cj1lqy3s0000hwkqrbasr6zf6" class="article-share-link" data-share="baidu" data-title="Java 应用程序连接 MySQL">分享到</a>
+        <a data-url="http://yoursite.com/2016/10/07/connector/" data-id="cj1tedhg4000cwwqrcxpt975t" class="article-share-link" data-share="baidu" data-title="Java 应用程序连接 MySQL">分享到</a>
       
 
       

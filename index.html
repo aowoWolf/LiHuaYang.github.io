@@ -110,7 +110,7 @@
 
     <footer class="article-footer">
       
-        <a data-url="http://yoursite.com/2017/01/07/JavaEE 常见的面试题/" data-id="cj1lqy3qr0000wkqr77736iw8" class="article-share-link" data-share="baidu" data-title="JavaEE 常见面试题">分享到</a>
+        <a data-url="http://yoursite.com/2017/01/07/JavaEE 常见的面试题/" data-id="cj1tedhf60001wwqrex5gppq3" class="article-share-link" data-share="baidu" data-title="JavaEE 常见面试题">分享到</a>
       
 
       
@@ -155,7 +155,7 @@
     <div class="article-entry" itemprop="articleBody">
 
       
-        <h1 id="一、obj-hashcode-、obj-equals-b"><a href="#一、obj-hashcode-、obj-equals-b" class="headerlink" title="一、obj.hashcode()、obj.equals(b)"></a>一、obj.hashcode()、obj.equals(b)</h1><h2 id="作用"><a href="#作用" class="headerlink" title="作用"></a>作用</h2><p>hashcode() 方法用来获取对象的哈希值，提高哈希表的性能（如 HashMap、HashTable）</p>
+        <h1 id="一、obj-hashcode-、obj-equals-b"><a href="#一、obj-hashcode-、obj-equals-b" class="headerlink" title="一、obj.hashcode()、obj.equals(b)"></a>一、obj.hashcode()、obj.equals(b)</h1><h2 id="定义、作用"><a href="#定义、作用" class="headerlink" title="定义、作用"></a>定义、作用</h2><p><code>hashCode()</code>的作用是获取哈希码，也称为散列码；它实际上是返回一个 int 整数。这个哈希码的作用是，确定该对象在哈希表中的索引位置，提高哈希表的性能（如 HashMap、HashTable）</p>
 <h2 id="hashcode-工作原理"><a href="#hashcode-工作原理" class="headerlink" title="hashcode 工作原理"></a>hashcode 工作原理</h2><p>hashcode 是用来查找的，假如内存中有依次八个位置<br><figure class="highlight basic"><table><tr><td class="code"><pre><div class="line"><span class="symbol">0 </span> <span class="number">1</span>  <span class="number">2</span>  <span class="number">3</span>  <span class="number">4</span>  <span class="number">5</span>  <span class="number">6</span>  <span class="number">7</span>  <span class="number">8</span></div></pre></td></tr></table></figure></p>
 <p>现有个类，类中有个字段为 id，需要把这个类放在8个位置之一。如果不用 hashcode 而任意存放，当查找时候，则需要对这8各个位置进行遍历，或者使用二分法之类的算法。<br>如果使用 hashcode 效率将会大大的提高。<br>定义 hashcode 的值为 id%8，取得余数则为存放的位置。如：假设 id=9，9%8余数为1，于是存放的位置为1。假设 id=13，13%8余数为5，于是存放的位置为5。于是，每次需要查找的时候只需要通过 id%8 这个算法求余数，直接找到存放的位置了。</p>
         
@@ -169,7 +169,7 @@
 
     <footer class="article-footer">
       
-        <a data-url="http://yoursite.com/2017/01/07/JavaSE常见的面试题/" data-id="cj1lqy3ra0005wkqr0bchuwhe" class="article-share-link" data-share="baidu" data-title="JavaSE 常见面试题">分享到</a>
+        <a data-url="http://yoursite.com/2017/01/07/JavaSE常见的面试题/" data-id="cj1tedhff0004wwqr6nnjzz4a" class="article-share-link" data-share="baidu" data-title="JavaSE 常见面试题">分享到</a>
       
 
       
@@ -226,7 +226,7 @@
 
     <footer class="article-footer">
       
-        <a data-url="http://yoursite.com/2016/12/08/tool_use/" data-id="cj1lqy3t50010wkqre215osg9" class="article-share-link" data-share="baidu" data-title="Eclipse、Sublime 常用操作">分享到</a>
+        <a data-url="http://yoursite.com/2016/12/08/tool_use/" data-id="cj1tedhhg000twwqrasjfexpe" class="article-share-link" data-share="baidu" data-title="Eclipse、Sublime 常用操作">分享到</a>
       
 
       
@@ -288,7 +288,7 @@
 
     <footer class="article-footer">
       
-        <a data-url="http://yoursite.com/2016/11/19/thread/" data-id="cj1lqy3se000owkqrvz0suq5h" class="article-share-link" data-share="baidu" data-title="多线程总结">分享到</a>
+        <a data-url="http://yoursite.com/2016/11/19/thread/" data-id="cj1tedhh5000mwwqrcgjucrsh" class="article-share-link" data-share="baidu" data-title="多线程总结">分享到</a>
       
 
       
@@ -297,6 +297,72 @@
 
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/JavaSE-基础/">JavaSE 基础</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-struts-form" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2016/11/16/struts-form/" class="article-date">
+  <time datetime="2016-11-15T16:00:00.000Z" itemprop="datePublished">2016-11-16</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/JavaEE-开发/">JavaEE 开发</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2016/11/16/struts-form/">Struts ActionForm 小结</a>
+    </h1>
+  
+
+      </header>
+    
+
+    <div class="article-entry" itemprop="articleBody">
+
+      
+        <p>Struts 框架中的视图组件主要包括：</p>
+<ul>
+<li>JSP 页面</li>
+<li>ActionForm 类</li>
+<li>Struts 自定义标记</li>
+<li>消息资源</li>
+</ul>
+<p>其中，ActionForm 类是 Struts 框架的核心组件之一，是 Struts 的关键视图组件</p>
+<h1 id="一、ActionForm-的作用机理"><a href="#一、ActionForm-的作用机理" class="headerlink" title="一、ActionForm 的作用机理"></a>一、ActionForm 的作用机理</h1><p>ActionForm 本质上是一种 JavaBean，是专门用来传递数据的 DTO(Data Transfer Object)，数据传递对象)。它包括用于表单数据验证的 <code>validate()</code> 和用于数据复位的<code>reset()</code></p>
+<p>Struts 框架利用 ActionForm 对象来临时存放视图页面中的表单数据。例如：<br>一个登录页面会有一个用户输入框和一个密码输入框，以及用来提交登录请求的按钮。当用户提交登录请求后，Struts 将用户名和密码两个输入域的数据自动填充到相应的 ActionForm 对象中，然后控制层可以从该 ActionForm 对象中读取用户输入的表单数据，也可以把来自模型层的数据存放到 ActionForm 中，然后返回给视图显示</p>
+        
+          <p class="article-more-link">
+            <a href="/2016/11/16/struts-form/#more">Read More</a>
+          </p>
+        
+      
+    </div>
+
+
+    <footer class="article-footer">
+      
+        <a data-url="http://yoursite.com/2016/11/16/struts-form/" data-id="cj1tedhgv000iwwqr3if9upfs" class="article-share-link" data-share="baidu" data-title="Struts ActionForm 小结">分享到</a>
+      
+
+      
+        <a href="http://yoursite.com/2016/11/16/struts-form/#ds-thread" class="article-comment-link">评论</a>
+      
+
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Struts/">Struts</a></li></ul>
 
     </footer>
   </div>
@@ -362,7 +428,7 @@
 
     <footer class="article-footer">
       
-        <a data-url="http://yoursite.com/2016/11/16/JavaIO流小结/" data-id="cj1lqy3r10002wkqrktqyi1as" class="article-share-link" data-share="baidu" data-title="JavaIO 小结">分享到</a>
+        <a data-url="http://yoursite.com/2016/11/16/JavaIO流小结/" data-id="cj1tedhew0000wwqr5gye1vts" class="article-share-link" data-share="baidu" data-title="JavaIO 小结">分享到</a>
       
 
       
@@ -371,101 +437,6 @@
 
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Java-IO/">Java IO</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-struts-form" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2016/11/16/struts-form/" class="article-date">
-  <time datetime="2016-11-15T16:00:00.000Z" itemprop="datePublished">2016-11-16</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/JavaEE-开发/">JavaEE 开发</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2016/11/16/struts-form/">Struts ActionForm 小结</a>
-    </h1>
-  
-
-      </header>
-    
-
-    <div class="article-entry" itemprop="articleBody">
-
-      
-
-
-        
-
-
-        
-
-        
-
-        <!-- 显示正文 -->
-        <p>Struts 框架中的视图组件主要包括：</p>
-<ul>
-<li>JSP 页面</li>
-<li>ActionForm 类</li>
-<li>Struts 自定义标记</li>
-<li>消息资源</li>
-</ul>
-<p>其中，ActionForm 类是 Struts 框架的核心组件之一，是 Struts 的关键视图组件</p>
-<h1 id="一、ActionForm-的作用机理"><a href="#一、ActionForm-的作用机理" class="headerlink" title="一、ActionForm 的作用机理"></a>一、ActionForm 的作用机理</h1><p>ActionForm 本质上是一种 JavaBean，是专门用来传递数据的 DTO(Data Transfer Object)，数据传递对象)。它包括用于表单数据验证的 <code>validate()</code> 和用于数据复位的<code>reset()</code></p>
-<p>Struts 框架利用 ActionForm 对象来临时存放视图页面中的表单数据。例如：<br>一个登录页面会有一个用户输入框和一个密码输入框，以及用来提交登录请求的按钮。当用户提交登录请求后，Struts 将用户名和密码两个输入域的数据自动填充到相应的 ActionForm 对象中，然后控制层可以从该 ActionForm 对象中读取用户输入的表单数据，也可以把来自模型层的数据存放到 ActionForm 中，然后返回给视图显示</p>
-<p>ActionForm 有请求(request)和会话(session)两种作用域(scope)。如果 ActionForm 的作用域设定为 request，仅在当前的请求/响应范围内有效。如果 ActionForm 的作用域设定为 session，同一个ActionForm 实例在整个 HTTP 会话中有效</p>
-<p><img src="/img/sf.jpg" alt="ActionForm 运行流程"></p>
-<p>当验证 ActionForm 时，如果检测到一个或多个验证错误，Struts 框架会把错误转发回配置文件 struts-config.xml 中 <code>&lt;action&gt;</code> 元素的 input 属性所指定的输入页面</p>
-<h1 id="二、ActionForm-的使用方法"><a href="#二、ActionForm-的使用方法" class="headerlink" title="二、ActionForm 的使用方法"></a>二、ActionForm 的使用方法</h1><h2 id="1-创建-ActionForm"><a href="#1-创建-ActionForm" class="headerlink" title="1. 创建 ActionForm"></a>1. 创建 ActionForm</h2><p>可以通过扩展 Struts 软件包的 ActionForm 类，来创建具体的 ActionForm。Struts 软件包中的 ActionForm 类本身是一个抽象类，在扩展该类时，为每一个要从 HTML 表单中捕获的输入域定义一个属性，使表单输入域与 ActionForm 的属性一一对应，以使ActionForm能够捕获需要的表单输入。定义了具体的属性，就可以覆写 <code>validate()</code> 和<code>reset()</code>，来实现具体的 ActionForm 验证规则和初始化方法。</p>
-<h2 id="2-配置-ActionForm"><a href="#2-配置-ActionForm" class="headerlink" title="2. 配置 ActionForm"></a>2. 配置 ActionForm</h2><p>每创建一个 ActionForm 类，就需要在 Struts 的配置文件 struts-config.xml 中配置这个类，例如：<br><figure class="highlight xml"><table><tr><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">form-beans</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">form-bean</span> <span class="attr">name</span>=<span class="string">"loginActionForm"</span> <span class="attr">type</span>=<span class="string">"login.loginActionForm"</span> /&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">form-beans</span>&gt;</span></div></pre></td></tr></table></figure></p>
-<p><code>&lt;form-beans&gt;</code> 元素用来指定全体 ActionForm 的配置，一个 Struts 应用所有的ActionForm 的配置都要位于该元素标记内。<code>&lt;form-beans&gt;</code> 元素的子元素 <code>&lt;form-bean&gt;</code> 用来配置一个具体的 ActionForm 类，每个 <code>&lt;form-bean&gt;</code>元素对应的内容为一个 form bean 实例。一旦定义了 <code>&lt;form-beans&gt;</code> 元素，就可以在Action中使用它。</p>
-<h2 id="3-访问-ActionForm"><a href="#3-访问-ActionForm" class="headerlink" title="3. 访问 ActionForm"></a>3. 访问 ActionForm</h2><p>ActionForm 可以被 JSP，Struts 自定义标记，Action 或其他 Web 组件访问。访问 ActionForm 的一般方法如下：</p>
-<h3 id="3-1-使用-Struts-HTML-标记库"><a href="#3-1-使用-Struts-HTML-标记库" class="headerlink" title="3.1  使用 Struts HTML 标记库"></a>3.1  使用 Struts HTML 标记库</h3><p>Struts HTML 标记库提供了一组和 ActionForm 密切关联的标记，这些标记对应到 HTML 表单域。如 <code>&lt;html:form&gt;</code> 标记对应 HTML 的 &lt; form &gt; 标记，<code>&lt;html:text&gt;</code> 标记对应 HTML 表单的 text 类型 &lt; input &gt; 输入域。这些标记和 ActionForm 交互，以把 ActionForm 中的属性值显示出来。</p>
-<h3 id="3-2-从-request-或-session-对象中取出-ActionForm-对象"><a href="#3-2-从-request-或-session-对象中取出-ActionForm-对象" class="headerlink" title="3.2 从 request 或 session 对象中取出 ActionForm 对象"></a>3.2 从 request 或 session 对象中取出 ActionForm 对象</h3><p>根据作用域的不同，Struts 框架把 ActionForm 实例保存在 request 或 session 对象中，保存时采用的 key 值为 <code>&lt;form-bean&gt;</code> 元素的名字，即 name 属性的值。因此，可以像取出任何存放在 request 或 session 对象中的属性一样取出 ActionForm 实例。例如：<br><figure class="highlight java"><table><tr><td class="code"><pre><div class="line">loginActionForm form=(loginActionForm)request.getAttribute(<span class="string">"loginActionForm"</span>);</div></pre></td></tr></table></figure></p>
-<h3 id="3-3-在-Action-类的-execute-方法中直接访问-ActionForm"><a href="#3-3-在-Action-类的-execute-方法中直接访问-ActionForm" class="headerlink" title="3.3 在 Action 类的 execute() 方法中直接访问 ActionForm"></a>3.3 在 Action 类的 execute() 方法中直接访问 ActionForm</h3><p>如果配置了 ActionForm 和 Action 映射，Struts 框架就会把 ActionForm 作为参数传递给 Action 类的 <code>execute()</code>，在 <code>execute()</code> 方法中，可以直接读取或设置 ActionForm 属性。</p>
-<h1 id="三、表单数据验证"><a href="#三、表单数据验证" class="headerlink" title="三、表单数据验证"></a>三、表单数据验证</h1><p>表单验证是 ActionForm 的主要功能之一，要实现这个功能，我们需要采取 4 个步骤：</p>
-<h2 id="1-重写-validate"><a href="#1-重写-validate" class="headerlink" title="1. 重写 validate()"></a>1. 重写 <code>validate()</code></h2><p>对该 form bean 的 <code>validatet()</code> 进行重写。ActionErrors 类封装了一组验证错误，它的用法类似 Map 类。而 ActionMessage 类封装了单个验证错误，它的构造函数内的参数就指向资源文件内的一个错误文本。例如语句 <code>ActionMessage(&quot;login.password.error&quot;);</code> 中的参数 “login.password.error” 其实就是资源文件 ApplicationResources.properties 中的一条错误文本的键 (key)。通过 ActionErrors 对象的 <code>add()</code>，可以把 ActionMessage 对象加入到 ActionErrors 对象中。</p>
-<h2 id="2-设置资源文件"><a href="#2-设置资源文件" class="headerlink" title="2. 设置资源文件"></a>2. 设置资源文件</h2><p>在资源文件 ApplicationResources.properties 中设置可能的验证错误的标识</p>
-<h2 id="3-修改配置文件-struts-config-xml"><a href="#3-修改配置文件-struts-config-xml" class="headerlink" title="3. 修改配置文件 struts-config.xml"></a>3. 修改配置文件 struts-config.xml</h2><p>要在配置文件 struts-config.xml 中，把 <code>&lt;action&gt;</code> 元素的 validate 属性设置为 true，并添加 <code>&lt; message-resources &gt;</code> 元素以指明资源文件的存放路径</p>
-<h2 id="4-在输入页面中加入错误标记"><a href="#4-在输入页面中加入错误标记" class="headerlink" title="4. 在输入页面中加入错误标记"></a>4. 在输入页面中加入错误标记</h2><p>在相应输入页面的相应位置加如错误标记 <code>&lt;html:errors&gt;</code>，以输出可能的验证错误</p>
-<p>表单数据验证的目的是，一旦用户在输入页面表单中输入的数据不符合要求或出现错误，Struts 验证机制将把验证错误在该输入页面相应的位置显示出来。<br><code>&lt;html:errors&gt;</code> 是 Struts 的一个自定义标记。它能根据它的 property 属性从资源文件 ApplicationResources.properties 中取出相应的验证错误，并在输入页面中指定的位置显示验证错误。</p>
-<h1 id="四、问题"><a href="#四、问题" class="headerlink" title="四、问题"></a>四、问题</h1><h2 id="1-如何在前端访问到-form-表单中的值"><a href="#1-如何在前端访问到-form-表单中的值" class="headerlink" title="1. 如何在前端访问到 form 表单中的值"></a>1. 如何在前端访问到 form 表单中的值</h2><p>页面布局如下：</p>
-<figure class="highlight html"><table><tr><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">form</span> <span class="attr">name</span>=<span class="string">"form1_name"</span> <span class="attr">id</span>=<span class="string">"form1_id"</span> <span class="attr">action</span>=<span class="string">""</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">input</span> <span class="attr">name</span>=<span class="string">"input1_name"</span> <span class="attr">id</span>=<span class="string">"input1_id"</span>  <span class="attr">type</span>=<span class="string">"text"</span> <span class="attr">value</span>=<span class="string">"i am a input"</span>&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">input</span> <span class="attr">name</span>=<span class="string">"input1_inner_name"</span> <span class="attr">id</span>=<span class="string">"input1_inner_id"</span> <span class="attr">type</span>=<span class="string">"text"</span> <span class="attr">value</span>=<span class="string">"i am a inner input"</span>&gt;</span></div><div class="line">        <span class="tag">&lt;/<span class="name">input</span>&gt;</span></div><div class="line">    <span class="tag">&lt;/<span class="name">input</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">form</span>&gt;</span></div></pre></td></tr></table></figure>
-<p>在 js 域中访问：</p>
-<figure class="highlight javascript"><table><tr><td class="code"><pre><div class="line"><span class="keyword">var</span> input_val1_1 = <span class="built_in">document</span>.forms[<span class="number">0</span>].elements[<span class="number">0</span>].value; <span class="comment">// 获取第一个 form 元素中的第一个元素的值</span></div><div class="line"><span class="keyword">var</span> input_val1_2 = <span class="built_in">document</span>.getElementById(<span class="string">"form1_id"</span>); <span class="comment">// 获取 form 元素</span></div><div class="line"></div><div class="line"><span class="keyword">var</span> input_val2_1 = <span class="built_in">document</span>.forms[<span class="string">'form1_name'</span>].elements[<span class="string">'input1_name'</span>].value;</div><div class="line"><span class="keyword">var</span> input_val2_2 = <span class="built_in">document</span>.forms[<span class="string">'form1_id'</span>].elements[<span class="string">'input1_id'</span>].value;</div><div class="line"></div><div class="line"><span class="keyword">var</span> input_val3_1 = <span class="built_in">document</span>.form1_name.input1_name.value;</div><div class="line"><span class="comment">// 省略 document. 访问表单元素</span></div><div class="line"><span class="keyword">var</span> input_val4_1 = form1_id[<span class="string">'input1_id'</span>].value; </div><div class="line"><span class="keyword">var</span> input_val4_2 = form1_name[<span class="string">'input1_name'</span>].value; </div><div class="line"><span class="keyword">var</span> input_val4_3 = form1_name[<span class="string">'input1_id'</span>].value;</div></pre></td></tr></table></figure>
-<p>参考：</p>
-<p><a href="http://zhaohe162.blog.163.com/blog/static/382167972010412105024604/" target="_blank" rel="external">http://zhaohe162.blog.163.com/blog/static/382167972010412105024604/</a></p>
-
-        <!-- 显示正文 -->
-      
-    </div>
-
-
-    <footer class="article-footer">
-      
-        <a data-url="http://yoursite.com/2016/11/16/struts-form/" data-id="cj1lqy3s4000kwkqr4tt12dsu" class="article-share-link" data-share="baidu" data-title="Struts ActionForm 小结">分享到</a>
-      
-
-      
-        <a href="http://yoursite.com/2016/11/16/struts-form/#ds-thread" class="article-comment-link">评论</a>
-      
-
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Struts/">Struts</a></li></ul>
 
     </footer>
   </div>
@@ -519,7 +490,7 @@
 
     <footer class="article-footer">
       
-        <a data-url="http://yoursite.com/2016/11/15/文件上传小结/" data-id="cj1lqy3sp000uwkqryzdppnc6" class="article-share-link" data-share="baidu" data-title="简单文件上传小结">分享到</a>
+        <a data-url="http://yoursite.com/2016/11/15/文件上传小结/" data-id="cj1tedhht0010wwqra7fyoa5u" class="article-share-link" data-share="baidu" data-title="简单文件上传小结">分享到</a>
       
 
       
@@ -580,7 +551,7 @@
 
     <footer class="article-footer">
       
-        <a data-url="http://yoursite.com/2016/11/12/Session机制详解/" data-id="cj1lqy3rr000bwkqrhto72ivt" class="article-share-link" data-share="baidu" data-title="Session机制详解">分享到</a>
+        <a data-url="http://yoursite.com/2016/11/12/Session机制详解/" data-id="cj1tedhfv000awwqrq959xxdf" class="article-share-link" data-share="baidu" data-title="Session机制详解">分享到</a>
       
 
       
@@ -643,7 +614,7 @@
 
     <footer class="article-footer">
       
-        <a data-url="http://yoursite.com/2016/11/10/MySQL免安装版/" data-id="cj1lqy3ri0007wkqrmdvrg1zm" class="article-share-link" data-share="baidu" data-title="MySQL 免安装版配置">分享到</a>
+        <a data-url="http://yoursite.com/2016/11/10/MySQL免安装版/" data-id="cj1tedhfm0005wwqro55zwa8k" class="article-share-link" data-share="baidu" data-title="MySQL 免安装版配置">分享到</a>
       
 
       
@@ -698,8 +669,7 @@
         
 
         <!-- 显示正文 -->
-        <p>等待更新…..</p>
-<h1 id="零、概念简介"><a href="#零、概念简介" class="headerlink" title="零、概念简介"></a>零、概念简介</h1><p><strong>JDBC（Java Data Base Connectivity）：Java 数据库连接</strong>。是标准的Java API是一套客户端程序与数据库交互的规范，提供了一套通过Java操纵数据库的完整接口，如：</p>
+        <h1 id="零、概念简介"><a href="#零、概念简介" class="headerlink" title="零、概念简介"></a>零、概念简介</h1><p><strong>JDBC（Java Data Base Connectivity）：Java 数据库连接</strong>。是标准的Java API是一套客户端程序与数据库交互的规范，提供了一套通过Java操纵数据库的完整接口，如：</p>
 <ul>
 <li>创建与数据库的连接</li>
 <li>创建 SQL 语句</li>
@@ -752,7 +722,7 @@
 </li>
 </ol>
 <h3 id="4-3-局部配置数据源方法二"><a href="#4-3-局部配置数据源方法二" class="headerlink" title="4.3 局部配置数据源方法二"></a>4.3 局部配置数据源方法二</h3><ol>
-<li>在项目的 META-INFO 下面新建 context.xml，加入：<figure class="highlight xml"><table><tr><td class="code"><pre><div class="line">&lt;?xml version="1.0" encoding="UTF-8"?&gt;  </div><div class="line"><span class="tag">&lt;<span class="name">Context</span>&gt;</span>  </div><div class="line">    <span class="tag">&lt;<span class="name">Resource</span> <span class="attr">name</span>=<span class="string">"jdbc/dbname"</span>   </span></div><div class="line">                <span class="attr">auth</span>=<span class="string">"Container"</span>   </div><div class="line">                <span class="attr">type</span>=<span class="string">"javax.sql.DataSource"</span>   </div><div class="line">                <span class="attr">driverClassName</span>=<span class="string">"com.mysql.jdbc.Driver"</span>   </div><div class="line">                <span class="attr">url</span>=<span class="string">"jdbc:mysql://localhost:3306/dbname"</span>   </div><div class="line">                <span class="attr">username</span>=<span class="string">"root"</span>   </div><div class="line">                <span class="attr">password</span>=<span class="string">"123456"</span>   </div><div class="line">                <span class="attr">maxActive</span>=<span class="string">"20"</span>   </div><div class="line">                <span class="attr">maxIdle</span>=<span class="string">"10"</span>   </div><div class="line">                <span class="attr">maxWait</span>=<span class="string">"10000"</span>/&gt;      </div><div class="line"><span class="tag">&lt;/<span class="name">Context</span>&gt;</span></div></pre></td></tr></table></figure>
+<li>在项目的 META-INFO 下面新建 context.xml，加入：<figure class="highlight xml"><table><tr><td class="code"><pre><div class="line"><span class="php"><span class="meta">&lt;?</span>xml version=<span class="string">"1.0"</span> encoding=<span class="string">"UTF-8"</span><span class="meta">?&gt;</span></span>  </div><div class="line"><span class="tag">&lt;<span class="name">Context</span>&gt;</span>  </div><div class="line">    <span class="tag">&lt;<span class="name">Resource</span> <span class="attr">name</span>=<span class="string">"jdbc/dbname"</span>   </span></div><div class="line">                <span class="attr">auth</span>=<span class="string">"Container"</span>   </div><div class="line">                <span class="attr">type</span>=<span class="string">"javax.sql.DataSource"</span>   </div><div class="line">                <span class="attr">driverClassName</span>=<span class="string">"com.mysql.jdbc.Driver"</span>   </div><div class="line">                <span class="attr">url</span>=<span class="string">"jdbc:mysql://localhost:3306/dbname"</span>   </div><div class="line">                <span class="attr">username</span>=<span class="string">"root"</span>   </div><div class="line">                <span class="attr">password</span>=<span class="string">"123456"</span>   </div><div class="line">                <span class="attr">maxActive</span>=<span class="string">"20"</span>   </div><div class="line">                <span class="attr">maxIdle</span>=<span class="string">"10"</span>   </div><div class="line">                <span class="attr">maxWait</span>=<span class="string">"10000"</span>/&gt;      </div><div class="line"><span class="tag">&lt;/<span class="name">Context</span>&gt;</span></div></pre></td></tr></table></figure>
 </li>
 </ol>
 <h2 id="5-使用-Druid-连接池"><a href="#5-使用-Druid-连接池" class="headerlink" title="5. 使用 Druid 连接池"></a>5. 使用 Druid 连接池</h2><h1 id="三、集成框架使用"><a href="#三、集成框架使用" class="headerlink" title="三、集成框架使用"></a>三、集成框架使用</h1><h2 id="1-使用-Spring-自带连接池连接"><a href="#1-使用-Spring-自带连接池连接" class="headerlink" title="1. 使用 Spring 自带连接池连接"></a>1. 使用 Spring 自带连接池连接</h2><h2 id="2-使用-Hibernate-连接"><a href="#2-使用-Hibernate-连接" class="headerlink" title="2. 使用 Hibernate 连接"></a>2. 使用 Hibernate 连接</h2><h2 id="3-使用-Mybatis-连接"><a href="#3-使用-Mybatis-连接" class="headerlink" title="3. 使用 Mybatis 连接"></a>3. 使用 Mybatis 连接</h2><p>参考<br><a href="http://wiki.jikexueyuan.com/project/jdbc/introduction.html" target="_blank" rel="external">极客学院 wiki</a><br><a href="https://www.tianmaying.com/tutorial/jdbc-introduction" target="_blank" rel="external">某网站博客</a></p>
@@ -764,7 +734,7 @@
 
     <footer class="article-footer">
       
-        <a data-url="http://yoursite.com/2016/10/07/connector/" data-id="cj1lqy3s0000hwkqrbasr6zf6" class="article-share-link" data-share="baidu" data-title="Java 应用程序连接 MySQL">分享到</a>
+        <a data-url="http://yoursite.com/2016/10/07/connector/" data-id="cj1tedhg4000cwwqrcxpt975t" class="article-share-link" data-share="baidu" data-title="Java 应用程序连接 MySQL">分享到</a>
       
 
       
@@ -823,7 +793,7 @@
 
     <footer class="article-footer">
       
-        <a data-url="http://yoursite.com/2015/11/14/分页/" data-id="cj1lqy3sk000rwkqreicu5eiz" class="article-share-link" data-share="baidu" data-title="JDBC+MySQL+JSP 分页小结">分享到</a>
+        <a data-url="http://yoursite.com/2015/11/14/分页/" data-id="cj1tedhh8000pwwqrzvtks3dk" class="article-share-link" data-share="baidu" data-title="JDBC+MySQL+JSP 分页小结">分享到</a>
       
 
       
@@ -885,7 +855,7 @@
 
     <footer class="article-footer">
       
-        <a data-url="http://yoursite.com/2015/10/11/Servelt 读取文件小结/" data-id="cj1lqy3rf0006wkqrnfugpjlr" class="article-share-link" data-share="baidu" data-title="Servlet 中读取文件的常见方式">分享到</a>
+        <a data-url="http://yoursite.com/2015/10/11/Servelt 读取文件小结/" data-id="cj1tedhfq0006wwqr0we0m0kx" class="article-share-link" data-share="baidu" data-title="Servlet 中读取文件的常见方式">分享到</a>
       
 
       
@@ -944,7 +914,7 @@
 
     <footer class="article-footer">
       
-        <a data-url="http://yoursite.com/2015/10/01/部署网站应用/" data-id="cj1lqy3t80014wkqrt3su5vg9" class="article-share-link" data-share="baidu" data-title="Tomcat 部署 JavaWeb 应用">分享到</a>
+        <a data-url="http://yoursite.com/2015/10/01/部署网站应用/" data-id="cj1tedhhk000wwwqrzu4ubd4r" class="article-share-link" data-share="baidu" data-title="Tomcat 部署 JavaWeb 应用">分享到</a>
       
 
       
@@ -1003,7 +973,7 @@
 
     <footer class="article-footer">
       
-        <a data-url="http://yoursite.com/2015/08/09/jsp_learn/" data-id="cj1lqy3rv000dwkqrmta2nn34" class="article-share-link" data-share="baidu" data-title="JSP 学习小结">分享到</a>
+        <a data-url="http://yoursite.com/2015/08/09/jsp_learn/" data-id="cj1tedhga000fwwqrtd5501va" class="article-share-link" data-share="baidu" data-title="JSP 学习小结">分享到</a>
       
 
       
@@ -1066,7 +1036,7 @@
 
     <footer class="article-footer">
       
-        <a data-url="http://yoursite.com/1995/12/26/面试经历/" data-id="cj1lqy3sy000wwkqr3b51dwm7" class="article-share-link" data-share="baidu" data-title="面试经历">分享到</a>
+        <a data-url="http://yoursite.com/1995/12/26/面试经历/" data-id="cj1tedhln001vwwqrja9si3vz" class="article-share-link" data-share="baidu" data-title="面试经历">分享到</a>
       
 
       

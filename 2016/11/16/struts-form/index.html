@@ -13,7 +13,7 @@
 <meta property="og:site_name" content="website">
 <meta property="og:description" content="Struts ActionForm 小结">
 <meta property="og:image" content="http://yoursite.com/img/sf.jpg">
-<meta property="og:updated_time" content="2017-04-10T09:12:53.357Z">
+<meta property="og:updated_time" content="2017-04-17T06:52:13.145Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Struts ActionForm 小结">
 <meta name="twitter:description" content="Struts ActionForm 小结">
@@ -125,6 +125,7 @@
 <p>其中，ActionForm 类是 Struts 框架的核心组件之一，是 Struts 的关键视图组件</p>
 <h1 id="一、ActionForm-的作用机理"><a href="#一、ActionForm-的作用机理" class="headerlink" title="一、ActionForm 的作用机理"></a>一、ActionForm 的作用机理</h1><p>ActionForm 本质上是一种 JavaBean，是专门用来传递数据的 DTO(Data Transfer Object)，数据传递对象)。它包括用于表单数据验证的 <code>validate()</code> 和用于数据复位的<code>reset()</code></p>
 <p>Struts 框架利用 ActionForm 对象来临时存放视图页面中的表单数据。例如：<br>一个登录页面会有一个用户输入框和一个密码输入框，以及用来提交登录请求的按钮。当用户提交登录请求后，Struts 将用户名和密码两个输入域的数据自动填充到相应的 ActionForm 对象中，然后控制层可以从该 ActionForm 对象中读取用户输入的表单数据，也可以把来自模型层的数据存放到 ActionForm 中，然后返回给视图显示</p>
+<a id="more"></a>
 <p>ActionForm 有请求(request)和会话(session)两种作用域(scope)。如果 ActionForm 的作用域设定为 request，仅在当前的请求/响应范围内有效。如果 ActionForm 的作用域设定为 session，同一个ActionForm 实例在整个 HTTP 会话中有效</p>
 <p><img src="/img/sf.jpg" alt="ActionForm 运行流程"></p>
 <p>当验证 ActionForm 时，如果检测到一个或多个验证错误，Struts 框架会把错误转发回配置文件 struts-config.xml 中 <code>&lt;action&gt;</code> 元素的 input 属性所指定的输入页面</p>
@@ -155,7 +156,7 @@
 
     <footer class="article-footer">
       
-        <a data-url="http://yoursite.com/2016/11/16/struts-form/" data-id="cj1lqy3s4000kwkqr4tt12dsu" class="article-share-link" data-share="baidu" data-title="Struts ActionForm 小结">分享到</a>
+        <a data-url="http://yoursite.com/2016/11/16/struts-form/" data-id="cj1tedhgv000iwwqr3if9upfs" class="article-share-link" data-share="baidu" data-title="Struts ActionForm 小结">分享到</a>
       
 
       
@@ -171,19 +172,19 @@
     
 <nav id="article-nav">
   
-    <a href="/2016/11/16/JavaIO流小结/" id="article-nav-newer" class="article-nav-link-wrap">
+    <a href="/2016/11/19/thread/" id="article-nav-newer" class="article-nav-link-wrap">
       <strong class="article-nav-caption">下一篇</strong>
       <div class="article-nav-title">
         
-          JavaIO 小结
+          多线程总结
         
       </div>
     </a>
   
   
-    <a href="/2016/11/15/文件上传小结/" id="article-nav-older" class="article-nav-link-wrap">
+    <a href="/2016/11/16/JavaIO流小结/" id="article-nav-older" class="article-nav-link-wrap">
       <strong class="article-nav-caption">上一篇</strong>
-      <div class="article-nav-title">简单文件上传小结</div>
+      <div class="article-nav-title">JavaIO 小结</div>
     </a>
   
 </nav>

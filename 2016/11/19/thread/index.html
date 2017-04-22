@@ -15,7 +15,7 @@
 <meta property="og:image" content="http://yoursite.com/img/t1.png">
 <meta property="og:image" content="http://yoursite.com/img/t2.png">
 <meta property="og:image" content="http://yoursite.com/img/t3.png">
-<meta property="og:updated_time" content="2017-04-17T05:59:30.998Z">
+<meta property="og:updated_time" content="2017-04-21T01:35:12.239Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="多线程总结">
 <meta name="twitter:description" content="多线程编程 （multithreaded programming）">
@@ -177,7 +177,7 @@
 <figure class="highlight java"><table><tr><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">DeadLockDemo</span> </span>&#123;</div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">method1</span><span class="params">()</span> </span>&#123;</div><div class="line">        <span class="keyword">synchronized</span> (Integer.class) &#123;</div><div class="line">            System.out.println(Thread.currentThread().getName() + <span class="string">" 获取到 Integer 锁"</span>);</div><div class="line">            Thread.sleep(<span class="number">1000</span>);</div><div class="line">            <span class="keyword">synchronized</span> (String.class) &#123;</div><div class="line">                System.out.println(Thread.currentThread().getName() + <span class="string">" 获取到 String 锁"</span>);</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">method2</span><span class="params">()</span> </span>&#123;</div><div class="line">        <span class="keyword">synchronized</span> (String.class) &#123;</div><div class="line">            System.out.println(Thread.currentThread().getName() + <span class="string">" 获取到 String 锁"</span>);</div><div class="line">            Thread.sleep(<span class="number">1000</span>);</div><div class="line">            <span class="keyword">synchronized</span> (Integer.class) &#123;</div><div class="line">                System.out.println(Thread.currentThread().getName() + <span class="string">" 获取到 Integer 锁"</span>);</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
 <h2 id="8、多线程目的"><a href="#8、多线程目的" class="headerlink" title="8、多线程目的"></a>8、多线程目的</h2><p>多线程编程的目的，就是”最大限度地利用 CPU 资源”，当某一线程的处理不需要占用 CPU 而只和 I/O 等资源打交道时，让需要占用 CPU 资源的其它线程有机会获得 CPU 资源。从根本上说，这就是多线程编程的最终目的</p>
 <h2 id="9、线程安全"><a href="#9、线程安全" class="headerlink" title="9、线程安全"></a>9、线程安全</h2><p>线程安全是编程中的术语，指某个函数、函数库在多线程环境中被调用时，能够正确地处理多个线程之间的共享变量，使程序功能正确完成</p>
-<h2 id="10、问题"><a href="#10、问题" class="headerlink" title="10、问题"></a>10、问题</h2><p><strong>当一个线程进入一个对象的一个 synchronized 方法后，其它线程是否可进入此对象的其它方法?</strong></p>
+<h2 id="10、问题"><a href="#10、问题" class="headerlink" title="10、问题"></a>10、问题</h2><p><strong>1. 当一个线程进入一个对象的一个 synchronized 方法后，其它线程是否可进入此对象的其它方法?</strong></p>
 <p>其他方法的几种情况：</p>
 <ul>
 <li><p><strong>普通方法（包括静态方法）</strong><br>不影响正常访问</p>
@@ -187,6 +187,8 @@
 <li><p><strong>静态同步方法</strong><br>不影响正常访问，与同步方法用的不是同一个锁<br>同步方法用的是 <strong>对象锁</strong><br>静态同步方法为用的是 <strong>类锁</strong></p>
 </li>
 </ul>
+<p><strong>2. 为什么wait()，notify()方法要和synchronized一起使用？</strong></p>
+<p><code>wait()</code> 作用为通知当前线程等待并释放对象锁，<code>notify()</code> 作用为通知等待此对象锁的线程重新获得对象锁，然而，如果没有获得对象锁，<code>wait()</code> 和 <code>notify()</code> 都是没有意义的，即必须先获得对象锁，才能对对象锁进行操作</p>
 <p>参考：<br><a href="http://www.ed2000.com/ShowFile/221694.html" target="_blank" rel="external">圣思园张龙老师的 Java 视频</a><br><a href="https://my.oschina.net/mingdongcheng/blog/139263" target="_blank" rel="external">开源中国某博客</a></p>
 
         <!-- 显示正文 -->
@@ -196,7 +198,7 @@
 
     <footer class="article-footer">
       
-        <a data-url="http://yoursite.com/2016/11/19/thread/" data-id="cj1lqy3se000owkqrvz0suq5h" class="article-share-link" data-share="baidu" data-title="多线程总结">分享到</a>
+        <a data-url="http://yoursite.com/2016/11/19/thread/" data-id="cj1tedhh5000mwwqrcgjucrsh" class="article-share-link" data-share="baidu" data-title="多线程总结">分享到</a>
       
 
       
@@ -222,9 +224,9 @@
     </a>
   
   
-    <a href="/2016/11/16/JavaIO流小结/" id="article-nav-older" class="article-nav-link-wrap">
+    <a href="/2016/11/16/struts-form/" id="article-nav-older" class="article-nav-link-wrap">
       <strong class="article-nav-caption">上一篇</strong>
-      <div class="article-nav-title">JavaIO 小结</div>
+      <div class="article-nav-title">Struts ActionForm 小结</div>
     </a>
   
 </nav>
