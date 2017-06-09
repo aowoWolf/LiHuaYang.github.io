@@ -12,7 +12,7 @@
 <meta property="og:url" content="http://yoursite.com/2015/10/01/deploy-web/index.html">
 <meta property="og:site_name" content="266305">
 <meta property="og:description" content="Tomcat">
-<meta property="og:updated_time" content="2017-05-29T11:47:14.246Z">
+<meta property="og:updated_time" content="2017-06-08T13:20:49.151Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Tomcat 部署 JavaWeb 应用">
 <meta name="twitter:description" content="Tomcat">
@@ -136,7 +136,7 @@
 </li>
 </ol>
 <h1 id="问题"><a href="#问题" class="headerlink" title="问题"></a>问题</h1><h2 id="如何配置有层级关系的两个网站？"><a href="#如何配置有层级关系的两个网站？" class="headerlink" title="如何配置有层级关系的两个网站？"></a>如何配置有层级关系的两个网站？</h2><p>效果如下：<br><figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">// 访问主网站：默认应用</div><div class="line">http://localhost:8080/</div><div class="line">// 访问二级网站（如：blog）</div><div class="line">http://localhost:8080/blog</div></pre></td></tr></table></figure></p>
-<p>在 tomcat 的 conf\catalina\localhost 目录下新建 <code>ROOT.xml</code> 和 <code>blog.xml</code> 文件，内容如下：<br><figure class="highlight xml"><table><tr><td class="code"><pre><div class="line"><span class="comment">&lt;!-- ROOT.xml --&gt;</span></div><div class="line">&lt;?xml version="1.0" encoding="UTF-8"?&gt;</div><div class="line"><span class="tag">&lt;<span class="name">Context</span> <span class="attr">path</span>=<span class="string">"/"</span> <span class="attr">reloadable</span>=<span class="string">"true"</span> <span class="attr">docBase</span>=<span class="string">"F:\deployDemo01"</span>&gt;</span><span class="tag">&lt;/<span class="name">Context</span>&gt;</span></div><div class="line"></div><div class="line"><span class="comment">&lt;!-- blog.xml --&gt;</span></div><div class="line">&lt;?xml version="1.0" encoding="UTF-8"?&gt;</div><div class="line"><span class="tag">&lt;<span class="name">Context</span> <span class="attr">path</span>=<span class="string">"/blog"</span> <span class="attr">reloadable</span>=<span class="string">"true"</span> <span class="attr">docBase</span>=<span class="string">"F:\deployDemo01-blog"</span>&gt;</span><span class="tag">&lt;/<span class="name">Context</span>&gt;</span></div></pre></td></tr></table></figure></p>
+<p>在 tomcat 的 conf\catalina\localhost 目录下新建 <code>ROOT.xml</code> 和 <code>blog.xml</code> 文件，内容如下：<br><figure class="highlight xml"><table><tr><td class="code"><pre><div class="line"><span class="comment">&lt;!-- ROOT.xml --&gt;</span></div><div class="line"><span class="php"><span class="meta">&lt;?</span>xml version=<span class="string">"1.0"</span> encoding=<span class="string">"UTF-8"</span><span class="meta">?&gt;</span></span></div><div class="line"><span class="tag">&lt;<span class="name">Context</span> <span class="attr">path</span>=<span class="string">"/"</span> <span class="attr">reloadable</span>=<span class="string">"true"</span> <span class="attr">docBase</span>=<span class="string">"F:\deployDemo01"</span>&gt;</span><span class="tag">&lt;/<span class="name">Context</span>&gt;</span></div><div class="line"></div><div class="line"><span class="comment">&lt;!-- blog.xml --&gt;</span></div><div class="line"><span class="php"><span class="meta">&lt;?</span>xml version=<span class="string">"1.0"</span> encoding=<span class="string">"UTF-8"</span><span class="meta">?&gt;</span></span></div><div class="line"><span class="tag">&lt;<span class="name">Context</span> <span class="attr">path</span>=<span class="string">"/blog"</span> <span class="attr">reloadable</span>=<span class="string">"true"</span> <span class="attr">docBase</span>=<span class="string">"F:\deployDemo01-blog"</span>&gt;</span><span class="tag">&lt;/<span class="name">Context</span>&gt;</span></div></pre></td></tr></table></figure></p>
 <p>注：docBase 根据实际情况指定</p>
 <h2 id="部署时，资源重复加载"><a href="#部署时，资源重复加载" class="headerlink" title="部署时，资源重复加载"></a>部署时，资源重复加载</h2><p>应用已打包成 .war 包，放置在 Tomcat\webapps 路径下：<br>并在 sever.xml 中配置，如下（错误示例）：<br><figure class="highlight xml"><table><tr><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">Context</span> </span></div><div class="line"><span class="attr">docBase</span>=<span class="string">"F:\DevelopmentKit\apache-tomcat-6.0.44\webapps\TestTomcatDoubleReload.war"</span> </div><div class="line"><span class="attr">path</span>=<span class="string">"/ttd"</span> </div><div class="line"><span class="attr">reloadable</span>=<span class="string">"true"</span>&gt;</div><div class="line"><span class="tag">&lt;/<span class="name">Context</span>&gt;</span></div></pre></td></tr></table></figure></p>
 <p><strong>解决：</strong></p>
@@ -144,7 +144,7 @@
 <li>删除该 Context 节点</li>
 <li>将该 .war 包放置于除 Tomcat\webapps 之外的路径下</li>
 </ol>
-<p>参考：<br><a href="http://lvzhou-31.iteye.com/blog/1898261" target="_blank" rel="external">某博客</a><br><a href="http://www.cnblogs.com/hwaggLee/p/5151827.html" target="_blank" rel="external">博客园某博客</a></p>
+<p>参考：<br><a href="http://lvzhou-31.iteye.com/blog/1898261" target="_blank" rel="external">http://lvzhou-31.iteye.com/blog/1898261</a><br><a href="http://www.cnblogs.com/hwaggLee/p/5151827.html" target="_blank" rel="external">http://www.cnblogs.com/hwaggLee/p/5151827.html</a><br><a href="http://www.cnblogs.com/xiaoyunxia/p/6307392.html" target="_blank" rel="external">http://www.cnblogs.com/xiaoyunxia/p/6307392.html</a></p>
 
         <!-- 显示正文 -->
       
@@ -153,7 +153,7 @@
 
     <footer class="article-footer">
       
-        <a data-url="http://yoursite.com/2015/10/01/deploy-web/" data-id="cj3n3j1ot0001s4qr4nogpxre" class="article-share-link">分享到</a>
+        <a data-url="http://yoursite.com/2015/10/01/deploy-web/" data-id="cj3pvwrjx0005csqru9v59i3i" class="article-share-link">分享到</a>
       
 
       
