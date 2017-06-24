@@ -107,7 +107,7 @@
 
     <footer class="article-footer">
       
-        <a data-url="http://yoursite.com/2017/06/07/ide/" data-id="cj4ay03zz0006ywqrl3z6vicy" class="article-share-link">分享到</a>
+        <a data-url="http://yoursite.com/2017/06/07/ide/" data-id="cj4az3jwz0006noqrrys6cq68" class="article-share-link">分享到</a>
       
 
       
@@ -165,7 +165,7 @@
 
     <footer class="article-footer">
       
-        <a data-url="http://yoursite.com/2017/05/26/netty-question/" data-id="cj4ay040y000oywqrtsksjr7p" class="article-share-link">分享到</a>
+        <a data-url="http://yoursite.com/2017/05/26/netty-question/" data-id="cj4az3jy4000onoqr9t7lwjkl" class="article-share-link">分享到</a>
       
 
       
@@ -174,6 +174,65 @@
 
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Netty/">Netty</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-javase-interview-test" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2017/01/07/javase-interview-test/" class="article-date">
+  <time datetime="2017-01-06T16:00:00.000Z" itemprop="datePublished">2017-01-07</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/JavaSE-基础/">JavaSE 基础</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/01/07/javase-interview-test/">JavaSE 常见面试题</a>
+    </h1>
+  
+
+      </header>
+    
+
+    <div class="article-entry" itemprop="articleBody">
+
+      
+        <h1 id="一、obj-hashcode-、obj-equals-b"><a href="#一、obj-hashcode-、obj-equals-b" class="headerlink" title="一、obj.hashcode()、obj.equals(b)"></a>一、obj.hashcode()、obj.equals(b)</h1><h2 id="定义、作用"><a href="#定义、作用" class="headerlink" title="定义、作用"></a>定义、作用</h2><p><code>hashCode()</code>的作用是获取哈希码，也称为散列码；它实际上是返回一个 int 整数。这个哈希码的作用是，确定该对象在哈希表中的索引位置，提高哈希表的性能（如 HashMap、HashTable）</p>
+<h2 id="hashcode-工作原理"><a href="#hashcode-工作原理" class="headerlink" title="hashcode 工作原理"></a>hashcode 工作原理</h2><p>hashcode 是用来查找的，假如内存中有依次八个位置<br><figure class="highlight basic"><table><tr><td class="code"><pre><div class="line"><span class="symbol">0 </span> <span class="number">1</span>  <span class="number">2</span>  <span class="number">3</span>  <span class="number">4</span>  <span class="number">5</span>  <span class="number">6</span>  <span class="number">7</span>  <span class="number">8</span></div></pre></td></tr></table></figure></p>
+<p>现有个类，类中有个字段为 id，需要把这个类放在8个位置之一。如果不用 hashcode 而任意存放，当查找时候，则需要对这8各个位置进行遍历，或者使用二分法之类的算法。<br>如果使用 hashcode 效率将会大大的提高。<br>定义 hashcode 的值为 id%8，取得余数则为存放的位置。如：假设 id=9，9%8余数为1，于是存放的位置为1。假设 id=13，13%8余数为5，于是存放的位置为5。于是，每次需要查找的时候只需要通过 id%8 这个算法求余数，直接找到存放的位置了。</p>
+        
+          <p class="article-more-link">
+            <a href="/2017/01/07/javase-interview-test/#more">Read More</a>
+          </p>
+        
+      
+    </div>
+
+
+    <footer class="article-footer">
+      
+        <a data-url="http://yoursite.com/2017/01/07/javase-interview-test/" data-id="cj4az3jxr000hnoqrnxjhtr0z" class="article-share-link">分享到</a>
+      
+
+      
+        <a href="http://yoursite.com/2017/01/07/javase-interview-test/#ds-thread" class="article-comment-link">评论</a>
+      
+
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/面试题/">面试题</a></li></ul>
 
     </footer>
   </div>
@@ -225,70 +284,11 @@
 
     <footer class="article-footer">
       
-        <a data-url="http://yoursite.com/2017/01/07/javaee-interview-test/" data-id="cj4ay04020007ywqrd2z0ehuy" class="article-share-link">分享到</a>
+        <a data-url="http://yoursite.com/2017/01/07/javaee-interview-test/" data-id="cj4az3jxi000dnoqri8ljjwa5" class="article-share-link">分享到</a>
       
 
       
         <a href="http://yoursite.com/2017/01/07/javaee-interview-test/#ds-thread" class="article-comment-link">评论</a>
-      
-
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/面试题/">面试题</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-javase-interview-test" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2017/01/07/javase-interview-test/" class="article-date">
-  <time datetime="2017-01-06T16:00:00.000Z" itemprop="datePublished">2017-01-07</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/JavaSE-基础/">JavaSE 基础</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/01/07/javase-interview-test/">JavaSE 常见面试题</a>
-    </h1>
-  
-
-      </header>
-    
-
-    <div class="article-entry" itemprop="articleBody">
-
-      
-        <h1 id="一、obj-hashcode-、obj-equals-b"><a href="#一、obj-hashcode-、obj-equals-b" class="headerlink" title="一、obj.hashcode()、obj.equals(b)"></a>一、obj.hashcode()、obj.equals(b)</h1><h2 id="定义、作用"><a href="#定义、作用" class="headerlink" title="定义、作用"></a>定义、作用</h2><p><code>hashCode()</code>的作用是获取哈希码，也称为散列码；它实际上是返回一个 int 整数。这个哈希码的作用是，确定该对象在哈希表中的索引位置，提高哈希表的性能（如 HashMap、HashTable）</p>
-<h2 id="hashcode-工作原理"><a href="#hashcode-工作原理" class="headerlink" title="hashcode 工作原理"></a>hashcode 工作原理</h2><p>hashcode 是用来查找的，假如内存中有依次八个位置<br><figure class="highlight basic"><table><tr><td class="code"><pre><div class="line"><span class="symbol">0 </span> <span class="number">1</span>  <span class="number">2</span>  <span class="number">3</span>  <span class="number">4</span>  <span class="number">5</span>  <span class="number">6</span>  <span class="number">7</span>  <span class="number">8</span></div></pre></td></tr></table></figure></p>
-<p>现有个类，类中有个字段为 id，需要把这个类放在8个位置之一。如果不用 hashcode 而任意存放，当查找时候，则需要对这8各个位置进行遍历，或者使用二分法之类的算法。<br>如果使用 hashcode 效率将会大大的提高。<br>定义 hashcode 的值为 id%8，取得余数则为存放的位置。如：假设 id=9，9%8余数为1，于是存放的位置为1。假设 id=13，13%8余数为5，于是存放的位置为5。于是，每次需要查找的时候只需要通过 id%8 这个算法求余数，直接找到存放的位置了。</p>
-        
-          <p class="article-more-link">
-            <a href="/2017/01/07/javase-interview-test/#more">Read More</a>
-          </p>
-        
-      
-    </div>
-
-
-    <footer class="article-footer">
-      
-        <a data-url="http://yoursite.com/2017/01/07/javase-interview-test/" data-id="cj4ay0414000qywqraofzf8ap" class="article-share-link">分享到</a>
-      
-
-      
-        <a href="http://yoursite.com/2017/01/07/javase-interview-test/#ds-thread" class="article-comment-link">评论</a>
       
 
       
@@ -346,7 +346,7 @@
 
     <footer class="article-footer">
       
-        <a data-url="http://yoursite.com/2016/11/19/java-thread/" data-id="cj4ay040c000cywqrljqx1tvx" class="article-share-link">分享到</a>
+        <a data-url="http://yoursite.com/2016/11/19/java-thread/" data-id="cj4az3jxe000bnoqrkhpey1ej" class="article-share-link">分享到</a>
       
 
       
@@ -412,7 +412,7 @@
 
     <footer class="article-footer">
       
-        <a data-url="http://yoursite.com/2016/11/16/struts-form/" data-id="cj4ay041t0018ywqr2h4ervkx" class="article-share-link">分享到</a>
+        <a data-url="http://yoursite.com/2016/11/16/struts-form/" data-id="cj4az3jyq0011noqryq5g5lm0" class="article-share-link">分享到</a>
       
 
       
@@ -486,7 +486,7 @@
 
     <footer class="article-footer">
       
-        <a data-url="http://yoursite.com/2016/11/16/java-io/" data-id="cj4ay03zs0005ywqrjuthm2lx" class="article-share-link">分享到</a>
+        <a data-url="http://yoursite.com/2016/11/16/java-io/" data-id="cj4az3jx20007noqr3m6hws30" class="article-share-link">分享到</a>
       
 
       
@@ -543,7 +543,7 @@
 
     <footer class="article-footer">
       
-        <a data-url="http://yoursite.com/2016/11/15/upload-file/" data-id="cj4ay041n0011ywqrbtzkapwa" class="article-share-link">分享到</a>
+        <a data-url="http://yoursite.com/2016/11/15/upload-file/" data-id="cj4az3jyu0015noqrlzljqtud" class="article-share-link">分享到</a>
       
 
       
@@ -604,7 +604,7 @@
 
     <footer class="article-footer">
       
-        <a data-url="http://yoursite.com/2016/11/12/session/" data-id="cj4ay041d000xywqrstvkzgg8" class="article-share-link">分享到</a>
+        <a data-url="http://yoursite.com/2016/11/12/session/" data-id="cj4az3jyn000ynoqrxtsjyp9c" class="article-share-link">分享到</a>
       
 
       
@@ -661,7 +661,7 @@
 
     <footer class="article-footer">
       
-        <a data-url="http://yoursite.com/2016/11/10/mysql-install/" data-id="cj4ay040k000gywqrvjquh1ue" class="article-share-link">分享到</a>
+        <a data-url="http://yoursite.com/2016/11/10/mysql-install/" data-id="cj4az3jy7000rnoqr7mhlnbe1" class="article-share-link">分享到</a>
       
 
       
@@ -718,7 +718,7 @@
 
     <footer class="article-footer">
       
-        <a data-url="http://yoursite.com/2016/10/07/java-mysql-connect/" data-id="cj4ay0409000aywqrahzcdywg" class="article-share-link">分享到</a>
+        <a data-url="http://yoursite.com/2016/10/07/java-mysql-connect/" data-id="cj4az3jxa0008noqrapzkyp9v" class="article-share-link">分享到</a>
       
 
       
@@ -775,7 +775,7 @@
 
     <footer class="article-footer">
       
-        <a data-url="http://yoursite.com/2015/11/14/分页/" data-id="cj4ay041r0015ywqrmhvcxvcr" class="article-share-link">分享到</a>
+        <a data-url="http://yoursite.com/2015/11/14/分页/" data-id="cj4az3jyy0019noqr1l6omexb" class="article-share-link">分享到</a>
       
 
       
@@ -837,7 +837,7 @@
 
     <footer class="article-footer">
       
-        <a data-url="http://yoursite.com/2015/10/11/servlet-read-file/" data-id="cj4ay041a000uywqrd3a4iqv7" class="article-share-link">分享到</a>
+        <a data-url="http://yoursite.com/2015/10/11/servlet-read-file/" data-id="cj4az3jyc000vnoqr0tljuctq" class="article-share-link">分享到</a>
       
 
       
@@ -894,7 +894,7 @@
 
     <footer class="article-footer">
       
-        <a data-url="http://yoursite.com/2015/10/01/deploy-web/" data-id="cj4ay03yo0000ywqrwxuchgnj" class="article-share-link">分享到</a>
+        <a data-url="http://yoursite.com/2015/10/01/deploy-web/" data-id="cj4az3jwc0001noqrgm8w1a01" class="article-share-link">分享到</a>
       
 
       
@@ -953,7 +953,7 @@
 
     <footer class="article-footer">
       
-        <a data-url="http://yoursite.com/2015/08/09/jsp-learn/" data-id="cj4ay040r000jywqrg6ycw2qd" class="article-share-link">分享到</a>
+        <a data-url="http://yoursite.com/2015/08/09/jsp-learn/" data-id="cj4az3jxw000jnoqrv9zqwms9" class="article-share-link">分享到</a>
       
 
       
@@ -1016,7 +1016,7 @@
 
     <footer class="article-footer">
       
-        <a data-url="http://yoursite.com/1995/12/26/interview-expirence/" data-id="cj4ay03z90002ywqrv6tgt4mh" class="article-share-link">分享到</a>
+        <a data-url="http://yoursite.com/1995/12/26/interview-expirence/" data-id="cj4az3jwm0003noqr7fsut62u" class="article-share-link">分享到</a>
       
 
       
@@ -1039,7 +1039,7 @@
       <aside id="sidebar">
   
     <div class="widget-wrap">
-  <h3 class="widget-title">about me</h3>
+  <h3 class="widget-title">关于我</h3>
   <div class="widget">
     <ul>
       
