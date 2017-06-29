@@ -119,7 +119,7 @@
 
         <!-- 显示正文 -->
         <h1 id="一、obj-hashcode-、obj-equals-b"><a href="#一、obj-hashcode-、obj-equals-b" class="headerlink" title="一、obj.hashcode()、obj.equals(b)"></a>一、obj.hashcode()、obj.equals(b)</h1><h2 id="定义、作用"><a href="#定义、作用" class="headerlink" title="定义、作用"></a>定义、作用</h2><p><code>hashCode()</code>的作用是获取哈希码，也称为散列码；它实际上是返回一个 int 整数。这个哈希码的作用是，确定该对象在哈希表中的索引位置，提高哈希表的性能（如 HashMap、HashTable）</p>
-<h2 id="hashcode-工作原理"><a href="#hashcode-工作原理" class="headerlink" title="hashcode 工作原理"></a>hashcode 工作原理</h2><p>hashcode 是用来查找的，假如内存中有依次八个位置<br><figure class="highlight basic"><table><tr><td class="code"><pre><div class="line"><span class="symbol">0 </span> <span class="number">1</span>  <span class="number">2</span>  <span class="number">3</span>  <span class="number">4</span>  <span class="number">5</span>  <span class="number">6</span>  <span class="number">7</span>  <span class="number">8</span></div></pre></td></tr></table></figure></p>
+<h2 id="hashcode-工作原理"><a href="#hashcode-工作原理" class="headerlink" title="hashcode 工作原理"></a>hashcode 工作原理</h2><p>hashcode 是用来查找的，假如内存中有依次八个位置<br><figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">0  1  2  3  4  5  6  7  8</div></pre></td></tr></table></figure></p>
 <p>现有个类，类中有个字段为 id，需要把这个类放在8个位置之一。如果不用 hashcode 而任意存放，当查找时候，则需要对这8各个位置进行遍历，或者使用二分法之类的算法。<br>如果使用 hashcode 效率将会大大的提高。<br>定义 hashcode 的值为 id%8，取得余数则为存放的位置。如：假设 id=9，9%8余数为1，于是存放的位置为1。假设 id=13，13%8余数为5，于是存放的位置为5。于是，每次需要查找的时候只需要通过 id%8 这个算法求余数，直接找到存放的位置了。</p>
 <a id="more"></a>
 <h2 id="与-equals-之间的联系"><a href="#与-equals-之间的联系" class="headerlink" title="与 equals() 之间的联系"></a>与 equals() 之间的联系</h2><p>当两个类的 hashcode 值一样时候（碰撞），则需要 equals() 来帮忙。如：9%8和17%8的余数都是1。这里可能可能会想到既然键的 hashcode 都一样了，为什么还能存入？答案是：能存入，只要满足重写 equals() 这个前提要求。也就是说，总得让虚拟机区分的出来，对象与对象之间的区别。即：当对象的 hashcode 值相等时，只要不满足 a.equals(b) 为 true 时，对象就能存入！同样的道理，当取出时，先比较对象的 hashcode 值，再去调用 equals()。</p>
@@ -251,7 +251,7 @@
 
     <footer class="article-footer">
       
-        <a data-url="http://yoursite.com/2017/01/07/javase-interview-test/" data-id="cj4azvmqg000hisqr5xs27p7r" class="article-share-link">分享到</a>
+        <a data-url="http://yoursite.com/2017/01/07/javase-interview-test/" data-id="cj4igu7b0000ik0qr85un13bu" class="article-share-link">分享到</a>
       
 
       
