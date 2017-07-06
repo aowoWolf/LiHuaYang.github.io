@@ -67,10 +67,134 @@
     <div class="outer">
       <section id="main">
   
+    <article id="post-redis-cluster-env" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2017/06/20/redis-cluster-env/" class="article-date">
+  <time datetime="2017-06-19T16:00:00.000Z" itemprop="datePublished">2017-06-20</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/Redis/">Redis</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/06/20/redis-cluster-env/">基于 Redis3.2.4 集群搭建说明</a>
+    </h1>
+  
+
+      </header>
+    
+
+    <div class="article-entry" itemprop="articleBody">
+
+      
+        <p>用两台虚拟机（ip: 10.60.44.76、ip: 10.60.44.105）共 6 个节点，一台虚拟机 3 个节点，模拟出 3 master、3 salve 环境</p>
+<ul>
+<li>redis 版本：redis-3.2.4</li>
+<li>linux 版本：centos6.5（ip: 10.60.44.76）、centos7.0（ip: 10.60.44.105）</li>
+</ul>
+<p><strong>注意：</strong></p>
+<ul>
+<li>最好是都在 root 权限操作</li>
+<li>redis-cluster 最小配置是三主三从</li>
+<li>关闭防火墙（节点与节点之间通信需要开放指定的端口，单纯为了方便，在生产环境忌用）</li>
+</ul>
+        
+          <p class="article-more-link">
+            <a href="/2017/06/20/redis-cluster-env/#more">Read More</a>
+          </p>
+        
+      
+    </div>
+
+
+    <footer class="article-footer">
+      
+        <a data-url="http://yoursite.com/2017/06/20/redis-cluster-env/" data-id="cj4r2gss3000h7cz6fd18sugs" class="article-share-link">分享到</a>
+      
+
+      
+        <a href="http://yoursite.com/2017/06/20/redis-cluster-env/#ds-thread" class="article-comment-link">评论</a>
+      
+
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/redis-集群/">redis 集群</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-redis-question" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2017/06/10/redis-question/" class="article-date">
+  <time datetime="2017-06-09T16:00:00.000Z" itemprop="datePublished">2017-06-10</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/Redis/">Redis</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/06/10/redis-question/">Redis 疑问释义</a>
+    </h1>
+  
+
+      </header>
+    
+
+    <div class="article-entry" itemprop="articleBody">
+
+      
+        <p>记录在日常学习和使用 redis 的过程中遇到的一些问题以及自己的理解，基于 redis-3.2.4</p>
+        
+          <p class="article-more-link">
+            <a href="/2017/06/10/redis-question/#more">Read More</a>
+          </p>
+        
+      
+    </div>
+
+
+    <footer class="article-footer">
+      
+        <a data-url="http://yoursite.com/2017/06/10/redis-question/" data-id="cj4r2mxcq0000jkz6gfgo7c5g" class="article-share-link">分享到</a>
+      
+
+      
+        <a href="http://yoursite.com/2017/06/10/redis-question/#ds-thread" class="article-comment-link">评论</a>
+      
+
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/redis/">redis</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
     <article id="post-ide-keys" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2017/06/07/ide-keys/" class="article-date">
-  <time datetime="2017-06-07T13:16:55.604Z" itemprop="datePublished">2017-06-07</time>
+  <time datetime="2017-06-07T13:16:55.605Z" itemprop="datePublished">2017-06-07</time>
 </a>
     
   <div class="article-category">
@@ -107,7 +231,7 @@
 
     <footer class="article-footer">
       
-        <a data-url="http://yoursite.com/2017/06/07/ide-keys/" data-id="cj4ii7mvo00032cqryh7ksosl" class="article-share-link">分享到</a>
+        <a data-url="http://yoursite.com/2017/06/07/ide-keys/" data-id="cj4r2gsra00037cz6orw2ll5l" class="article-share-link">分享到</a>
       
 
       
@@ -165,7 +289,7 @@
 
     <footer class="article-footer">
       
-        <a data-url="http://yoursite.com/2017/05/26/netty-question/" data-id="cj4ii7mxp000r2cqrc568sk6l" class="article-share-link">分享到</a>
+        <a data-url="http://yoursite.com/2017/05/26/netty-question/" data-id="cj4r2gssf000r7cz6b8sdbekn" class="article-share-link">分享到</a>
       
 
       
@@ -174,65 +298,6 @@
 
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Netty/">Netty</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-javase-interview-test" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2017/01/07/javase-interview-test/" class="article-date">
-  <time datetime="2017-01-06T16:00:00.000Z" itemprop="datePublished">2017-01-07</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/JavaSE-基础/">JavaSE 基础</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/01/07/javase-interview-test/">JavaSE 常见面试题</a>
-    </h1>
-  
-
-      </header>
-    
-
-    <div class="article-entry" itemprop="articleBody">
-
-      
-        <h1 id="一、obj-hashcode-、obj-equals-b"><a href="#一、obj-hashcode-、obj-equals-b" class="headerlink" title="一、obj.hashcode()、obj.equals(b)"></a>一、obj.hashcode()、obj.equals(b)</h1><h2 id="定义、作用"><a href="#定义、作用" class="headerlink" title="定义、作用"></a>定义、作用</h2><p><code>hashCode()</code>的作用是获取哈希码，也称为散列码；它实际上是返回一个 int 整数。这个哈希码的作用是，确定该对象在哈希表中的索引位置，提高哈希表的性能（如 HashMap、HashTable）</p>
-<h2 id="hashcode-工作原理"><a href="#hashcode-工作原理" class="headerlink" title="hashcode 工作原理"></a>hashcode 工作原理</h2><p>hashcode 是用来查找的，假如内存中有依次八个位置<br><figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">0  1  2  3  4  5  6  7  8</div></pre></td></tr></table></figure></p>
-<p>现有个类，类中有个字段为 id，需要把这个类放在8个位置之一。如果不用 hashcode 而任意存放，当查找时候，则需要对这8各个位置进行遍历，或者使用二分法之类的算法。<br>如果使用 hashcode 效率将会大大的提高。<br>定义 hashcode 的值为 id%8，取得余数则为存放的位置。如：假设 id=9，9%8余数为1，于是存放的位置为1。假设 id=13，13%8余数为5，于是存放的位置为5。于是，每次需要查找的时候只需要通过 id%8 这个算法求余数，直接找到存放的位置了。</p>
-        
-          <p class="article-more-link">
-            <a href="/2017/01/07/javase-interview-test/#more">Read More</a>
-          </p>
-        
-      
-    </div>
-
-
-    <footer class="article-footer">
-      
-        <a data-url="http://yoursite.com/2017/01/07/javase-interview-test/" data-id="cj4ii7mx4000h2cqrxnd5q2fl" class="article-share-link">分享到</a>
-      
-
-      
-        <a href="http://yoursite.com/2017/01/07/javase-interview-test/#ds-thread" class="article-comment-link">评论</a>
-      
-
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/面试题/">面试题</a></li></ul>
 
     </footer>
   </div>
@@ -284,11 +349,70 @@
 
     <footer class="article-footer">
       
-        <a data-url="http://yoursite.com/2017/01/07/javaee-interview-test/" data-id="cj4ii7mwu000d2cqrhi63ygww" class="article-share-link">分享到</a>
+        <a data-url="http://yoursite.com/2017/01/07/javaee-interview-test/" data-id="cj4r2gsrl00077cz6bkog5mak" class="article-share-link">分享到</a>
       
 
       
         <a href="http://yoursite.com/2017/01/07/javaee-interview-test/#ds-thread" class="article-comment-link">评论</a>
+      
+
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/面试题/">面试题</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-javase-interview-test" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2017/01/07/javase-interview-test/" class="article-date">
+  <time datetime="2017-01-06T16:00:00.000Z" itemprop="datePublished">2017-01-07</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/JavaSE-基础/">JavaSE 基础</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/01/07/javase-interview-test/">JavaSE 常见面试题</a>
+    </h1>
+  
+
+      </header>
+    
+
+    <div class="article-entry" itemprop="articleBody">
+
+      
+        <h1 id="一、obj-hashcode-、obj-equals-b"><a href="#一、obj-hashcode-、obj-equals-b" class="headerlink" title="一、obj.hashcode()、obj.equals(b)"></a>一、obj.hashcode()、obj.equals(b)</h1><h2 id="定义、作用"><a href="#定义、作用" class="headerlink" title="定义、作用"></a>定义、作用</h2><p><code>hashCode()</code>的作用是获取哈希码，也称为散列码；它实际上是返回一个 int 整数。这个哈希码的作用是，确定该对象在哈希表中的索引位置，提高哈希表的性能（如 HashMap、HashTable）</p>
+<h2 id="hashcode-工作原理"><a href="#hashcode-工作原理" class="headerlink" title="hashcode 工作原理"></a>hashcode 工作原理</h2><p>hashcode 是用来查找的，假如内存中有依次八个位置<br><figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">0  1  2  3  4  5  6  7  8</div></pre></td></tr></table></figure></p>
+<p>现有个类，类中有个字段为 id，需要把这个类放在8个位置之一。如果不用 hashcode 而任意存放，当查找时候，则需要对这8各个位置进行遍历，或者使用二分法之类的算法。<br>如果使用 hashcode 效率将会大大的提高。<br>定义 hashcode 的值为 id%8，取得余数则为存放的位置。如：假设 id=9，9%8余数为1，于是存放的位置为1。假设 id=13，13%8余数为5，于是存放的位置为5。于是，每次需要查找的时候只需要通过 id%8 这个算法求余数，直接找到存放的位置了。</p>
+        
+          <p class="article-more-link">
+            <a href="/2017/01/07/javase-interview-test/#more">Read More</a>
+          </p>
+        
+      
+    </div>
+
+
+    <footer class="article-footer">
+      
+        <a data-url="http://yoursite.com/2017/01/07/javase-interview-test/" data-id="cj4r2gsrv000b7cz6q9kstevv" class="article-share-link">分享到</a>
+      
+
+      
+        <a href="http://yoursite.com/2017/01/07/javase-interview-test/#ds-thread" class="article-comment-link">评论</a>
       
 
       
@@ -334,7 +458,7 @@
 <li>多个进程的内部数据和状态都是完全独立的，而多线程是共享的<strong>一块内存空间和一组系统资源</strong>，有可能相互影响</li>
 <li>线程本身的数据通常只有<strong>寄存器数据</strong>，以及一个程序<strong>执行时使用的堆栈</strong>，所以线程的切换比进程的负担要小</li>
 </ul>
-<p><strong>线程</strong> 是操作系统能够进行运算调度的最小单位。它被包含在进程之中，是进程中的实际运作单位。一条线程指的是进程中一个单一顺序的控制流，一个进程中可以并发多个线程，每条线程并行执行不同的任务</p>
+<p><strong>线程</strong>是操作系统能够进行运算调度的最小单位。它被包含在进程之中，是进程中的实际运作单位。一条线程指的是进程中一个单一顺序的控制流，一个进程中可以并发多个线程，每条线程并行执行不同的任务</p>
         
           <p class="article-more-link">
             <a href="/2016/11/19/java-thread-introduce/#more">Read More</a>
@@ -346,7 +470,7 @@
 
     <footer class="article-footer">
       
-        <a data-url="http://yoursite.com/2016/11/19/java-thread-introduce/" data-id="cj4ii7mwp000b2cqrbgw132cv" class="article-share-link">分享到</a>
+        <a data-url="http://yoursite.com/2016/11/19/java-thread-introduce/" data-id="cj4r2gsrs00087cz6ksvceadi" class="article-share-link">分享到</a>
       
 
       
@@ -355,72 +479,6 @@
 
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/JavaSE-基础/">JavaSE 基础</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-struts-form" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2016/11/16/struts-form/" class="article-date">
-  <time datetime="2016-11-15T16:00:00.000Z" itemprop="datePublished">2016-11-16</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/JavaEE-开发/">JavaEE 开发</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2016/11/16/struts-form/">Struts ActionForm 小结</a>
-    </h1>
-  
-
-      </header>
-    
-
-    <div class="article-entry" itemprop="articleBody">
-
-      
-        <p>Struts 框架中的视图组件主要包括：</p>
-<ul>
-<li>JSP 页面</li>
-<li>ActionForm 类</li>
-<li>Struts 自定义标记</li>
-<li>消息资源</li>
-</ul>
-<p>其中，ActionForm 类是 Struts 框架的核心组件之一，是 Struts 的关键视图组件</p>
-<h1 id="一、ActionForm-的作用机理"><a href="#一、ActionForm-的作用机理" class="headerlink" title="一、ActionForm 的作用机理"></a>一、ActionForm 的作用机理</h1><p>ActionForm 本质上是一种 JavaBean，是专门用来传递数据的 DTO(Data Transfer Object)，数据传递对象)。它包括用于表单数据验证的 <code>validate()</code> 和用于数据复位的<code>reset()</code></p>
-<p>Struts 框架利用 ActionForm 对象来临时存放视图页面中的表单数据。例如：<br>一个登录页面会有一个用户输入框和一个密码输入框，以及用来提交登录请求的按钮。当用户提交登录请求后，Struts 将用户名和密码两个输入域的数据自动填充到相应的 ActionForm 对象中，然后控制层可以从该 ActionForm 对象中读取用户输入的表单数据，也可以把来自模型层的数据存放到 ActionForm 中，然后返回给视图显示</p>
-        
-          <p class="article-more-link">
-            <a href="/2016/11/16/struts-form/#more">Read More</a>
-          </p>
-        
-      
-    </div>
-
-
-    <footer class="article-footer">
-      
-        <a data-url="http://yoursite.com/2016/11/16/struts-form/" data-id="cj4ii7my900112cqrk532frs9" class="article-share-link">分享到</a>
-      
-
-      
-        <a href="http://yoursite.com/2016/11/16/struts-form/#ds-thread" class="article-comment-link">评论</a>
-      
-
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Struts/">Struts</a></li></ul>
 
     </footer>
   </div>
@@ -486,7 +544,7 @@
 
     <footer class="article-footer">
       
-        <a data-url="http://yoursite.com/2016/11/16/java-io/" data-id="cj4ii7mw900072cqr5nbekx0v" class="article-share-link">分享到</a>
+        <a data-url="http://yoursite.com/2016/11/16/java-io/" data-id="cj4r2gssc000o7cz6pm5mip3o" class="article-share-link">分享到</a>
       
 
       
@@ -495,6 +553,72 @@
 
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Java-IO/">Java IO</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-struts-form" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2016/11/16/struts-form/" class="article-date">
+  <time datetime="2016-11-15T16:00:00.000Z" itemprop="datePublished">2016-11-16</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/JavaEE-开发/">JavaEE 开发</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2016/11/16/struts-form/">Struts ActionForm 小结</a>
+    </h1>
+  
+
+      </header>
+    
+
+    <div class="article-entry" itemprop="articleBody">
+
+      
+        <p>Struts 框架中的视图组件主要包括：</p>
+<ul>
+<li>JSP 页面</li>
+<li>ActionForm 类</li>
+<li>Struts 自定义标记</li>
+<li>消息资源</li>
+</ul>
+<p>其中，ActionForm 类是 Struts 框架的核心组件之一，是 Struts 的关键视图组件</p>
+<h1 id="一、ActionForm-的作用机理"><a href="#一、ActionForm-的作用机理" class="headerlink" title="一、ActionForm 的作用机理"></a>一、ActionForm 的作用机理</h1><p>ActionForm 本质上是一种 JavaBean，是专门用来传递数据的 DTO(Data Transfer Object)，数据传递对象)。它包括用于表单数据验证的 <code>validate()</code> 和用于数据复位的<code>reset()</code></p>
+<p>Struts 框架利用 ActionForm 对象来临时存放视图页面中的表单数据。例如：<br>一个登录页面会有一个用户输入框和一个密码输入框，以及用来提交登录请求的按钮。当用户提交登录请求后，Struts 将用户名和密码两个输入域的数据自动填充到相应的 ActionForm 对象中，然后控制层可以从该 ActionForm 对象中读取用户输入的表单数据，也可以把来自模型层的数据存放到 ActionForm 中，然后返回给视图显示</p>
+        
+          <p class="article-more-link">
+            <a href="/2016/11/16/struts-form/#more">Read More</a>
+          </p>
+        
+      
+    </div>
+
+
+    <footer class="article-footer">
+      
+        <a data-url="http://yoursite.com/2016/11/16/struts-form/" data-id="cj4r2gssk000v7cz6wsl6ye5z" class="article-share-link">分享到</a>
+      
+
+      
+        <a href="http://yoursite.com/2016/11/16/struts-form/#ds-thread" class="article-comment-link">评论</a>
+      
+
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Struts/">Struts</a></li></ul>
 
     </footer>
   </div>
@@ -543,7 +667,7 @@
 
     <footer class="article-footer">
       
-        <a data-url="http://yoursite.com/2016/11/15/upload-file/" data-id="cj4ii7myd00152cqrvoslqcxu" class="article-share-link">分享到</a>
+        <a data-url="http://yoursite.com/2016/11/15/upload-file/" data-id="cj4r2gssz00117cz6tgs95p5c" class="article-share-link">分享到</a>
       
 
       
@@ -604,7 +728,7 @@
 
     <footer class="article-footer">
       
-        <a data-url="http://yoursite.com/2016/11/12/session/" data-id="cj4ii7my5000y2cqr55414j89" class="article-share-link">分享到</a>
+        <a data-url="http://yoursite.com/2016/11/12/session/" data-id="cj4r2gssr000x7cz6k2hp1kjk" class="article-share-link">分享到</a>
       
 
       
@@ -661,7 +785,7 @@
 
     <footer class="article-footer">
       
-        <a data-url="http://yoursite.com/2016/11/10/mysql-install/" data-id="cj4ii7mxi000o2cqr69fe3sb7" class="article-share-link">分享到</a>
+        <a data-url="http://yoursite.com/2016/11/10/mysql-install/" data-id="cj4r2gst400177cz6f7i0a8pi" class="article-share-link">分享到</a>
       
 
       
@@ -718,7 +842,7 @@
 
     <footer class="article-footer">
       
-        <a data-url="http://yoursite.com/2016/10/07/java-mysql-connect/" data-id="cj4ii7mwj00082cqrwpzt9n0m" class="article-share-link">分享到</a>
+        <a data-url="http://yoursite.com/2016/10/07/java-mysql-connect/" data-id="cj4r2gsrj00067cz6ogk4vuxd" class="article-share-link">分享到</a>
       
 
       
@@ -775,7 +899,7 @@
 
     <footer class="article-footer">
       
-        <a data-url="http://yoursite.com/2015/11/14/分页/" data-id="cj4ii7myi00192cqrz4f1eol3" class="article-share-link">分享到</a>
+        <a data-url="http://yoursite.com/2015/11/14/分页/" data-id="cj4r2gst8001b7cz6z2ckdu6j" class="article-share-link">分享到</a>
       
 
       
@@ -837,7 +961,7 @@
 
     <footer class="article-footer">
       
-        <a data-url="http://yoursite.com/2015/10/11/servlet-read-file/" data-id="cj4ii7mxw000v2cqr4dn33o55" class="article-share-link">分享到</a>
+        <a data-url="http://yoursite.com/2015/10/11/servlet-read-file/" data-id="cj4r2gsrz000d7cz6wsxnj1yw" class="article-share-link">分享到</a>
       
 
       
@@ -894,7 +1018,7 @@
 
     <footer class="article-footer">
       
-        <a data-url="http://yoursite.com/2015/10/01/deploy-web/" data-id="cj4ii7mvb00012cqrm45c5xuz" class="article-share-link">分享到</a>
+        <a data-url="http://yoursite.com/2015/10/01/deploy-web/" data-id="cj4r2gsr400017cz6a8xe3pmb" class="article-share-link">分享到</a>
       
 
       
@@ -953,7 +1077,7 @@
 
     <footer class="article-footer">
       
-        <a data-url="http://yoursite.com/2015/08/09/jsp-learn/" data-id="cj4ii7mxa000j2cqrc0geesx4" class="article-share-link">分享到</a>
+        <a data-url="http://yoursite.com/2015/08/09/jsp-learn/" data-id="cj4r2gss6000j7cz60kocpx8w" class="article-share-link">分享到</a>
       
 
       
@@ -1016,7 +1140,7 @@
 
     <footer class="article-footer">
       
-        <a data-url="http://yoursite.com/1995/12/26/interview-expirence/" data-id="cj4ii7mw600062cqrva6mevxy" class="article-share-link">分享到</a>
+        <a data-url="http://yoursite.com/1995/12/26/interview-expirence/" data-id="cj4r2gst100147cz63ndbvu83" class="article-share-link">分享到</a>
       
 
       
@@ -1088,7 +1212,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">分类</h3>
     <div class="widget">
-      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/JavaEE-开发/">JavaEE 开发</a><span class="category-list-count">9</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/JavaSE-基础/">JavaSE 基础</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Netty/">Netty</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/工具/">工具</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/数据库/">数据库</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/职业生涯/">职业生涯</a><span class="category-list-count">1</span></li></ul>
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/JavaEE-开发/">JavaEE 开发</a><span class="category-list-count">9</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/JavaSE-基础/">JavaSE 基础</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Netty/">Netty</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Redis/">Redis</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/工具/">工具</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/数据库/">数据库</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/职业生涯/">职业生涯</a><span class="category-list-count">1</span></li></ul>
     </div>
   </div>
 
@@ -1097,7 +1221,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">标签云</h3>
     <div class="widget tagcloud">
-      <a href="/tags/Java-IO/" style="font-size: 16.67px;">Java IO</a> <a href="/tags/JavaEE-开发/" style="font-size: 20px;">JavaEE 开发</a> <a href="/tags/JavaSE-基础/" style="font-size: 13.33px;">JavaSE 基础</a> <a href="/tags/MySQL/" style="font-size: 13.33px;">MySQL</a> <a href="/tags/Netty/" style="font-size: 10px;">Netty</a> <a href="/tags/Struts/" style="font-size: 10px;">Struts</a> <a href="/tags/Tomcat/" style="font-size: 10px;">Tomcat</a> <a href="/tags/jsp/" style="font-size: 10px;">jsp</a> <a href="/tags/分页/" style="font-size: 10px;">分页</a> <a href="/tags/工具配置及使用/" style="font-size: 10px;">工具配置及使用</a> <a href="/tags/面试/" style="font-size: 10px;">面试</a> <a href="/tags/面试题/" style="font-size: 13.33px;">面试题</a>
+      <a href="/tags/Java-IO/" style="font-size: 16.67px;">Java IO</a> <a href="/tags/JavaEE-开发/" style="font-size: 20px;">JavaEE 开发</a> <a href="/tags/JavaSE-基础/" style="font-size: 13.33px;">JavaSE 基础</a> <a href="/tags/MySQL/" style="font-size: 13.33px;">MySQL</a> <a href="/tags/Netty/" style="font-size: 10px;">Netty</a> <a href="/tags/Struts/" style="font-size: 10px;">Struts</a> <a href="/tags/Tomcat/" style="font-size: 10px;">Tomcat</a> <a href="/tags/jsp/" style="font-size: 10px;">jsp</a> <a href="/tags/redis/" style="font-size: 10px;">redis</a> <a href="/tags/redis-集群/" style="font-size: 10px;">redis 集群</a> <a href="/tags/分页/" style="font-size: 10px;">分页</a> <a href="/tags/工具配置及使用/" style="font-size: 10px;">工具配置及使用</a> <a href="/tags/面试/" style="font-size: 10px;">面试</a> <a href="/tags/面试题/" style="font-size: 13.33px;">面试题</a>
     </div>
   </div>
 
@@ -1106,7 +1230,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">归档</h3>
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/06/">2017年 06月</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/05/">2017年 05月</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/01/">2017年 01月</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/11/">2016年 11月</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/10/">2016年 10月</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/11/">2015年 11月</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/10/">2015年 10月</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/08/">2015年 08月</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/1995/12/">1995年 12月</a><span class="archive-list-count">1</span></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/06/">2017年 06月</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/05/">2017年 05月</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/01/">2017年 01月</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/11/">2016年 11月</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/10/">2016年 10月</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/11/">2015年 11月</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/10/">2015年 10月</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/08/">2015年 08月</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/1995/12/">1995年 12月</a><span class="archive-list-count">1</span></li></ul>
     </div>
   </div>
 

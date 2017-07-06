@@ -1,0 +1,356 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>Redis 疑问释义 | 266305</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="Redis 数据库使用过程中遇到的一些小疑问">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Redis 疑问释义">
+<meta property="og:url" content="http://yoursite.com/2017/06/10/redis-question/index.html">
+<meta property="og:site_name" content="266305">
+<meta property="og:description" content="Redis 数据库使用过程中遇到的一些小疑问">
+<meta property="og:updated_time" content="2017-07-05T14:06:21.725Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Redis 疑问释义">
+<meta name="twitter:description" content="Redis 数据库使用过程中遇到的一些小疑问">
+  
+    <link rel="alternative" href="/atom.xml" title="266305" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.ico">
+  
+  <link rel="stylesheet" href="/css/style.css">
+  <!--[if lt IE 9]><script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7/html5shiv.min.js"></script><![endif]-->
+  
+</head>
+<body>
+<div id="container">
+  <div id="wrap">
+    <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">266305</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+          <a class="main-nav-link" href="/about">About</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//www.baidu.com/baidu" method="get" accept-charset="utf-8" class="search-form">
+          <input type="search" name="word" maxlength="20" class="search-form-input" placeholder="Search">
+          <input type="submit" value="" class="search-form-submit">
+          <input name=tn type=hidden value="bds">
+          <input name=cl type=hidden value="3">
+          <input name=ct type=hidden value="2097152">
+          <input type="hidden" name="si" value="yoursite.com">
+        </form>
+      </div>
+    </div>
+  </div>
+</header>
+    <div class="outer">
+      <section id="main"><article id="post-redis-question" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2017/06/10/redis-question/" class="article-date">
+  <time datetime="2017-06-09T16:00:00.000Z" itemprop="datePublished">2017-06-10</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/Redis/">Redis</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      Redis 疑问释义
+    </h1>
+  
+
+      </header>
+    
+
+    <div class="article-entry" itemprop="articleBody">
+
+      
+
+
+        
+
+
+        
+        <p style="width: 100%; background-color: #EEE; height: 3px"></p>
+          <!-- 显示目录 -->
+          <ol class="mytoc"><li class="mytoc-item mytoc-level-2"><a class="mytoc-link" href="#Redis-（remote-dictionary-server）是什么？"><span class="mytoc-text">Redis （remote dictionary server）是什么？</span></a></li><li class="mytoc-item mytoc-level-2"><a class="mytoc-link" href="#Redis-集群有什么好处？为什么需要存在集群？"><span class="mytoc-text">Redis 集群有什么好处？为什么需要存在集群？</span></a></li><li class="mytoc-item mytoc-level-2"><a class="mytoc-link" href="#Redis-的集群方案有哪些？"><span class="mytoc-text">Redis 的集群方案有哪些？</span></a></li><li class="mytoc-item mytoc-level-2"><a class="mytoc-link" href="#Redis-主从复制和集群的区别是什么？"><span class="mytoc-text">Redis 主从复制和集群的区别是什么？</span></a></li><li class="mytoc-item mytoc-level-2"><a class="mytoc-link" href="#为什么-Redis-集群的最小配置是三主三从？"><span class="mytoc-text">为什么 Redis 集群的最小配置是三主三从？</span></a></li><li class="mytoc-item mytoc-level-2"><a class="mytoc-link" href="#Redis-集群中主节点和从节点之间的区别"><span class="mytoc-text">Redis 集群中主节点和从节点之间的区别</span></a></li><li class="mytoc-item mytoc-level-2"><a class="mytoc-link" href="#Redis-集群如果服务器宕机到最小集群限制时出现怎样的情况"><span class="mytoc-text">Redis 集群如果服务器宕机到最小集群限制时出现怎样的情况</span></a></li><li class="mytoc-item mytoc-level-2"><a class="mytoc-link" href="#一主一从挂掉会出现什么情况"><span class="mytoc-text">一主一从挂掉会出现什么情况</span></a></li><li class="mytoc-item mytoc-level-2"><a class="mytoc-link" href="#如何在应用代码中操作-Redis-集群"><span class="mytoc-text">如何在应用代码中操作 Redis 集群</span></a></li><li class="mytoc-item mytoc-level-2"><a class="mytoc-link" href="#在每次重启-Redis-集群时是否都需要将数据文件删除"><span class="mytoc-text">在每次重启 Redis  集群时是否都需要将数据文件删除</span></a></li><li class="mytoc-item mytoc-level-2"><a class="mytoc-link" href="#一从是否能配置多主？"><span class="mytoc-text">一从是否能配置多主？</span></a></li><li class="mytoc-item mytoc-level-2"><a class="mytoc-link" href="#Redis-集群断电重启，数据是否能恢复？"><span class="mytoc-text">Redis 集群断电重启，数据是否能恢复？</span></a></li><li class="mytoc-item mytoc-level-2"><a class="mytoc-link" href="#Redis-持久化策略"><span class="mytoc-text">Redis 持久化策略</span></a></li><li class="mytoc-item mytoc-level-2"><a class="mytoc-link" href="#想要事先知道-key-存在哪个槽中，如何知道？"><span class="mytoc-text">想要事先知道 key 存在哪个槽中，如何知道？</span></a></li><li class="mytoc-item mytoc-level-2"><a class="mytoc-link" href="#Redis-Cluster-和-Redis-Sentinel-之间是什么关系？"><span class="mytoc-text">Redis-Cluster 和 Redis Sentinel 之间是什么关系？</span></a></li><li class="mytoc-item mytoc-level-2"><a class="mytoc-link" href="#Redis-测试"><span class="mytoc-text">Redis 测试</span></a></li><li class="mytoc-item mytoc-level-2"><a class="mytoc-link" href="#Redis-数据一致性"><span class="mytoc-text">Redis 数据一致性</span></a></li><li class="mytoc-item mytoc-level-2"><a class="mytoc-link" href="#cluster-node-timeout"><span class="mytoc-text">cluster-node-timeout</span></a></li></ol>
+        <!-- 显示目录 -->
+        <p style="width: 100%; background-color: #EEE; height: 3px"></p>
+         
+
+        
+
+        <!-- 显示正文 -->
+        <p>记录在日常学习和使用 redis 的过程中遇到的一些问题以及自己的理解，基于 redis-3.2.4</p>
+<a id="more"></a>
+<h2 id="Redis-（remote-dictionary-server）是什么？"><a href="#Redis-（remote-dictionary-server）是什么？" class="headerlink" title="Redis （remote dictionary server）是什么？"></a>Redis （remote dictionary server）是什么？</h2><p>是内存数据库。内置 String / List / Set / Sort Set /Hash 五种数据结构。采用 k-v 形式存储。并支持持久化操作，能在断电以后恢复数据。可以设置 key 过期时间。</p>
+<p><strong>Redis 线程模型</strong></p>
+<p>多路复用 I/O 单线程。“多路”指的是多个网络连接，“复用”指的是复用同一个线程。Redis 使用单一的主线程处理所有的请求，使用其他的线程来处理持久化操作等其他的操作。当多个客户端并发进行请求时，由于 Redis 是单线程，所以消息还是串行化处理，下一个消息只能在上一个消息处理完后，再开始处理。</p>
+<h2 id="Redis-集群有什么好处？为什么需要存在集群？"><a href="#Redis-集群有什么好处？为什么需要存在集群？" class="headerlink" title="Redis 集群有什么好处？为什么需要存在集群？"></a>Redis 集群有什么好处？为什么需要存在集群？</h2><p>提升系统的容错性，将数据压力分担给各个节点。也能提升性能。单节点情况下，宕机之后就无法继续为外界提供服务，当数据量增大的时候，单节点的存储性能下降，空间也容不下。</p>
+<h2 id="Redis-的集群方案有哪些？"><a href="#Redis-的集群方案有哪些？" class="headerlink" title="Redis 的集群方案有哪些？"></a>Redis 的集群方案有哪些？</h2><p><strong>1、客户端分片</strong>：这种方案将分片工作放在业务程序端，程序代码根据预先设置的路由规则，直接对多个 Redis 实例进行分布式访问。这样的好处是，不依赖于第三方分布式中间件，实现方法和代码都自己掌控，可随时调整，不用担心踩到坑。这实际上是一种静态分片技术。Redis 实例的增减，都得手工调整分片程序。基于此分片机制的开源产品，现在仍不多见。这种分片机制的性能比代理式更好。但缺点是升级麻烦，对研发人员的个人依赖性强——需要有较强的程序开发能力做后盾。如果主力程序员离职，可能新的负责人，会选择重写一遍。所以，这种方式下，可运维性较差。出现故障，定位和解决都得研发和运维配合着解决，故障时间变长。因此这种方案，难以进行标准化运维，不太适合中小公司（除非有足够的 DevOPS ）。</p>
+<p><strong>2、代理分片</strong>：这种方案，将分片工作交给专门的代理程序来做。代理程序接收到来自业务程序的数据请求，根据路由规则，将这些请求分发给正确的Redis实例并返回给业务程序。这种机制下，一般会选用第三方代理程序（而不是自己研发），因为后端有多个 Redis 实例，所以这类程序又称为分布式中间件。这样的好处是，业务程序不用关心后端 Redis 实例，运维起来也方便。虽然会因此带来些性能损耗，但对于 Redis 这种内存读写型应用，相对而言是能容忍的。这是我们推荐的集群实现方案。像基于该机制的开源产品 Twemproxy，Codis 便是其中代表，应用非常广泛。</p>
+<p><strong>3、服务器端分片</strong>：建立在基于无中心分布式架构之上（没有代理节点性能瓶颈问题）。Redis-Cluster 即为官方基于该架构的解决方案。RedisCluster 将所有 Key 映射到16384个 Slot 中，集群中每个 Redis 实例负责一部分，业务程序通过集成的 RedisCluster 客户端进行操作。客户端可以向任一实例发出请求，如果所需数据不在该实例中，则该实例引导客户端自动去对应实例读写数据。Redis Cluster 的成员管理（节点名称、IP、端口、状态、角色）等，都通过节点之间两两通讯，定期交换并更新。</p>
+<h2 id="Redis-主从复制和集群的区别是什么？"><a href="#Redis-主从复制和集群的区别是什么？" class="headerlink" title="Redis 主从复制和集群的区别是什么？"></a>Redis 主从复制和集群的区别是什么？</h2><p>主从复制解决的是读问题，集群是为了数据分片，缓解是应用的写问题。</p>
+<h2 id="为什么-Redis-集群的最小配置是三主三从？"><a href="#为什么-Redis-集群的最小配置是三主三从？" class="headerlink" title="为什么 Redis 集群的最小配置是三主三从？"></a>为什么 Redis 集群的最小配置是三主三从？</h2><p>选举算法需要一半一上的主节点参与投票，当主节点的个数 3 个以上时，才存在一半这个概念。</p>
+<h2 id="Redis-集群中主节点和从节点之间的区别"><a href="#Redis-集群中主节点和从节点之间的区别" class="headerlink" title="Redis 集群中主节点和从节点之间的区别"></a>Redis 集群中主节点和从节点之间的区别</h2><p>主节点用于写，从节点一般不支持写操作。集群中只有主节点具有槽的概念，新的主节点的选取由在线的主节点参与。</p>
+<h2 id="Redis-集群如果服务器宕机到最小集群限制时出现怎样的情况"><a href="#Redis-集群如果服务器宕机到最小集群限制时出现怎样的情况" class="headerlink" title="Redis 集群如果服务器宕机到最小集群限制时出现怎样的情况"></a>Redis 集群如果服务器宕机到最小集群限制时出现怎样的情况</h2><p>测试一：6 台 redis 客户端开启后，关闭其中的 3 台（模拟宕机），重启后是否能自动加入集群？</p>
+<p>关闭一台从节点后重启，是否能够自动加入集群？能加入，测试通过<br>关闭一台主节点后重启，是否能够自动选举主节点？能选举，测试通过，再次开启关闭的主节点，会成为从节点存在</p>
+<p>关闭两台主节点后重启，是否能够自动选举主节点？集群宕机，选举算法必须要有一半以上的主节点参与</p>
+<h2 id="一主一从挂掉会出现什么情况"><a href="#一主一从挂掉会出现什么情况" class="headerlink" title="一主一从挂掉会出现什么情况"></a>一主一从挂掉会出现什么情况</h2><p>情况一：先挂从节点，再挂主节点，集群宕机</p>
+<p>情况二：先挂主节点，再挂从节点，集群宕机</p>
+<h2 id="如何在应用代码中操作-Redis-集群"><a href="#如何在应用代码中操作-Redis-集群" class="headerlink" title="如何在应用代码中操作 Redis 集群"></a>如何在应用代码中操作 Redis 集群</h2><ul>
+<li>如何开启？如果是指定 IP 开启的话，当前 IP 的服务器宕机如何处理</li>
+</ul>
+<p>可以将所有 ip 全部先加入，防止问题的出现</p>
+<h2 id="在每次重启-Redis-集群时是否都需要将数据文件删除"><a href="#在每次重启-Redis-集群时是否都需要将数据文件删除" class="headerlink" title="在每次重启 Redis  集群时是否都需要将数据文件删除"></a>在每次重启 Redis  集群时是否都需要将数据文件删除</h2><p>不需要。当其中一台机器宕机以后会将数据按照指定的持久化方式存储下来，当从异常中恢复时，能够将数据重新加载</p>
+<p>测试：先关闭 redis 中的所有节点，再按照平常的方式开启，查看数据是否丢失？<br>存在。<br>按照创建集群的方式再开启，查看数据是否丢失？<br>集群只创建一次，开启集群就是开启集群中的各个节点而已。所以再次重启的集群即为将各个客户端上的 redis 节点重启<br>创建集群的要求是数据文件不能存在。</p>
+<h2 id="一从是否能配置多主？"><a href="#一从是否能配置多主？" class="headerlink" title="一从是否能配置多主？"></a>一从是否能配置多主？</h2><p>不能，一个从节点只能属于是一个主节点。一主能有多从。</p>
+<h2 id="Redis-集群断电重启，数据是否能恢复？"><a href="#Redis-集群断电重启，数据是否能恢复？" class="headerlink" title="Redis 集群断电重启，数据是否能恢复？"></a>Redis 集群断电重启，数据是否能恢复？</h2><p>可以恢复。如果是选择 rdb 方式持久化，可能会丢失一些数据。aof 根据配置刷盘的策略不同，实例重启丢掉的数据量也不一样。</p>
+<h2 id="Redis-持久化策略"><a href="#Redis-持久化策略" class="headerlink" title="Redis 持久化策略"></a>Redis 持久化策略</h2><p>Redis 当前支持 aof 和 rdb 两种持久化方式，持久化并不是说读写会和磁盘交互，此时的持久化仅仅是为了备份数据</p>
+<blockquote>
+<p>Redis 读写都是全内存的, 持久化数据只是作为磁盘备份, 实例重启或者机器断电的时候可以从磁盘加载到内存</p>
+</blockquote>
+<p><strong>rdb 简介</strong></p>
+<p>rdb 是某一个时刻的内存镜像数据写入磁盘文件，之后写入的数据会丢失。该方式的优点是持久化后的文件比较小（只有某一个时刻的数据被压缩），实例重启的时候加载会更快。缺点是如果实例重启，备份时刻之后写入的数据将会丢失。</p>
+<p><strong>aof 简介</strong></p>
+<p>aof 是将 Redis 写入命令写入追加到磁盘文件。根据配置的刷盘策略不同，实例重启丢掉的数据量也不一样。现在有下面三种方式:</p>
+<ul>
+<li>appendfsync = always 每条写入都会刷盘, 最多只会丢失当前正在写入的命令</li>
+<li>appendfsync = everysec 每秒刷一次盘, 最多丢失一秒的数据</li>
+<li>appendfsync = no 不显式刷盘。注意不是不刷盘而是由操作系统来决定何时刷盘(linux 貌似大部分默认是 30s)。可能会丢失刷盘之前的写入数据。</li>
+</ul>
+<p>aof 持久化方式的优点就是重启丢失的数据会比 rdb 少。缺点因为写入命令追加写入的方式，在写入比较多的场景下会导致重启加载数据太慢。举个例子，如果对 key 做 1000 次 incr, 则 aof 文件则会记录 1000 次 incr，而 rdb 只存储 1000 这个值即可。不过 aof 允许 rewrite, 比如把例子里面的 1000 次 incr a 变成一次 incr a 1000 命令，这个是另外一个话题了。</p>
+<p>选择 aof 方式持久化方式时，效率成倍下降。可以选择 主节点不开启 aof，在从节点中开启 aof。存在问题是会丢失部分数据。</p>
+<h2 id="想要事先知道-key-存在哪个槽中，如何知道？"><a href="#想要事先知道-key-存在哪个槽中，如何知道？" class="headerlink" title="想要事先知道 key 存在哪个槽中，如何知道？"></a>想要事先知道 key 存在哪个槽中，如何知道？</h2><p>JedisClusterCRC16 - getSlot</p>
+<h2 id="Redis-Cluster-和-Redis-Sentinel-之间是什么关系？"><a href="#Redis-Cluster-和-Redis-Sentinel-之间是什么关系？" class="headerlink" title="Redis-Cluster 和 Redis Sentinel 之间是什么关系？"></a>Redis-Cluster 和 Redis Sentinel 之间是什么关系？</h2><p>在 redis cluster 出来之前是用 redis sentinel 来对主从节点进行监控，当发现异常时，进行主从替换和故障恢复。</p>
+<h2 id="Redis-测试"><a href="#Redis-测试" class="headerlink" title="Redis 测试"></a>Redis 测试</h2><p>模拟 oom（Out Of Meomery）</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">redis-cli debug oom</div></pre></td></tr></table></figure>
+<p>模拟宕机</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">redis-cli debug segfault</div></pre></td></tr></table></figure>
+<p>模拟 hang</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">redis-cli -p 6379 DEBUG sleep 30</div></pre></td></tr></table></figure>
+<h2 id="Redis-数据一致性"><a href="#Redis-数据一致性" class="headerlink" title="Redis 数据一致性"></a>Redis 数据一致性</h2><p>集群会出现数据丢失的情况：</p>
+<ul>
+<li>客户端往主节点持续写数据，在主节点将数据备份到从节点之前，主机宕机（此时客户端还在持续地将消息写入之前的主节点），数据会丢失</li>
+<li>集群出现网络分区（主节点与主节点之间无法 ping 通），具有多数节点的分区将会投票将从节点升级为主节点。但是此时没有更新路由表的客户端，会往原来的主节点中是写数据，此时也会出现数据丢失</li>
+</ul>
+<h2 id="cluster-node-timeout"><a href="#cluster-node-timeout" class="headerlink" title="cluster-node-timeout"></a>cluster-node-timeout</h2><p>节点与节点之间互相发现的超时时间。当某一个主节点失效时，需要过去 cluster-node-timeout 后才会被集群内部发现，接着将该节点标记为 fail ，但是一旦节点宕机，立刻对外停止服务。</p>
+<p>资料：</p>
+<p><a href="http://blog.csdn.net/drizzt0878/article/details/51023711" target="_blank" rel="external">http://blog.csdn.net/drizzt0878/article/details/51023711</a><br><a href="http://ihenu.iteye.com/blog/2267881" target="_blank" rel="external">http://ihenu.iteye.com/blog/2267881</a><br><a href="http://www.hulkdev.com/posts/redis-mix-format" target="_blank" rel="external">http://www.hulkdev.com/posts/redis-mix-format</a><br><a href="http://wiki.jikexueyuan.com/project/all-about-redis/Testing/README.html" target="_blank" rel="external">http://wiki.jikexueyuan.com/project/all-about-redis/Testing/README.html</a><br><a href="http://www.redis.cn/topics/cluster-spec.html" target="_blank" rel="external">http://www.redis.cn/topics/cluster-spec.html</a></p>
+
+        <!-- 显示正文 -->
+      
+    </div>
+
+
+    <footer class="article-footer">
+      
+        <a data-url="http://yoursite.com/2017/06/10/redis-question/" data-id="cj4r2mxcq0000jkz6gfgo7c5g" class="article-share-link">分享到</a>
+      
+
+      
+        <a href="http://yoursite.com/2017/06/10/redis-question/#ds-thread" class="article-comment-link">评论</a>
+      
+
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/redis/">redis</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2017/06/20/redis-cluster-env/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">下一篇</strong>
+      <div class="article-nav-title">
+        
+          基于 Redis3.2.4 集群搭建说明
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2017/06/07/ide-keys/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">上一篇</strong>
+      <div class="article-nav-title">开发 IDE 常用操作</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+  <section id="comments">
+    <div id="ds-thread" class="ds-thread" data-thread-key="2017/06/10/redis-question/" data-title="Redis 疑问释义" data-url="http://yoursite.com/2017/06/10/redis-question/"></div>
+  </section>
+</section>
+      
+      <aside id="sidebar">
+  
+    <div class="widget-wrap">
+  <h3 class="widget-title">关于我</h3>
+  <div class="widget">
+    <ul>
+      
+    
+        
+        <!--  -->
+          <div style="text-align: center;">
+            <img src="https://avatars1.githubusercontent.com/u/15794249?v=3&s=400" style="width: 230px;  height: 230px">
+          </div>
+        <!--  -->
+
+        <li>
+          <a href="http://www.cnblogs.com/gossiplee/" target="_blank">1. 「博客园」</a>
+          
+        </li>
+      
+        
+        <!--  -->
+
+        <li>
+          <a href="https://my.oschina.net/u/2938358/?ft=bbs&scope=2&showme=1" target="_blank">2. 「开源中国」</a>
+          
+        </li>
+      
+        
+        <!--  -->
+
+        <li>
+          <a href="https://github.com/LiHuaYang" target="_blank">3. 「GitHub」</a>
+          
+        </li>
+      
+        
+        <!--  -->
+
+        <li>
+          <a href="https://segmentfault.com/u/lihuayang" target="_blank">4. 「Segmentfault」</a>
+          
+        </li>
+      
+    </ul>
+  </div>
+</div>
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">分类</h3>
+    <div class="widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/JavaEE-开发/">JavaEE 开发</a><span class="category-list-count">9</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/JavaSE-基础/">JavaSE 基础</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Netty/">Netty</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Redis/">Redis</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/工具/">工具</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/数据库/">数据库</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/职业生涯/">职业生涯</a><span class="category-list-count">1</span></li></ul>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">标签云</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/Java-IO/" style="font-size: 16.67px;">Java IO</a> <a href="/tags/JavaEE-开发/" style="font-size: 20px;">JavaEE 开发</a> <a href="/tags/JavaSE-基础/" style="font-size: 13.33px;">JavaSE 基础</a> <a href="/tags/MySQL/" style="font-size: 13.33px;">MySQL</a> <a href="/tags/Netty/" style="font-size: 10px;">Netty</a> <a href="/tags/Struts/" style="font-size: 10px;">Struts</a> <a href="/tags/Tomcat/" style="font-size: 10px;">Tomcat</a> <a href="/tags/jsp/" style="font-size: 10px;">jsp</a> <a href="/tags/redis/" style="font-size: 10px;">redis</a> <a href="/tags/redis-集群/" style="font-size: 10px;">redis 集群</a> <a href="/tags/分页/" style="font-size: 10px;">分页</a> <a href="/tags/工具配置及使用/" style="font-size: 10px;">工具配置及使用</a> <a href="/tags/面试/" style="font-size: 10px;">面试</a> <a href="/tags/面试题/" style="font-size: 13.33px;">面试题</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">归档</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/06/">2017年 06月</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/05/">2017年 05月</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/01/">2017年 01月</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/11/">2016年 11月</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/10/">2016年 10月</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/11/">2015年 11月</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/10/">2015年 10月</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/08/">2015年 08月</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/1995/12/">1995年 12月</a><span class="archive-list-count">1</span></li></ul>
+    </div>
+  </div>
+
+  
+</aside>
+      
+    </div>
+    <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2017 lihuayang<br>
+      Powered by <a href="//hexo.io/" target="_blank">Hexo</a>
+      .
+      Theme by <a href="https://github.com/xiangming/landscape-plus" target="_blank">Landscape-plus</a>
+    </div>
+  </div>
+</footer>
+  </div>
+  <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+    <a href="/about" class="mobile-nav-link">About</a>
+  
+</nav>
+  <!-- totop start -->
+<div id="totop">
+<a title="返回顶部"><img src="/img/scrollup.png"/></a>
+</div>
+
+<!-- totop end -->
+
+<!-- 多说公共js代码 start -->
+<script type="text/javascript">
+var duoshuoQuery = {short_name:"reqianduan"};
+  (function() {
+    var ds = document.createElement('script');
+    ds.type = 'text/javascript';ds.async = true;
+    ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+    ds.charset = 'UTF-8';
+    (document.getElementsByTagName('head')[0]
+     || document.getElementsByTagName('body')[0]).appendChild(ds);
+  })();
+  </script>
+<!-- 多说公共js代码 end -->
+
+
+<!-- 百度分享 start -->
+
+<!-- 百度分享 end -->
+
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+</div>
+</body>
+</html>
