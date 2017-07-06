@@ -117,7 +117,7 @@
 
     <footer class="article-footer">
       
-        <a data-url="http://yoursite.com/2017/06/20/redis-cluster-env/" data-id="cj4r2gss3000h7cz6fd18sugs" class="article-share-link">分享到</a>
+        <a data-url="http://yoursite.com/2017/06/20/redis-cluster-env/" data-id="cj4sh4dxr001ct8z6g1l0pwe2" class="article-share-link">分享到</a>
       
 
       
@@ -174,7 +174,7 @@
 
     <footer class="article-footer">
       
-        <a data-url="http://yoursite.com/2017/06/10/redis-question/" data-id="cj4r2mxcq0000jkz6gfgo7c5g" class="article-share-link">分享到</a>
+        <a data-url="http://yoursite.com/2017/06/10/redis-question/" data-id="cj4sh4dy7001it8z6pomf6zro" class="article-share-link">分享到</a>
       
 
       
@@ -231,7 +231,7 @@
 
     <footer class="article-footer">
       
-        <a data-url="http://yoursite.com/2017/06/07/ide-keys/" data-id="cj4r2gsra00037cz6orw2ll5l" class="article-share-link">分享到</a>
+        <a data-url="http://yoursite.com/2017/06/07/ide-keys/" data-id="cj4sh4dv20002t8z6qhjquqwp" class="article-share-link">分享到</a>
       
 
       
@@ -289,7 +289,7 @@
 
     <footer class="article-footer">
       
-        <a data-url="http://yoursite.com/2017/05/26/netty-question/" data-id="cj4r2gssf000r7cz6b8sdbekn" class="article-share-link">分享到</a>
+        <a data-url="http://yoursite.com/2017/05/26/netty-question/" data-id="cj4sh4dxt001et8z6e3chajrw" class="article-share-link">分享到</a>
       
 
       
@@ -298,6 +298,65 @@
 
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Netty/">Netty</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-javase-interview-test" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2017/01/07/javase-interview-test/" class="article-date">
+  <time datetime="2017-01-06T16:00:00.000Z" itemprop="datePublished">2017-01-07</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/JavaSE-基础/">JavaSE 基础</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/01/07/javase-interview-test/">JavaSE 常见面试题</a>
+    </h1>
+  
+
+      </header>
+    
+
+    <div class="article-entry" itemprop="articleBody">
+
+      
+        <h1 id="一、obj-hashcode-、obj-equals-b"><a href="#一、obj-hashcode-、obj-equals-b" class="headerlink" title="一、obj.hashcode()、obj.equals(b)"></a>一、obj.hashcode()、obj.equals(b)</h1><h2 id="定义、作用"><a href="#定义、作用" class="headerlink" title="定义、作用"></a>定义、作用</h2><p><code>hashCode()</code>的作用是获取哈希码，也称为散列码；它实际上是返回一个 int 整数。这个哈希码的作用是，确定该对象在哈希表中的索引位置，提高哈希表的性能（如 HashMap、HashTable）</p>
+<h2 id="hashcode-工作原理"><a href="#hashcode-工作原理" class="headerlink" title="hashcode 工作原理"></a>hashcode 工作原理</h2><p>hashcode 是用来查找的，假如内存中有依次八个位置<br><figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">0  1  2  3  4  5  6  7  8</div></pre></td></tr></table></figure></p>
+<p>现有个类，类中有个字段为 id，需要把这个类放在8个位置之一。如果不用 hashcode 而任意存放，当查找时候，则需要对这8各个位置进行遍历，或者使用二分法之类的算法。<br>如果使用 hashcode 效率将会大大的提高。<br>定义 hashcode 的值为 id%8，取得余数则为存放的位置。如：假设 id=9，9%8余数为1，于是存放的位置为1。假设 id=13，13%8余数为5，于是存放的位置为5。于是，每次需要查找的时候只需要通过 id%8 这个算法求余数，直接找到存放的位置了。</p>
+        
+          <p class="article-more-link">
+            <a href="/2017/01/07/javase-interview-test/#more">Read More</a>
+          </p>
+        
+      
+    </div>
+
+
+    <footer class="article-footer">
+      
+        <a data-url="http://yoursite.com/2017/01/07/javase-interview-test/" data-id="cj4sh4dvq000gt8z68exra7xj" class="article-share-link">分享到</a>
+      
+
+      
+        <a href="http://yoursite.com/2017/01/07/javase-interview-test/#ds-thread" class="article-comment-link">评论</a>
+      
+
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/面试题/">面试题</a></li></ul>
 
     </footer>
   </div>
@@ -349,70 +408,11 @@
 
     <footer class="article-footer">
       
-        <a data-url="http://yoursite.com/2017/01/07/javaee-interview-test/" data-id="cj4r2gsrl00077cz6bkog5mak" class="article-share-link">分享到</a>
+        <a data-url="http://yoursite.com/2017/01/07/javaee-interview-test/" data-id="cj4sh4dvn000ct8z6v3lkwkck" class="article-share-link">分享到</a>
       
 
       
         <a href="http://yoursite.com/2017/01/07/javaee-interview-test/#ds-thread" class="article-comment-link">评论</a>
-      
-
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/面试题/">面试题</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-javase-interview-test" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2017/01/07/javase-interview-test/" class="article-date">
-  <time datetime="2017-01-06T16:00:00.000Z" itemprop="datePublished">2017-01-07</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/JavaSE-基础/">JavaSE 基础</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/01/07/javase-interview-test/">JavaSE 常见面试题</a>
-    </h1>
-  
-
-      </header>
-    
-
-    <div class="article-entry" itemprop="articleBody">
-
-      
-        <h1 id="一、obj-hashcode-、obj-equals-b"><a href="#一、obj-hashcode-、obj-equals-b" class="headerlink" title="一、obj.hashcode()、obj.equals(b)"></a>一、obj.hashcode()、obj.equals(b)</h1><h2 id="定义、作用"><a href="#定义、作用" class="headerlink" title="定义、作用"></a>定义、作用</h2><p><code>hashCode()</code>的作用是获取哈希码，也称为散列码；它实际上是返回一个 int 整数。这个哈希码的作用是，确定该对象在哈希表中的索引位置，提高哈希表的性能（如 HashMap、HashTable）</p>
-<h2 id="hashcode-工作原理"><a href="#hashcode-工作原理" class="headerlink" title="hashcode 工作原理"></a>hashcode 工作原理</h2><p>hashcode 是用来查找的，假如内存中有依次八个位置<br><figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">0  1  2  3  4  5  6  7  8</div></pre></td></tr></table></figure></p>
-<p>现有个类，类中有个字段为 id，需要把这个类放在8个位置之一。如果不用 hashcode 而任意存放，当查找时候，则需要对这8各个位置进行遍历，或者使用二分法之类的算法。<br>如果使用 hashcode 效率将会大大的提高。<br>定义 hashcode 的值为 id%8，取得余数则为存放的位置。如：假设 id=9，9%8余数为1，于是存放的位置为1。假设 id=13，13%8余数为5，于是存放的位置为5。于是，每次需要查找的时候只需要通过 id%8 这个算法求余数，直接找到存放的位置了。</p>
-        
-          <p class="article-more-link">
-            <a href="/2017/01/07/javase-interview-test/#more">Read More</a>
-          </p>
-        
-      
-    </div>
-
-
-    <footer class="article-footer">
-      
-        <a data-url="http://yoursite.com/2017/01/07/javase-interview-test/" data-id="cj4r2gsrv000b7cz6q9kstevv" class="article-share-link">分享到</a>
-      
-
-      
-        <a href="http://yoursite.com/2017/01/07/javase-interview-test/#ds-thread" class="article-comment-link">评论</a>
       
 
       
@@ -470,7 +470,7 @@
 
     <footer class="article-footer">
       
-        <a data-url="http://yoursite.com/2016/11/19/java-thread-introduce/" data-id="cj4r2gsrs00087cz6ksvceadi" class="article-share-link">分享到</a>
+        <a data-url="http://yoursite.com/2016/11/19/java-thread-introduce/" data-id="cj4sh4dvm000at8z6jbh56f2e" class="article-share-link">分享到</a>
       
 
       
@@ -479,6 +479,72 @@
 
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/JavaSE-基础/">JavaSE 基础</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-struts-form" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2016/11/16/struts-form/" class="article-date">
+  <time datetime="2016-11-15T16:00:00.000Z" itemprop="datePublished">2016-11-16</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/JavaEE-开发/">JavaEE 开发</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2016/11/16/struts-form/">Struts ActionForm 小结</a>
+    </h1>
+  
+
+      </header>
+    
+
+    <div class="article-entry" itemprop="articleBody">
+
+      
+        <p>Struts 框架中的视图组件主要包括：</p>
+<ul>
+<li>JSP 页面</li>
+<li>ActionForm 类</li>
+<li>Struts 自定义标记</li>
+<li>消息资源</li>
+</ul>
+<p>其中，ActionForm 类是 Struts 框架的核心组件之一，是 Struts 的关键视图组件</p>
+<h1 id="一、ActionForm-的作用机理"><a href="#一、ActionForm-的作用机理" class="headerlink" title="一、ActionForm 的作用机理"></a>一、ActionForm 的作用机理</h1><p>ActionForm 本质上是一种 JavaBean，是专门用来传递数据的 DTO(Data Transfer Object)，数据传递对象)。它包括用于表单数据验证的 <code>validate()</code> 和用于数据复位的<code>reset()</code></p>
+<p>Struts 框架利用 ActionForm 对象来临时存放视图页面中的表单数据。例如：<br>一个登录页面会有一个用户输入框和一个密码输入框，以及用来提交登录请求的按钮。当用户提交登录请求后，Struts 将用户名和密码两个输入域的数据自动填充到相应的 ActionForm 对象中，然后控制层可以从该 ActionForm 对象中读取用户输入的表单数据，也可以把来自模型层的数据存放到 ActionForm 中，然后返回给视图显示</p>
+        
+          <p class="article-more-link">
+            <a href="/2016/11/16/struts-form/#more">Read More</a>
+          </p>
+        
+      
+    </div>
+
+
+    <footer class="article-footer">
+      
+        <a data-url="http://yoursite.com/2016/11/16/struts-form/" data-id="cj4sh4dyd001pt8z6hf49vlmp" class="article-share-link">分享到</a>
+      
+
+      
+        <a href="http://yoursite.com/2016/11/16/struts-form/#ds-thread" class="article-comment-link">评论</a>
+      
+
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Struts/">Struts</a></li></ul>
 
     </footer>
   </div>
@@ -544,7 +610,7 @@
 
     <footer class="article-footer">
       
-        <a data-url="http://yoursite.com/2016/11/16/java-io/" data-id="cj4r2gssc000o7cz6pm5mip3o" class="article-share-link">分享到</a>
+        <a data-url="http://yoursite.com/2016/11/16/java-io/" data-id="cj4sh4dva0005t8z64694kdlj" class="article-share-link">分享到</a>
       
 
       
@@ -553,72 +619,6 @@
 
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Java-IO/">Java IO</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-struts-form" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2016/11/16/struts-form/" class="article-date">
-  <time datetime="2016-11-15T16:00:00.000Z" itemprop="datePublished">2016-11-16</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/JavaEE-开发/">JavaEE 开发</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2016/11/16/struts-form/">Struts ActionForm 小结</a>
-    </h1>
-  
-
-      </header>
-    
-
-    <div class="article-entry" itemprop="articleBody">
-
-      
-        <p>Struts 框架中的视图组件主要包括：</p>
-<ul>
-<li>JSP 页面</li>
-<li>ActionForm 类</li>
-<li>Struts 自定义标记</li>
-<li>消息资源</li>
-</ul>
-<p>其中，ActionForm 类是 Struts 框架的核心组件之一，是 Struts 的关键视图组件</p>
-<h1 id="一、ActionForm-的作用机理"><a href="#一、ActionForm-的作用机理" class="headerlink" title="一、ActionForm 的作用机理"></a>一、ActionForm 的作用机理</h1><p>ActionForm 本质上是一种 JavaBean，是专门用来传递数据的 DTO(Data Transfer Object)，数据传递对象)。它包括用于表单数据验证的 <code>validate()</code> 和用于数据复位的<code>reset()</code></p>
-<p>Struts 框架利用 ActionForm 对象来临时存放视图页面中的表单数据。例如：<br>一个登录页面会有一个用户输入框和一个密码输入框，以及用来提交登录请求的按钮。当用户提交登录请求后，Struts 将用户名和密码两个输入域的数据自动填充到相应的 ActionForm 对象中，然后控制层可以从该 ActionForm 对象中读取用户输入的表单数据，也可以把来自模型层的数据存放到 ActionForm 中，然后返回给视图显示</p>
-        
-          <p class="article-more-link">
-            <a href="/2016/11/16/struts-form/#more">Read More</a>
-          </p>
-        
-      
-    </div>
-
-
-    <footer class="article-footer">
-      
-        <a data-url="http://yoursite.com/2016/11/16/struts-form/" data-id="cj4r2gssk000v7cz6wsl6ye5z" class="article-share-link">分享到</a>
-      
-
-      
-        <a href="http://yoursite.com/2016/11/16/struts-form/#ds-thread" class="article-comment-link">评论</a>
-      
-
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Struts/">Struts</a></li></ul>
 
     </footer>
   </div>
@@ -667,7 +667,7 @@
 
     <footer class="article-footer">
       
-        <a data-url="http://yoursite.com/2016/11/15/upload-file/" data-id="cj4r2gssz00117cz6tgs95p5c" class="article-share-link">分享到</a>
+        <a data-url="http://yoursite.com/2016/11/15/upload-file/" data-id="cj4sh4dyg001st8z6riqfcbkw" class="article-share-link">分享到</a>
       
 
       
@@ -728,7 +728,7 @@
 
     <footer class="article-footer">
       
-        <a data-url="http://yoursite.com/2016/11/12/session/" data-id="cj4r2gssr000x7cz6k2hp1kjk" class="article-share-link">分享到</a>
+        <a data-url="http://yoursite.com/2016/11/12/session/" data-id="cj4sh4dy9001kt8z6v95gzchz" class="article-share-link">分享到</a>
       
 
       
@@ -785,7 +785,7 @@
 
     <footer class="article-footer">
       
-        <a data-url="http://yoursite.com/2016/11/10/mysql-install/" data-id="cj4r2gst400177cz6f7i0a8pi" class="article-share-link">分享到</a>
+        <a data-url="http://yoursite.com/2016/11/10/mysql-install/" data-id="cj4sh4dyo001zt8z6072m6vpz" class="article-share-link">分享到</a>
       
 
       
@@ -842,7 +842,7 @@
 
     <footer class="article-footer">
       
-        <a data-url="http://yoursite.com/2016/10/07/java-mysql-connect/" data-id="cj4r2gsrj00067cz6ogk4vuxd" class="article-share-link">分享到</a>
+        <a data-url="http://yoursite.com/2016/10/07/java-mysql-connect/" data-id="cj4sh4dvb0006t8z6lsm4ea28" class="article-share-link">分享到</a>
       
 
       
@@ -899,7 +899,7 @@
 
     <footer class="article-footer">
       
-        <a data-url="http://yoursite.com/2015/11/14/分页/" data-id="cj4r2gst8001b7cz6z2ckdu6j" class="article-share-link">分享到</a>
+        <a data-url="http://yoursite.com/2015/11/14/分页/" data-id="cj4sh4dyl001wt8z6gh1941tp" class="article-share-link">分享到</a>
       
 
       
@@ -961,7 +961,7 @@
 
     <footer class="article-footer">
       
-        <a data-url="http://yoursite.com/2015/10/11/servlet-read-file/" data-id="cj4r2gsrz000d7cz6wsxnj1yw" class="article-share-link">分享到</a>
+        <a data-url="http://yoursite.com/2015/10/11/servlet-read-file/" data-id="cj4sh4dy1001ht8z6cgofq0t7" class="article-share-link">分享到</a>
       
 
       
@@ -1018,7 +1018,7 @@
 
     <footer class="article-footer">
       
-        <a data-url="http://yoursite.com/2015/10/01/deploy-web/" data-id="cj4r2gsr400017cz6a8xe3pmb" class="article-share-link">分享到</a>
+        <a data-url="http://yoursite.com/2015/10/01/deploy-web/" data-id="cj4sh4dux0001t8z6wc6oe6a1" class="article-share-link">分享到</a>
       
 
       
@@ -1077,7 +1077,7 @@
 
     <footer class="article-footer">
       
-        <a data-url="http://yoursite.com/2015/08/09/jsp-learn/" data-id="cj4r2gss6000j7cz60kocpx8w" class="article-share-link">分享到</a>
+        <a data-url="http://yoursite.com/2015/08/09/jsp-learn/" data-id="cj4sh4dvu000it8z6mjo7mtef" class="article-share-link">分享到</a>
       
 
       
@@ -1140,7 +1140,7 @@
 
     <footer class="article-footer">
       
-        <a data-url="http://yoursite.com/1995/12/26/interview-expirence/" data-id="cj4r2gst100147cz63ndbvu83" class="article-share-link">分享到</a>
+        <a data-url="http://yoursite.com/1995/12/26/interview-expirence/" data-id="cj4sh4dvd0007t8z6ki73on4e" class="article-share-link">分享到</a>
       
 
       
