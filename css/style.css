@@ -1257,7 +1257,7 @@ a.article-title:hover {
 .article-entry code {
   background: #f0f0f0;
   text-shadow: 0 1px #fff;
-  font-size: 0.7em;
+  font-size: 0.85em;
   padding: 0 0.3em;
   border: 1px solid #dcdcdc;
   border-radius: 3px;
@@ -1304,6 +1304,7 @@ a.article-title:hover {
   padding-right: 20px;
 }
 .article-entry .highlight .line {
+  font-size: 15px;
   height: 25.5px;
 }
 .article-entry .gist {
