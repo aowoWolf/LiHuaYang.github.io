@@ -150,7 +150,7 @@
 
 
       
-        <a data-url="http://yoursite.com/2018/02/09/loadrunner-introduce/" data-id="cjf6vzdju000jl4khe5e3hwfr" class="article-share-link">分享到</a>
+        <a data-url="http://yoursite.com/2018/02/09/loadrunner-introduce/" data-id="cjf6xdjv8000p4kkhwxwpmsx3" class="article-share-link">分享到</a>
       
 
       
@@ -223,7 +223,7 @@
 
 
       
-        <a data-url="http://yoursite.com/2017/06/20/redis-cluster-env/" data-id="cjf6vzdk9000wl4khqqq1ycxd" class="article-share-link">分享到</a>
+        <a data-url="http://yoursite.com/2017/06/20/redis-cluster-env/" data-id="cjf6xdjvm000x4kkhpfxkd4qs" class="article-share-link">分享到</a>
       
 
       
@@ -286,7 +286,7 @@
 
 
       
-        <a data-url="http://yoursite.com/2017/06/10/redis-question/" data-id="cjf6vzdkf0014l4khdrzky6y9" class="article-share-link">分享到</a>
+        <a data-url="http://yoursite.com/2017/06/10/redis-question/" data-id="cjf6xdjvr00104kkhmcyuv6fi" class="article-share-link">分享到</a>
       
 
       
@@ -349,7 +349,7 @@
 
 
       
-        <a data-url="http://yoursite.com/2017/06/07/ide-keys/" data-id="cjf6vzdif0001l4kh228f8x1b" class="article-share-link">分享到</a>
+        <a data-url="http://yoursite.com/2017/06/07/ide-keys/" data-id="cjf6xdjtu00014kkhiswh7qqq" class="article-share-link">分享到</a>
       
 
       
@@ -413,7 +413,7 @@
 
 
       
-        <a data-url="http://yoursite.com/2017/05/26/netty-question/" data-id="cjf6vzdk3000tl4khh8eyrgdx" class="article-share-link">分享到</a>
+        <a data-url="http://yoursite.com/2017/05/26/netty-question/" data-id="cjf6xdjvd000u4kkhe5yuflnt" class="article-share-link">分享到</a>
       
 
       
@@ -422,6 +422,71 @@
 
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Netty/">Netty</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+<!--  -->
+  
+    <article id="post-javase-interview-test" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2017/01/07/javase-interview-test/" class="article-date">
+  <time datetime="2017-01-06T16:00:00.000Z" itemprop="datePublished">2017-01-07</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/JavaSE-基础/">JavaSE 基础</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/01/07/javase-interview-test/">JavaSE 常见面试题</a>
+    </h1>
+  
+
+      </header>
+    
+
+    <div class="article-entry" itemprop="articleBody">
+
+      
+        <h1 id="一、obj-hashcode-、obj-equals-b"><a href="#一、obj-hashcode-、obj-equals-b" class="headerlink" title="一、obj.hashcode()、obj.equals(b)"></a>一、obj.hashcode()、obj.equals(b)</h1><h2 id="定义、作用"><a href="#定义、作用" class="headerlink" title="定义、作用"></a>定义、作用</h2><p><code>hashCode()</code>的作用是获取哈希码，也称为散列码；它实际上是返回一个 int 整数。这个哈希码的作用是，确定该对象在哈希表中的索引位置，提高哈希表的性能（如 HashMap、HashTable）</p>
+<h2 id="hashcode-工作原理"><a href="#hashcode-工作原理" class="headerlink" title="hashcode 工作原理"></a>hashcode 工作原理</h2><p>hashcode 是用来查找的，假如内存中有依次八个位置<br><figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">0  1  2  3  4  5  6  7  8</div></pre></td></tr></table></figure></p>
+<p>现有个类，类中有个字段为 id，需要把这个类放在8个位置之一。如果不用 hashcode 而任意存放，当查找时候，则需要对这8各个位置进行遍历，或者使用二分法之类的算法。<br>如果使用 hashcode 效率将会大大的提高。<br>定义 hashcode 的值为 id%8，取得余数则为存放的位置。如：假设 id=9，9%8余数为1，于是存放的位置为1。假设 id=13，13%8余数为5，于是存放的位置为5。于是，每次需要查找的时候只需要通过 id%8 这个算法求余数，直接找到存放的位置了。</p>
+        
+          <p class="article-more-link">
+            <a href="/2017/01/07/javase-interview-test/#more">Read More</a>
+          </p>
+        
+      
+    </div>
+
+
+    <footer class="article-footer">
+
+    <span id="busuanzi_container_page_pv">
+	本文总阅读量<span id="busuanzi_value_page_pv"></span>次
+	</span>
+
+
+      
+        <a data-url="http://yoursite.com/2017/01/07/javase-interview-test/" data-id="cjf6xdjuu000e4kkhyv571zgg" class="article-share-link">分享到</a>
+      
+
+      
+        <a href="http://yoursite.com/2017/01/07/javase-interview-test/#ds-thread" class="article-comment-link">评论</a>
+      
+
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/面试题/">面试题</a></li></ul>
 
     </footer>
   </div>
@@ -479,76 +544,11 @@
 
 
       
-        <a data-url="http://yoursite.com/2017/01/07/javaee-interview-test/" data-id="cjf6vzdj8000cl4khb7a09gzw" class="article-share-link">分享到</a>
+        <a data-url="http://yoursite.com/2017/01/07/javaee-interview-test/" data-id="cjf6xdjux000h4kkh45g0bba8" class="article-share-link">分享到</a>
       
 
       
         <a href="http://yoursite.com/2017/01/07/javaee-interview-test/#ds-thread" class="article-comment-link">评论</a>
-      
-
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/面试题/">面试题</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-<!--  -->
-  
-    <article id="post-javase-interview-test" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2017/01/07/javase-interview-test/" class="article-date">
-  <time datetime="2017-01-06T16:00:00.000Z" itemprop="datePublished">2017-01-07</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/JavaSE-基础/">JavaSE 基础</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/01/07/javase-interview-test/">JavaSE 常见面试题</a>
-    </h1>
-  
-
-      </header>
-    
-
-    <div class="article-entry" itemprop="articleBody">
-
-      
-        <h1 id="一、obj-hashcode-、obj-equals-b"><a href="#一、obj-hashcode-、obj-equals-b" class="headerlink" title="一、obj.hashcode()、obj.equals(b)"></a>一、obj.hashcode()、obj.equals(b)</h1><h2 id="定义、作用"><a href="#定义、作用" class="headerlink" title="定义、作用"></a>定义、作用</h2><p><code>hashCode()</code>的作用是获取哈希码，也称为散列码；它实际上是返回一个 int 整数。这个哈希码的作用是，确定该对象在哈希表中的索引位置，提高哈希表的性能（如 HashMap、HashTable）</p>
-<h2 id="hashcode-工作原理"><a href="#hashcode-工作原理" class="headerlink" title="hashcode 工作原理"></a>hashcode 工作原理</h2><p>hashcode 是用来查找的，假如内存中有依次八个位置<br><figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">0  1  2  3  4  5  6  7  8</div></pre></td></tr></table></figure></p>
-<p>现有个类，类中有个字段为 id，需要把这个类放在8个位置之一。如果不用 hashcode 而任意存放，当查找时候，则需要对这8各个位置进行遍历，或者使用二分法之类的算法。<br>如果使用 hashcode 效率将会大大的提高。<br>定义 hashcode 的值为 id%8，取得余数则为存放的位置。如：假设 id=9，9%8余数为1，于是存放的位置为1。假设 id=13，13%8余数为5，于是存放的位置为5。于是，每次需要查找的时候只需要通过 id%8 这个算法求余数，直接找到存放的位置了。</p>
-        
-          <p class="article-more-link">
-            <a href="/2017/01/07/javase-interview-test/#more">Read More</a>
-          </p>
-        
-      
-    </div>
-
-
-    <footer class="article-footer">
-
-    <span id="busuanzi_container_page_pv">
-	本文总阅读量<span id="busuanzi_value_page_pv"></span>次
-	</span>
-
-
-      
-        <a data-url="http://yoursite.com/2017/01/07/javase-interview-test/" data-id="cjf6vzdjl000el4kh9mqpqjhd" class="article-share-link">分享到</a>
-      
-
-      
-        <a href="http://yoursite.com/2017/01/07/javase-interview-test/#ds-thread" class="article-comment-link">评论</a>
       
 
       
@@ -612,7 +612,7 @@
 
 
       
-        <a data-url="http://yoursite.com/2016/11/19/java-thread-introduce/" data-id="cjf6vzdjy000nl4khwdb0tfkl" class="article-share-link">分享到</a>
+        <a data-url="http://yoursite.com/2016/11/19/java-thread-introduce/" data-id="cjf6xdjul000c4kkhjk9zjrkp" class="article-share-link">分享到</a>
       
 
       
@@ -687,7 +687,7 @@
 
 
       
-        <a data-url="http://yoursite.com/2016/11/16/java-io/" data-id="cjf6vzdim0003l4khr7mqyf4o" class="article-share-link">分享到</a>
+        <a data-url="http://yoursite.com/2016/11/16/java-io/" data-id="cjf6xdjug00084kkhp32byzgx" class="article-share-link">分享到</a>
       
 
       
@@ -759,7 +759,7 @@
 
 
       
-        <a data-url="http://yoursite.com/2016/11/16/struts-form/" data-id="cjf6vzdki0018l4khrgdze3bq" class="article-share-link">分享到</a>
+        <a data-url="http://yoursite.com/2016/11/16/struts-form/" data-id="cjf6xdjw100184kkhmkz6ut5i" class="article-share-link">分享到</a>
       
 
       
@@ -822,7 +822,7 @@
 
 
       
-        <a data-url="http://yoursite.com/2016/11/15/upload-file/" data-id="cjf6vzdku001jl4khryuuzg0t" class="article-share-link">分享到</a>
+        <a data-url="http://yoursite.com/2016/11/15/upload-file/" data-id="cjf6xdjw4001c4kkh9gt66xor" class="article-share-link">分享到</a>
       
 
       
@@ -889,7 +889,7 @@
 
 
       
-        <a data-url="http://yoursite.com/2016/11/12/session/" data-id="cjf6vzdkn001cl4khqy65yvz7" class="article-share-link">分享到</a>
+        <a data-url="http://yoursite.com/2016/11/12/session/" data-id="cjf6xdjvy00164kkh91119irq" class="article-share-link">分享到</a>
       
 
       
@@ -952,7 +952,7 @@
 
 
       
-        <a data-url="http://yoursite.com/2016/11/10/mysql-note/" data-id="cjf6vzdjz000pl4kh7wgb159w" class="article-share-link">分享到</a>
+        <a data-url="http://yoursite.com/2016/11/10/mysql-note/" data-id="cjf6xdjv5000m4kkh031oge5z" class="article-share-link">分享到</a>
       
 
       
@@ -1015,7 +1015,7 @@
 
 
       
-        <a data-url="http://yoursite.com/2016/10/07/java-mysql-connect/" data-id="cjf6vzdj20008l4khvi6y7rbe" class="article-share-link">分享到</a>
+        <a data-url="http://yoursite.com/2016/10/07/java-mysql-connect/" data-id="cjf6xdju900074kkh5v62b6n6" class="article-share-link">分享到</a>
       
 
       
@@ -1078,7 +1078,7 @@
 
 
       
-        <a data-url="http://yoursite.com/2015/11/14/分页/" data-id="cjf6vzdko001el4kh520uwpzj" class="article-share-link">分享到</a>
+        <a data-url="http://yoursite.com/2015/11/14/分页/" data-id="cjf6xdjw7001f4kkh0itkk0ja" class="article-share-link">分享到</a>
       
 
       
@@ -1146,7 +1146,7 @@
 
 
       
-        <a data-url="http://yoursite.com/2015/10/11/servlet-read-file/" data-id="cjf6vzdkd0010l4khjk36gwxg" class="article-share-link">分享到</a>
+        <a data-url="http://yoursite.com/2015/10/11/servlet-read-file/" data-id="cjf6xdjvv00134kkh0erxd6vg" class="article-share-link">分享到</a>
       
 
       
@@ -1209,7 +1209,7 @@
 
 
       
-        <a data-url="http://yoursite.com/2015/10/01/deploy-web/" data-id="cjf6vzdit0006l4kh9uzvgyfj" class="article-share-link">分享到</a>
+        <a data-url="http://yoursite.com/2015/10/01/deploy-web/" data-id="cjf6xdju000034kkhllab8ott" class="article-share-link">分享到</a>
       
 
       
@@ -1274,7 +1274,7 @@
 
 
       
-        <a data-url="http://yoursite.com/2015/08/09/jsp-learn/" data-id="cjf6vzdjr000hl4khns94dwhh" class="article-share-link">分享到</a>
+        <a data-url="http://yoursite.com/2015/08/09/jsp-learn/" data-id="cjf6xdjv0000i4kkhuow4ro4a" class="article-share-link">分享到</a>
       
 
       
@@ -1343,7 +1343,7 @@
 
 
       
-        <a data-url="http://yoursite.com/1995/12/26/interview-expirence/" data-id="cjf6vzdiv0007l4kh33x2rjb4" class="article-share-link">分享到</a>
+        <a data-url="http://yoursite.com/1995/12/26/interview-expirence/" data-id="cjf6xdju600064kkhzohgch7a" class="article-share-link">分享到</a>
       
 
       
