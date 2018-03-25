@@ -1,0 +1,352 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>JDBC+MySQL+JSP 分页小结 | 266305</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="JSP + MySQL + JDBC 传统型分页做法">
+<meta property="og:type" content="article">
+<meta property="og:title" content="JDBC+MySQL+JSP 分页小结">
+<meta property="og:url" content="http://yoursite.com/2015/11/14/分页/index.html">
+<meta property="og:site_name" content="266305">
+<meta property="og:description" content="JSP + MySQL + JDBC 传统型分页做法">
+<meta property="og:image" content="http://yoursite.com/img/page-part.png">
+<meta property="og:updated_time" content="2017-05-29T09:43:39.931Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="JDBC+MySQL+JSP 分页小结">
+<meta name="twitter:description" content="JSP + MySQL + JDBC 传统型分页做法">
+<meta name="twitter:image" content="http://yoursite.com/img/page-part.png">
+  
+    <link rel="alternative" href="/atom.xml" title="266305" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.ico">
+  
+  <link rel="stylesheet" href="/css/style.css">
+  <!--[if lt IE 9]><script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7/html5shiv.min.js"></script><![endif]-->
+  
+</head>
+<body>
+<div id="container">
+  <div id="wrap">
+    <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">266305</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+          <a class="main-nav-link" href="/about">About</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//www.baidu.com/baidu" method="get" accept-charset="utf-8" class="search-form">
+          <input type="search" name="word" maxlength="20" class="search-form-input" placeholder="Search">
+          <input type="submit" value="" class="search-form-submit">
+          <input name=tn type=hidden value="bds">
+          <input name=cl type=hidden value="3">
+          <input name=ct type=hidden value="2097152">
+          <input type="hidden" name="si" value="yoursite.com">
+        </form>
+      </div>
+    </div>
+  </div>
+</header>
+    <div class="outer">
+      <section id="main"><article id="post-分页" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2015/11/14/分页/" class="article-date">
+  <time datetime="2015-11-13T16:00:00.000Z" itemprop="datePublished">2015-11-14</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/JavaEE-开发/">JavaEE 开发</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      JDBC+MySQL+JSP 分页小结
+    </h1>
+  
+
+      </header>
+    
+
+    <div class="article-entry" itemprop="articleBody">
+
+      
+
+
+        
+        <p style="width: 100%; background-color: #EEE; height: 3px"></p>
+          <!-- 显示目录 -->
+          <ol class="mytoc"><li class="mytoc-item mytoc-level-1"><a class="mytoc-link" href="#1-分析"><span class="mytoc-text">1. 分析</span></a></li><li class="mytoc-item mytoc-level-1"><a class="mytoc-link" href="#2-对象设计"><span class="mytoc-text">2. 对象设计</span></a></li></ol>
+        <!-- 显示目录 -->
+        <p style="width: 100%; background-color: #EEE; height: 3px"></p>
+         
+
+        <!-- 显示正文 -->
+        <p>使用 MySQL 提供的 limit 关键字进行分页</p>
+<a id="more"></a>
+<h1 id="1-分析"><a href="#1-分析" class="headerlink" title="1. 分析"></a>1. 分析</h1><p>页面分为两部分显示，一部分是数据列表，一部分是页面之类的数据，如图：<br><img src="/img/page-part.png" alt="页面组成"></p>
+<p>上图可知，分页所需要的数据分成两部分：<strong>列表数据</strong> 和 <strong>页码信息</strong>，每次查询两者数据都会发生变化，但是结构不变，可以将页面封装成对象，同时包含列表页数和页码信息的 <strong>页面对象</strong>(<code>Page</code>)。</p>
+<p>每次客户端携带的参数为用户想看页码，服务器计算出页码数据、查询出列表数据，并封装成页面对象，将对象置于 <code>requestScope</code> 中，客户端访问 <code>requestScope</code>，显示数据。基本流程如下：</p>
+<ol>
+<li>服务器收到请求参数（参数为用户所要查看的页码）</li>
+<li>服务器构造 页面对象（Page）<ul>
+<li>从数据库中取出所有记录，根据一页默认显示记录条数，算出总页数</li>
+<li>根据总页数和当前要显示的页数，计算出所要查询记录的数据库起码位置</li>
+</ul>
+</li>
+<li>服务器调用 Dao 层方法进行分页查询，得到数据列表</li>
+<li>将数据列表封装进页面对象</li>
+<li>将页面对象写入相关的域中(<code>requestScope</code>)</li>
+</ol>
+<h1 id="2-对象设计"><a href="#2-对象设计" class="headerlink" title="2. 对象设计"></a>2. 对象设计</h1><p>Page 对象的设计<br><figure class="highlight java"><figcaption><span>Page</span></figcaption><table><tr><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Page</span> </span>&#123;</div><div class="line">    <span class="keyword">private</span> List&lt;Object&gt; pageData; <span class="comment">// 列表数据</span></div><div class="line">    </div><div class="line">    <span class="keyword">private</span> <span class="keyword">int</span> totalRecord; 	 <span class="comment">// 需要分页的数据的总记录数</span></div><div class="line">    <span class="keyword">private</span> <span class="keyword">int</span> pageSize = <span class="number">10</span>;   <span class="comment">// 一页所需要显示的数据</span></div><div class="line">    <span class="keyword">private</span> <span class="keyword">int</span> totalPage;       <span class="comment">// 总页数</span></div><div class="line">    </div><div class="line">    <span class="keyword">private</span> <span class="keyword">int</span> currentPage;<span class="comment">// 当前请求页数，目标页数</span></div><div class="line">    <span class="keyword">private</span> <span class="keyword">int</span> startIndex; <span class="comment">// 数据库中记录的开始序号</span></div><div class="line">    </div><div class="line">    <span class="keyword">private</span> <span class="keyword">int</span> startPage;  <span class="comment">// 页面上显示的起始页码</span></div><div class="line">    <span class="keyword">private</span> <span class="keyword">int</span> endPage;    <span class="comment">// 页面上显示的终止页码</span></div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p><code>Page</code> 对象的构造方法设计：</p>
+<ul>
+<li>根据总记录数算出记录需要显示的总页数</li>
+<li>计算数据库中的起始记录</li>
+<li>计算页面需要显示起始页码和终止页码<ul>
+<li>当起始页码小于1</li>
+<li>当终止页码大于总页数</li>
+</ul>
+</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="code"><pre><div class="line"><span class="function"><span class="keyword">public</span> <span class="title">Page</span><span class="params">(<span class="keyword">int</span> currentPage, <span class="keyword">int</span> totalRecord)</span> </span>&#123;</div><div class="line">    <span class="keyword">this</span>.totalRecord = totalRecord;</div><div class="line">    <span class="keyword">this</span>.currentPage = currentPage;</div><div class="line"></div><div class="line">    <span class="comment">// 1. 使用总记录数算出总页数</span></div><div class="line">    totalPage = totalRecord % pageSize == <span class="number">0</span> ? </div><div class="line">            totalRecord / pageSize : totalRecord / pageSize + <span class="number">1</span>;</div><div class="line">    <span class="comment">// 2. 计算数据库中起始记录</span></div><div class="line">    <span class="keyword">this</span>.startIndex = (currentPage - <span class="number">1</span>) * <span class="keyword">this</span>.pageSize; </div><div class="line">    </div><div class="line">    <span class="comment">// 3. 计算需要显示的起始页码和终止页码</span></div><div class="line">    <span class="keyword">if</span> (<span class="keyword">this</span>.totalPage &lt; <span class="number">10</span>) &#123;</div><div class="line">        <span class="keyword">this</span>.startPage = <span class="number">1</span>;</div><div class="line">        <span class="keyword">this</span>.endPage = <span class="keyword">this</span>.totalPage;</div><div class="line">    &#125; <span class="keyword">else</span> &#123;</div><div class="line">        <span class="keyword">this</span>.startPage = <span class="keyword">this</span>.currentPage - <span class="number">4</span>;</div><div class="line">        <span class="keyword">this</span>.endPage = <span class="keyword">this</span>.currentPage + <span class="number">5</span>;</div><div class="line"></div><div class="line">        <span class="keyword">if</span> (<span class="keyword">this</span>.startPage &lt; <span class="number">1</span>) &#123; <span class="comment">// 起始页码小于1</span></div><div class="line">            <span class="keyword">this</span>.startPage = <span class="number">1</span>;</div><div class="line">            <span class="keyword">this</span>.endPage = <span class="number">10</span>;</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">if</span> (<span class="keyword">this</span>.endPage &gt; <span class="keyword">this</span>.totalPage) &#123; <span class="comment">// 终止页数大于总页数</span></div><div class="line">            <span class="keyword">this</span>.endPage = <span class="keyword">this</span>.totalPage;</div><div class="line">            <span class="keyword">this</span>.startPage = <span class="keyword">this</span>.totalPage - <span class="number">9</span>;</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>Servlet 收到客户端请求，进行数据验证和处理：</p>
+<figure class="highlight java"><figcaption><span>studentServlet</span></figcaption><table><tr><td class="code"><pre><div class="line"><span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">service</span><span class="params">(HttpServletRequest req, HttpServletResponse resp)</span> <span class="keyword">throws</span> Exception </span>&#123;</div><div class="line">    String pageStr = req.getParameter(<span class="string">"page"</span>);</div><div class="line">    <span class="keyword">int</span> page = <span class="number">1</span>;</div><div class="line">    </div><div class="line">    <span class="keyword">if</span>(pageStr == <span class="keyword">null</span> || pageStr == <span class="string">""</span>) &#123; <span class="comment">// 第一次访问</span></div><div class="line">        req.setAttribute(<span class="string">"result"</span>, service.getPage(page));</div><div class="line">        req.getRequestDispatcher(<span class="string">"/students.jsp"</span>).forward(req, resp);</div><div class="line">        <span class="keyword">return</span> ;</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">if</span>(!pageStr.matches(<span class="string">"[0-9]+"</span>) &amp;&amp; pageStr != <span class="keyword">null</span>) &#123; <span class="comment">// 错误情况</span></div><div class="line">        req.getRequestDispatcher(<span class="string">"/error.jsp"</span>).forward(req, resp);</div><div class="line">        <span class="keyword">return</span> ;</div><div class="line">    &#125;</div><div class="line">    page = Integer.valueOf(pageStr);</div><div class="line">    <span class="keyword">if</span>(page &lt; <span class="number">0</span>) &#123; <span class="comment">// 错误情况</span></div><div class="line">        req.getRequestDispatcher(<span class="string">"/error.jsp"</span>).forward(req, resp);</div><div class="line">    &#125; </div><div class="line">    req.setAttribute(<span class="string">"result"</span>, service.getPage(page));</div><div class="line">    req.getRequestDispatcher(<span class="string">"/students.jsp"</span>).forward(req, resp);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>Service 层方法的设计：</p>
+<ul>
+<li>获取需要查询数据的总数</li>
+<li>构造 <code>Page</code> 对象</li>
+<li>查询数据列表、封装数据</li>
+</ul>
+<figure class="highlight java"><figcaption><span>studentService</span></figcaption><table><tr><td class="code"><pre><div class="line"><span class="function"><span class="keyword">public</span> QueryResult <span class="title">getPage</span><span class="params">(<span class="keyword">int</span> currentPage)</span> </span>&#123;</div><div class="line">    <span class="keyword">int</span> recodeNum = dao.getNum(); <span class="comment">// 获取学生总数</span></div><div class="line">    Page result = <span class="keyword">new</span> Page(currentPage, recodeNum); <span class="comment">// 构造分页结果</span></div><div class="line">    List&lt;Student&gt; list = dao.getPage(result.getStartIndex(), result.getPageSize()); <span class="comment">// 获取对应页数的学生信息</span></div><div class="line">    result.setPageData(list);</div><div class="line">    <span class="keyword">return</span> result;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>JSP 显示列表页面的设计：</p>
+<ul>
+<li>迭代数据列表显示</li>
+<li>显示页码、上一页、下一页、首页、尾页</li>
+</ul>
+<figure class="highlight html"><table><tr><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">%--</span> 数据列表显示<span class="attr">--</span>%&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">table</span> <span class="attr">style</span>=<span class="string">"margin: 0 auto"</span> <span class="attr">width</span>=<span class="string">"60%"</span> <span class="attr">frame</span>=<span class="string">"border"</span> <span class="attr">border</span>=<span class="string">"1"</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">tr</span>&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">td</span>&gt;</span>id<span class="tag">&lt;/<span class="name">td</span>&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">td</span>&gt;</span>姓名<span class="tag">&lt;/<span class="name">td</span>&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">td</span>&gt;</span>性别<span class="tag">&lt;/<span class="name">td</span>&gt;</span></div><div class="line">    <span class="tag">&lt;/<span class="name">tr</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">c:forEach</span> <span class="attr">var</span>=<span class="string">"item"</span> <span class="attr">items</span>=<span class="string">"$&#123;requestScope.result.pageData&#125;"</span>&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">tr</span>&gt;</span></div><div class="line">            <span class="tag">&lt;<span class="name">td</span>&gt;</span><span class="tag">&lt;<span class="name">c:out</span> <span class="attr">value</span>=<span class="string">"$&#123;item.id &#125;"</span>   <span class="attr">escapeXml</span>=<span class="string">"true"</span>/&gt;</span><span class="tag">&lt;/<span class="name">td</span>&gt;</span></div><div class="line">            <span class="tag">&lt;<span class="name">td</span>&gt;</span><span class="tag">&lt;<span class="name">c:out</span> <span class="attr">value</span>=<span class="string">"$&#123;item.name &#125;"</span> <span class="attr">escapeXml</span>=<span class="string">"true"</span>/&gt;</span><span class="tag">&lt;/<span class="name">td</span>&gt;</span></div><div class="line">            <span class="tag">&lt;<span class="name">td</span>&gt;</span><span class="tag">&lt;<span class="name">c:out</span> <span class="attr">value</span>=<span class="string">"$&#123;item.sex &#125;"</span>  <span class="attr">escapeXml</span>=<span class="string">"true"</span>/&gt;</span><span class="tag">&lt;/<span class="name">td</span>&gt;</span></div><div class="line">        <span class="tag">&lt;/<span class="name">tr</span>&gt;</span></div><div class="line">    <span class="tag">&lt;/<span class="name">c:forEach</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">table</span>&gt;</span></div><div class="line"></div><div class="line"><span class="tag">&lt;<span class="name">%--</span> 页码显示 <span class="attr">--</span>%&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">"$&#123;ctx&#125;/student/getStudents?page=$&#123;requestScope.result.startPage&#125;"</span>&gt;</span> 首页 <span class="tag">&lt;/<span class="name">a</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">%--</span> 如果当前页码大于<span class="attr">1</span>，显示上一页按钮 <span class="attr">--</span>%&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">c:if</span> <span class="attr">test</span>=<span class="string">"$&#123;requestScope.result.currentPage &gt; 1&#125;"</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">"$&#123;ctx&#125;/student/getStudents?page=$&#123;requestScope.result.currentPage - 1&#125;"</span>&gt;</span> 上一页 <span class="tag">&lt;/<span class="name">a</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">c:if</span>&gt;</span></div><div class="line"></div><div class="line"><span class="tag">&lt;<span class="name">c:forEach</span> <span class="attr">var</span>=<span class="string">"pageNum"</span> <span class="attr">begin</span>=<span class="string">"$&#123;requestScope.result.startPage&#125;"</span> <span class="attr">end</span>=<span class="string">"$&#123;requestScope.result.endPage&#125;"</span> &gt;</span></div><div class="line">    [<span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">"$&#123;ctx&#125;/student/getStudents?page=$&#123;pageNum&#125;"</span>&gt;</span> $&#123;pageNum&#125; <span class="tag">&lt;/<span class="name">a</span>&gt;</span>]</div><div class="line"><span class="tag">&lt;/<span class="name">c:forEach</span>&gt;</span></div><div class="line"></div><div class="line"><span class="tag">&lt;<span class="name">%--</span> 如果当前页码小于总页数，显示下一页按钮 <span class="attr">--</span>%&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">c:if</span> <span class="attr">test</span>=<span class="string">"$&#123;requestScope.result.currentPage &lt; requestScope.result.totalPage &#125;"</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">"$&#123;ctx&#125;/student/getStudents?page=$&#123;requestScope.result.currentPage + 1 &#125;"</span>&gt;</span> 下一页 <span class="tag">&lt;/<span class="name">a</span>&gt;</span>    </div><div class="line"><span class="tag">&lt;/<span class="name">c:if</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">"$&#123;ctx&#125;/student/getStudents?page=$&#123;requestScope.result.endPage&#125;"</span>&gt;</span> 尾页 <span class="tag">&lt;/<span class="name">a</span>&gt;</span></div></pre></td></tr></table></figure>
+<p>参考：<br><a href="http://bbs.itheima.com/thread-60454-1-1.html" target="_blank" rel="external">方立勋老师的 JavaWeb 视频</a></p>
+
+        <!-- 显示正文 -->
+      
+    </div>
+
+
+    <footer class="article-footer">
+
+    <span id="busuanzi_container_page_pv">
+	本文总阅读量<span id="busuanzi_value_page_pv"></span>次
+	</span>
+
+
+      
+        <a data-url="http://yoursite.com/2015/11/14/分页/" data-id="cjf6vzdko001el4kh520uwpzj" class="article-share-link">分享到</a>
+      
+
+      
+        <a href="http://yoursite.com/2015/11/14/分页/#ds-thread" class="article-comment-link">评论</a>
+      
+
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/分页/">分页</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2016/10/07/java-mysql-connect/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">下一篇</strong>
+      <div class="article-nav-title">
+        
+          Java 应用程序连接 MySQL
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2015/10/11/servlet-read-file/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">上一篇</strong>
+      <div class="article-nav-title">Servlet 中读取文件的常见方式</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+<!-- 
+  <section id="comments">
+    <div id="ds-thread" class="ds-thread" data-thread-key="2015/11/14/分页/" data-title="JDBC+MySQL+JSP 分页小结" data-url="http://yoursite.com/2015/11/14/分页/"></div>
+  </section>
+ --></section>
+      
+        <aside id="sidebar">
+  
+    <div class="widget-wrap">
+  <h3 class="widget-title">关于我</h3>
+  <div class="widget">
+    <ul>
+      
+    
+        
+        <!--  -->
+          <div style="text-align: center;">
+            <img src="https://avatars1.githubusercontent.com/u/15794249?v=3&s=400" style="width: 230px;  height: 230px">
+          </div>
+        <!--  -->
+
+        <li>
+          <a href="http://www.cnblogs.com/gossiplee/" target="_blank">1. 「博客园」</a>
+          
+        </li>
+      
+        
+        <!--  -->
+
+        <li>
+          <a href="https://my.oschina.net/u/2938358/?ft=bbs&scope=2&showme=1" target="_blank">2. 「开源中国」</a>
+          
+        </li>
+      
+        
+        <!--  -->
+
+        <li>
+          <a href="https://github.com/LiHuaYang" target="_blank">3. 「GitHub」</a>
+          
+        </li>
+      
+        
+        <!--  -->
+
+        <li>
+          <a href="https://segmentfault.com/u/lihuayang" target="_blank">4. 「Segmentfault」</a>
+          
+        </li>
+      
+    </ul>
+  </div>
+</div>
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">分类</h3>
+    <div class="widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/JavaEE-开发/">JavaEE 开发</a><span class="category-list-count">9</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/JavaSE-基础/">JavaSE 基础</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Netty/">Netty</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Redis/">Redis</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/工具/">工具</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/数据库/">数据库</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/职业生涯/">职业生涯</a><span class="category-list-count">1</span></li></ul>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">标签云</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/Java-IO/" style="font-size: 16.67px;">Java IO</a> <a href="/tags/JavaEE-开发/" style="font-size: 20px;">JavaEE 开发</a> <a href="/tags/JavaSE-基础/" style="font-size: 13.33px;">JavaSE 基础</a> <a href="/tags/MySQL/" style="font-size: 13.33px;">MySQL</a> <a href="/tags/Netty/" style="font-size: 10px;">Netty</a> <a href="/tags/Struts/" style="font-size: 10px;">Struts</a> <a href="/tags/Tomcat/" style="font-size: 10px;">Tomcat</a> <a href="/tags/jsp/" style="font-size: 10px;">jsp</a> <a href="/tags/redis/" style="font-size: 10px;">redis</a> <a href="/tags/redis-集群/" style="font-size: 10px;">redis 集群</a> <a href="/tags/test-loadrunner/" style="font-size: 10px;">test,loadrunner</a> <a href="/tags/分页/" style="font-size: 10px;">分页</a> <a href="/tags/工具配置及使用/" style="font-size: 10px;">工具配置及使用</a> <a href="/tags/面试/" style="font-size: 10px;">面试</a> <a href="/tags/面试题/" style="font-size: 13.33px;">面试题</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">归档</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/02/">2018年 02月</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/06/">2017年 06月</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/05/">2017年 05月</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/01/">2017年 01月</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/11/">2016年 11月</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/10/">2016年 10月</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/11/">2015年 11月</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/10/">2015年 10月</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/08/">2015年 08月</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/1995/12/">1995年 12月</a><span class="archive-list-count">1</span></li></ul>
+    </div>
+  </div>
+
+  
+</aside>
+      
+    </div>
+    <footer id="footer">
+  
+  <div class="outer">
+	     <script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+<!-- 
+<span id="busuanzi_container_site_pv">��վ���ܷ�����<span id="busuanzi_value_site_pv"></span>��</span>
+-->
+
+    <div id="footer-info" class="inner">
+      &copy; 2018 lihuayang<br>
+      Powered by <a href="//hexo.io/" target="_blank">Hexo</a>
+      .
+      Theme by <a href="https://github.com/xiangming/landscape-plus" target="_blank">Landscape-plus</a>
+    </div>
+  </div>
+</footer>
+  </div>
+  <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+    <a href="/about" class="mobile-nav-link">About</a>
+  
+</nav>
+  <!-- totop start -->
+<div id="totop">
+<a title="返回顶部"><img src="/img/scrollup.png"/></a>
+</div>
+
+<!-- totop end -->
+
+<!-- 多说公共js代码 start -->
+<script type="text/javascript">
+var duoshuoQuery = {short_name:"reqianduan"};
+  (function() {
+    var ds = document.createElement('script');
+    ds.type = 'text/javascript';ds.async = true;
+    ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+    ds.charset = 'UTF-8';
+    (document.getElementsByTagName('head')[0]
+     || document.getElementsByTagName('body')[0]).appendChild(ds);
+  })();
+  </script>
+<!-- 多说公共js代码 end -->
+
+
+<!-- 百度分享 start -->
+
+<!-- 百度分享 end -->
+
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+</div>
+</body>
+</html>

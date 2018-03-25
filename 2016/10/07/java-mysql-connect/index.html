@@ -1,0 +1,365 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>Java 应用程序连接 MySQL | 266305</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="Java 应用程序连接 MySQL">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Java 应用程序连接 MySQL">
+<meta property="og:url" content="http://yoursite.com/2016/10/07/java-mysql-connect/index.html">
+<meta property="og:site_name" content="266305">
+<meta property="og:description" content="Java 应用程序连接 MySQL">
+<meta property="og:updated_time" content="2017-05-29T11:33:01.653Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Java 应用程序连接 MySQL">
+<meta name="twitter:description" content="Java 应用程序连接 MySQL">
+  
+    <link rel="alternative" href="/atom.xml" title="266305" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.ico">
+  
+  <link rel="stylesheet" href="/css/style.css">
+  <!--[if lt IE 9]><script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7/html5shiv.min.js"></script><![endif]-->
+  
+</head>
+<body>
+<div id="container">
+  <div id="wrap">
+    <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">266305</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+          <a class="main-nav-link" href="/about">About</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//www.baidu.com/baidu" method="get" accept-charset="utf-8" class="search-form">
+          <input type="search" name="word" maxlength="20" class="search-form-input" placeholder="Search">
+          <input type="submit" value="" class="search-form-submit">
+          <input name=tn type=hidden value="bds">
+          <input name=cl type=hidden value="3">
+          <input name=ct type=hidden value="2097152">
+          <input type="hidden" name="si" value="yoursite.com">
+        </form>
+      </div>
+    </div>
+  </div>
+</header>
+    <div class="outer">
+      <section id="main"><article id="post-java-mysql-connect" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2016/10/07/java-mysql-connect/" class="article-date">
+  <time datetime="2016-10-06T16:00:00.000Z" itemprop="datePublished">2016-10-07</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/JavaEE-开发/">JavaEE 开发</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      Java 应用程序连接 MySQL
+    </h1>
+  
+
+      </header>
+    
+
+    <div class="article-entry" itemprop="articleBody">
+
+      
+
+
+        
+        <p style="width: 100%; background-color: #EEE; height: 3px"></p>
+          <!-- 显示目录 -->
+          <ol class="mytoc"><li class="mytoc-item mytoc-level-1"><a class="mytoc-link" href="#零、概念简介"><span class="mytoc-text">零、概念简介</span></a></li><li class="mytoc-item mytoc-level-1"><a class="mytoc-link" href="#一、常规连接"><span class="mytoc-text">一、常规连接</span></a></li><li class="mytoc-item mytoc-level-1"><a class="mytoc-link" href="#二、使用连接池连接"><span class="mytoc-text">二、使用连接池连接</span></a><ol class="mytoc-child"><li class="mytoc-item mytoc-level-2"><a class="mytoc-link" href="#1-使用自制连接池"><span class="mytoc-text">1. 使用自制连接池</span></a><ol class="mytoc-child"><li class="mytoc-item mytoc-level-3"><a class="mytoc-link" href="#1-1-方法一实现"><span class="mytoc-text">1.1 方法一实现</span></a></li><li class="mytoc-item mytoc-level-3"><a class="mytoc-link" href="#1-2-方法二实现"><span class="mytoc-text">1.2 方法二实现</span></a></li><li class="mytoc-item mytoc-level-3"><a class="mytoc-link" href="#1-3-方法三实现"><span class="mytoc-text">1.3 方法三实现</span></a></li></ol></li><li class="mytoc-item mytoc-level-2"><a class="mytoc-link" href="#2-使用-DBCP-连接池"><span class="mytoc-text">2. 使用 DBCP 连接池</span></a></li><li class="mytoc-item mytoc-level-2"><a class="mytoc-link" href="#3-使用-C3P0-连接池"><span class="mytoc-text">3. 使用 C3P0 连接池</span></a></li><li class="mytoc-item mytoc-level-2"><a class="mytoc-link" href="#4-使用-Tomcat-自带的连接池连接（DBCP-JNDI）"><span class="mytoc-text">4. 使用 Tomcat 自带的连接池连接（DBCP + JNDI）</span></a><ol class="mytoc-child"><li class="mytoc-item mytoc-level-3"><a class="mytoc-link" href="#4-1-全局配置数据源"><span class="mytoc-text">4.1 全局配置数据源</span></a></li><li class="mytoc-item mytoc-level-3"><a class="mytoc-link" href="#4-2-局部配置数据源方法一"><span class="mytoc-text">4.2 局部配置数据源方法一</span></a></li><li class="mytoc-item mytoc-level-3"><a class="mytoc-link" href="#4-3-局部配置数据源方法二"><span class="mytoc-text">4.3 局部配置数据源方法二</span></a></li></ol></li><li class="mytoc-item mytoc-level-2"><a class="mytoc-link" href="#5-使用-Druid-连接池"><span class="mytoc-text">5. 使用 Druid 连接池</span></a></li></ol></li><li class="mytoc-item mytoc-level-1"><a class="mytoc-link" href="#三、集成框架使用"><span class="mytoc-text">三、集成框架使用</span></a><ol class="mytoc-child"><li class="mytoc-item mytoc-level-2"><a class="mytoc-link" href="#1-使用-Spring-自带连接池连接"><span class="mytoc-text">1. 使用 Spring 自带连接池连接</span></a></li><li class="mytoc-item mytoc-level-2"><a class="mytoc-link" href="#2-使用-Hibernate-连接"><span class="mytoc-text">2. 使用 Hibernate 连接</span></a></li><li class="mytoc-item mytoc-level-2"><a class="mytoc-link" href="#3-使用-Mybatis-连接"><span class="mytoc-text">3. 使用 Mybatis 连接</span></a></li></ol></li></ol>
+        <!-- 显示目录 -->
+        <p style="width: 100%; background-color: #EEE; height: 3px"></p>
+         
+
+        <!-- 显示正文 -->
+        <p>本文介绍 Java 连接数据各种方式，包括常规连接、使用不同的连接池、集成框架使用、ORM 框架使用</p>
+<a id="more"></a>
+<h1 id="零、概念简介"><a href="#零、概念简介" class="headerlink" title="零、概念简介"></a>零、概念简介</h1><p><strong>JDBC（Java Data Base Connectivity）：Java 数据库连接</strong>。是标准的Java API是一套客户端程序与数据库交互的规范，提供了一套通过Java操纵数据库的完整接口，如：</p>
+<ul>
+<li>创建与数据库的连接</li>
+<li>创建 SQL 语句</li>
+<li>执行 SQL 语句</li>
+<li>处理所产生的记录</li>
+</ul>
+<p>JDBC API 的实现，是由 JDBC 驱动程序实现的，不同的数据库对应有不同的驱动程序。当使用某个具体的 JDBC 驱动，需要将其对应的 Jar 包引入项目中。</p>
+<p>调用 JDBC API 时，JDBC 将我们的请求交给 JDBC 驱动，最终由驱动完成与数据库的交互。此外，数据库驱动会帮助我们打开数据库连接、关闭数据库连接、控制事务。</p>
+<p>JDBC 目标是做到“一次编写，到处运行”，当使用 JDBC API 访问数据库后，无论是更换数据库还是更换操作系统，都不需要修改代码。所以使用 JDBC，可以使用相同的 API 访问不同的数据库服务（比如 MySQL、Oracle 等），这样就编写不依赖于具体数据库的 Java 程序。更高层的数据访问框架（Hibernate、Mybatis）也是以 JDBC 为基础构建的。</p>
+<h1 id="一、常规连接"><a href="#一、常规连接" class="headerlink" title="一、常规连接"></a>一、常规连接</h1><p><a href="http://www.mysql.com/downloads/connector/j/" target="_blank" rel="external">下载</a> MySQL 的 JDBC 驱动，并添加项目中构建环境中，JDBC 常规编码步骤：</p>
+<ol>
+<li><p>加载 MySQL 驱动，这是<code>Driver</code>的实现，MySQL的JDBC驱动类是 <code>com.mysql.jdbc.Driver</code></p>
+<figure class="highlight java"><table><tr><td class="code"><pre><div class="line">Class.forName(<span class="string">"com.mysql.jdbc.Driver"</span>).newInstance();</div></pre></td></tr></table></figure>
+</li>
+<li><p>连接到 MySQL，通过 <code>DriverManger</code> 来操作 <code>Driver</code>，获取数据库连接</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><div class="line"> Connection con = DriverManager.getConnection(<span class="string">"jdbc:mysql://127.0.0.1:3306/db_name"</span>, </div><div class="line"><span class="string">"root_zh"</span>, </div><div class="line"><span class="string">"root_mm"</span>);</div></pre></td></tr></table></figure>
+</li>
+<li><p>创建用以执行 SQL 语句的声明实例</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><div class="line">Statement stmt = con.createStatement();</div></pre></td></tr></table></figure>
+</li>
+<li><p>执行 SQL，获取结果集</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><div class="line">ResultSet rs = stmt.executeQuery(<span class="string">"select * from a_table"</span>);</div></pre></td></tr></table></figure>
+</li>
+<li><p>遍历并解析结果集</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><div class="line"><span class="keyword">while</span> (rs.next()) &#123;</div><div class="line">    <span class="keyword">int</span> id = rs.getInt(<span class="string">"id"</span>);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+</li>
+<li><p>关闭连接与声明，释放资源</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><div class="line">stmt.close();</div><div class="line">con.close();</div></pre></td></tr></table></figure>
+</li>
+</ol>
+<h1 id="二、使用连接池连接"><a href="#二、使用连接池连接" class="headerlink" title="二、使用连接池连接"></a>二、使用连接池连接</h1><h2 id="1-使用自制连接池"><a href="#1-使用自制连接池" class="headerlink" title="1. 使用自制连接池"></a>1. 使用自制连接池</h2><h3 id="1-1-方法一实现"><a href="#1-1-方法一实现" class="headerlink" title="1.1 方法一实现"></a>1.1 方法一实现</h3><h3 id="1-2-方法二实现"><a href="#1-2-方法二实现" class="headerlink" title="1.2 方法二实现"></a>1.2 方法二实现</h3><h3 id="1-3-方法三实现"><a href="#1-3-方法三实现" class="headerlink" title="1.3 方法三实现"></a>1.3 方法三实现</h3><h2 id="2-使用-DBCP-连接池"><a href="#2-使用-DBCP-连接池" class="headerlink" title="2. 使用 DBCP 连接池"></a>2. 使用 DBCP 连接池</h2><h2 id="3-使用-C3P0-连接池"><a href="#3-使用-C3P0-连接池" class="headerlink" title="3. 使用 C3P0 连接池"></a>3. 使用 C3P0 连接池</h2><h2 id="4-使用-Tomcat-自带的连接池连接（DBCP-JNDI）"><a href="#4-使用-Tomcat-自带的连接池连接（DBCP-JNDI）" class="headerlink" title="4. 使用 Tomcat 自带的连接池连接（DBCP + JNDI）"></a>4. 使用 Tomcat 自带的连接池连接（DBCP + JNDI）</h2><h3 id="4-1-全局配置数据源"><a href="#4-1-全局配置数据源" class="headerlink" title="4.1 全局配置数据源"></a>4.1 全局配置数据源</h3><ol>
+<li><p>在tomcat的conf文件夹下的context.xml配置文件中加入：</p>
+<figure class="highlight xml"><table><tr><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">Resource</span> <span class="attr">name</span>=<span class="string">"jdbc/dbname"</span>   </span></div><div class="line">            <span class="attr">auth</span>=<span class="string">"Container"</span>   </div><div class="line">            <span class="attr">type</span>=<span class="string">"javax.sql.DataSource"</span>   </div><div class="line">            <span class="attr">driverClassName</span>=<span class="string">"com.mysql.jdbc.Driver"</span>   </div><div class="line">            <span class="attr">url</span>=<span class="string">"jdbc:mysql://localhost:3306/dbname"</span>   </div><div class="line">            <span class="attr">username</span>=<span class="string">"root"</span>   </div><div class="line">            <span class="attr">password</span>=<span class="string">"123456"</span>   </div><div class="line">            <span class="attr">maxActive</span>=<span class="string">"20"</span>   </div><div class="line">            <span class="attr">maxIdle</span>=<span class="string">"10"</span>   </div><div class="line">            <span class="attr">maxWait</span>=<span class="string">"10000"</span>/&gt;</div></pre></td></tr></table></figure>
+</li>
+<li><p>在项目的web.xml中加入资源引用：（其中 res-ref-name 值要和 context.xml 的name 值一致）</p>
+<figure class="highlight xml"><table><tr><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">resource-ref</span>&gt;</span>  </div><div class="line">  <span class="tag">&lt;<span class="name">description</span>&gt;</span>JNDI DataSource<span class="tag">&lt;/<span class="name">description</span>&gt;</span>  </div><div class="line">  <span class="tag">&lt;<span class="name">res-ref-name</span>&gt;</span>jdbc/dbname<span class="tag">&lt;/<span class="name">res-ref-name</span>&gt;</span>  </div><div class="line">  <span class="tag">&lt;<span class="name">res-ref-type</span>&gt;</span>javax.sql.DataSource<span class="tag">&lt;/<span class="name">res-ref-type</span>&gt;</span>  </div><div class="line">  <span class="tag">&lt;<span class="name">res-auth</span>&gt;</span>Container<span class="tag">&lt;/<span class="name">res-auth</span>&gt;</span>  </div><div class="line"><span class="tag">&lt;/<span class="name">resource-ref</span>&gt;</span></div></pre></td></tr></table></figure>
+</li>
+<li><p>测试方法</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><div class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">testJndi</span><span class="params">()</span> <span class="keyword">throws</span> Exception </span>&#123;</div><div class="line">    Context ctx = <span class="keyword">new</span> InitialContext();  </div><div class="line">    DataSource ds = (DataSource) ctx.lookup(<span class="string">"java:comp/env/jdbc/dbname"</span>);  </div><div class="line">    Connection conn = ds.getConnection();  </div><div class="line">&#125;</div></pre></td></tr></table></figure>
+</li>
+</ol>
+<p><strong>注：</strong></p>
+<ul>
+<li>此方法依赖于容器启动，所以不能通过 <code>main()</code>，或 JUnit Test 启动，在 JSP 或 Servelt 方法中测试</li>
+<li><code>java:comp/env/</code> 前缀必须加上，原因不明，待查阅</li>
+<li>容器若是 tomcat 的话，步骤2可以省略</li>
+</ul>
+<h3 id="4-2-局部配置数据源方法一"><a href="#4-2-局部配置数据源方法一" class="headerlink" title="4.2 局部配置数据源方法一"></a>4.2 局部配置数据源方法一</h3><ol>
+<li>在 tomcat 的 server.xml 的 <code>&lt;host&gt;</code> 标签内，添加：<figure class="highlight xml"><table><tr><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">Context</span> <span class="attr">path</span>=<span class="string">"/demo_jndi"</span> <span class="attr">docBase</span>=<span class="string">"/demo_jndi"</span>&gt;</span>  </div><div class="line">   <span class="tag">&lt;<span class="name">Resource</span>  </span></div><div class="line">     <span class="attr">name</span>=<span class="string">"jdbc/dbname"</span>  </div><div class="line">     <span class="attr">type</span>=<span class="string">"javax.sql.DataSource"</span>  </div><div class="line">     <span class="attr">driverClassName</span>=<span class="string">"com.mysql.jdbc.Driver"</span>  </div><div class="line">     <span class="attr">maxIdle</span>=<span class="string">"2"</span>  </div><div class="line">     <span class="attr">maxWait</span>=<span class="string">"5000"</span>  </div><div class="line">     <span class="attr">username</span>=<span class="string">"root"</span>  </div><div class="line">     <span class="attr">password</span>=<span class="string">"123456"</span>  </div><div class="line">     <span class="attr">url</span>=<span class="string">"jdbc:mysql://localhost:3306/dbname"</span>  </div><div class="line">     <span class="attr">maxActive</span>=<span class="string">"4"</span>/&gt;  </div><div class="line"><span class="tag">&lt;/<span class="name">Context</span>&gt;</span></div></pre></td></tr></table></figure>
+</li>
+</ol>
+<h3 id="4-3-局部配置数据源方法二"><a href="#4-3-局部配置数据源方法二" class="headerlink" title="4.3 局部配置数据源方法二"></a>4.3 局部配置数据源方法二</h3><ol>
+<li>在项目的 META-INFO 下面新建 context.xml，加入：<figure class="highlight xml"><table><tr><td class="code"><pre><div class="line">&lt;?xml version="1.0" encoding="UTF-8"?&gt;  </div><div class="line"><span class="tag">&lt;<span class="name">Context</span>&gt;</span>  </div><div class="line">    <span class="tag">&lt;<span class="name">Resource</span> <span class="attr">name</span>=<span class="string">"jdbc/dbname"</span>   </span></div><div class="line">                <span class="attr">auth</span>=<span class="string">"Container"</span>   </div><div class="line">                <span class="attr">type</span>=<span class="string">"javax.sql.DataSource"</span>   </div><div class="line">                <span class="attr">driverClassName</span>=<span class="string">"com.mysql.jdbc.Driver"</span>   </div><div class="line">                <span class="attr">url</span>=<span class="string">"jdbc:mysql://localhost:3306/dbname"</span>   </div><div class="line">                <span class="attr">username</span>=<span class="string">"root"</span>   </div><div class="line">                <span class="attr">password</span>=<span class="string">"123456"</span>   </div><div class="line">                <span class="attr">maxActive</span>=<span class="string">"20"</span>   </div><div class="line">                <span class="attr">maxIdle</span>=<span class="string">"10"</span>   </div><div class="line">                <span class="attr">maxWait</span>=<span class="string">"10000"</span>/&gt;      </div><div class="line"><span class="tag">&lt;/<span class="name">Context</span>&gt;</span></div></pre></td></tr></table></figure>
+</li>
+</ol>
+<h2 id="5-使用-Druid-连接池"><a href="#5-使用-Druid-连接池" class="headerlink" title="5. 使用 Druid 连接池"></a>5. 使用 Druid 连接池</h2><h1 id="三、集成框架使用"><a href="#三、集成框架使用" class="headerlink" title="三、集成框架使用"></a>三、集成框架使用</h1><h2 id="1-使用-Spring-自带连接池连接"><a href="#1-使用-Spring-自带连接池连接" class="headerlink" title="1. 使用 Spring 自带连接池连接"></a>1. 使用 Spring 自带连接池连接</h2><h2 id="2-使用-Hibernate-连接"><a href="#2-使用-Hibernate-连接" class="headerlink" title="2. 使用 Hibernate 连接"></a>2. 使用 Hibernate 连接</h2><h2 id="3-使用-Mybatis-连接"><a href="#3-使用-Mybatis-连接" class="headerlink" title="3. 使用 Mybatis 连接"></a>3. 使用 Mybatis 连接</h2><p>参考<br><a href="http://wiki.jikexueyuan.com/project/jdbc/introduction.html" target="_blank" rel="external">极客学院 wiki</a><br><a href="https://www.tianmaying.com/tutorial/jdbc-introduction" target="_blank" rel="external">某网站博客</a></p>
+
+        <!-- 显示正文 -->
+      
+    </div>
+
+
+    <footer class="article-footer">
+
+    <span id="busuanzi_container_page_pv">
+	本文总阅读量<span id="busuanzi_value_page_pv"></span>次
+	</span>
+
+
+      
+        <a data-url="http://yoursite.com/2016/10/07/java-mysql-connect/" data-id="cjf6vzdj20008l4khvi6y7rbe" class="article-share-link">分享到</a>
+      
+
+      
+        <a href="http://yoursite.com/2016/10/07/java-mysql-connect/#ds-thread" class="article-comment-link">评论</a>
+      
+
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/JavaEE-开发/">JavaEE 开发</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/JavaSE-基础/">JavaSE 基础</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/MySQL/">MySQL</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2016/11/10/mysql-note/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">下一篇</strong>
+      <div class="article-nav-title">
+        
+          MySQL 简单小结
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2015/11/14/分页/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">上一篇</strong>
+      <div class="article-nav-title">JDBC+MySQL+JSP 分页小结</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+<!-- 
+  <section id="comments">
+    <div id="ds-thread" class="ds-thread" data-thread-key="2016/10/07/java-mysql-connect/" data-title="Java 应用程序连接 MySQL" data-url="http://yoursite.com/2016/10/07/java-mysql-connect/"></div>
+  </section>
+ --></section>
+      
+        <aside id="sidebar">
+  
+    <div class="widget-wrap">
+  <h3 class="widget-title">关于我</h3>
+  <div class="widget">
+    <ul>
+      
+    
+        
+        <!--  -->
+          <div style="text-align: center;">
+            <img src="https://avatars1.githubusercontent.com/u/15794249?v=3&s=400" style="width: 230px;  height: 230px">
+          </div>
+        <!--  -->
+
+        <li>
+          <a href="http://www.cnblogs.com/gossiplee/" target="_blank">1. 「博客园」</a>
+          
+        </li>
+      
+        
+        <!--  -->
+
+        <li>
+          <a href="https://my.oschina.net/u/2938358/?ft=bbs&scope=2&showme=1" target="_blank">2. 「开源中国」</a>
+          
+        </li>
+      
+        
+        <!--  -->
+
+        <li>
+          <a href="https://github.com/LiHuaYang" target="_blank">3. 「GitHub」</a>
+          
+        </li>
+      
+        
+        <!--  -->
+
+        <li>
+          <a href="https://segmentfault.com/u/lihuayang" target="_blank">4. 「Segmentfault」</a>
+          
+        </li>
+      
+    </ul>
+  </div>
+</div>
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">分类</h3>
+    <div class="widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/JavaEE-开发/">JavaEE 开发</a><span class="category-list-count">9</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/JavaSE-基础/">JavaSE 基础</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Netty/">Netty</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Redis/">Redis</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/工具/">工具</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/数据库/">数据库</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/职业生涯/">职业生涯</a><span class="category-list-count">1</span></li></ul>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">标签云</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/Java-IO/" style="font-size: 16.67px;">Java IO</a> <a href="/tags/JavaEE-开发/" style="font-size: 20px;">JavaEE 开发</a> <a href="/tags/JavaSE-基础/" style="font-size: 13.33px;">JavaSE 基础</a> <a href="/tags/MySQL/" style="font-size: 13.33px;">MySQL</a> <a href="/tags/Netty/" style="font-size: 10px;">Netty</a> <a href="/tags/Struts/" style="font-size: 10px;">Struts</a> <a href="/tags/Tomcat/" style="font-size: 10px;">Tomcat</a> <a href="/tags/jsp/" style="font-size: 10px;">jsp</a> <a href="/tags/redis/" style="font-size: 10px;">redis</a> <a href="/tags/redis-集群/" style="font-size: 10px;">redis 集群</a> <a href="/tags/test-loadrunner/" style="font-size: 10px;">test,loadrunner</a> <a href="/tags/分页/" style="font-size: 10px;">分页</a> <a href="/tags/工具配置及使用/" style="font-size: 10px;">工具配置及使用</a> <a href="/tags/面试/" style="font-size: 10px;">面试</a> <a href="/tags/面试题/" style="font-size: 13.33px;">面试题</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">归档</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/02/">2018年 02月</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/06/">2017年 06月</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/05/">2017年 05月</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/01/">2017年 01月</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/11/">2016年 11月</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/10/">2016年 10月</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/11/">2015年 11月</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/10/">2015年 10月</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/08/">2015年 08月</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/1995/12/">1995年 12月</a><span class="archive-list-count">1</span></li></ul>
+    </div>
+  </div>
+
+  
+</aside>
+      
+    </div>
+    <footer id="footer">
+  
+  <div class="outer">
+	     <script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+<!-- 
+<span id="busuanzi_container_site_pv">��վ���ܷ�����<span id="busuanzi_value_site_pv"></span>��</span>
+-->
+
+    <div id="footer-info" class="inner">
+      &copy; 2018 lihuayang<br>
+      Powered by <a href="//hexo.io/" target="_blank">Hexo</a>
+      .
+      Theme by <a href="https://github.com/xiangming/landscape-plus" target="_blank">Landscape-plus</a>
+    </div>
+  </div>
+</footer>
+  </div>
+  <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+    <a href="/about" class="mobile-nav-link">About</a>
+  
+</nav>
+  <!-- totop start -->
+<div id="totop">
+<a title="返回顶部"><img src="/img/scrollup.png"/></a>
+</div>
+
+<!-- totop end -->
+
+<!-- 多说公共js代码 start -->
+<script type="text/javascript">
+var duoshuoQuery = {short_name:"reqianduan"};
+  (function() {
+    var ds = document.createElement('script');
+    ds.type = 'text/javascript';ds.async = true;
+    ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+    ds.charset = 'UTF-8';
+    (document.getElementsByTagName('head')[0]
+     || document.getElementsByTagName('body')[0]).appendChild(ds);
+  })();
+  </script>
+<!-- 多说公共js代码 end -->
+
+
+<!-- 百度分享 start -->
+
+<!-- 百度分享 end -->
+
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+</div>
+</body>
+</html>

@@ -1,0 +1,371 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>简单文件上传小结 | 266305</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="使用 commons-fileupload 上传文件">
+<meta property="og:type" content="article">
+<meta property="og:title" content="简单文件上传小结">
+<meta property="og:url" content="http://yoursite.com/2016/11/15/upload-file/index.html">
+<meta property="og:site_name" content="266305">
+<meta property="og:description" content="使用 commons-fileupload 上传文件">
+<meta property="og:updated_time" content="2017-05-27T05:44:27.593Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="简单文件上传小结">
+<meta name="twitter:description" content="使用 commons-fileupload 上传文件">
+  
+    <link rel="alternative" href="/atom.xml" title="266305" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.ico">
+  
+  <link rel="stylesheet" href="/css/style.css">
+  <!--[if lt IE 9]><script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7/html5shiv.min.js"></script><![endif]-->
+  
+</head>
+<body>
+<div id="container">
+  <div id="wrap">
+    <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">266305</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+          <a class="main-nav-link" href="/about">About</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//www.baidu.com/baidu" method="get" accept-charset="utf-8" class="search-form">
+          <input type="search" name="word" maxlength="20" class="search-form-input" placeholder="Search">
+          <input type="submit" value="" class="search-form-submit">
+          <input name=tn type=hidden value="bds">
+          <input name=cl type=hidden value="3">
+          <input name=ct type=hidden value="2097152">
+          <input type="hidden" name="si" value="yoursite.com">
+        </form>
+      </div>
+    </div>
+  </div>
+</header>
+    <div class="outer">
+      <section id="main"><article id="post-upload-file" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2016/11/15/upload-file/" class="article-date">
+  <time datetime="2016-11-14T16:00:00.000Z" itemprop="datePublished">2016-11-15</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/JavaEE-开发/">JavaEE 开发</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      简单文件上传小结
+    </h1>
+  
+
+      </header>
+    
+
+    <div class="article-entry" itemprop="articleBody">
+
+      
+
+
+        
+        <p style="width: 100%; background-color: #EEE; height: 3px"></p>
+          <!-- 显示目录 -->
+          <ol class="mytoc"><li class="mytoc-item mytoc-level-1"><a class="mytoc-link" href="#一、使用-commons-fileupload-上传文件"><span class="mytoc-text">一、使用 commons-fileupload 上传文件</span></a><ol class="mytoc-child"><li class="mytoc-item mytoc-level-2"><a class="mytoc-link" href="#1-准备工作"><span class="mytoc-text">1. 准备工作</span></a></li><li class="mytoc-item mytoc-level-2"><a class="mytoc-link" href="#2-基本流程"><span class="mytoc-text">2. 基本流程</span></a></li></ol></li><li class="mytoc-item mytoc-level-1"><a class="mytoc-link" href="#二、使用-Servelet-3-0-特性上传文件"><span class="mytoc-text">二、使用 Servelet 3.0 特性上传文件</span></a><ol class="mytoc-child"><li class="mytoc-item mytoc-level-2"><a class="mytoc-link" href="#1-准备工作-1"><span class="mytoc-text">1. 准备工作</span></a></li><li class="mytoc-item mytoc-level-2"><a class="mytoc-link" href="#2-基本流程-1"><span class="mytoc-text">2. 基本流程</span></a></li></ol></li><li class="mytoc-item mytoc-level-1"><a class="mytoc-link" href="#三、上传文件注意点"><span class="mytoc-text">三、上传文件注意点</span></a><ol class="mytoc-child"><li class="mytoc-item mytoc-level-3"><a class="mytoc-link" href="#1、上传文件名的中文乱码和上传数据的中文乱码"><span class="mytoc-text">1、上传文件名的中文乱码和上传数据的中文乱码</span></a></li><li class="mytoc-item mytoc-level-3"><a class="mytoc-link" href="#2、为保证服务器安全，上传文件应该放在外界无法直接访问的目录"><span class="mytoc-text">2、为保证服务器安全，上传文件应该放在外界无法直接访问的目录</span></a></li><li class="mytoc-item mytoc-level-3"><a class="mytoc-link" href="#3、为防止文件覆盖的现象发生，要为上传文件产生一个唯一的文件名"><span class="mytoc-text">3、为防止文件覆盖的现象发生，要为上传文件产生一个唯一的文件名</span></a></li><li class="mytoc-item mytoc-level-3"><a class="mytoc-link" href="#4、为防止一个目录下面出现过多文件，要使用-hash-算法打散存储"><span class="mytoc-text">4、为防止一个目录下面出现过多文件，要使用 hash 算法打散存储</span></a></li><li class="mytoc-item mytoc-level-3"><a class="mytoc-link" href="#5、要限制上传文件的最大值"><span class="mytoc-text">5、要限制上传文件的最大值</span></a></li><li class="mytoc-item mytoc-level-3"><a class="mytoc-link" href="#6、确保临时文件被删除"><span class="mytoc-text">6、确保临时文件被删除</span></a></li><li class="mytoc-item mytoc-level-3"><a class="mytoc-link" href="#7、要限止上传文件的类型"><span class="mytoc-text">7、要限止上传文件的类型</span></a></li><li class="mytoc-item mytoc-level-3"><a class="mytoc-link" href="#8、监听器监听文件上传进度"><span class="mytoc-text">8、监听器监听文件上传进度</span></a></li><li class="mytoc-item mytoc-level-3"><a class="mytoc-link" href="#9、在-web-页面中动态添加文件上传输入项"><span class="mytoc-text">9、在 web 页面中动态添加文件上传输入项</span></a></li></ol></li></ol></li></ol>
+        <!-- 显示目录 -->
+        <p style="width: 100%; background-color: #EEE; height: 3px"></p>
+         
+
+        <!-- 显示正文 -->
+        <p>Java EE 开发中简单的文件上传小结，使用 Apache 组件上传、使用 Severlet3.0 新特性上传，以及文件上传需要注意的地方</p>
+<a id="more"></a>
+<h1 id="一、使用-commons-fileupload-上传文件"><a href="#一、使用-commons-fileupload-上传文件" class="headerlink" title="一、使用 commons-fileupload 上传文件"></a>一、使用 commons-fileupload 上传文件</h1><p>使用 commons-fileupload 组件进行文件上传</p>
+<h2 id="1-准备工作"><a href="#1-准备工作" class="headerlink" title="1. 准备工作"></a>1. 准备工作</h2><ul>
+<li>下载 <code>commons-fileupload</code>，运行时依赖 <code>commons-io.jar</code></li>
+<li>上传的表单类型必须为 <code>post</code>，编码方式必须为 <code>multipart/form-data</code><figure class="highlight html"><figcaption><span>upload.jsp</span></figcaption><table><tr><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">fieldset</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">legend</span>&gt;</span> 使用 commons-fileupload 组件上传文件 <span class="tag">&lt;/<span class="name">legend</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">form</span> <span class="attr">action</span>=<span class="string">"$&#123;pageContext.request.contextPath &#125;/uploadHandler2?m=upload"</span></span></div><div class="line">	<span class="attr">enctype</span>=<span class="string">"multipart/form-data"</span></div><div class="line">	<span class="attr">method</span>=<span class="string">"post"</span>&gt;</div><div class="line">        上传用户：<span class="tag">&lt;<span class="name">input</span>  <span class="attr">type</span>=<span class="string">"text"</span> <span class="attr">name</span>=<span class="string">"username"</span>&gt;</span><span class="tag">&lt;<span class="name">br</span>/&gt;</span></div><div class="line">        使用 common-fileupload 组件上传文件1：<span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"file"</span> <span class="attr">name</span>=<span class="string">"file1"</span>&gt;</span><span class="tag">&lt;<span class="name">br</span>/&gt;</span></div><div class="line">        使用 common-fileupload 组件上传文件2：<span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"file"</span> <span class="attr">name</span>=<span class="string">"file2"</span>&gt;</span><span class="tag">&lt;<span class="name">br</span>/&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"submit"</span> <span class="attr">value</span>=<span class="string">"提交"</span>&gt;</span></div><div class="line">    <span class="tag">&lt;/<span class="name">form</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">fieldset</span>&gt;</span></div></pre></td></tr></table></figure>
+</li>
+</ul>
+<h2 id="2-基本流程"><a href="#2-基本流程" class="headerlink" title="2. 基本流程"></a>2. 基本流程</h2><ol>
+<li><p>创建解析器工厂（<code>DiskFileItemFactory</code>）</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><div class="line">DiskFileItemFactory factory = <span class="keyword">new</span> DiskFileItemFactory();</div></pre></td></tr></table></figure>
+</li>
+<li><p>根据工厂创建解析器（<code>ServletFileUpload</code>）</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><div class="line">ServletFileUpload upload = <span class="keyword">new</span> ServletFileUpload(factory);</div></pre></td></tr></table></figure>
+</li>
+<li><p>调用解析器，解析上传表单中的所有字段（<code>upload.parseRequest(request)</code>），得到（<code>List&lt;FileItem&gt; list</code>）</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><div class="line">List&lt;FileItem&gt; list = upload.parseRequest(request);</div></pre></td></tr></table></figure>
+</li>
+<li><p>迭代上传表单字段列表（根据 <code>fileItem.isFormField()</code> 判断）</p>
+<ul>
+<li>若是普通字段，则拿出 key 和 value 即可（<code>handleFormField(item)</code>）</li>
+<li>若是文件上传，则调用写文件方法（<code>handleFileUpload(item)</code>）<figure class="highlight java"><table><tr><td class="code"><pre><div class="line"><span class="comment">// 处理普通字段</span></div><div class="line"><span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">handleFormField</span><span class="params">(FileItem item)</span> </span>&#123;</div><div class="line">    String name = item.getFieldName(); <span class="comment">// 得到输入项的名称</span></div><div class="line">    String value = item.getString();</div><div class="line">    System.out.println(name + <span class="string">"="</span> + value);</div><div class="line">&#125;</div><div class="line"><span class="comment">// 处理文件上传</span></div><div class="line"><span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">handleFileUpload</span><span class="params">(FileItem item)</span> </span>&#123;</div><div class="line">    InputStream in = <span class="keyword">null</span>;</div><div class="line">    FileOutputStream out = <span class="keyword">null</span>;</div><div class="line">    String filename = item.getName();</div><div class="line">    filename = filename.substring(filename.lastIndexOf(<span class="string">"\\"</span>) + <span class="number">1</span>); <span class="comment">// 切割文件名</span></div><div class="line">    in = item.getInputStream(); <span class="comment">// 得到上传数据流</span></div><div class="line">    <span class="keyword">int</span> len = <span class="number">0</span>;</div><div class="line">    <span class="keyword">byte</span> buffer[] = <span class="keyword">new</span> <span class="keyword">byte</span>[<span class="number">1024</span>];</div><div class="line">    String savepath = <span class="keyword">this</span>.getServletContext().getRealPath(<span class="string">"/WEB-INF/upload"</span>);</div><div class="line">    out = <span class="keyword">new</span> FileOutputStream(savepath + <span class="string">"\\"</span> + filename); <span class="comment">// 向upload目录中写入文件</span></div><div class="line"></div><div class="line">    <span class="keyword">while</span> ((len = in.read(buffer)) &gt; <span class="number">0</span>) &#123;</div><div class="line">        out.write(buffer, <span class="number">0</span>, len);</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+</li>
+</ul>
+</li>
+</ol>
+<h1 id="二、使用-Servelet-3-0-特性上传文件"><a href="#二、使用-Servelet-3-0-特性上传文件" class="headerlink" title="二、使用 Servelet 3.0 特性上传文件"></a>二、使用 Servelet 3.0 特性上传文件</h1><h2 id="1-准备工作-1"><a href="#1-准备工作-1" class="headerlink" title="1. 准备工作"></a>1. 准备工作</h2><ul>
+<li>上传的表单类型必须为 <code>post</code>，编码方式必须为 <code>multipart/form-data</code><figure class="highlight html"><table><tr><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">fieldset</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">legend</span>&gt;</span>    </div><div class="line">        使用 Servlwt 3.0 新特性上传文件</div><div class="line">    <span class="tag">&lt;/<span class="name">legend</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">form</span> <span class="attr">action</span>=<span class="string">"$&#123;pageContext.request.contextPath&#125;/uploadHandler3"</span></span></div><div class="line">	<span class="attr">enctype</span>=<span class="string">"multipart/form-data"</span></div><div class="line">	<span class="attr">method</span>=<span class="string">"post"</span>&gt;</div><div class="line">        使用 Servlet 3.0 上传文件1：<span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"file"</span> <span class="attr">name</span>=<span class="string">"file1"</span>&gt;</span><span class="tag">&lt;<span class="name">br</span>/&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"submit"</span> <span class="attr">value</span>=<span class="string">"提交"</span>&gt;</span></div><div class="line">    <span class="tag">&lt;/<span class="name">form</span>&gt;</span></div><div class="line"> <span class="tag">&lt;/<span class="name">fieldset</span>&gt;</span></div></pre></td></tr></table></figure>
+</li>
+</ul>
+<h2 id="2-基本流程-1"><a href="#2-基本流程-1" class="headerlink" title="2. 基本流程"></a>2. 基本流程</h2><ol>
+<li><p>使用注解 <code>@MultipartConfig</code> 将一个 Servlet 标识为支持文件上传</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><div class="line"><span class="meta">@MultipartConfig</span></div><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">UploadServlet</span> <span class="keyword">extends</span> <span class="title">HttpServlet</span> </span>&#123; &#125;</div></pre></td></tr></table></figure>
+</li>
+<li><p>获取上传的表单中 <code>type=&quot;file&quot;</code> 的字段</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><div class="line"><span class="comment">// 获取所有上传的文件数据</span></div><div class="line">List&lt;Part&gt; parts = (List&lt;Part&gt;) request.getParts(); </div><div class="line"></div><div class="line"><span class="comment">// 通过表单 file 控件(&lt;input type="file" name="file"&gt;)的名字直接获取 Part 对象</span></div><div class="line">Part part = request.getPart(<span class="string">"file"</span>);</div></pre></td></tr></table></figure>
+</li>
+<li><p>获取上传文件的文件名</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><div class="line"><span class="comment">// 获取文件信息头</span></div><div class="line">String header = part.getHeader(<span class="string">"Content-Disposition"</span>);</div><div class="line"><span class="comment">// 获取文件名</span></div><div class="line">String fileName = getFileName(header);</div><div class="line"></div><div class="line"><span class="comment">/**</span></div><div class="line"> * 根据请求头解析出文件名 请求头的格式：</div><div class="line"> * 火狐和google浏览器下：form-data; name="file"; filename="snmp4j--api.zip" </div><div class="line"> * IE浏览器下：form-data; name="file"; filename="E:\snmp4j--api.zip"</div><div class="line"> * </div><div class="line"> * <span class="doctag">@param</span> header</div><div class="line"> *            请求头</div><div class="line"> * <span class="doctag">@return</span> 文件名</div><div class="line"> */</div><div class="line"><span class="function"><span class="keyword">private</span> String <span class="title">getFileName</span><span class="params">(String header)</span> </span>&#123;</div><div class="line">    String[] tempArr1 = header.split(<span class="string">";"</span>);</div><div class="line">    String[] tempArr2 = tempArr1[<span class="number">2</span>].split(<span class="string">"="</span>);</div><div class="line">    String fileName = tempArr2[<span class="number">1</span>].substring(tempArr2[<span class="number">1</span>].lastIndexOf(<span class="string">"\\"</span>) + <span class="number">1</span>).replaceAll(<span class="string">"\""</span>, <span class="string">""</span>);</div><div class="line">    <span class="keyword">return</span> fileName;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+</li>
+<li><p>将文件写入指定路径目录下</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><div class="line"><span class="comment">// 获取项目下的 /WEB-INF/upload 的绝对路径</span></div><div class="line">String savePath = request.getServletContext().getRealPath(<span class="string">"/WEB-INF/upload"</span>);</div><div class="line"><span class="comment">// 写入</span></div><div class="line">part.write(savePath + File.separator + fileName);</div></pre></td></tr></table></figure>
+</li>
+</ol>
+<h1 id="三、上传文件注意点"><a href="#三、上传文件注意点" class="headerlink" title="三、上传文件注意点"></a>三、上传文件注意点</h1><h3 id="1、上传文件名的中文乱码和上传数据的中文乱码"><a href="#1、上传文件名的中文乱码和上传数据的中文乱码" class="headerlink" title="1、上传文件名的中文乱码和上传数据的中文乱码"></a>1、上传文件名的中文乱码和上传数据的中文乱码</h3><ul>
+<li><p>文件名乱码：设置解析器的编码</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><div class="line">upload.setHeaderEncoding(<span class="string">"UTF-8"</span>); <span class="comment">//</span></div></pre></td></tr></table></figure>
+</li>
+<li><p>普通字段乱码：设置 request 编码无效,只能手工转换</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><div class="line"><span class="comment">// 手工转换</span></div><div class="line">String name = <span class="keyword">new</span> String(item.getFieldName().getBytes(<span class="string">"iso8859-1"</span>), <span class="string">"UTF-8"</span>);</div><div class="line"><span class="comment">// 指定编码获取值</span></div><div class="line">String value = item.getString(<span class="string">"UTF-8"</span>);</div></pre></td></tr></table></figure>
+</li>
+</ul>
+<h3 id="2、为保证服务器安全，上传文件应该放在外界无法直接访问的目录"><a href="#2、为保证服务器安全，上传文件应该放在外界无法直接访问的目录" class="headerlink" title="2、为保证服务器安全，上传文件应该放在外界无法直接访问的目录"></a>2、为保证服务器安全，上传文件应该放在外界无法直接访问的目录</h3><p> <code>WEB-INF / upload</code> 要是上传的是图片的话，需要在网页上显示。</p>
+<h3 id="3、为防止文件覆盖的现象发生，要为上传文件产生一个唯一的文件名"><a href="#3、为防止文件覆盖的现象发生，要为上传文件产生一个唯一的文件名" class="headerlink" title="3、为防止文件覆盖的现象发生，要为上传文件产生一个唯一的文件名"></a>3、为防止文件覆盖的现象发生，要为上传文件产生一个唯一的文件名</h3><p>使用 UUID 算法产生即可<br><figure class="highlight java"><table><tr><td class="code"><pre><div class="line"><span class="comment">// filename = "上传的文件名.jpg";</span></div><div class="line"><span class="function"><span class="keyword">private</span> String <span class="title">makeFileName</span><span class="params">(String filename)</span> </span>&#123;</div><div class="line">	<span class="keyword">return</span> UUID.randomUUID().toString() + <span class="string">"_"</span> + filename;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<h3 id="4、为防止一个目录下面出现过多文件，要使用-hash-算法打散存储"><a href="#4、为防止一个目录下面出现过多文件，要使用-hash-算法打散存储" class="headerlink" title="4、为防止一个目录下面出现过多文件，要使用 hash 算法打散存储"></a>4、为防止一个目录下面出现过多文件，要使用 hash 算法打散存储</h3><p>哈希打散算法（也可以使用日期打散）<br><figure class="highlight java"><table><tr><td class="code"><pre><div class="line"><span class="function"><span class="keyword">private</span> String <span class="title">makePath</span><span class="params">(String filename, String basePath)</span> </span>&#123;</div><div class="line">    <span class="keyword">int</span> hashcode = filename.hashCode();</div><div class="line">    <span class="keyword">int</span> dir1 = hashcode&amp;<span class="number">0xf</span>; <span class="comment">// 0-15</span></div><div class="line">    <span class="keyword">int</span> dir2 = hashcode&amp;<span class="number">0xf</span>&gt;&gt;<span class="number">4</span>; <span class="comment">// 0-15</span></div><div class="line"></div><div class="line">    String dir = basePath + <span class="string">"\\"</span> + dir1 + <span class="string">"\\"</span> + dir2;</div><div class="line"></div><div class="line">    File file = <span class="keyword">new</span> File(dir);</div><div class="line">    <span class="keyword">if</span> (!file.exists()) &#123;</div><div class="line">        <span class="comment">// file.mkdir()  产生一级目录</span></div><div class="line">        file.mkdirs();  <span class="comment">//</span></div><div class="line">    &#125;</div><div class="line">    <span class="keyword">return</span> dir;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<h3 id="5、要限制上传文件的最大值"><a href="#5、要限制上传文件的最大值" class="headerlink" title="5、要限制上传文件的最大值"></a>5、要限制上传文件的最大值</h3><p>可以通过：<code>ServletFileUpload.setFileSizeMax(1024)</code> 方法实现，并通过捕获：<br><code>FileUploadBase.FileSizeLimitExceededException</code> 异常以给用户友好提示</p>
+<h3 id="6、确保临时文件被删除"><a href="#6、确保临时文件被删除" class="headerlink" title="6、确保临时文件被删除"></a>6、确保临时文件被删除</h3><p>一定要在处理完上传文件后，调用 <code>item.delete</code> 方法</p>
+<ul>
+<li>默认缓冲区大小为 10 KB，当文件大小超过默认值，会产生临时文件进行保存。</li>
+<li>需要在流关闭之后，再调用 <code>item.delete()</code></li>
+</ul>
+<h3 id="7、要限止上传文件的类型"><a href="#7、要限止上传文件的类型" class="headerlink" title="7、要限止上传文件的类型"></a>7、要限止上传文件的类型</h3><p>在收到上传文件名时，判断后缀名是否合法<br><figure class="highlight java"><table><tr><td class="code"><pre><div class="line">String filetype = filename.substring(filename.lastIndexOf(<span class="string">"."</span>)); <span class="comment">// .jpg</span></div></pre></td></tr></table></figure></p>
+<h3 id="8、监听器监听文件上传进度"><a href="#8、监听器监听文件上传进度" class="headerlink" title="8、监听器监听文件上传进度"></a>8、监听器监听文件上传进度</h3><p>ajax 实现上传进度条的原理<br><figure class="highlight java"><table><tr><td class="code"><pre><div class="line">ServletFileUpload upload = <span class="keyword">new</span> ServletFileUpload(factory);</div><div class="line">upload.setProgressListener(<span class="keyword">new</span> ProgressListener() &#123;</div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">update</span><span class="params">(<span class="keyword">long</span> pBytesRead, <span class="keyword">long</span> pContentLength, <span class="keyword">int</span> arg2)</span> </span>&#123;</div><div class="line">        System.out.println(<span class="string">"文件大小为："</span> + pContentLength + <span class="string">",当前已处理："</span> + pBytesRead);</div><div class="line">    &#125;</div><div class="line">&#125;);</div></pre></td></tr></table></figure></p>
+<h3 id="9、在-web-页面中动态添加文件上传输入项"><a href="#9、在-web-页面中动态添加文件上传输入项" class="headerlink" title="9、在 web 页面中动态添加文件上传输入项"></a>9、在 web 页面中动态添加文件上传输入项</h3><p>可能会有多个上传文件<br><figure class="highlight javascript"><table><tr><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">addinput</span>(<span class="params"></span>)</span>&#123;</div><div class="line">    <span class="keyword">var</span> div = <span class="built_in">document</span>.getElementById(<span class="string">"file"</span>);</div><div class="line"></div><div class="line">    <span class="keyword">var</span> input = <span class="built_in">document</span>.createElement(<span class="string">"input"</span>);</div><div class="line">    input.type=<span class="string">"file"</span>;</div><div class="line">    input.name=<span class="string">"filename"</span>;</div><div class="line"></div><div class="line">    <span class="keyword">var</span> del = <span class="built_in">document</span>.createElement(<span class="string">"input"</span>);</div><div class="line">    del.type=<span class="string">"button"</span>;</div><div class="line">    del.value=<span class="string">"删除"</span>;</div><div class="line">    del.onclick = <span class="function"><span class="keyword">function</span> <span class="title">d</span>(<span class="params"></span>) </span>&#123;</div><div class="line">        <span class="keyword">this</span>.parentNode.parentNode.removeChild(<span class="keyword">this</span>.parentNode);</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">var</span> innerdiv = <span class="built_in">document</span>.createElement(<span class="string">"div"</span>);</div><div class="line">    innerdiv.appendChild(input);</div><div class="line">    innerdiv.appendChild(del);</div><div class="line"></div><div class="line">    div.appendChild(innerdiv);</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>参考：<br><a href="http://bbs.itheima.com/thread-60454-1-1.html" target="_blank" rel="external">方立勋老师的 JavaWeb 视频</a><br><a href="http://www.cnblogs.com/xdp-gacl/p/4224960.html" target="_blank" rel="external">基于Servlet3.0的文件上传</a></p>
+
+        <!-- 显示正文 -->
+      
+    </div>
+
+
+    <footer class="article-footer">
+
+    <span id="busuanzi_container_page_pv">
+	本文总阅读量<span id="busuanzi_value_page_pv"></span>次
+	</span>
+
+
+      
+        <a data-url="http://yoursite.com/2016/11/15/upload-file/" data-id="cjf6vzdku001jl4khryuuzg0t" class="article-share-link">分享到</a>
+      
+
+      
+        <a href="http://yoursite.com/2016/11/15/upload-file/#ds-thread" class="article-comment-link">评论</a>
+      
+
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Java-IO/">Java IO</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2016/11/16/struts-form/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">下一篇</strong>
+      <div class="article-nav-title">
+        
+          Struts ActionForm 小结
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2016/11/12/session/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">上一篇</strong>
+      <div class="article-nav-title">Session 机制详解</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+<!-- 
+  <section id="comments">
+    <div id="ds-thread" class="ds-thread" data-thread-key="2016/11/15/upload-file/" data-title="简单文件上传小结" data-url="http://yoursite.com/2016/11/15/upload-file/"></div>
+  </section>
+ --></section>
+      
+        <aside id="sidebar">
+  
+    <div class="widget-wrap">
+  <h3 class="widget-title">关于我</h3>
+  <div class="widget">
+    <ul>
+      
+    
+        
+        <!--  -->
+          <div style="text-align: center;">
+            <img src="https://avatars1.githubusercontent.com/u/15794249?v=3&s=400" style="width: 230px;  height: 230px">
+          </div>
+        <!--  -->
+
+        <li>
+          <a href="http://www.cnblogs.com/gossiplee/" target="_blank">1. 「博客园」</a>
+          
+        </li>
+      
+        
+        <!--  -->
+
+        <li>
+          <a href="https://my.oschina.net/u/2938358/?ft=bbs&scope=2&showme=1" target="_blank">2. 「开源中国」</a>
+          
+        </li>
+      
+        
+        <!--  -->
+
+        <li>
+          <a href="https://github.com/LiHuaYang" target="_blank">3. 「GitHub」</a>
+          
+        </li>
+      
+        
+        <!--  -->
+
+        <li>
+          <a href="https://segmentfault.com/u/lihuayang" target="_blank">4. 「Segmentfault」</a>
+          
+        </li>
+      
+    </ul>
+  </div>
+</div>
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">分类</h3>
+    <div class="widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/JavaEE-开发/">JavaEE 开发</a><span class="category-list-count">9</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/JavaSE-基础/">JavaSE 基础</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Netty/">Netty</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Redis/">Redis</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/工具/">工具</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/数据库/">数据库</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/职业生涯/">职业生涯</a><span class="category-list-count">1</span></li></ul>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">标签云</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/Java-IO/" style="font-size: 16.67px;">Java IO</a> <a href="/tags/JavaEE-开发/" style="font-size: 20px;">JavaEE 开发</a> <a href="/tags/JavaSE-基础/" style="font-size: 13.33px;">JavaSE 基础</a> <a href="/tags/MySQL/" style="font-size: 13.33px;">MySQL</a> <a href="/tags/Netty/" style="font-size: 10px;">Netty</a> <a href="/tags/Struts/" style="font-size: 10px;">Struts</a> <a href="/tags/Tomcat/" style="font-size: 10px;">Tomcat</a> <a href="/tags/jsp/" style="font-size: 10px;">jsp</a> <a href="/tags/redis/" style="font-size: 10px;">redis</a> <a href="/tags/redis-集群/" style="font-size: 10px;">redis 集群</a> <a href="/tags/test-loadrunner/" style="font-size: 10px;">test,loadrunner</a> <a href="/tags/分页/" style="font-size: 10px;">分页</a> <a href="/tags/工具配置及使用/" style="font-size: 10px;">工具配置及使用</a> <a href="/tags/面试/" style="font-size: 10px;">面试</a> <a href="/tags/面试题/" style="font-size: 13.33px;">面试题</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">归档</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/02/">2018年 02月</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/06/">2017年 06月</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/05/">2017年 05月</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/01/">2017年 01月</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/11/">2016年 11月</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/10/">2016年 10月</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/11/">2015年 11月</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/10/">2015年 10月</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/08/">2015年 08月</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/1995/12/">1995年 12月</a><span class="archive-list-count">1</span></li></ul>
+    </div>
+  </div>
+
+  
+</aside>
+      
+    </div>
+    <footer id="footer">
+  
+  <div class="outer">
+	     <script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+<!-- 
+<span id="busuanzi_container_site_pv">��վ���ܷ�����<span id="busuanzi_value_site_pv"></span>��</span>
+-->
+
+    <div id="footer-info" class="inner">
+      &copy; 2018 lihuayang<br>
+      Powered by <a href="//hexo.io/" target="_blank">Hexo</a>
+      .
+      Theme by <a href="https://github.com/xiangming/landscape-plus" target="_blank">Landscape-plus</a>
+    </div>
+  </div>
+</footer>
+  </div>
+  <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+    <a href="/about" class="mobile-nav-link">About</a>
+  
+</nav>
+  <!-- totop start -->
+<div id="totop">
+<a title="返回顶部"><img src="/img/scrollup.png"/></a>
+</div>
+
+<!-- totop end -->
+
+<!-- 多说公共js代码 start -->
+<script type="text/javascript">
+var duoshuoQuery = {short_name:"reqianduan"};
+  (function() {
+    var ds = document.createElement('script');
+    ds.type = 'text/javascript';ds.async = true;
+    ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+    ds.charset = 'UTF-8';
+    (document.getElementsByTagName('head')[0]
+     || document.getElementsByTagName('body')[0]).appendChild(ds);
+  })();
+  </script>
+<!-- 多说公共js代码 end -->
+
+
+<!-- 百度分享 start -->
+
+<!-- 百度分享 end -->
+
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+</div>
+</body>
+</html>

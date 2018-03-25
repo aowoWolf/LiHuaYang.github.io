@@ -1,0 +1,436 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>JavaSE 常见面试题 | 266305</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="面试题解析">
+<meta property="og:type" content="article">
+<meta property="og:title" content="JavaSE 常见面试题">
+<meta property="og:url" content="http://yoursite.com/2017/01/07/javase-interview-test/index.html">
+<meta property="og:site_name" content="266305">
+<meta property="og:description" content="面试题解析">
+<meta property="og:image" content="http://yoursite.com/img/hashmap.png">
+<meta property="og:image" content="http://yoursite.com/img/equals.png">
+<meta property="og:image" content="http://yoursite.com/img/hashMap-structs.png">
+<meta property="og:image" content="http://yoursite.com/img/concurrenthashmap3.jpg">
+<meta property="og:updated_time" content="2017-04-26T07:51:17.475Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="JavaSE 常见面试题">
+<meta name="twitter:description" content="面试题解析">
+<meta name="twitter:image" content="http://yoursite.com/img/hashmap.png">
+  
+    <link rel="alternative" href="/atom.xml" title="266305" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.ico">
+  
+  <link rel="stylesheet" href="/css/style.css">
+  <!--[if lt IE 9]><script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7/html5shiv.min.js"></script><![endif]-->
+  
+</head>
+<body>
+<div id="container">
+  <div id="wrap">
+    <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">266305</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+          <a class="main-nav-link" href="/about">About</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//www.baidu.com/baidu" method="get" accept-charset="utf-8" class="search-form">
+          <input type="search" name="word" maxlength="20" class="search-form-input" placeholder="Search">
+          <input type="submit" value="" class="search-form-submit">
+          <input name=tn type=hidden value="bds">
+          <input name=cl type=hidden value="3">
+          <input name=ct type=hidden value="2097152">
+          <input type="hidden" name="si" value="yoursite.com">
+        </form>
+      </div>
+    </div>
+  </div>
+</header>
+    <div class="outer">
+      <section id="main"><article id="post-javase-interview-test" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2017/01/07/javase-interview-test/" class="article-date">
+  <time datetime="2017-01-06T16:00:00.000Z" itemprop="datePublished">2017-01-07</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/JavaSE-基础/">JavaSE 基础</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      JavaSE 常见面试题
+    </h1>
+  
+
+      </header>
+    
+
+    <div class="article-entry" itemprop="articleBody">
+
+      
+
+
+        
+        <p style="width: 100%; background-color: #EEE; height: 3px"></p>
+          <!-- 显示目录 -->
+          <ol class="mytoc"><li class="mytoc-item mytoc-level-1"><a class="mytoc-link" href="#一、obj-hashcode-、obj-equals-b"><span class="mytoc-text">一、obj.hashcode()、obj.equals(b)</span></a><ol class="mytoc-child"><li class="mytoc-item mytoc-level-2"><a class="mytoc-link" href="#定义、作用"><span class="mytoc-text">定义、作用</span></a></li><li class="mytoc-item mytoc-level-2"><a class="mytoc-link" href="#hashcode-工作原理"><span class="mytoc-text">hashcode 工作原理</span></a></li><li class="mytoc-item mytoc-level-2"><a class="mytoc-link" href="#与-equals-之间的联系"><span class="mytoc-text">与 equals() 之间的联系</span></a></li></ol></li><li class="mytoc-item mytoc-level-1"><a class="mytoc-link" href="#二、final、finalize、finally"><span class="mytoc-text">二、final、finalize、finally</span></a></li><li class="mytoc-item mytoc-level-1"><a class="mytoc-link" href="#三、String、StringBuffer-、StringBuilder"><span class="mytoc-text">三、String、StringBuffer 、StringBuilder</span></a></li><li class="mytoc-item mytoc-level-1"><a class="mytoc-link" href="#四、equals-与"><span class="mytoc-text">四、equals 与 ==</span></a></li><li class="mytoc-item mytoc-level-1"><a class="mytoc-link" href="#五、HashMap、HashTable、TreeMap、ConcurrentHashMap"><span class="mytoc-text">五、HashMap、HashTable、TreeMap、ConcurrentHashMap</span></a></li><li class="mytoc-item mytoc-level-1"><a class="mytoc-link" href="#六、在线程安全的前提下实现一个单例模式"><span class="mytoc-text">六、在线程安全的前提下实现一个单例模式</span></a></li><li class="mytoc-item mytoc-level-1"><a class="mytoc-link" href="#七、用-java-写出获取当前时间毫秒值，明天12点的毫秒值怎么获取？"><span class="mytoc-text">七、用 java 写出获取当前时间毫秒值，明天12点的毫秒值怎么获取？</span></a></li><li class="mytoc-item mytoc-level-1"><a class="mytoc-link" href="#八、用-SQL-语句写出创建-t-user-学号，姓名，年龄，性别，身份证号码-其中学号为自增类型主键，身份证号码唯一"><span class="mytoc-text">八、用 SQL 语句写出创建 t_user(学号，姓名，年龄，性别，身份证号码) 其中学号为自增类型主键，身份证号码唯一</span></a></li></ol>
+        <!-- 显示目录 -->
+        <p style="width: 100%; background-color: #EEE; height: 3px"></p>
+         
+
+        <!-- 显示正文 -->
+        <h1 id="一、obj-hashcode-、obj-equals-b"><a href="#一、obj-hashcode-、obj-equals-b" class="headerlink" title="一、obj.hashcode()、obj.equals(b)"></a>一、obj.hashcode()、obj.equals(b)</h1><h2 id="定义、作用"><a href="#定义、作用" class="headerlink" title="定义、作用"></a>定义、作用</h2><p><code>hashCode()</code>的作用是获取哈希码，也称为散列码；它实际上是返回一个 int 整数。这个哈希码的作用是，确定该对象在哈希表中的索引位置，提高哈希表的性能（如 HashMap、HashTable）</p>
+<h2 id="hashcode-工作原理"><a href="#hashcode-工作原理" class="headerlink" title="hashcode 工作原理"></a>hashcode 工作原理</h2><p>hashcode 是用来查找的，假如内存中有依次八个位置<br><figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">0  1  2  3  4  5  6  7  8</div></pre></td></tr></table></figure></p>
+<p>现有个类，类中有个字段为 id，需要把这个类放在8个位置之一。如果不用 hashcode 而任意存放，当查找时候，则需要对这8各个位置进行遍历，或者使用二分法之类的算法。<br>如果使用 hashcode 效率将会大大的提高。<br>定义 hashcode 的值为 id%8，取得余数则为存放的位置。如：假设 id=9，9%8余数为1，于是存放的位置为1。假设 id=13，13%8余数为5，于是存放的位置为5。于是，每次需要查找的时候只需要通过 id%8 这个算法求余数，直接找到存放的位置了。</p>
+<a id="more"></a>
+<h2 id="与-equals-之间的联系"><a href="#与-equals-之间的联系" class="headerlink" title="与 equals() 之间的联系"></a>与 equals() 之间的联系</h2><p>当两个类的 hashcode 值一样时候（碰撞），则需要 equals() 来帮忙。如：9%8和17%8的余数都是1。这里可能可能会想到既然键的 hashcode 都一样了，为什么还能存入？答案是：能存入，只要满足重写 equals() 这个前提要求。也就是说，总得让虚拟机区分的出来，对象与对象之间的区别。即：当对象的 hashcode 值相等时，只要不满足 a.equals(b) 为 true 时，对象就能存入！同样的道理，当取出时，先比较对象的 hashcode 值，再去调用 equals()。</p>
+<blockquote>
+<p>先通过 hashcode来判断两个类是否存放某个桶里，但这个桶里可能有很多类，那么就需要再通过 equals 来在这个桶里找到我们要的类。</p>
+</blockquote>
+<p><strong>hashmap 图例</strong></p>
+<p><img src="/img/hashmap.png" alt="hashmap 图例"></p>
+<p>注：</p>
+<ol>
+<li><code>hashCode()</code> 在散列表中才有用，在其它情况下没用。所以，当对象没有用到散列表（HashSet, Hashtable, HashMap等等）时，该类的<code>hashCode()</code>和<code>equals()</code>没有任何关系，equals() 用来比较该类的两个对象是否相等。而hashCode() 则根本没有任何作用</li>
+<li>当对象用到了散列表时，该类的 <code>hashCode()</code> 和 <code>equals()</code> 是有关系的：<ul>
+<li>如果两个对象相等，那么它们的 <code>hashCode()</code> 值一定相同</li>
+<li>如果两个对象 <code>hashCode()</code> 相等，它们并不一定相等<br>因为在散列表中，<code>hashCode()</code> 相等，即两个键值对的哈希值相等。然而哈希值相等，并不一定能得出键值对相等。补充说一句：“两个不同的键值对，哈希值相等”，这就是哈希冲突。</li>
+</ul>
+</li>
+</ol>
+<h1 id="二、final、finalize、finally"><a href="#二、final、finalize、finally" class="headerlink" title="二、final、finalize、finally"></a>二、final、finalize、finally</h1><p><strong>final 是 java 关键字。</strong> 当一个变量声明为 final 时，只被初始化一次，且不能被改变。当一个类声明为 final 时，则该类不能被继承。当一个方法被声明为 final 时，则该方法不能被重写。</p>
+<p><strong>finally 是代码块。</strong> 当存在 <strong>try</strong> 语句存在时，<strong>finally</strong> 代码块中的语句总能被执行。即使是意外的异常的发生，<strong>finally</strong> 代码块中的语句也能被执行。除处理异常情况之外，还避免了开发者无意间因为 <code>return</code>,<code>continue</code>,<code>break</code> 等语句，跳过了关闭清理资源的动作的情况的发生。把关闭清理资源的动作放在 <strong>finally</strong> 语句块中无疑一个好的实践。即使是代码没有事先预料到的异常发生。</p>
+<p><strong> finalize 是方法。</strong> 在对象被回收之前，会先调用此方法。可以在此方法里面添加添加自己的回收资源的代码。</p>
+<h1 id="三、String、StringBuffer-、StringBuilder"><a href="#三、String、StringBuffer-、StringBuilder" class="headerlink" title="三、String、StringBuffer 、StringBuilder"></a>三、String、StringBuffer 、StringBuilder</h1><p><strong>String 是不可变对象</strong>（一旦创建无法再被改变），以字符串的形似被创建以后，存放于<strong>字符串常量池</strong>。<br>在 java 中，不可变对象都是线程安全的，也暗示着 String 对象也是线程安全的。String 对象不能同时被两个线程同时使用。</p>
+<p><strong>StringBuffer 是可变对象</strong>，意味着可以改变这个对象的值。该类被创建在 Java 堆中。拥有和 <code>StringBuilder</code> 一样的方法，不同的是 <code>StringBuffer</code> 中的每个方法都是线程同步的，即 <code>StringBuuffer</code> 是线程安全的。<br>因为不允许多个线程同时访问同一个方法，在同一时间该类方法只能由一个线程执行。由于线程安全的特性，性能不足是 <code>StringBuffer</code> 的缺点。同样的方法 <code>StringBuffer</code> 的效率比 <code>StringBuilder</code> 要低。</p>
+<p><strong>StringBuilder</strong> 和 <code>StringBuffer</code> 一样，存储在堆中也可以被修改。最大的区别就是 <code>StringBuilder</code> 是线程不安全的，而<code>StringBuffer</code> 是线程安全的。<code>StringBuilder</code> 性能较快，线程不安全  </p>
+<p><strong>String、StringBuffer、StringBuilder 区别表</strong></p>
+<table>
+<thead>
+<tr>
+<th>属性 / 字段</th>
+<th>String</th>
+<th>StringBuffer</th>
+<th>StringBuilder</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>存储位置</strong></td>
+<td>常量池</td>
+<td>堆</td>
+<td>堆</td>
+</tr>
+<tr>
+<td><strong>是否可修改</strong></td>
+<td>否</td>
+<td>是</td>
+<td>是</td>
+</tr>
+<tr>
+<td><strong>线程安全 </strong></td>
+<td>是</td>
+<td>是</td>
+<td>否</td>
+</tr>
+<tr>
+<td><strong>性能</strong></td>
+<td>快</td>
+<td>慢</td>
+<td>快</td>
+</tr>
+</tbody>
+</table>
+<h1 id="四、equals-与"><a href="#四、equals-与" class="headerlink" title="四、equals 与 =="></a>四、equals 与 ==</h1><ul>
+<li><p>对于基本数据类型来说没有 equals() 方法，== 的比较的就是其数值，而不是地址。</p>
+</li>
+<li><p>对于引用数据类型来说，equals() 默认比较的是引用的地址。即：自定义对象没有覆盖 equals() 方法，调用的就是父类（Object）的 equals() 方法，而 Object 中的 equals() 默认实现是 == ；所以如果是对象且没有覆盖 equals() 方法，则和 == 的效果是一样的，都是比较的引用的地址。</p>
+</li>
+</ul>
+<p>假设有 <code>MyObject</code> 类，定义如下：<br><figure class="highlight java"><table><tr><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">MyObject</span> </span>&#123;</div><div class="line">    <span class="keyword">public</span> <span class="keyword">int</span> id;</div><div class="line">    <span class="keyword">public</span> String name;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>当 <code>o1.equals(o2)</code> 时，由于没有重写 <code>equals()</code> 方法，则调用父类(这里是 Object 类)的 <code>equals()</code> 方法，而 <code>Object</code> 类默认实现 <code>equals()</code> 为 == <a href="http://www.grepcode.com/file/repository.grepcode.com/java/root/jdk/openjdk/7u40-b43/java/lang/Object.java#Object.equals%28java.lang.Object%29" target="_blank" rel="external">点此查看源码 Object.equals()</a>。此种情况下，调用 equals() 和 执行 == 的效果是一样的。</p>
+<p><code>equals()</code> 一般用于比较两个对象<strong>是否相等</strong>，而不是去判断是否引用了同一个对象。所以当有自定义对象时，会重写 <code>equals()</code> 方法，下面是个例子：</p>
+<p>规定：两个 MyObj 实例是否相等的条件是，两个实例的名字必须一致。则可以如此重写 MyObj 对象的 equals()</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><div class="line"><span class="meta">@Override</span></div><div class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">equals</span><span class="params">(Object obj)</span> </span>&#123;</div><div class="line">    MyObj myObj = (MyObj) obj;</div><div class="line">    <span class="keyword">if</span> (myObj.name == <span class="keyword">this</span>.name) &#123;</div><div class="line">        <span class="keyword">return</span> <span class="keyword">true</span>;</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">return</span> <span class="keyword">false</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>重写方法后，按照下图可知：<br><figure class="highlight java"><table><tr><td class="code"><pre><div class="line">o1 == o2; <span class="comment">// false</span></div><div class="line">o1.equals(o2); <span class="comment">// true</span></div></pre></td></tr></table></figure></p>
+<p><img src="/img/equals.png" alt="对象之间的比较"></p>
+<p><strong> # 注：</strong></p>
+<ol>
+<li>基本数据类型：boolean、byte、short、int、long、float、double</li>
+<li>String、Integer、之类的基本类型的包装类都默认实现 <code>equals()</code> 方法和 <code>hashCode()</code>，尽量用这几种类型的值作为 hashmap 的键。</li>
+</ol>
+<h1 id="五、HashMap、HashTable、TreeMap、ConcurrentHashMap"><a href="#五、HashMap、HashTable、TreeMap、ConcurrentHashMap" class="headerlink" title="五、HashMap、HashTable、TreeMap、ConcurrentHashMap"></a>五、HashMap、HashTable、TreeMap、ConcurrentHashMap</h1><p><code>HashMap</code> 是基于哈希表的 Map 接口的实现，本质是数组加链表。根据 key 取得hash 值，然后计算出数组下标，如果多个 key 对应到同一个下标，就用链表串起来，新插入的在前面。特性如下：</p>
+<ul>
+<li>允许使用 null 键和 null 值</li>
+<li>不保证映射的顺序，特别是不保证该顺序恒久不变</li>
+<li>线程不安全</li>
+</ul>
+<p>若想使用线程安全的 HashMap，可使用<br><figure class="highlight java"><table><tr><td class="code"><pre><div class="line">Map map = Collections.synchronizedMap(<span class="keyword">new</span> HashMap());</div></pre></td></tr></table></figure></p>
+<p>或者是 <code>ConcurrentHashMap</code></p>
+<p><img src="/img/hashMap-structs.png" alt="Hashmap数据结构"></p>
+<p><code>HashTable</code> 是遗留类，功能与 Hashmap 基本相似，不同的是 HashTable 继承自 Dictionary 类，并且是线程安全的。任意的时间只能有一个线程能写 HashTable，但是并发性不如 <code>ConcurrentHashMap</code>，因为 ConcurrentHashMap 引入了分段锁，而 <code>HashTable</code> 用的是全局锁。</p>
+<p><code>TreeMap</code> 实现 SortedMap 接口，能够将保存的记录排序，默认是键的升序，也可以指定比较器。当 Iterator 遍历 TreeMap 时，得到的记录是排过序的。在使用TreeMap时，key必须实现Comparable接口或者在构造TreeMap传入自定义的Comparator，否则会在运行时抛出java.lang.ClassCastException类型的异常。</p>
+<p><code>ConcurrentHashMap</code> 是并发散列表的实现，允许完全并发的读取，支持给定数量的并发更新。相比同步包装器包装的 <code>HashMap</code>（<code>Collections.synchronizedMap(new HashMap())</code>），ConcurrentHashMap 拥有更高的并发性。来源如下：</p>
+<ul>
+<li>用分离锁实现多个线程间更深层次的共享访问</li>
+<li>用 HashEntry 对象的不变性来降低执行读操作的线程在遍历链表期间对加锁的要求</li>
+<li>通过对同一个 <code>Volatile</code> 变量的写 / 读访问，协调不同线程间的内存可见性</li>
+</ul>
+<p><img src="/img/concurrenthashmap3.jpg" alt="ConcurrentHashMap数据结构"></p>
+<p>参考文章：</p>
+<p><a href="http://wiki.jikexueyuan.com/project/java-collection/concurrenthashmap.html" target="_blank" rel="external">ConcurrentHashMap 的实现原理</a><br><a href="http://tech.meituan.com/java-hashmap.html" target="_blank" rel="external">Java 8系列之重新认识HashMap</a></p>
+<h1 id="六、在线程安全的前提下实现一个单例模式"><a href="#六、在线程安全的前提下实现一个单例模式" class="headerlink" title="六、在线程安全的前提下实现一个单例模式"></a>六、在线程安全的前提下实现一个单例模式</h1><figure class="highlight java"><table><tr><td class="code"><pre><div class="line"><span class="comment">// 版本1</span></div><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Singleton</span> </span>&#123;</div><div class="line">    <span class="keyword">private</span> <span class="keyword">static</span> Singleton singleton = <span class="keyword">null</span>;</div><div class="line">    <span class="function"><span class="keyword">private</span> <span class="title">Singleton</span><span class="params">()</span> </span>&#123;  &#125;</div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> Singleton <span class="title">getInstance</span><span class="params">()</span> </span>&#123;</div><div class="line">        <span class="keyword">if</span> (singleton== <span class="keyword">null</span>) &#123;</div><div class="line">            singleton= <span class="keyword">new</span> Singleton();</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">return</span> singleton;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p><strong>问题：</strong><br>当多个线程同时调用 getInstance() 方法，就有可能会发生多个线程同时通过条件检查，此时就会有多个实例。</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><div class="line"><span class="comment">// 版本2</span></div><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Singleton</span> </span>&#123;</div><div class="line">    <span class="keyword">private</span> <span class="keyword">static</span> Singleton singleton = <span class="keyword">null</span>;</div><div class="line">    <span class="function"><span class="keyword">private</span> <span class="title">Singleton</span><span class="params">()</span> </span>&#123;  &#125;</div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> Singleton <span class="title">getInstance</span><span class="params">()</span> </span>&#123;</div><div class="line">        <span class="keyword">if</span> (singleton== <span class="keyword">null</span>) &#123;</div><div class="line">            <span class="keyword">synchronized</span> (Singleton.class) &#123;</div><div class="line">                singleton= <span class="keyword">new</span> Singleton();</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">return</span> singleton;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p><strong>问题：</strong><br>此版本只是将 <code>new Singleton()</code> 这个操作串行化，并没有保证单实例。因为多线程还是有可能在同时通过条件检查。</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><div class="line"><span class="comment">// 版本3</span></div><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Singleton</span> </span>&#123;</div><div class="line">    <span class="keyword">private</span> <span class="keyword">static</span> Singleton singleton = <span class="keyword">null</span>;</div><div class="line">    <span class="function"><span class="keyword">private</span> <span class="title">Singleton</span><span class="params">()</span>  </span>&#123;  &#125;</div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> Singleton <span class="title">getInstance</span><span class="params">()</span>  </span>&#123;</div><div class="line">        <span class="keyword">synchronized</span> (Singleton.class) &#123;</div><div class="line">            <span class="keyword">if</span> (singleton== <span class="keyword">null</span>) &#123;</div><div class="line">        singleton= <span class="keyword">new</span> Singleton();</div><div class="line">            &#125;</div><div class="line">         &#125;</div><div class="line">        <span class="keyword">return</span> singleton;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p><strong>问题：</strong><br>此版本保证了，创建对象的动作只有一次。后面的动作全是读取那个成员变量，这些读取的动作不需要线程同步，浪费性能。</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><div class="line"><span class="comment">// 版本4  Double-Check</span></div><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Singleton</span> </span>&#123;</div><div class="line">    <span class="keyword">private</span> <span class="keyword">static</span> Singleton singleton = <span class="keyword">null</span>;</div><div class="line">    <span class="function"><span class="keyword">private</span> <span class="title">Singleton</span><span class="params">()</span>  </span>&#123;    &#125;</div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> Singleton <span class="title">getInstance</span><span class="params">()</span> </span>&#123;</div><div class="line">        <span class="keyword">if</span> (singleton== <span class="keyword">null</span>)  &#123;</div><div class="line">            <span class="keyword">synchronized</span> (Singleton.class) &#123;</div><div class="line">                <span class="keyword">if</span> (singleton== <span class="keyword">null</span>)  &#123;</div><div class="line">                    singleton= <span class="keyword">new</span> Singleton();</div><div class="line">                &#125;</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">return</span> singleton;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p><strong>问题：</strong><br>这个版本又叫 <strong>“双重检查”Double-Check</strong>。如果实例创建了，那就不需要同步了，直接返回就好了。不然，就开始同步线程。如果被同步的线程中，有一个线程创建了对象，那么别的线程就不用再创建了。<br>问题在于singleton = new Singleton()这句，这并非是一个原子操作，事实上在 JVM 中这句话大概做了下面 3 件事情。</p>
+<ol>
+<li>给 singleton 分配内存</li>
+<li>调用 Singleton 的构造函数来初始化成员变量，形成实例</li>
+<li>将 singleton 对象指向分配的内存空间（执行完这步 singleton才是非 null 了）</li>
+</ol>
+<p>但是在 JVM 的即时编译器中存在指令重排序的优化。也就是说上面的第二步和第三步的顺序是不能保证的，最终的执行顺序可能是 1-2-3 也可能是 1-3-2。如果是后者，则在 3 执行完毕、2 未执行之前，被线程二抢占了，这时 instance 已经是非 null 了（但却没有初始化），所以线程二会直接返回 instance，然后使用的话有可能会报错。</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><div class="line"><span class="comment">// 版本4 修正版 double-check 加 volatile 关键字 保证内存可见性</span></div><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Singleton</span> </span>&#123;</div><div class="line">    <span class="keyword">private</span> <span class="keyword">volatile</span> <span class="keyword">static</span> Singleton singleton = <span class="keyword">null</span>;</div><div class="line">    <span class="function"><span class="keyword">private</span> <span class="title">Singleton</span><span class="params">()</span>  </span>&#123;    &#125;</div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> Singleton <span class="title">getInstance</span><span class="params">()</span>   </span>&#123;</div><div class="line">        <span class="keyword">if</span> (singleton== <span class="keyword">null</span>)  &#123;</div><div class="line">            <span class="keyword">synchronized</span> (Singleton.class) &#123;</div><div class="line">                <span class="keyword">if</span> (singleton== <span class="keyword">null</span>)  &#123;</div><div class="line">                    singleton= <span class="keyword">new</span> Singleton();</div><div class="line">                &#125;</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">return</span> singleton;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="code"><pre><div class="line"><span class="comment">// 简化版1 </span></div><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Singleton</span> </span>&#123;</div><div class="line">    <span class="keyword">private</span> <span class="keyword">volatile</span> <span class="keyword">static</span> Singleton singleton = <span class="keyword">new</span> Singleton();</div><div class="line">    <span class="function"><span class="keyword">private</span> <span class="title">Singleton</span><span class="params">()</span>  </span>&#123;    &#125;</div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> Singleton <span class="title">getInstance</span><span class="params">()</span>   </span>&#123;</div><div class="line">        <span class="keyword">return</span> singleton;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p><strong>问题：</strong><br>当这个类被加载的时候，new Singleton() 这句话就会被执行，就算是getInstance()没有被调用，类也被初始化了。</p>
+<p>当类的构造函数中，有一些事可能需要依赖于别的类干的一些事（比如某个配置文件，或是某个被其它类创建的资源），希望他能在我第一次 <code>getInstance()</code> 时才被真正的创建，而不是把类的创建委托给了类装载器。</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><div class="line"><span class="comment">// 简化版2  嵌套类（静态内部类）</span></div><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Singleton</span> </span>&#123;</div><div class="line">    <span class="keyword">private</span> <span class="keyword">static</span> <span class="class"><span class="keyword">class</span> <span class="title">SingletonHolder</span> </span>&#123;</div><div class="line">        <span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> Singleton INSTANCE = <span class="keyword">new</span> Singleton();</div><div class="line">    &#125;</div><div class="line">    <span class="function"><span class="keyword">private</span> <span class="title">Singleton</span> <span class="params">()</span></span>&#123;&#125;</div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">final</span> Singleton <span class="title">getInstance</span><span class="params">()</span> </span>&#123;</div><div class="line">        <span class="keyword">return</span> SingletonHolder.INSTANCE;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p><strong>问题：</strong><br>上面这种方式，仍然使用JVM本身机制保证了线程安全问题；由于 SingletonHolder 是私有的，除了 getInstance() 之外没有办法访问它，因此它只有在 getInstance() 被调用时才会真正创建；同时读取实例的时候不会进行同步，没有性能缺陷；也不依赖 JDK 版本。</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><div class="line"><span class="comment">// 优雅版本  枚举类 </span></div><div class="line"><span class="keyword">public</span> <span class="keyword">enum</span> Singleton&#123;</div><div class="line">   INSTANCE;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h1 id="七、用-java-写出获取当前时间毫秒值，明天12点的毫秒值怎么获取？"><a href="#七、用-java-写出获取当前时间毫秒值，明天12点的毫秒值怎么获取？" class="headerlink" title="七、用 java 写出获取当前时间毫秒值，明天12点的毫秒值怎么获取？"></a>七、用 java 写出获取当前时间毫秒值，明天12点的毫秒值怎么获取？</h1><p>获取当前时间：<br><figure class="highlight java"><table><tr><td class="code"><pre><div class="line"><span class="comment">// 方法一</span></div><div class="line">System.currentTimeMillis();</div><div class="line"><span class="comment">// 方法二</span></div><div class="line">Calendar.getInstance().getTimeInMillis();</div><div class="line"><span class="comment">// 方法三</span></div><div class="line"><span class="keyword">new</span> Date().getTime();</div></pre></td></tr></table></figure></p>
+<p>获取明天的12点毫秒值：<br><figure class="highlight java"><table><tr><td class="code"><pre><div class="line"></div><div class="line"></div></pre></td></tr></table></figure></p>
+<h1 id="八、用-SQL-语句写出创建-t-user-学号，姓名，年龄，性别，身份证号码-其中学号为自增类型主键，身份证号码唯一"><a href="#八、用-SQL-语句写出创建-t-user-学号，姓名，年龄，性别，身份证号码-其中学号为自增类型主键，身份证号码唯一" class="headerlink" title="八、用 SQL 语句写出创建 t_user(学号，姓名，年龄，性别，身份证号码) 其中学号为自增类型主键，身份证号码唯一"></a>八、用 SQL 语句写出创建 t_user(学号，姓名，年龄，性别，身份证号码) 其中学号为自增类型主键，身份证号码唯一</h1><figure class="highlight sql"><table><tr><td class="code"><pre><div class="line"><span class="keyword">CREATE</span> <span class="keyword">TABLE</span> t_user</div><div class="line">(</div><div class="line">xuehao <span class="built_in">int</span> <span class="keyword">NOT</span> <span class="literal">NULL</span> AUTO_INCREMENT, </div><div class="line"><span class="keyword">name</span> <span class="built_in">VARCHAR</span>(<span class="number">10</span>) <span class="keyword">NOT</span> <span class="literal">NULL</span>,</div><div class="line">age <span class="built_in">int</span> <span class="keyword">NOT</span> <span class="literal">NULL</span>,</div><div class="line">sex <span class="built_in">VARCHAR</span>(<span class="number">4</span>) <span class="keyword">NOT</span> <span class="literal">NULL</span>,</div><div class="line">idnumber <span class="built_in">VARCHAR</span>(<span class="number">18</span>) <span class="keyword">NOT</span> <span class="literal">NULL</span>,</div><div class="line">PRIMARY <span class="keyword">KEY</span>(xuehao),</div><div class="line"><span class="keyword">UNIQUE</span>(idnumber)</div><div class="line">)</div></pre></td></tr></table></figure>
+<p>参考文章：<br><a href="http://coolshell.cn/articles/265.html" target="_blank" rel="external">深入浅出单实例SINGLETON设计模式</a><br><a href="http://www.cnblogs.com/skywang12345/p/3324958.html" target="_blank" rel="external">http://www.cnblogs.com/skywang12345/p/3324958.html</a></p>
+
+        <!-- 显示正文 -->
+      
+    </div>
+
+
+    <footer class="article-footer">
+
+    <span id="busuanzi_container_page_pv">
+	本文总阅读量<span id="busuanzi_value_page_pv"></span>次
+	</span>
+
+
+      
+        <a data-url="http://yoursite.com/2017/01/07/javase-interview-test/" data-id="cjf6vzdjl000el4kh9mqpqjhd" class="article-share-link">分享到</a>
+      
+
+      
+        <a href="http://yoursite.com/2017/01/07/javase-interview-test/#ds-thread" class="article-comment-link">评论</a>
+      
+
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/面试题/">面试题</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2017/01/07/javaee-interview-test/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">下一篇</strong>
+      <div class="article-nav-title">
+        
+          JavaEE 常见面试题
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2016/11/19/java-thread-introduce/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">上一篇</strong>
+      <div class="article-nav-title">【多线程】 线程概念</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+<!-- 
+  <section id="comments">
+    <div id="ds-thread" class="ds-thread" data-thread-key="2017/01/07/javase-interview-test/" data-title="JavaSE 常见面试题" data-url="http://yoursite.com/2017/01/07/javase-interview-test/"></div>
+  </section>
+ --></section>
+      
+        <aside id="sidebar">
+  
+    <div class="widget-wrap">
+  <h3 class="widget-title">关于我</h3>
+  <div class="widget">
+    <ul>
+      
+    
+        
+        <!--  -->
+          <div style="text-align: center;">
+            <img src="https://avatars1.githubusercontent.com/u/15794249?v=3&s=400" style="width: 230px;  height: 230px">
+          </div>
+        <!--  -->
+
+        <li>
+          <a href="http://www.cnblogs.com/gossiplee/" target="_blank">1. 「博客园」</a>
+          
+        </li>
+      
+        
+        <!--  -->
+
+        <li>
+          <a href="https://my.oschina.net/u/2938358/?ft=bbs&scope=2&showme=1" target="_blank">2. 「开源中国」</a>
+          
+        </li>
+      
+        
+        <!--  -->
+
+        <li>
+          <a href="https://github.com/LiHuaYang" target="_blank">3. 「GitHub」</a>
+          
+        </li>
+      
+        
+        <!--  -->
+
+        <li>
+          <a href="https://segmentfault.com/u/lihuayang" target="_blank">4. 「Segmentfault」</a>
+          
+        </li>
+      
+    </ul>
+  </div>
+</div>
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">分类</h3>
+    <div class="widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/JavaEE-开发/">JavaEE 开发</a><span class="category-list-count">9</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/JavaSE-基础/">JavaSE 基础</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Netty/">Netty</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Redis/">Redis</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/工具/">工具</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/数据库/">数据库</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/职业生涯/">职业生涯</a><span class="category-list-count">1</span></li></ul>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">标签云</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/Java-IO/" style="font-size: 16.67px;">Java IO</a> <a href="/tags/JavaEE-开发/" style="font-size: 20px;">JavaEE 开发</a> <a href="/tags/JavaSE-基础/" style="font-size: 13.33px;">JavaSE 基础</a> <a href="/tags/MySQL/" style="font-size: 13.33px;">MySQL</a> <a href="/tags/Netty/" style="font-size: 10px;">Netty</a> <a href="/tags/Struts/" style="font-size: 10px;">Struts</a> <a href="/tags/Tomcat/" style="font-size: 10px;">Tomcat</a> <a href="/tags/jsp/" style="font-size: 10px;">jsp</a> <a href="/tags/redis/" style="font-size: 10px;">redis</a> <a href="/tags/redis-集群/" style="font-size: 10px;">redis 集群</a> <a href="/tags/test-loadrunner/" style="font-size: 10px;">test,loadrunner</a> <a href="/tags/分页/" style="font-size: 10px;">分页</a> <a href="/tags/工具配置及使用/" style="font-size: 10px;">工具配置及使用</a> <a href="/tags/面试/" style="font-size: 10px;">面试</a> <a href="/tags/面试题/" style="font-size: 13.33px;">面试题</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">归档</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/02/">2018年 02月</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/06/">2017年 06月</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/05/">2017年 05月</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/01/">2017年 01月</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/11/">2016年 11月</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/10/">2016年 10月</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/11/">2015年 11月</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/10/">2015年 10月</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/08/">2015年 08月</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/1995/12/">1995年 12月</a><span class="archive-list-count">1</span></li></ul>
+    </div>
+  </div>
+
+  
+</aside>
+      
+    </div>
+    <footer id="footer">
+  
+  <div class="outer">
+	     <script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+<!-- 
+<span id="busuanzi_container_site_pv">��վ���ܷ�����<span id="busuanzi_value_site_pv"></span>��</span>
+-->
+
+    <div id="footer-info" class="inner">
+      &copy; 2018 lihuayang<br>
+      Powered by <a href="//hexo.io/" target="_blank">Hexo</a>
+      .
+      Theme by <a href="https://github.com/xiangming/landscape-plus" target="_blank">Landscape-plus</a>
+    </div>
+  </div>
+</footer>
+  </div>
+  <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+    <a href="/about" class="mobile-nav-link">About</a>
+  
+</nav>
+  <!-- totop start -->
+<div id="totop">
+<a title="返回顶部"><img src="/img/scrollup.png"/></a>
+</div>
+
+<!-- totop end -->
+
+<!-- 多说公共js代码 start -->
+<script type="text/javascript">
+var duoshuoQuery = {short_name:"reqianduan"};
+  (function() {
+    var ds = document.createElement('script');
+    ds.type = 'text/javascript';ds.async = true;
+    ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+    ds.charset = 'UTF-8';
+    (document.getElementsByTagName('head')[0]
+     || document.getElementsByTagName('body')[0]).appendChild(ds);
+  })();
+  </script>
+<!-- 多说公共js代码 end -->
+
+
+<!-- 百度分享 start -->
+
+<!-- 百度分享 end -->
+
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+</div>
+</body>
+</html>

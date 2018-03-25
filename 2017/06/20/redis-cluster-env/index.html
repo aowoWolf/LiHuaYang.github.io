@@ -1,0 +1,393 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>基于 Redis3.2.4 集群搭建说明 | 266305</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="redis 集群安装和简单使用">
+<meta property="og:type" content="article">
+<meta property="og:title" content="基于 Redis3.2.4 集群搭建说明">
+<meta property="og:url" content="http://yoursite.com/2017/06/20/redis-cluster-env/index.html">
+<meta property="og:site_name" content="266305">
+<meta property="og:description" content="redis 集群安装和简单使用">
+<meta property="og:updated_time" content="2017-07-05T14:06:36.914Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="基于 Redis3.2.4 集群搭建说明">
+<meta name="twitter:description" content="redis 集群安装和简单使用">
+  
+    <link rel="alternative" href="/atom.xml" title="266305" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.ico">
+  
+  <link rel="stylesheet" href="/css/style.css">
+  <!--[if lt IE 9]><script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7/html5shiv.min.js"></script><![endif]-->
+  
+</head>
+<body>
+<div id="container">
+  <div id="wrap">
+    <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">266305</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+          <a class="main-nav-link" href="/about">About</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//www.baidu.com/baidu" method="get" accept-charset="utf-8" class="search-form">
+          <input type="search" name="word" maxlength="20" class="search-form-input" placeholder="Search">
+          <input type="submit" value="" class="search-form-submit">
+          <input name=tn type=hidden value="bds">
+          <input name=cl type=hidden value="3">
+          <input name=ct type=hidden value="2097152">
+          <input type="hidden" name="si" value="yoursite.com">
+        </form>
+      </div>
+    </div>
+  </div>
+</header>
+    <div class="outer">
+      <section id="main"><article id="post-redis-cluster-env" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2017/06/20/redis-cluster-env/" class="article-date">
+  <time datetime="2017-06-19T16:00:00.000Z" itemprop="datePublished">2017-06-20</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/Redis/">Redis</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      基于 Redis3.2.4 集群搭建说明
+    </h1>
+  
+
+      </header>
+    
+
+    <div class="article-entry" itemprop="articleBody">
+
+      
+
+
+        
+        <p style="width: 100%; background-color: #EEE; height: 3px"></p>
+          <!-- 显示目录 -->
+          <ol class="mytoc"><li class="mytoc-item mytoc-level-2"><a class="mytoc-link" href="#一、下载安装包"><span class="mytoc-text">一、下载安装包</span></a></li><li class="mytoc-item mytoc-level-2"><a class="mytoc-link" href="#二、单点安装部署"><span class="mytoc-text">二、单点安装部署</span></a><ol class="mytoc-child"><li class="mytoc-item mytoc-level-3"><a class="mytoc-link" href="#解压、编译、安装"><span class="mytoc-text">解压、编译、安装</span></a></li><li class="mytoc-item mytoc-level-3"><a class="mytoc-link" href="#创建相关目录"><span class="mytoc-text">创建相关目录</span></a></li><li class="mytoc-item mytoc-level-3"><a class="mytoc-link" href="#移动命令、配置文件"><span class="mytoc-text">移动命令、配置文件</span></a></li><li class="mytoc-item mytoc-level-3"><a class="mytoc-link" href="#启动服务"><span class="mytoc-text">启动服务</span></a></li><li class="mytoc-item mytoc-level-3"><a class="mytoc-link" href="#查看状态"><span class="mytoc-text">查看状态</span></a></li></ol></li><li class="mytoc-item mytoc-level-2"><a class="mytoc-link" href="#三、集群搭建部署"><span class="mytoc-text">三、集群搭建部署</span></a><ol class="mytoc-child"><li class="mytoc-item mytoc-level-3"><a class="mytoc-link" href="#创建集群节点文件夹"><span class="mytoc-text">创建集群节点文件夹</span></a></li><li class="mytoc-item mytoc-level-3"><a class="mytoc-link" href="#修改、拷贝配置文件"><span class="mytoc-text">修改、拷贝配置文件</span></a></li><li class="mytoc-item mytoc-level-3"><a class="mytoc-link" href="#安装-Ruby-和启动插件"><span class="mytoc-text">安装 Ruby 和启动插件</span></a></li><li class="mytoc-item mytoc-level-3"><a class="mytoc-link" href="#开启集群个节点"><span class="mytoc-text">开启集群个节点</span></a></li><li class="mytoc-item mytoc-level-3"><a class="mytoc-link" href="#查看各节点状态"><span class="mytoc-text">查看各节点状态</span></a></li><li class="mytoc-item mytoc-level-3"><a class="mytoc-link" href="#创建集群"><span class="mytoc-text">创建集群</span></a></li><li class="mytoc-item mytoc-level-3"><a class="mytoc-link" href="#连接集群查看状态"><span class="mytoc-text">连接集群查看状态</span></a></li><li class="mytoc-item mytoc-level-3"><a class="mytoc-link" href="#关闭集群"><span class="mytoc-text">关闭集群</span></a></li><li class="mytoc-item mytoc-level-3"><a class="mytoc-link" href="#删除集群文件"><span class="mytoc-text">删除集群文件</span></a></li></ol></li><li class="mytoc-item mytoc-level-2"><a class="mytoc-link" href="#四、集群操作"><span class="mytoc-text">四、集群操作</span></a><ol class="mytoc-child"><li class="mytoc-item mytoc-level-3"><a class="mytoc-link" href="#增加一个主节点"><span class="mytoc-text">增加一个主节点</span></a><ol class="mytoc-child"><li class="mytoc-item mytoc-level-4"><a class="mytoc-link" href="#1-创建节点需要的相关文件（文件夹、配置文件）"><span class="mytoc-text">1. 创建节点需要的相关文件（文件夹、配置文件）</span></a></li><li class="mytoc-item mytoc-level-4"><a class="mytoc-link" href="#2-拷贝并修改配置文件"><span class="mytoc-text">2. 拷贝并修改配置文件</span></a></li><li class="mytoc-item mytoc-level-4"><a class="mytoc-link" href="#3-启动新创建的节点"><span class="mytoc-text">3. 启动新创建的节点</span></a></li><li class="mytoc-item mytoc-level-4"><a class="mytoc-link" href="#4-将新节点添加进已存在集群中成为其中一主节点"><span class="mytoc-text">4. 将新节点添加进已存在集群中成为其中一主节点</span></a></li><li class="mytoc-item mytoc-level-4"><a class="mytoc-link" href="#5-查看添加新节点后的集群节点信息"><span class="mytoc-text">5. 查看添加新节点后的集群节点信息</span></a></li><li class="mytoc-item mytoc-level-4"><a class="mytoc-link" href="#6-给新节点分配哈希槽"><span class="mytoc-text">6. 给新节点分配哈希槽</span></a></li><li class="mytoc-item mytoc-level-4"><a class="mytoc-link" href="#7-查看分配槽后的集群节点信息"><span class="mytoc-text">7. 查看分配槽后的集群节点信息</span></a></li></ol></li><li class="mytoc-item mytoc-level-3"><a class="mytoc-link" href="#增加一个从节点"><span class="mytoc-text">增加一个从节点</span></a><ol class="mytoc-child"><li class="mytoc-item mytoc-level-4"><a class="mytoc-link" href="#1-创建节点需要的相关文件（文件夹、配置文件）-1"><span class="mytoc-text">1. 创建节点需要的相关文件（文件夹、配置文件）</span></a></li><li class="mytoc-item mytoc-level-4"><a class="mytoc-link" href="#2-拷贝并修改配置文件-1"><span class="mytoc-text">2. 拷贝并修改配置文件</span></a></li><li class="mytoc-item mytoc-level-4"><a class="mytoc-link" href="#3-启动新创建的节点-1"><span class="mytoc-text">3. 启动新创建的节点</span></a></li><li class="mytoc-item mytoc-level-4"><a class="mytoc-link" href="#4-将新节点添加进集群中"><span class="mytoc-text">4. 将新节点添加进集群中</span></a></li><li class="mytoc-item mytoc-level-4"><a class="mytoc-link" href="#5-查看添加新节点后的集群节点信息-1"><span class="mytoc-text">5. 查看添加新节点后的集群节点信息</span></a></li><li class="mytoc-item mytoc-level-4"><a class="mytoc-link" href="#6-将端口为-7038-的节点置为-7037-端口的从节点"><span class="mytoc-text">6. 将端口为 7038 的节点置为 7037 端口的从节点</span></a></li><li class="mytoc-item mytoc-level-4"><a class="mytoc-link" href="#7-查看设置为从节点后的集群节点信息"><span class="mytoc-text">7. 查看设置为从节点后的集群节点信息</span></a></li></ol></li><li class="mytoc-item mytoc-level-3"><a class="mytoc-link" href="#删除一个主节点"><span class="mytoc-text">删除一个主节点</span></a></li><li class="mytoc-item mytoc-level-3"><a class="mytoc-link" href="#删除一个从节点"><span class="mytoc-text">删除一个从节点</span></a></li></ol></li><li class="mytoc-item mytoc-level-2"><a class="mytoc-link" href="#五、集群测试"><span class="mytoc-text">五、集群测试</span></a></li></ol>
+        <!-- 显示目录 -->
+        <p style="width: 100%; background-color: #EEE; height: 3px"></p>
+         
+
+        <!-- 显示正文 -->
+        <p>用两台虚拟机（ip: 10.60.44.76、ip: 10.60.44.105）共 6 个节点，一台虚拟机 3 个节点，模拟出 3 master、3 salve 环境</p>
+<ul>
+<li>redis 版本：redis-3.2.4</li>
+<li>linux 版本：centos6.5（ip: 10.60.44.76）、centos7.0（ip: 10.60.44.105）</li>
+</ul>
+<p><strong>注意：</strong></p>
+<ul>
+<li>最好是都在 root 权限操作</li>
+<li>redis-cluster 最小配置是三主三从</li>
+<li>关闭防火墙（节点与节点之间通信需要开放指定的端口，单纯为了方便，在生产环境忌用）</li>
+</ul>
+<a id="more"></a>
+<p><strong>centos 6.5</strong></p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">service iptables stop # 关闭命令：</div><div class="line">chkconfig iptables off # 永久关闭防火墙</div><div class="line">service iptables status # 两个命令同时运行，运行完成后查看防火墙关闭状态</div></pre></td></tr></table></figure>
+<p><strong>centos 7.0</strong></p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">systemctl stop firewalld.service # 停止firewall</div><div class="line">systemctl disable firewalld.service # 禁止firewall开机启动</div><div class="line">firewall-cmd --state # 查看默认防火墙状态（关闭后显示notrunning，开启后显示running）</div></pre></td></tr></table></figure>
+<h2 id="一、下载安装包"><a href="#一、下载安装包" class="headerlink" title="一、下载安装包"></a>一、下载安装包</h2><p>安装包在附件 redis-3.2.4.tar.gz。也可以使用 wget 插件下载</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">wget http://download.redis.io/releases/redis-3.2.4.tar.gz</div></pre></td></tr></table></figure>
+<h2 id="二、单点安装部署"><a href="#二、单点安装部署" class="headerlink" title="二、单点安装部署"></a>二、单点安装部署</h2><p>单点指的是一个 redis 实例，需要先下载 redis 的源码，接着进行编译、安装，完成通过命令启动该实例</p>
+<h3 id="解压、编译、安装"><a href="#解压、编译、安装" class="headerlink" title="解压、编译、安装"></a>解压、编译、安装</h3><figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">[root@localhost Desktop]# tar zxvf redis-3.2.4.tar.gz</div><div class="line">[root@localhost Desktop]# cd redis-3.2.4</div><div class="line">[root@localhost redis-3.2.4]# make</div><div class="line">[root@localhost redis-3.2.4]# cd src &amp;&amp; make install</div></pre></td></tr></table></figure>
+<h3 id="创建相关目录"><a href="#创建相关目录" class="headerlink" title="创建相关目录"></a>创建相关目录</h3><figure class="highlight plain"><table><tr><td class="code"><pre><div class="line"># 存放 redis 相关命令文件</div><div class="line">[root@localhost src]# mkdir -p /usr/local/redis/bin</div><div class="line"># 存放 redis 的配置文件</div><div class="line">[root@localhost src]# mkdir -p /usr/local/redis/etc</div></pre></td></tr></table></figure>
+<h3 id="移动命令、配置文件"><a href="#移动命令、配置文件" class="headerlink" title="移动命令、配置文件"></a>移动命令、配置文件</h3><figure class="highlight plain"><table><tr><td class="code"><pre><div class="line"># 移动 redis 配置文件（配置文件在解压好的目录）</div><div class="line">[root@localhost redis-3.2.4]# mv redis.conf /usr/local/redis/etc</div><div class="line"># 移动 redis 命令文件（命令文件在解压好的目录中的 src 目录）</div><div class="line">[root@localhost src]# mv mkreleasehdr.sh redis-benchmark redis-check-aof redis-check-rdb redis-cli redis-server redis-sentinel redis-trib.rb /usr/local/redis/bin</div></pre></td></tr></table></figure>
+<h3 id="启动服务"><a href="#启动服务" class="headerlink" title="启动服务"></a>启动服务</h3><figure class="highlight plain"><table><tr><td class="code"><pre><div class="line"># 指定配置文件启动 redis</div><div class="line">[root@localhost src]# /usr/local/redis/bin/redis-server /usr/local/redis/etc/redis.conf</div></pre></td></tr></table></figure>
+<h3 id="查看状态"><a href="#查看状态" class="headerlink" title="查看状态"></a>查看状态</h3><figure class="highlight plain"><table><tr><td class="code"><pre><div class="line"># 或者是 netstat -tunpl | grep 6379</div><div class="line">ps -ef | grep redis</div></pre></td></tr></table></figure>
+<h2 id="三、集群搭建部署"><a href="#三、集群搭建部署" class="headerlink" title="三、集群搭建部署"></a>三、集群搭建部署</h2><h3 id="创建集群节点文件夹"><a href="#创建集群节点文件夹" class="headerlink" title="创建集群节点文件夹"></a>创建集群节点文件夹</h3><p>名为 7031-7033 的文件夹置于 10.60.44.76 的机子中，7034-7036 文件夹置于 10.60.44.105 的机子中</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">mkdir -p /usr/local/redis-cluster</div><div class="line">cd /usr/local/redis-cluster</div><div class="line"># 创建各个节点文件夹</div><div class="line">mkdir 7031 7032 7033 # IP 为 10.60.44.76 的机子上执行</div><div class="line">mkdir 7034 7035 7036 # IP 为 10.60.44.105 的机子上执行</div></pre></td></tr></table></figure>
+<h3 id="修改、拷贝配置文件"><a href="#修改、拷贝配置文件" class="headerlink" title="修改、拷贝配置文件"></a>修改、拷贝配置文件</h3><p>此处以 10.60.44.76 的机子为例，另一台操作一致</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">cp /usr/local/redis/etc/redis.conf /usr/local/redis-cluster/7031</div><div class="line">cd /usr/local/redis-cluster/7031</div><div class="line">vi redis.conf</div></pre></td></tr></table></figure>
+<p>修改配置文件，范本如下</p>
+<figure class="highlight powershell"><table><tr><td class="code"><pre><div class="line">port <span class="number">7031</span>     <span class="comment"># 绑定端口</span></div><div class="line">bind 本机ip    <span class="comment"># 物理 ip：如 10.60.44.76 </span></div><div class="line">dir /usr/local/redis-cluster/<span class="number">7031</span> <span class="comment"># 指定数据存放路径</span></div><div class="line">cluster-enabled yes <span class="comment"># 启动集群模式</span></div><div class="line">cluster-config-file redis-<span class="number">7031</span>.conf <span class="comment"># 指定集群节点配置文件</span></div><div class="line">daemonize yes <span class="comment"># 后台启动</span></div><div class="line">cluster-node-timeout <span class="number">5000</span> <span class="comment"># 指定集群节点超时时间</span></div><div class="line">appendonly yes <span class="comment"># 指定持久化方式</span></div></pre></td></tr></table></figure>
+<p>将 7031 的 redis.conf 改完后再拷贝到剩下的 2 个目录（7032、7033）中，再全局替换 redis.conf 中的 7031 为对应的节点编号（7032、7033）即可。同理得 10.60.44.105 机子</p>
+<p>移动完后 ip 为 10.60.44.76  的 <code>/usr/local/</code> 目录结构图如下：（10.60.44.105 同理）</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">[root@localhost local]# cd /usr/local/ &amp;&amp; tree -L 3</div><div class="line">.</div><div class="line">├── bin</div><div class="line">.......</div><div class="line">├── redis</div><div class="line">│   ├── bin</div><div class="line">│   │   ├── mkreleasehdr.sh</div><div class="line">│   │   ├── redis-benchmark</div><div class="line">│   │   ├── redis-check-aof</div><div class="line">│   │   ├── redis-check-rdb</div><div class="line">│   │   ├── redis-cli</div><div class="line">│   │   ├── redis-sentinel</div><div class="line">│   │   ├── redis-server</div><div class="line">│   │   └── redis-trib.rb</div><div class="line">│   └── etc</div><div class="line">│       └── redis.conf</div><div class="line">├── redis-cluster</div><div class="line">│   ├── 7031</div><div class="line">│   │   └── redis.conf</div><div class="line">│   ├── 7032</div><div class="line">│   │   └── redis.conf</div><div class="line">│   └── 7033</div><div class="line">│       └── redis.conf</div><div class="line">.......</div><div class="line">└── src</div></pre></td></tr></table></figure>
+<h3 id="安装-Ruby-和启动插件"><a href="#安装-Ruby-和启动插件" class="headerlink" title="安装 Ruby 和启动插件"></a>安装 Ruby 和启动插件</h3><p>集群的启动需要用到 Ruby 实现的 redis-trib.rb 插件，所以需要先安装 Ruby 环境和其插件，命令如下：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">yum install ruby</div><div class="line">yum install rubygems</div><div class="line">gem install redis</div></pre></td></tr></table></figure>
+<h3 id="开启集群个节点"><a href="#开启集群个节点" class="headerlink" title="开启集群个节点"></a>开启集群个节点</h3><p>在两台机子中分别运行下面命令，启动集群中的每个节点</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><div class="line"> # 10.60.44.76</div><div class="line">for((i=1;i&lt;=3;i++)); do /usr/local/redis/bin/redis-server /usr/local/redis-cluster/703$i/redis.conf; done</div><div class="line"># 10.60.44.105</div><div class="line">for((i=4;i&lt;=6;i++)); do /usr/local/redis/bin/redis-server /usr/local/redis-cluster/703$i/redis.conf; done</div></pre></td></tr></table></figure>
+<h3 id="查看各节点状态"><a href="#查看各节点状态" class="headerlink" title="查看各节点状态"></a>查看各节点状态</h3><p>查看节点的开启状态</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">ps -ef | grep redis-server</div></pre></td></tr></table></figure>
+<p>结果如下：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">### 10.60.44.76</div><div class="line">root      18992      1  0 04:37 ?        00:00:09 /usr/local/redis/bin/redis-server 10.60.44.76:7031 [cluster]              </div><div class="line">root      18994      1  0 04:37 ?        00:00:09 /usr/local/redis/bin/redis-server 10.60.44.76:7032 [cluster]              </div><div class="line">root      18998      1  0 04:37 ?        00:00:10 /usr/local/redis/bin/redis-server 10.60.44.76:7033 [cluster]              </div><div class="line">root      41471  16554  0 05:29 pts/2    00:00:00 grep redis-server</div><div class="line">### 10.60.44.105</div><div class="line">root      50565      1  0 04:37 ?        00:00:07 /usr/local/redis/bin/redis-server 10.60.44.105:7034 [cluster]</div><div class="line">root      50567      1  0 04:37 ?        00:00:08 /usr/local/redis/bin/redis-server 10.60.44.105:7035 [cluster]</div><div class="line">root      50571      1  0 04:37 ?        00:00:08 /usr/local/redis/bin/redis-server 10.60.44.105:7036 [cluster]</div><div class="line">root      51273  34592  0 05:29 pts/1    00:00:00 grep --color=auto redis-server</div></pre></td></tr></table></figure>
+<h3 id="创建集群"><a href="#创建集群" class="headerlink" title="创建集群"></a>创建集群</h3><p>每个节点正常开启后，在两台机子任意一台上运行：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">/usr/local/redis/bin/redis-trib.rb create --replicas 1 10.60.44.76:7031 10.60.44.76:7032 10.60.44.76:7033 10.60.44.105:7034 10.60.44.105:7035 10.60.44.105:7036</div></pre></td></tr></table></figure>
+<h3 id="连接集群查看状态"><a href="#连接集群查看状态" class="headerlink" title="连接集群查看状态"></a>连接集群查看状态</h3><p>登录客户端，并测试读写（记得要加上 -c 选项，不然会报错）</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><div class="line"># 10.60.44.76</div><div class="line">/usr/local/redis/bin/redis-cli -c -h 10.60.44.76 -p 7031</div><div class="line">cluster info # 显示集群信息</div></pre></td></tr></table></figure>
+<p>显示字段 <code>cluster_state:ok</code> 为正常运行状态，说明集群搭建成功</p>
+<p>使用 <code>cluster nodes</code> 查看集群各节点的当前状态，可以查看主从节点的分配和连接和情况。如下：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">10.60.44.76:7031&gt; cluster nodes</div><div class="line">1212605fcb1dd351d07d167c26b368e992c85723 10.60.44.76:7032 slave 1baa876789f68ed2e273ab7cb1d4e954fa7fc60c 0 1498187489957 11 connected</div><div class="line">396e92e2e8207be6a4a93e29fd16670656477131 10.60.44.105:7036 master - 0 1498187486928 9 connected 5461-10922</div><div class="line">37ecfb611a8201ce2bf40a2bf0ce398704083baf 10.60.44.76:7031 slave 396e92e2e8207be6a4a93e29fd16670656477131 0 1498187488947 9 connected</div><div class="line">82326f032fc040d7ed59f87ee9ddd500ad19d704 10.60.44.76:7033 slave 135173619dfc7bdbef98f5d5f07d6b1fcd6474dc 0 1498187483893 6 connected</div><div class="line">1baa876789f68ed2e273ab7cb1d4e954fa7fc60c 10.60.44.105:7034 master - 0 1498187487937 11 connected 0-5460</div><div class="line">135173619dfc7bdbef98f5d5f07d6b1fcd6474dc 10.60.44.105:7035 myself,master - 0 0 3 connected 10923-16383</div></pre></td></tr></table></figure>
+<h3 id="关闭集群"><a href="#关闭集群" class="headerlink" title="关闭集群"></a>关闭集群</h3><p>关闭集群需要将节点逐个关闭，可以使用脚本自动完成：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><div class="line"># 10.60.44.76</div><div class="line">for((i=1;i&lt;=3;i++)); do /usr/local/redis/bin/redis-cli -c -h 10.60.44.76 -p 703$i shutdown; done </div><div class="line"># 10.60.44.105</div><div class="line">for((i=4;i&lt;=6;i++)); do /usr/local/redis/bin/redis-cli -c -h 10.60.44.105 -p 703$i shutdown; done</div></pre></td></tr></table></figure>
+<h3 id="删除集群文件"><a href="#删除集群文件" class="headerlink" title="删除集群文件"></a>删除集群文件</h3><p>每次新创建集群之前需要将自动生成的配置文件和数据库删除，命令如下：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><div class="line"># 10.60.44.76</div><div class="line">for((i=1;i&lt;=3;i++)); do rm -f /usr/local/redis-cluster/703$i/dump.rdb /usr/local/redis-cluster/703$i/redis-703$i.conf /usr/local/redis-cluster/703$i/appendonly.aof; done</div><div class="line"># 10.60.44.105</div><div class="line">for((i=4;i&lt;=6;i++)); do rm -f /usr/local/redis-cluster/703$i/dump.rdb /usr/local/redis-cluster/703$i/redis-703$i.conf /usr/local/redis-cluster/703$i/appendonly.aof; done</div></pre></td></tr></table></figure>
+<h2 id="四、集群操作"><a href="#四、集群操作" class="headerlink" title="四、集群操作"></a>四、集群操作</h2><p>当前存在集群节点情况如下：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><div class="line"># 7034（主）- 7032（从）</div><div class="line"># 7035（主）- 7033（从）</div><div class="line"># 7036（主）- 7031（从）</div><div class="line">82326f032fc040d7ed59f87ee9ddd500ad19d704 10.60.44.76:7033 slave 135173619dfc7bdbef98f5d5f07d6b1fcd6474dc 0 1498199288536 6 connected</div><div class="line">396e92e2e8207be6a4a93e29fd16670656477131 10.60.44.105:7036 master - 0 1498199282454 9 connected 5461-10922</div><div class="line">135173619dfc7bdbef98f5d5f07d6b1fcd6474dc 10.60.44.105:7035 master - 0 1498199289546 3 connected 10923-16383</div><div class="line">1baa876789f68ed2e273ab7cb1d4e954fa7fc60c 10.60.44.105:7034 master - 0 1498199285499 11 connected 0-5460</div><div class="line">37ecfb611a8201ce2bf40a2bf0ce398704083baf 10.60.44.76:7031 myself,slave 396e92e2e8207be6a4a93e29fd16670656477131 0 0 1 connected</div><div class="line">1212605fcb1dd351d07d167c26b368e992c85723 10.60.44.76:7032 slave 1baa876789f68ed2e273ab7cb1d4e954fa7fc60c 0 1498199287523 11 connected</div></pre></td></tr></table></figure>
+<h3 id="增加一个主节点"><a href="#增加一个主节点" class="headerlink" title="增加一个主节点"></a>增加一个主节点</h3><p>在原有的集群之上添加一个新的主节点，需要开启新的节点，接着将此节点添加进集群中并分配槽，详细如下描述：</p>
+<h4 id="1-创建节点需要的相关文件（文件夹、配置文件）"><a href="#1-创建节点需要的相关文件（文件夹、配置文件）" class="headerlink" title="1. 创建节点需要的相关文件（文件夹、配置文件）"></a>1. 创建节点需要的相关文件（文件夹、配置文件）</h4><figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">[root@localhost /]# mkdir /usr/local/redis-cluster/7037</div></pre></td></tr></table></figure>
+<h4 id="2-拷贝并修改配置文件"><a href="#2-拷贝并修改配置文件" class="headerlink" title="2. 拷贝并修改配置文件"></a>2. 拷贝并修改配置文件</h4><p>将配置文件中的 7036 字符串全部替换为 7037，此处不再累述</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">[root@localhost /]# cp /usr/local/redis-cluster/7036/redis.conf  /usr/local/redis-cluster/7037/</div></pre></td></tr></table></figure>
+<h4 id="3-启动新创建的节点"><a href="#3-启动新创建的节点" class="headerlink" title="3. 启动新创建的节点"></a>3. 启动新创建的节点</h4><figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">[root@localhost /]# /usr/local/redis/bin/redis-server /usr/local/redis-cluster/7037/redis.conf</div></pre></td></tr></table></figure>
+<h4 id="4-将新节点添加进已存在集群中成为其中一主节点"><a href="#4-将新节点添加进已存在集群中成为其中一主节点" class="headerlink" title="4. 将新节点添加进已存在集群中成为其中一主节点"></a>4. 将新节点添加进已存在集群中成为其中一主节点</h4><figure class="highlight plain"><table><tr><td class="code"><pre><div class="line"># 参数一：所要添加的新节点 ip 和端口；参数二：存在的集群中的任意在线节点 ip 和端口</div><div class="line">[root@localhost /]# redis-trib.rb add-node 10.60.44.105:7037 10.60.44.105:7034</div></pre></td></tr></table></figure>
+<p>成功后打印信息如下：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">&gt;&gt;&gt; Adding node 10.60.44.105:7037 to cluster 10.60.44.105:7034</div><div class="line">&gt;&gt;&gt; Performing Cluster Check (using node 10.60.44.105:7034)</div><div class="line">............... 省略</div><div class="line">&gt;&gt;&gt; Send CLUSTER MEET to node 10.60.44.105:7037 to make it join the cluster.</div><div class="line">[OK] New node added correctly.</div></pre></td></tr></table></figure>
+<h4 id="5-查看添加新节点后的集群节点信息"><a href="#5-查看添加新节点后的集群节点信息" class="headerlink" title="5. 查看添加新节点后的集群节点信息"></a>5. 查看添加新节点后的集群节点信息</h4><figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">3f2c74e5888907c494b8b728210175144657f218 10.60.44.105:7037 master - 0 1498199380639 0 connected</div><div class="line">396e92e2e8207be6a4a93e29fd16670656477131 10.60.44.105:7036 master - 0 1498199384698 9 connected 5461-10922</div><div class="line">135173619dfc7bdbef98f5d5f07d6b1fcd6474dc 10.60.44.105:7035 master - 0 1498199381655 3 connected 10923-16383</div><div class="line">1baa876789f68ed2e273ab7cb1d4e954fa7fc60c 10.60.44.105:7034 master - 0 1498199383685 11 connected 0-5460</div></pre></td></tr></table></figure>
+<h4 id="6-给新节点分配哈希槽"><a href="#6-给新节点分配哈希槽" class="headerlink" title="6. 给新节点分配哈希槽"></a>6. 给新节点分配哈希槽</h4><figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">[root@localhost /]# /usr/local/redis/bin/redis-trib.rb reshard 10.60.44.105:7037</div><div class="line"># 分配多少槽点给新节点</div><div class="line">How many slots do you want to move (from 1 to 16384)? 1000</div><div class="line"># 哪个是接受节点？（填入新节点的 id）</div><div class="line">What is the receiving node ID? 3f2c74e5888907c494b8b728210175144657f218</div><div class="line">Please enter all the source node IDs.</div><div class="line">  Type &apos;all&apos; to use all the nodes as source nodes for the hash slots.</div><div class="line">  Type &apos;done&apos; once you entered all the source nodes IDs.</div><div class="line"># 从所有主节点中随机选取</div><div class="line">Source node #1: all</div></pre></td></tr></table></figure>
+<h4 id="7-查看分配槽后的集群节点信息"><a href="#7-查看分配槽后的集群节点信息" class="headerlink" title="7. 查看分配槽后的集群节点信息"></a>7. 查看分配槽后的集群节点信息</h4><figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">3f2c74e5888907c494b8b728210175144657f218 10.60.44.105:7037 master - 0 1498201081749 12 connected 0-332 5461-5794 10923-11255</div><div class="line">396e92e2e8207be6a4a93e29fd16670656477131 10.60.44.105:7036 master - 0 1498201080733 9 connected 5795-10922</div><div class="line">135173619dfc7bdbef98f5d5f07d6b1fcd6474dc 10.60.44.105:7035 master - 0 1498201082755 3 connected 11256-16383</div><div class="line">1baa876789f68ed2e273ab7cb1d4e954fa7fc60c 10.60.44.105:7034 master - 0 1498201078714 11 connected 333-5460</div></pre></td></tr></table></figure>
+<h3 id="增加一个从节点"><a href="#增加一个从节点" class="headerlink" title="增加一个从节点"></a>增加一个从节点</h3><p>在原有的集群之上为其中一个主节点（7037）添加一个新的从节点（7038），需要开启新的从节点，并将此节点添加进集群中，详细如下描述：</p>
+<h4 id="1-创建节点需要的相关文件（文件夹、配置文件）-1"><a href="#1-创建节点需要的相关文件（文件夹、配置文件）-1" class="headerlink" title="1. 创建节点需要的相关文件（文件夹、配置文件）"></a>1. 创建节点需要的相关文件（文件夹、配置文件）</h4><figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">[root@localhost /]# mkdir /usr/local/redis-cluster/7038</div></pre></td></tr></table></figure>
+<h4 id="2-拷贝并修改配置文件-1"><a href="#2-拷贝并修改配置文件-1" class="headerlink" title="2. 拷贝并修改配置文件"></a>2. 拷贝并修改配置文件</h4><p>将配置文件中的 7036 字符串，全部替换为 7038，此处不再累述</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">[root@localhost /]# cp /usr/local/redis-cluster/7036/redis.conf  /usr/local/redis-cluster/7038/</div></pre></td></tr></table></figure>
+<h4 id="3-启动新创建的节点-1"><a href="#3-启动新创建的节点-1" class="headerlink" title="3. 启动新创建的节点"></a>3. 启动新创建的节点</h4><figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">[root@localhost /]# /usr/local/redis/bin/redis-server /usr/local/redis-cluster/7038/redis.conf</div></pre></td></tr></table></figure>
+<h4 id="4-将新节点添加进集群中"><a href="#4-将新节点添加进集群中" class="headerlink" title="4. 将新节点添加进集群中"></a>4. 将新节点添加进集群中</h4><figure class="highlight plain"><table><tr><td class="code"><pre><div class="line"># 参数一：所要添加的新节点 ip 和端口；参数二：存在的集群中的任意在线节点 ip 和端口</div><div class="line">[root@localhost /]# redis-trib.rb add-node 10.60.44.105:7038 10.60.44.105:7034</div></pre></td></tr></table></figure>
+<p>成功后打印信息如下：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">&gt;&gt;&gt; Adding node 10.60.44.105:7038 to cluster 10.60.44.105:7034</div><div class="line">&gt;&gt;&gt; Performing Cluster Check (using node 10.60.44.105:7034)</div><div class="line">............... 省略</div><div class="line">&gt;&gt;&gt; Send CLUSTER MEET to node 10.60.44.105:7038 to make it join the cluster.</div><div class="line">[OK] New node added correctly.</div></pre></td></tr></table></figure>
+<h4 id="5-查看添加新节点后的集群节点信息-1"><a href="#5-查看添加新节点后的集群节点信息-1" class="headerlink" title="5. 查看添加新节点后的集群节点信息"></a>5. 查看添加新节点后的集群节点信息</h4><figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">9cc99dc2e2721d6712c55e293c21c7f3b9c2f95c 10.60.44.105:7038 master - 0 1498201399078 0 connected</div><div class="line">3f2c74e5888907c494b8b728210175144657f218 10.60.44.105:7037 master - 0 1498201398374 12 connected 0-332 5461-5794 10923-11255</div><div class="line">.......</div></pre></td></tr></table></figure>
+<h4 id="6-将端口为-7038-的节点置为-7037-端口的从节点"><a href="#6-将端口为-7038-的节点置为-7037-端口的从节点" class="headerlink" title="6. 将端口为 7038 的节点置为 7037 端口的从节点"></a>6. 将端口为 7038 的节点置为 7037 端口的从节点</h4><figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">[root@localhost /]# redis-cli -c -h 10.60.44.105 -p 7038 cluster replicate 3f2c74e5888907c494b8b728210175144657f218</div></pre></td></tr></table></figure>
+<h4 id="7-查看设置为从节点后的集群节点信息"><a href="#7-查看设置为从节点后的集群节点信息" class="headerlink" title="7. 查看设置为从节点后的集群节点信息"></a>7. 查看设置为从节点后的集群节点信息</h4><figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">9cc99dc2e2721d6712c55e293c21c7f3b9c2f95c 10.60.44.105:7038 slave 3f2c74e5888907c494b8b728210175144657f218 0 1498201731111 12 connected</div><div class="line">3f2c74e5888907c494b8b728210175144657f218 10.60.44.105:7037 master - 0 1498201398374 12 connected 0-332 5461-5794 10923-11255</div><div class="line">.......</div></pre></td></tr></table></figure>
+<h3 id="删除一个主节点"><a href="#删除一个主节点" class="headerlink" title="删除一个主节点"></a>删除一个主节点</h3><p>删除集群中端口为 7037 的主节点，填入集群中集群中任意节点 ip 端口和所要删除节点的 id。(需要先将所拥有的槽分配到其他的主节点)</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">[root@localhost /]# usr/local/redis/bin/redis-trib.rb del-node 10.60.44.105:7034 3f2c74e5888907c494b8b728210175144657f218</div></pre></td></tr></table></figure>
+<h3 id="删除一个从节点"><a href="#删除一个从节点" class="headerlink" title="删除一个从节点"></a>删除一个从节点</h3><p>同理得主节点</p>
+<h2 id="五、集群测试"><a href="#五、集群测试" class="headerlink" title="五、集群测试"></a>五、集群测试</h2><p>模拟 oom（Out Of Meomery）</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">redis-cli debug oom</div></pre></td></tr></table></figure>
+<p>模拟宕机</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">redis-cli debug segfault</div></pre></td></tr></table></figure>
+<p>模拟 hang</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">redis-cli -p 6379 DEBUG sleep 30</div></pre></td></tr></table></figure>
+<p>参考资料：</p>
+<p><a href="http://www.cnblogs.com/hjwublog/p/5681700.html#autoid-3-3-0" target="_blank" rel="external">http://www.cnblogs.com/hjwublog/p/5681700.html#autoid-3-3-0</a><br><a href="http://blog.csdn.net/cfl20121314/article/details/52838986" target="_blank" rel="external">http://blog.csdn.net/cfl20121314/article/details/52838986</a><br><a href="http://www.cnblogs.com/wuxl360/p/5920330.html" target="_blank" rel="external">http://www.cnblogs.com/wuxl360/p/5920330.html</a><br><a href="http://www.redis.cn/topics/cluster-tutorial.html" target="_blank" rel="external">http://www.redis.cn/topics/cluster-tutorial.html</a><br><a href="http://wiki.jikexueyuan.com/project/all-about-redis/Testing/README.html" target="_blank" rel="external">http://wiki.jikexueyuan.com/project/all-about-redis/Testing/README.html</a></p>
+
+        <!-- 显示正文 -->
+      
+    </div>
+
+
+    <footer class="article-footer">
+
+    <span id="busuanzi_container_page_pv">
+	本文总阅读量<span id="busuanzi_value_page_pv"></span>次
+	</span>
+
+
+      
+        <a data-url="http://yoursite.com/2017/06/20/redis-cluster-env/" data-id="cjf6vzdk9000wl4khqqq1ycxd" class="article-share-link">分享到</a>
+      
+
+      
+        <a href="http://yoursite.com/2017/06/20/redis-cluster-env/#ds-thread" class="article-comment-link">评论</a>
+      
+
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/redis-集群/">redis 集群</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2018/02/09/loadrunner-introduce/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">下一篇</strong>
+      <div class="article-nav-title">
+        
+          LoadRunner 入门
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2017/06/10/redis-question/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">上一篇</strong>
+      <div class="article-nav-title">Redis 疑问释义</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+<!-- 
+  <section id="comments">
+    <div id="ds-thread" class="ds-thread" data-thread-key="2017/06/20/redis-cluster-env/" data-title="基于 Redis3.2.4 集群搭建说明" data-url="http://yoursite.com/2017/06/20/redis-cluster-env/"></div>
+  </section>
+ --></section>
+      
+        <aside id="sidebar">
+  
+    <div class="widget-wrap">
+  <h3 class="widget-title">关于我</h3>
+  <div class="widget">
+    <ul>
+      
+    
+        
+        <!--  -->
+          <div style="text-align: center;">
+            <img src="https://avatars1.githubusercontent.com/u/15794249?v=3&s=400" style="width: 230px;  height: 230px">
+          </div>
+        <!--  -->
+
+        <li>
+          <a href="http://www.cnblogs.com/gossiplee/" target="_blank">1. 「博客园」</a>
+          
+        </li>
+      
+        
+        <!--  -->
+
+        <li>
+          <a href="https://my.oschina.net/u/2938358/?ft=bbs&scope=2&showme=1" target="_blank">2. 「开源中国」</a>
+          
+        </li>
+      
+        
+        <!--  -->
+
+        <li>
+          <a href="https://github.com/LiHuaYang" target="_blank">3. 「GitHub」</a>
+          
+        </li>
+      
+        
+        <!--  -->
+
+        <li>
+          <a href="https://segmentfault.com/u/lihuayang" target="_blank">4. 「Segmentfault」</a>
+          
+        </li>
+      
+    </ul>
+  </div>
+</div>
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">分类</h3>
+    <div class="widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/JavaEE-开发/">JavaEE 开发</a><span class="category-list-count">9</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/JavaSE-基础/">JavaSE 基础</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Netty/">Netty</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Redis/">Redis</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/工具/">工具</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/数据库/">数据库</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/职业生涯/">职业生涯</a><span class="category-list-count">1</span></li></ul>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">标签云</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/Java-IO/" style="font-size: 16.67px;">Java IO</a> <a href="/tags/JavaEE-开发/" style="font-size: 20px;">JavaEE 开发</a> <a href="/tags/JavaSE-基础/" style="font-size: 13.33px;">JavaSE 基础</a> <a href="/tags/MySQL/" style="font-size: 13.33px;">MySQL</a> <a href="/tags/Netty/" style="font-size: 10px;">Netty</a> <a href="/tags/Struts/" style="font-size: 10px;">Struts</a> <a href="/tags/Tomcat/" style="font-size: 10px;">Tomcat</a> <a href="/tags/jsp/" style="font-size: 10px;">jsp</a> <a href="/tags/redis/" style="font-size: 10px;">redis</a> <a href="/tags/redis-集群/" style="font-size: 10px;">redis 集群</a> <a href="/tags/test-loadrunner/" style="font-size: 10px;">test,loadrunner</a> <a href="/tags/分页/" style="font-size: 10px;">分页</a> <a href="/tags/工具配置及使用/" style="font-size: 10px;">工具配置及使用</a> <a href="/tags/面试/" style="font-size: 10px;">面试</a> <a href="/tags/面试题/" style="font-size: 13.33px;">面试题</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">归档</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/02/">2018年 02月</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/06/">2017年 06月</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/05/">2017年 05月</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/01/">2017年 01月</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/11/">2016年 11月</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/10/">2016年 10月</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/11/">2015年 11月</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/10/">2015年 10月</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/08/">2015年 08月</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/1995/12/">1995年 12月</a><span class="archive-list-count">1</span></li></ul>
+    </div>
+  </div>
+
+  
+</aside>
+      
+    </div>
+    <footer id="footer">
+  
+  <div class="outer">
+	     <script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+<!-- 
+<span id="busuanzi_container_site_pv">��վ���ܷ�����<span id="busuanzi_value_site_pv"></span>��</span>
+-->
+
+    <div id="footer-info" class="inner">
+      &copy; 2018 lihuayang<br>
+      Powered by <a href="//hexo.io/" target="_blank">Hexo</a>
+      .
+      Theme by <a href="https://github.com/xiangming/landscape-plus" target="_blank">Landscape-plus</a>
+    </div>
+  </div>
+</footer>
+  </div>
+  <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+    <a href="/about" class="mobile-nav-link">About</a>
+  
+</nav>
+  <!-- totop start -->
+<div id="totop">
+<a title="返回顶部"><img src="/img/scrollup.png"/></a>
+</div>
+
+<!-- totop end -->
+
+<!-- 多说公共js代码 start -->
+<script type="text/javascript">
+var duoshuoQuery = {short_name:"reqianduan"};
+  (function() {
+    var ds = document.createElement('script');
+    ds.type = 'text/javascript';ds.async = true;
+    ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+    ds.charset = 'UTF-8';
+    (document.getElementsByTagName('head')[0]
+     || document.getElementsByTagName('body')[0]).appendChild(ds);
+  })();
+  </script>
+<!-- 多说公共js代码 end -->
+
+
+<!-- 百度分享 start -->
+
+<!-- 百度分享 end -->
+
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+</div>
+</body>
+</html>
