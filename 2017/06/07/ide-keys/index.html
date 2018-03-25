@@ -12,7 +12,7 @@
 <meta property="og:url" content="http://yoursite.com/2017/06/07/ide-keys/index.html">
 <meta property="og:site_name" content="266305">
 <meta property="og:description" content="快捷键">
-<meta property="og:updated_time" content="2017-09-28T13:12:44.294Z">
+<meta property="og:updated_time" content="2018-03-25T15:11:00.044Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="开发 IDE 常用操作">
 <meta name="twitter:description" content="快捷键">
@@ -102,14 +102,146 @@
         
         <p style="width: 100%; background-color: #EEE; height: 3px"></p>
           <!-- 显示目录 -->
-          <ol class="mytoc"><li class="mytoc-item mytoc-level-3"><a class="mytoc-link" href="#Eclipse"><span class="mytoc-text">Eclipse</span></a></li><li class="mytoc-item mytoc-level-3"><a class="mytoc-link" href="#Sublime-Text3"><span class="mytoc-text">Sublime Text3</span></a></li><li class="mytoc-item mytoc-level-3"><a class="mytoc-link" href="#Chrome"><span class="mytoc-text">Chrome</span></a></li><li class="mytoc-item mytoc-level-3"><a class="mytoc-link" href="#IntelliJ-IDEA"><span class="mytoc-text">IntelliJ IDEA</span></a></li></ol>
+          <ol class="mytoc"><li class="mytoc-item mytoc-level-3"><a class="mytoc-link" href="#IntelliJ-IDEA"><span class="mytoc-text">IntelliJ IDEA</span></a></li><li class="mytoc-item mytoc-level-3"><a class="mytoc-link" href="#Eclipse"><span class="mytoc-text">Eclipse</span></a></li><li class="mytoc-item mytoc-level-3"><a class="mytoc-link" href="#Sublime-Text3"><span class="mytoc-text">Sublime Text3</span></a></li><li class="mytoc-item mytoc-level-3"><a class="mytoc-link" href="#Chrome"><span class="mytoc-text">Chrome</span></a></li></ol>
         <!-- 显示目录 -->
         <p style="width: 100%; background-color: #EEE; height: 3px"></p>
          
 
         <!-- 显示正文 -->
         <p>记录自己在日常开发中，使用各种 IDE、编辑器时，积累的一些快捷键和小技巧，如 Eclipse、Sublime、Chrome、Idea等，会一直更新</p>
-<a id="more"></a>
+<h3 id="IntelliJ-IDEA"><a href="#IntelliJ-IDEA" class="headerlink" title="IntelliJ IDEA"></a>IntelliJ IDEA</h3><p>常见快捷键</p>
+<table>
+<thead>
+<tr>
+<th>快捷键</th>
+<th>解释</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>代码自动排版</td>
+<td>Ctrl + Alt + L</td>
+</tr>
+<tr>
+<td>复制一行或选中的内容</td>
+<td>Ctrl + C</td>
+</tr>
+<tr>
+<td>查找 Java 类（推荐）</td>
+<td>Ctrl + N</td>
+</tr>
+<tr>
+<td>查找资源（包括 Java 类）（推荐）</td>
+<td>Ctrl + Shift + N</td>
+</tr>
+<tr>
+<td>全局查找字符串（推荐）</td>
+<td>Ctrl + Shift + F</td>
+</tr>
+<tr>
+<td>窗口横向滚动（推荐）</td>
+<td>Shift + 鼠标滚轮</td>
+</tr>
+<tr>
+<td>自动补全语句分号（推荐）</td>
+<td>Ctrl + Shift + Enter</td>
+</tr>
+<tr>
+<td>显示类继承结构</td>
+<td>Ctrl + H</td>
+</tr>
+<tr>
+<td>显示方法\</td>
+<td>类的 JavaDoc</td>
+<td>Ctrl + Q</td>
+</tr>
+<tr>
+<td>重写父类或者接口的方法</td>
+<td>Ctrl + O</td>
+</tr>
+<tr>
+<td>整理 import</td>
+<td>Ctrl + Alt + O</td>
+</tr>
+<tr>
+<td>回到上一次光标所在位置</td>
+<td>Alt + Ctrl + → / Alt + Ctrl + ←</td>
+</tr>
+<tr>
+<td>文件切换</td>
+<td>Alt + → / Alt + ←</td>
+</tr>
+<tr>
+<td>列出所有方法</td>
+<td>Alt + 7（Ctrl + F12 更好，可支持查找）</td>
+</tr>
+<tr>
+<td>生成方法（getter、setter）</td>
+<td>Alt + Insert</td>
+</tr>
+<tr>
+<td>跳转到当前方法的调用方法</td>
+<td>Ctrl + 鼠标左键</td>
+</tr>
+<tr>
+<td>跳转到指定行</td>
+<td>Ctrl + G</td>
+</tr>
+<tr>
+<td>搜索所有资源</td>
+<td>double Shift（输入 / 可以支持查找文件夹）</td>
+</tr>
+<tr>
+<td>查看一个接口的实现方法</td>
+<td>Ctrl + Alt + B</td>
+</tr>
+<tr>
+<td>重命名</td>
+<td>Shift + F6</td>
+</tr>
+<tr>
+<td>替换</td>
+<td>Ctrl + R</td>
+</tr>
+<tr>
+<td>依次切换打开的文件（推荐）</td>
+<td>Ctrl + Tab</td>
+</tr>
+<tr>
+<td>新建文件</td>
+<td>Ctrl + Alt + Insert</td>
+</tr>
+</tbody>
+</table>
+<p>常用设置</p>
+<ul>
+<li><p>定位到某个文件中中错误的地方<br>F2 快速定位到下一个错误和警告处，加Shift键，定位到上一个错误处<br><strong>注</strong>：在版本控制时，按 F7 跳到下一个冲突的地方</p>
+</li>
+<li><p>显示类继承结构图（UML）<br>选中类名 -&gt; 右键 Diagram -&gt; 右键 Show Implementations -&gt; 选中添加需要显示的子类</p>
+</li>
+<li><p>快捷方法显示类继承结构图<br>选中类名后 Ctrl + H -&gt; 弹出视图中 Ctrl + A -&gt; 右键 Diagram</p>
+</li>
+<li><p>设置鼠标划过显示 javadoc<br><code>File -&gt; Setting -&gt; Editor -&gt; General -&gt; Show quick documentation on mouse move</code></p>
+</li>
+<li><p>设置代码默认不折叠<br><code>File -&gt; Setting -&gt; Editor -&gt; General -&gt; Code Folding One line method</code></p>
+</li>
+<li><p>隐藏 .idea 文件夹和 *.iml 文件夹<br><code>setting -&gt; File Type</code></p>
+</li>
+<li><p>给常用语句设置快捷键<br><code>Settings -&gt; Editor -&gt; Live Templates</code><br>可以新建一个自己的 Template Group，然后里面添加自己模板代码 </p>
+</li>
+<li><p>设置自动注释不加在代码行首<br><code>Code Style -&gt; Java -&gt; Code Generation</code> 去掉 Line comment at first column 和 Block comment at first column 复选框的勾</p>
+</li>
+<li><p>使项目脱离 svn 版本管理<br>删除隐藏的 .svn 文件夹即可</p>
+</li>
+<li><p>不显示面包屑导航<br>Editor - General - Appearance - Show breadcrumbs</p>
+</li>
+<li><p>不显示编辑面板左侧方法折叠和提示小图标</p>
+<ul>
+<li>方法折叠：Editor - General - Code Floding - Show code floding outline</li>
+<li>提示小图标：Editor - General - Show gutter icons</li>
+</ul>
+</li>
+</ul>
 <h3 id="Eclipse"><a href="#Eclipse" class="headerlink" title="Eclipse"></a>Eclipse</h3><table>
 <thead>
 <tr>
@@ -215,6 +347,7 @@
 </table>
 <p>常用设置和习惯：</p>
 <ul>
+<li>将删除一行快键键替换为 Ctrl + D（实在是好用）</li>
 <li>在重要的代码块左侧添加 BookMark，能够快速定位到  </li>
 <li>善用 TODO、XXXX 等代码标记</li>
 <li>使用工作集 working sets 对工程进行归类：  </li>
@@ -222,7 +355,7 @@
 <li>连接终端设备 Linux / 本机（windows）：Ctrl + Shift + Alt + t </li>
 </ul>
 <h3 id="Sublime-Text3"><a href="#Sublime-Text3" class="headerlink" title="Sublime Text3"></a>Sublime Text3</h3><p>使用 Ctrl + ` 安装 Package Install 的代码，并使用 Ctrl + Shift + P 呼出</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><div class="line"><span class="keyword">import</span> urllib.request,os; pf = <span class="string">'Package Control.sublime-package'</span>; </div><div class="line">ipp = sublime.installed_packages_path(); </div><div class="line">urllib.request.install_opener(urllib.request.build_opener(urllib.request.ProxyHandler())); </div><div class="line">open(os.path.join(ipp, pf), <span class="string">'wb'</span>).</div><div class="line">write(urllib.request.urlopen( <span class="string">'http://sublime.wbond.net/'</span> + pf.replace(<span class="string">' '</span>,<span class="string">'%20'</span>)).</div><div class="line">read())</div></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="code"><pre><div class="line"><span class="keyword">import</span> urllib.request,os; pf = <span class="string">'Package Control.sublime-package'</span>; </div><div class="line">ipp = sublime.installed_packages_path(); urllib.request.install_opener(urllib.request.build_opener(urllib.request.ProxyHandler())); </div><div class="line">open(os.path.join(ipp, pf), <span class="string">'wb'</span>).</div><div class="line">write(urllib.request.urlopen( <span class="string">'http://sublime.wbond.net/'</span> + pf.replace(<span class="string">' '</span>,<span class="string">'%20'</span>)).</div><div class="line">read())</div></pre></td></tr></table></figure>
 <p>删除当前行：Ctrl + Shift + K，使用 Ctrl + D，进行快捷键替换（Preference -&gt; Key Bindings）</p>
 <figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">&#123; &quot;keys&quot;: [&quot;ctrl+d&quot;], </div><div class="line">&quot;command&quot;: &quot;run_macro_file&quot;, </div><div class="line">&quot;args&quot;: &#123;&quot;file&quot;: &quot;res://Packages/Default/Delete Line.sublime-macro&quot;&#125; &#125;</div></pre></td></tr></table></figure>
 <p>常用设置：</p>
@@ -276,123 +409,6 @@
 </tbody>
 </table>
 <p><a href="https://support.google.com/chrome/answer/157179?hl=zh-Hans&amp;topic=25799&amp;ctx=topic" target="_blank" rel="external">官方 Chrome 快捷键</a></p>
-<h3 id="IntelliJ-IDEA"><a href="#IntelliJ-IDEA" class="headerlink" title="IntelliJ IDEA"></a>IntelliJ IDEA</h3><p>常见快捷键</p>
-<table>
-<thead>
-<tr>
-<th>快捷键</th>
-<th>解释</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>代码自动排版</td>
-<td>Ctrl + Alt + L</td>
-</tr>
-<tr>
-<td>复制一行或选中的内容</td>
-<td>Ctrl + C</td>
-</tr>
-<tr>
-<td>查找 Java 类</td>
-<td>Ctrl + N</td>
-</tr>
-<tr>
-<td>查找资源（包括 Java 类）</td>
-<td>Ctrl + Shift + N</td>
-</tr>
-<tr>
-<td>全局查找字符串</td>
-<td>Ctrl + Shift + F</td>
-</tr>
-<tr>
-<td>窗口横向滚动</td>
-<td>Shift + 鼠标滚轮</td>
-</tr>
-<tr>
-<td>自动补全语句分号</td>
-<td>Ctrl + Shift + Enter</td>
-</tr>
-<tr>
-<td>显示类继承结构</td>
-<td>Ctrl + H</td>
-</tr>
-<tr>
-<td>显示方法\</td>
-<td>类的 JavaDoc</td>
-<td>Ctrl + Q</td>
-</tr>
-<tr>
-<td>重写父类或者接口的方法</td>
-<td>Ctrl + O</td>
-</tr>
-<tr>
-<td>整理 import</td>
-<td>Ctrl + Alt + O</td>
-</tr>
-<tr>
-<td>回到上一次光标所在位置</td>
-<td>Alt + Ctrl + → / Alt + Ctrl + ←</td>
-</tr>
-<tr>
-<td>文件切换</td>
-<td>Alt + → / Alt + ←</td>
-</tr>
-<tr>
-<td>列出所有方法</td>
-<td>Alt + 7（Ctrl + F12 更好，可支持查找）</td>
-</tr>
-<tr>
-<td>生成方法（getter、setter）</td>
-<td>Alt + Insert</td>
-</tr>
-<tr>
-<td>跳转到当前方法的调用方法</td>
-<td>Ctrl + 鼠标左键</td>
-</tr>
-<tr>
-<td>跳转到指定行</td>
-<td>Ctrl + G</td>
-</tr>
-<tr>
-<td>搜索所有资源</td>
-<td>double Shift（输入 / 可以支持查找文件夹）</td>
-</tr>
-<tr>
-<td>查看一个接口的实现方法</td>
-<td>Ctrl + Alt + B</td>
-</tr>
-<tr>
-<td>重命名</td>
-<td>Shift + F6</td>
-</tr>
-<tr>
-<td>替换</td>
-<td>Ctrl + R</td>
-</tr>
-</tbody>
-</table>
-<p>常用设置</p>
-<ul>
-<li>显示类继承结构图（UML）</li>
-</ul>
-<p>选中类名 - 鼠标右键 Diagram - 鼠标右键 Show Implementations - 选中添加子</p>
-<ul>
-<li>快捷方法显示类继承结构图</li>
-</ul>
-<p>选中类名后 Ctrl + H - 弹出视图中 Ctrl + A - 鼠标右键 Diagram</p>
-<ul>
-<li>设置鼠标划过显示 javadoc  </li>
-</ul>
-<p>File -&gt; Setting -&gt; Editor -&gt; General -&gt; Show quick documentation on mouse move</p>
-<ul>
-<li>设置代码默认不折叠</li>
-</ul>
-<p>File -&gt; Setting -&gt; Editor -&gt; General -&gt; Code Folding One line method</p>
-<ul>
-<li>隐藏 .idea 文件夹和 *.iml 文件夹</li>
-</ul>
-<p>setting - File Type  </p>
 
         <!-- 显示正文 -->
       
@@ -407,7 +423,7 @@
 
 
       
-        <a data-url="http://yoursite.com/2017/06/07/ide-keys/" data-id="cjf6xdjtu00014kkhiswh7qqq" class="article-share-link">分享到</a>
+        <a data-url="http://yoursite.com/2017/06/07/ide-keys/" data-id="cjf6xf9ni00016kkh0m7ijx3v" class="article-share-link">分享到</a>
       
 
       
